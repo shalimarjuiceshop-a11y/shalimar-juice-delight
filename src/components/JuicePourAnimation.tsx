@@ -76,15 +76,15 @@ const JuicePourAnimation = () => {
         <motion.div
           className="absolute bottom-[10%] left-[15%] right-[15%] rounded-b-lg overflow-hidden"
           style={{
+            transformOrigin: "bottom",
             zIndex: 21,
             height: "60%",
             background: "linear-gradient(to top, hsl(var(--pineapple-gold) / 0.35), hsl(var(--pineapple-gold) / 0.1))",
-            mixBlendMode: "overlay",
+            mixBlendMode: "overlay" as const,
           }}
           initial={{ scaleY: 0 }}
           animate={{ scaleY: [0, 0, 0, 0, 1, 1] }}
           transition={{ duration: 7, times: [0, 0.25, 0.4, 0.45, 0.65, 1], ease: "easeInOut", repeat: Infinity, repeatDelay: 0 }}
-          style={{ transformOrigin: "bottom", zIndex: 21, height: "60%", background: "linear-gradient(to top, hsl(var(--pineapple-gold) / 0.35), hsl(var(--pineapple-gold) / 0.1))", mixBlendMode: "overlay" as const }}
         />
 
         {/* Subtle glow behind glass */}
