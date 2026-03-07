@@ -1,30 +1,37 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import pineappleJuiceGlass from "@/assets/pineapple-juice-glass.png";
-import pineappleFruit from "@/assets/pineapple-fruit.png";
-import pineappleSlices from "@/assets/pineapple-slices.png";
 import { ArrowRight, Handshake } from "lucide-react";
+import JuicePourAnimation from "@/components/JuicePourAnimation";
 
 const Index = () => {
   return (
     <main>
       {/* Hero Section */}
       <section className="relative min-h-screen bg-hero-gradient overflow-hidden flex items-center pt-16">
-        {/* Floating decorative slices */}
-        <motion.img
-          src={pineappleSlices}
-          alt=""
-          className="absolute top-20 right-0 w-48 md:w-72 opacity-20 pointer-events-none"
-          animate={{ y: [0, -15, 0], rotate: [0, 5, 0] }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.img
-          src={pineappleSlices}
-          alt=""
-          className="absolute bottom-10 left-0 w-40 md:w-56 opacity-15 pointer-events-none rotate-45"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        />
+        {/* Animated background particles */}
+        {Array.from({ length: 6 }, (_, i) => (
+          <motion.div
+            key={`bg-particle-${i}`}
+            className="absolute rounded-full pointer-events-none"
+            style={{
+              width: 6 + i * 3,
+              height: 6 + i * 3,
+              background: `hsl(var(--pineapple-gold) / ${0.1 + i * 0.03})`,
+              left: `${10 + i * 15}%`,
+              top: `${20 + (i % 3) * 25}%`,
+            }}
+            animate={{
+              y: [0, -20, 0],
+              opacity: [0.3, 0.6, 0.3],
+            }}
+            transition={{
+              duration: 3 + i * 0.5,
+              repeat: Infinity,
+              delay: i * 0.4,
+              ease: "easeInOut",
+            }}
+          />
+        ))}
 
         <div className="container mx-auto px-4 grid lg:grid-cols-2 gap-8 items-center relative z-10">
           {/* Left: Text */}
@@ -34,23 +41,43 @@ const Index = () => {
             transition={{ duration: 0.7 }}
             className="text-center lg:text-left"
           >
-            <div className="flex items-center gap-2 justify-center lg:justify-start mb-4">
+            <motion.div
+              className="flex items-center gap-2 justify-center lg:justify-start mb-4"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
               <span className="text-3xl">🍍</span>
               <div>
                 <h2 className="font-display text-lg font-bold text-foreground">Shalimar Juice</h2>
                 <p className="text-sm text-muted-foreground" dir="rtl">شالیمار جوس</p>
               </div>
-            </div>
+            </motion.div>
 
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-foreground">
+            <motion.h1
+              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-foreground"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
               Fresh <span className="text-gradient-gold">Pineapple Juice</span> for a Healthy Life
-            </h1>
+            </motion.h1>
 
-            <p className="font-body text-lg text-muted-foreground mb-8 max-w-lg mx-auto lg:mx-0">
+            <motion.p
+              className="font-body text-lg text-muted-foreground mb-8 max-w-lg mx-auto lg:mx-0"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+            >
               Fresh fruit juices made daily at Shalimar Juice. Experience the taste of real, natural pineapple goodness.
-            </p>
+            </motion.p>
 
-            <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
+            <motion.div
+              className="flex flex-wrap gap-4 justify-center lg:justify-start"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+            >
               <Link
                 to="/menu"
                 className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-body font-semibold px-7 py-3 rounded-full hover:brightness-105 hover:scale-105 transition-all shadow-pineapple"
@@ -63,43 +90,17 @@ const Index = () => {
               >
                 Get Franchise <Handshake size={18} />
               </Link>
-            </div>
+            </motion.div>
           </motion.div>
 
-          {/* Right: Juice glass hero */}
+          {/* Right: Juice Pour Animation */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.85 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
             className="relative flex justify-center items-center"
           >
-            {/* Pineapple fruit background */}
-            <motion.img
-              src={pineappleFruit}
-              alt="Pineapple"
-              className="absolute -left-4 md:-left-8 bottom-0 w-32 md:w-48 opacity-80"
-              animate={{ y: [0, -10, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            />
-
-            {/* Main juice glass */}
-            <motion.img
-              src={pineappleJuiceGlass}
-              alt="Fresh Pineapple Juice Glass"
-              className="relative z-10 w-72 md:w-96 lg:w-[420px] drop-shadow-2xl"
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            />
-
-            {/* Price badge */}
-            <motion.div
-              className="absolute bottom-8 right-4 md:right-12 bg-primary text-primary-foreground rounded-full w-20 h-20 flex flex-col items-center justify-center shadow-pineapple z-20"
-              animate={{ scale: [1, 1.05, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              <span className="font-body text-xs font-medium">Starting</span>
-              <span className="font-display text-xl font-bold">₹10</span>
-            </motion.div>
+            <JuicePourAnimation />
           </motion.div>
         </div>
       </section>
