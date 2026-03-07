@@ -1,4 +1,5 @@
-import { MapPin, Phone, User } from "lucide-react";
+import { MapPin, Phone, User, Instagram } from "lucide-react";
+import sjsLogo from "@/assets/sjs-logo.jpeg";
 
 const Footer = () => (
   <footer className="bg-card border-t border-pineapple py-12">
@@ -6,7 +7,7 @@ const Footer = () => (
       <div className="grid md:grid-cols-3 gap-8">
         <div>
           <div className="flex items-center gap-2 mb-3">
-            <span className="text-2xl">🍍</span>
+            <img src={sjsLogo} alt="SJS Logo" className="w-10 h-10 rounded-full object-cover" />
             <div>
               <h3 className="font-display text-lg font-bold text-foreground">Shalimar Juice</h3>
               <p className="text-xs text-muted-foreground" dir="rtl">شالیمار جوس</p>
@@ -15,14 +16,22 @@ const Footer = () => (
           <p className="text-sm text-muted-foreground font-body">
             Fresh fruit juices made daily. Taste the real freshness of pineapple!
           </p>
+          <a
+            href="https://www.instagram.com/shalimarjuiceshop/"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 mt-3 text-sm font-body text-pineapple-dark hover:underline"
+          >
+            <Instagram size={16} /> Follow us on Instagram
+          </a>
         </div>
 
         <div>
           <h4 className="font-display text-base font-semibold mb-3 text-foreground">Shop Info</h4>
           <div className="space-y-2 text-sm text-muted-foreground font-body">
-            <p className="flex items-center gap-2"><MapPin size={14} /> Jamil Colony, Amravati</p>
-            <p className="flex items-center gap-2"><User size={14} /> Owner: Sameer Khan</p>
-            <p className="flex items-center gap-2"><Phone size={14} /> WhatsApp: +91 99999 99999</p>
+            <p className="flex items-start gap-2"><MapPin size={14} className="mt-0.5 shrink-0" /> Jamil Colony, Perfect Complex, Walgaon Road, Amravati</p>
+            <p className="flex items-center gap-2"><User size={14} /> Owner: Sameer Ahmad</p>
+            <p className="flex items-center gap-2"><Phone size={14} /> WhatsApp: +91 98527 79933</p>
           </div>
         </div>
 

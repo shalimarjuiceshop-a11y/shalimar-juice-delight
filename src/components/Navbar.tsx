@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import sjsLogo from "@/assets/sjs-logo.jpeg";
 
 const navLinks = [
   { to: "/", label: "Home" },
@@ -17,7 +18,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-pineapple">
       <div className="container mx-auto flex items-center justify-between h-16 px-4">
         <Link to="/" className="flex items-center gap-2">
-          <span className="text-2xl">🍍</span>
+          <img src={sjsLogo} alt="Shalimar Juice Shop Logo" className="w-10 h-10 rounded-full object-cover" />
           <div className="leading-tight">
             <span className="font-display text-xl font-bold text-foreground">Shalimar Juice</span>
             <span className="block text-xs text-muted-foreground font-body" dir="rtl">شالیمار جوس</span>
@@ -38,7 +39,7 @@ const Navbar = () => {
             </Link>
           ))}
           <a
-            href="https://wa.me/919999999999"
+            href="https://wa.me/919852779933"
             target="_blank"
             rel="noreferrer"
             className="bg-primary text-primary-foreground font-body text-sm font-semibold px-5 py-2 rounded-full hover:brightness-105 transition"
