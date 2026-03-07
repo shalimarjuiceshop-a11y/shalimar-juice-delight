@@ -18,10 +18,10 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-pineapple">
       <div className="container mx-auto flex items-center justify-between h-16 px-4">
         <Link to="/" className="flex items-center gap-2">
-          <img src={sjsLogo} alt="Shalimar Juice Shop Logo" className="w-10 h-10 rounded-full object-cover" />
+          <img src={sjsLogo} alt="Shalimar Juice Shop Logo" className="w-14 h-14 rounded-full object-cover border-2 border-pineapple shadow-sm" />
           <div className="leading-tight">
             <span className="font-display text-xl font-bold text-foreground">Shalimar Juice</span>
-            <span className="block text-xs text-muted-foreground font-body" dir="rtl">شالیمار جوس</span>
+            <span className="block text-sm text-muted-foreground font-body" dir="rtl" style={{ fontFamily: "'Noto Nastaliq Urdu', serif" }}>شالیمار جوس</span>
           </div>
         </Link>
 
