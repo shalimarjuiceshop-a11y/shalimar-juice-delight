@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Handshake } from "lucide-react";
 import JuicePourAnimation from "@/components/JuicePourAnimation";
+import sjsLogo from "@/assets/sjs-logo.jpeg";
 
 const Index = () => {
   return (
@@ -47,7 +48,7 @@ const Index = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <span className="text-3xl">🍍</span>
+              <img src={sjsLogo} alt="SJS Logo" className="w-12 h-12 rounded-full object-cover" />
               <div>
                 <h2 className="font-display text-lg font-bold text-foreground">Shalimar Juice</h2>
                 <p className="text-sm text-muted-foreground" dir="rtl">شالیمار جوس</p>
