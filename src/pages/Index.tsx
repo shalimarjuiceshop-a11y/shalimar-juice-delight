@@ -43,15 +43,15 @@ const Index = () => {
             className="text-center lg:text-left"
           >
             <motion.div
-              className="flex items-center gap-2 justify-center lg:justify-start mb-4"
+              className="flex items-center gap-3 justify-center lg:justify-start mb-5"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <img src={sjsLogo} alt="SJS Logo" className="w-16 h-16 rounded-full object-cover border-2 border-pineapple shadow-sm" />
-              <div>
-                <h2 className="font-display text-lg font-bold text-foreground">Shalimar Juice</h2>
-                <p className="text-sm text-muted-foreground" dir="rtl" style={{ fontFamily: "'Noto Nastaliq Urdu', serif" }}>شالیمار جوس</p>
+              <img src={sjsLogo} alt="SJS Logo" className="w-14 h-14 rounded-full object-cover border-2 border-pineapple shadow-md" />
+              <div className="leading-snug">
+                <h2 className="font-display text-xl font-bold tracking-wide text-foreground">Shalimar Juice</h2>
+                <p className="text-base text-muted-foreground leading-relaxed" dir="rtl" style={{ fontFamily: "'Noto Nastaliq Urdu', serif", lineHeight: '1.8' }}>شالیمار جوس</p>
               </div>
             </motion.div>
 
