@@ -42,19 +42,6 @@ const Index = () => {
             transition={{ duration: 0.7 }}
             className="text-center lg:text-left"
           >
-            <motion.div
-              className="flex items-center gap-3 justify-center lg:justify-start mb-5"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <img src={sjsLogo} alt="SJS Logo" className="w-14 h-14 rounded-full object-cover border-2 border-pineapple shadow-md" />
-              <div className="leading-snug">
-                <h2 className="font-display text-xl font-bold tracking-wide text-foreground">Shalimar Juice</h2>
-                <p className="text-base text-muted-foreground leading-relaxed" dir="rtl" style={{ fontFamily: "'Noto Nastaliq Urdu', serif", lineHeight: '1.8' }}>شالیمار جوس</p>
-              </div>
-            </motion.div>
-
             <motion.h1
               className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-foreground"
               initial={{ opacity: 0, y: 20 }}
