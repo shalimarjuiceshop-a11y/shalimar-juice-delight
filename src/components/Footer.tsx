@@ -7,10 +7,10 @@ const Footer = () => (
       <div className="grid md:grid-cols-3 gap-8">
         <div>
           <div className="flex items-center gap-2 mb-3">
-            <img src={sjsLogo} alt="SJS Logo" className="w-10 h-10 rounded-full object-cover" />
+            <img src={sjsLogo} alt="SJS Logo" className="w-14 h-14 rounded-full object-cover border-2 border-pineapple shadow-sm" />
             <div>
               <h3 className="font-display text-lg font-bold text-foreground">Shalimar Juice</h3>
-              <p className="text-xs text-muted-foreground" dir="rtl">شالیمار جوس</p>
+              <p className="text-sm text-muted-foreground" dir="rtl" style={{ fontFamily: "'Noto Nastaliq Urdu', serif" }}>شالیمار جوس</p>
             </div>
           </div>
           <p className="text-sm text-muted-foreground font-body">
