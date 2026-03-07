@@ -232,7 +232,7 @@ const JuicePourAnimation = () => {
           <motion.img
             src={pineappleJuiceGlass}
             alt="Pineapple Juice Glass"
-            className="relative z-10 w-64 md:w-80 lg:w-[380px] drop-shadow-2xl"
+            className="relative z-10 w-44 md:w-56 lg:w-64 drop-shadow-2xl"
             animate={
               stage >= 4
                 ? { y: [0, -6, 0] }
