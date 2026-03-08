@@ -59,7 +59,7 @@ const JuicePourAnimation = () => {
         <img
           src={pineappleFruit}
           alt="Fresh Pineapple"
-          className="h-40 md:h-52 w-auto"
+          className="h-52 md:h-72 w-auto"
           style={{ objectFit: "contain" }}
         />
       </motion.div>
