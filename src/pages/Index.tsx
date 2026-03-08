@@ -42,8 +42,20 @@ const Index = () => {
             transition={{ duration: 0.7 }}
             className="text-center lg:text-left"
           >
+            {/* Shop name in Hindi - matching the actual shop board */}
+            <motion.p
+              className="font-body text-sm md:text-base tracking-widest uppercase mb-3"
+              style={{ color: "hsl(40 100% 65%)", fontFamily: "'Noto Nastaliq Urdu', serif" }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              شالیمار جوس شاپ
+            </motion.p>
+
             <motion.h1
-              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-foreground"
+              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
+              style={{ color: "hsl(45 100% 95%)" }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
@@ -52,12 +64,13 @@ const Index = () => {
             </motion.h1>
 
             <motion.p
-              className="font-body text-lg text-muted-foreground mb-8 max-w-lg mx-auto lg:mx-0"
+              className="font-body text-lg mb-8 max-w-lg mx-auto lg:mx-0"
+              style={{ color: "hsl(45 40% 75%)" }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              Fresh fruit juices made daily at Shalimar Juice. Experience the taste of real, natural pineapple goodness.
+              Fresh fruit juices made daily at Shalimar Juice Shop. Experience the taste of real, natural pineapple goodness — since generations.
             </motion.p>
 
             <motion.div
@@ -74,7 +87,8 @@ const Index = () => {
               </Link>
               <Link
                 to="/franchise"
-                className="inline-flex items-center gap-2 border-2 border-pineapple text-foreground font-body font-semibold px-7 py-3 rounded-full hover:bg-pineapple-light transition-all"
+                className="inline-flex items-center gap-2 border-2 font-body font-semibold px-7 py-3 rounded-full transition-all"
+                style={{ borderColor: "hsl(40 100% 50%)", color: "hsl(45 100% 85%)" }}
               >
                 Get Franchise <Handshake size={18} />
               </Link>
