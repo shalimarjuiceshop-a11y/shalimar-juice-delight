@@ -190,7 +190,7 @@ const Index = () => {
               </motion.p>
               <motion.span
                 variants={scaleUp}
-                className="inline-block bg-primary text-primary-foreground font-display text-xl md:text-2xl font-bold px-8 py-3 rounded-full shadow-pineapple"
+                className="inline-block bg-primary text-primary-foreground font-display text-xl md:text-2xl font-bold px-8 py-3 rounded-full glow-gold"
               >
                 Only ₹30
               </motion.span>
