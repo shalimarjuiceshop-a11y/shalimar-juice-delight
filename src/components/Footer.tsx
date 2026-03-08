@@ -20,9 +20,9 @@ const Footer = () => (
             href="https://www.instagram.com/shalimarjuiceshop/"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 mt-3 px-4 py-2 rounded-full bg-gradient-to-r from-[hsl(300,50%,45%)] via-[hsl(340,75%,50%)] to-[hsl(30,85%,55%)] text-white font-body font-semibold text-xs hover:scale-105 transition-all"
+            className="inline-flex items-center gap-1.5 mt-3 px-3 py-1.5 rounded-lg bg-gradient-to-tr from-[hsl(37,97%,54%)] via-[hsl(333,71%,51%)] to-[hsl(264,69%,52%)] text-white font-body font-semibold text-[11px] shadow-md hover:shadow-lg hover:scale-105 transition-all"
           >
-            <Instagram size={16} strokeWidth={2.5} /> Follow us on Instagram
+            <Instagram size={14} strokeWidth={2.5} /> Follow on Instagram
           </a>
         </div>
 
