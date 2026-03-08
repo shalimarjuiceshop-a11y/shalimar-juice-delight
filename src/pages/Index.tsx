@@ -110,9 +110,9 @@ const Index = () => {
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { icon: "🍍", title: "100% Fresh Fruits", desc: "We use only fresh, handpicked fruits every single day." },
-              { icon: "🧊", title: "Made Fresh Daily", desc: "Every glass is prepared fresh when you order. No preservatives." },
-              { icon: "🏪", title: "Franchise Available", desc: "Start your own Shalimar Juice shop. Affordable franchise plans." },
+              { icon: Citrus, title: "100% Fresh Fruits", desc: "We use only fresh, handpicked fruits every single day." },
+              { icon: GlassWater, title: "Made Fresh Daily", desc: "Every glass is prepared fresh when you order. No preservatives." },
+              { icon: Store, title: "Franchise Available", desc: "Start your own Shalimar Juice shop. Affordable franchise plans." },
             ].map((item, i) => (
               <motion.div
                 key={i}
@@ -122,7 +122,9 @@ const Index = () => {
                 transition={{ delay: i * 0.15 }}
                 className="card-pineapple p-8 text-center hover:scale-[1.02] transition-transform"
               >
-                <span className="text-4xl mb-4 block">{item.icon}</span>
+                <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-primary/10 flex items-center justify-center">
+                  <item.icon className="w-7 h-7 text-primary" strokeWidth={1.5} />
+                </div>
                 <h3 className="font-display text-lg font-semibold mb-2 text-foreground">{item.title}</h3>
                 <p className="font-body text-sm text-muted-foreground">{item.desc}</p>
               </motion.div>
