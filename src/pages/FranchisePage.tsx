@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Check, AlertTriangle, Building2, GraduationCap, Package } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Check, AlertTriangle, Building2, GraduationCap, Package, Lock, ArrowRight } from "lucide-react";
 
 type Lang = "hinglish" | "hindi";
 
@@ -27,6 +28,8 @@ const content = {
       "Ice crushing machine",
     ],
     trainingItems: ["Pineapple juice", "Apple juice", "Mango juice"],
+    viewDetails: "View Details",
+    comingSoon: "Coming Soon",
   },
   hindi: {
     title: "फ्रेंचाइज़ी अवसर",
@@ -50,14 +53,16 @@ const content = {
       "बर्फ कुचलने की मशीन",
     ],
     trainingItems: ["अनानास जूस", "सेब जूस", "आम जूस"],
+    viewDetails: "विवरण देखें",
+    comingSoon: "जल्द आ रहा है",
   },
 };
 
 const plans = [
-  { duration: "1 Year", price: "₹3 Lakh", durationHi: "1 साल", priceHi: "₹3 लाख" },
-  { duration: "2 Years", price: "₹5 Lakh", durationHi: "2 साल", priceHi: "₹5 लाख" },
-  { duration: "3 Years", price: "₹7 Lakh", durationHi: "3 साल", priceHi: "₹7 लाख", popular: true },
-  { duration: "5 Years", price: "₹10 Lakh", durationHi: "5 साल", priceHi: "₹10 लाख" },
+  { duration: "1 Year", price: "₹3 Lakh", durationHi: "1 साल", priceHi: "₹3 लाख", link: "/franchise/3-lakh" },
+  { duration: "2 Years", price: "₹5 Lakh", durationHi: "2 साल", priceHi: "₹5 लाख", popular: true, link: "/franchise/5-lakh" },
+  { duration: "3 Years", price: "₹7 Lakh", durationHi: "3 साल", priceHi: "₹7 लाख", pending: true },
+  { duration: "5 Years", price: "₹10 Lakh", durationHi: "5 साल", priceHi: "₹10 लाख", pending: true },
 ];
 
 const FranchisePage = () => {
@@ -98,31 +103,57 @@ const FranchisePage = () => {
         <div className="container mx-auto px-4">
           <h2 className="font-display text-2xl font-bold text-center mb-8 text-foreground">{t.pricing}</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {plans.map((plan, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className={`card-pineapple p-6 text-center relative hover:scale-105 transition-transform ${
-                  plan.popular ? "ring-2 ring-primary" : ""
-                }`}
-              >
-                {plan.popular && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-xs font-body font-bold px-3 py-1 rounded-full">
-                    Popular
-                  </span>
-                )}
-                <Building2 className="mx-auto mb-3 text-pineapple-dark" size={28} />
-                <h3 className="font-display text-lg font-semibold text-foreground">
-                  {lang === "hindi" ? plan.durationHi : plan.duration}
-                </h3>
-                <p className="font-display text-3xl font-bold text-gradient-gold mt-2">
-                  {lang === "hindi" ? plan.priceHi : plan.price}
-                </p>
-              </motion.div>
-            ))}
+            {plans.map((plan, i) => {
+              const CardWrapper = plan.link ? Link : "div";
+              const wrapperProps = plan.link ? { to: plan.link } : {};
+
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                >
+                  <CardWrapper
+                    {...(wrapperProps as any)}
+                    className={`card-pineapple p-6 text-center relative block transition-all ${
+                      plan.pending
+                        ? "opacity-60 cursor-not-allowed"
+                        : "hover:scale-105 hover:shadow-lg cursor-pointer"
+                    } ${plan.popular ? "ring-2 ring-primary" : ""}`}
+                  >
+                    {plan.popular && (
+                      <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-xs font-body font-bold px-3 py-1 rounded-full">
+                        Popular
+                      </span>
+                    )}
+                    {plan.pending && (
+                      <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-muted text-muted-foreground text-xs font-body font-bold px-3 py-1 rounded-full">
+                        {t.comingSoon}
+                      </span>
+                    )}
+                    <Building2 className="mx-auto mb-3 text-pineapple-dark" size={28} />
+                    <h3 className="font-display text-lg font-semibold text-foreground">
+                      {lang === "hindi" ? plan.durationHi : plan.duration}
+                    </h3>
+                    <p className="font-display text-3xl font-bold text-gradient-gold mt-2">
+                      {lang === "hindi" ? plan.priceHi : plan.price}
+                    </p>
+                    {plan.link && (
+                      <span className="inline-flex items-center gap-1 mt-3 font-body text-xs font-semibold text-primary">
+                        {t.viewDetails} <ArrowRight size={14} />
+                      </span>
+                    )}
+                    {plan.pending && (
+                      <span className="inline-flex items-center gap-1 mt-3 font-body text-xs text-muted-foreground">
+                        <Lock size={14} /> {t.comingSoon}
+                      </span>
+                    )}
+                  </CardWrapper>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
