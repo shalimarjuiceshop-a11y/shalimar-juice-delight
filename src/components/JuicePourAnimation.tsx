@@ -1,327 +1,300 @@
 import { motion } from "framer-motion";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import pineappleJuiceGlass from "@/assets/pineapple-juice-glass.png";
-import pineappleFruit from "@/assets/pineapple-fruit.png";
-import pineappleSlices from "@/assets/pineapple-slices.png";
-
-// Total animation cycle duration
-const TOTAL = 13;
 
 const JuicePourAnimation = () => {
   const [phase, setPhase] = useState(0);
 
   useEffect(() => {
-    // Phase timings: 0=idle, 1=pineapple drop, 2=knife cut, 3=juice flow, 4=glass fill, 5=price reveal
-    const timings = [500, 2000, 3500, 2000, 2500, 2500];
+    const timings = [800, 2200, 2500, 2500, 3000];
     let timeout: ReturnType<typeof setTimeout>;
     let cancelled = false;
 
-    const advance = (currentPhase: number) => {
+    const advance = (p: number) => {
       if (cancelled) return;
-      setPhase(currentPhase);
-      const nextPhase = currentPhase >= 5 ? 0 : currentPhase + 1;
-      timeout = setTimeout(() => advance(nextPhase), timings[currentPhase]);
+      setPhase(p);
+      timeout = setTimeout(() => advance(p >= 4 ? 0 : p + 1), timings[p]);
     };
 
     advance(1);
     return () => { cancelled = true; clearTimeout(timeout); };
   }, []);
 
-  const t = (s: number) => s / TOTAL;
-
-  // Slice stacking data
-  const sliceData = [
-    { delay: 0, yEnd: -80 },
-    { delay: 0.15, yEnd: -66 },
-    { delay: 0.3, yEnd: -52 },
-    { delay: 0.45, yEnd: -38 },
-    { delay: 0.6, yEnd: -24 },
-  ];
-
   return (
-    <div className="relative w-full h-full flex items-center justify-center min-h-[420px] md:min-h-[540px] overflow-hidden select-none">
+    <div className="relative w-full h-full flex items-center justify-center min-h-[380px] md:min-h-[480px] overflow-hidden select-none">
 
-      {/* Soft ambient glow */}
+      {/* Soft warm glow behind glass */}
       <motion.div
         className="absolute rounded-full pointer-events-none"
         style={{
-          width: "80%",
-          height: "80%",
-          background: "radial-gradient(circle, hsl(var(--pineapple-gold) / 0.1) 0%, transparent 70%)",
+          width: "70%",
+          height: "70%",
+          background: "radial-gradient(circle, hsl(var(--pineapple-gold) / 0.12) 0%, transparent 70%)",
         }}
-        animate={{ scale: [1, 1.08, 1], opacity: [0.3, 0.5, 0.3] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        animate={{
+          scale: phase >= 2 ? 1.3 : 1,
+          opacity: phase >= 2 ? 0.7 : 0.2,
+        }}
+        transition={{ duration: 1.5, ease: "easeInOut" }}
       />
 
-      {/* ═══ WOODEN CUTTING BOARD ═══ */}
+      {/* Decorative golden ring */}
       <motion.div
-        className="absolute pointer-events-none"
+        className="absolute rounded-full pointer-events-none"
         style={{
-          width: "65%",
-          maxWidth: 280,
-          height: 18,
-          background: "linear-gradient(180deg, hsl(28 45% 52%) 0%, hsl(25 40% 38%) 60%, hsl(22 35% 30%) 100%)",
-          borderRadius: 6,
-          bottom: "28%",
-          zIndex: 4,
-          boxShadow: "0 6px 20px hsl(25 30% 15% / 0.5), inset 0 1px 0 hsl(30 50% 65% / 0.3)",
+          width: 200,
+          height: 200,
+          border: "1px solid hsl(var(--pineapple-gold) / 0.15)",
+          zIndex: 1,
         }}
         animate={{
-          opacity: phase >= 1 && phase <= 3 ? 1 : 0,
-          scaleX: phase >= 1 ? 1 : 0.7,
+          scale: phase >= 2 ? [1, 1.4] : 0.8,
+          opacity: phase >= 2 ? [0.4, 0] : 0,
         }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-      >
-        {[20, 40, 60, 80].map((left) => (
-          <div key={left} className="absolute top-1/2 -translate-y-1/2"
-            style={{ left: `${left}%`, width: 1, height: "60%", background: "hsl(25 30% 30% / 0.3)", borderRadius: 1 }}
-          />
-        ))}
-      </motion.div>
+        transition={{ duration: 2, ease: "easeOut" }}
+      />
 
-      {/* ═══ PHASE 1: PINEAPPLE DROPS ═══ */}
+      {/* ═══ PHASE 1: GLASS APPEARS WITH GENTLE FLOAT ═══ */}
       <motion.div
-        className="absolute"
-        style={{ zIndex: 10, bottom: "30%" }}
+        className="relative"
+        style={{ zIndex: 20 }}
         animate={{
-          opacity: phase === 1 ? 1 : 0,
-          y: phase === 1 ? 0 : -200,
-          scale: phase === 1 ? 1 : 0.6,
-          rotate: phase === 1 ? 0 : -15,
+          opacity: phase >= 1 ? 1 : 0,
+          y: phase >= 1 ? [40, 0] : 60,
+          scale: phase >= 1 ? 1 : 0.85,
         }}
         transition={{
-          duration: 1.2,
-          ease: [0.34, 1.56, 0.64, 1],
+          duration: 1,
+          ease: [0.22, 1, 0.36, 1],
         }}
       >
-        <img src={pineappleFruit} alt="Fresh Pineapple" className="w-28 md:w-36 drop-shadow-2xl" />
-      </motion.div>
-
-      {/* ═══ PHASE 2: KNIFE BLADE ═══ */}
-      <motion.div
-        className="absolute pointer-events-none"
-        style={{
-          zIndex: 25,
-          bottom: "30%",
-          width: 6,
-          height: 120,
-          background: "linear-gradient(180deg, hsl(0 0% 75%) 0%, hsl(0 0% 92%) 40%, hsl(0 0% 85%) 100%)",
-          borderRadius: "2px 2px 1px 1px",
-          boxShadow: "2px 0 6px hsl(0 0% 0% / 0.2), -1px 0 4px hsl(0 0% 100% / 0.3)",
-          transformOrigin: "bottom center",
-        }}
-        animate={{
-          opacity: phase === 2 ? [0, 1, 1, 1, 1, 0] : 0,
-          y: phase === 2 ? [-180, -60, 10, -80, 0, -200] : -200,
-        }}
-        transition={{
-          duration: 3,
-          times: phase === 2 ? [0, 0.1, 0.3, 0.5, 0.7, 1] : undefined,
-          ease: "easeInOut",
-        }}
-      >
-        {/* Knife handle */}
-        <div className="absolute -top-8 left-1/2 -translate-x-1/2" style={{
-          width: 14, height: 32,
-          background: "linear-gradient(180deg, hsl(25 50% 25%), hsl(25 40% 35%))",
-          borderRadius: 3,
-        }} />
-        {/* Blade edge */}
-        <div className="absolute right-0 top-0 bottom-0" style={{
-          width: 1, background: "linear-gradient(180deg, transparent, hsl(0 0% 100% / 0.6), transparent)",
-        }} />
-      </motion.div>
-
-      {/* ═══ PINEAPPLE SLICES STACKING ═══ */}
-      {sliceData.map((slice, i) => (
+        {/* Gentle floating motion when visible */}
         <motion.div
-          key={`slice-${i}`}
-          className="absolute pointer-events-none"
-          style={{ zIndex: 12 + i, bottom: "30%" }}
-          animate={{
-            opacity: phase === 2 || phase === 3 ? 1 : 0,
-            y: phase >= 2 && phase <= 3 ? slice.yEnd : -20,
-            scale: phase >= 2 ? 1 : 0.3,
-            rotate: -2 + i * 1.5,
-          }}
+          animate={phase >= 1 && phase <= 3 ? {
+            y: [0, -6, 0],
+          } : {}}
           transition={{
-            duration: 0.5,
-            delay: phase === 2 ? 0.3 + slice.delay * 2.5 : 0,
-            ease: [0.34, 1.56, 0.64, 1],
+            duration: 3,
+            repeat: Infinity,
+            ease: "easeInOut",
           }}
         >
-          <img src={pineappleSlices} alt="" className="w-14 md:w-18 drop-shadow-lg" />
-        </motion.div>
-      ))}
-
-      {/* Juice droplets during cutting */}
-      {Array.from({ length: 8 }, (_, i) => {
-        const angle = ((i / 8) * Math.PI * 1.6) - Math.PI * 0.3;
-        const dist = 25 + (i % 4) * 18;
-        const size = 3 + (i % 3) * 2;
-        return (
-          <motion.div
-            key={`drop-${i}`}
-            className="absolute rounded-full pointer-events-none"
+          <img
+            src={pineappleJuiceGlass}
+            alt="Fresh Pineapple Juice"
+            className="w-24 md:w-32 lg:w-36"
             style={{
-              width: size, height: size,
-              background: `hsl(var(--pineapple-gold) / ${0.55 + (i % 3) * 0.15})`,
-              bottom: "32%", zIndex: 23,
+              filter: "drop-shadow(0 12px 30px hsl(var(--pineapple-gold) / 0.3))",
+            }}
+          />
+
+          {/* ═══ PHASE 2: JUICE POURING FROM TOP ═══ */}
+          {/* Main pour stream */}
+          <motion.div
+            className="absolute pointer-events-none"
+            style={{
+              width: 8,
+              height: 80,
+              left: "50%",
+              top: -85,
+              marginLeft: -4,
+              background: "linear-gradient(to bottom, transparent, hsl(var(--pineapple-gold) / 0.7), hsl(var(--pineapple-gold) / 0.9))",
+              borderRadius: 6,
+              zIndex: 19,
+              transformOrigin: "top center",
             }}
             animate={{
-              opacity: phase === 2 ? [0, 0.9, 0] : 0,
-              x: phase === 2 ? [0, Math.cos(angle) * dist, Math.cos(angle) * dist * 1.1] : 0,
-              y: phase === 2 ? [0, Math.sin(angle) * dist, Math.sin(angle) * dist + 30] : 0,
+              opacity: phase === 2 ? [0, 1, 1, 0.6, 0] : 0,
+              scaleY: phase === 2 ? [0, 0.3, 1, 0.8, 0] : 0,
             }}
             transition={{
-              duration: 1.2,
-              delay: phase === 2 ? 0.3 + (i % 3) * 0.4 : 0,
+              duration: 2,
+              times: [0, 0.15, 0.5, 0.8, 1],
+              ease: "easeInOut",
+            }}
+          />
+
+          {/* Small side drips */}
+          {[-5, 5].map((x, i) => (
+            <motion.div
+              key={`drip-${i}`}
+              className="absolute pointer-events-none rounded-full"
+              style={{
+                width: 3,
+                height: 50,
+                left: `calc(50% + ${x}px)`,
+                top: -65,
+                background: "linear-gradient(to bottom, transparent, hsl(var(--pineapple-gold) / 0.5))",
+                borderRadius: 4,
+                zIndex: 19,
+                transformOrigin: "top center",
+              }}
+              animate={{
+                opacity: phase === 2 ? [0, 0.7, 0] : 0,
+                scaleY: phase === 2 ? [0, 1, 0] : 0,
+              }}
+              transition={{
+                duration: 1.6,
+                delay: 0.3 + i * 0.2,
+                ease: "easeOut",
+              }}
+            />
+          ))}
+
+          {/* Splash droplets at glass rim */}
+          {Array.from({ length: 6 }, (_, i) => {
+            const angle = ((i / 6) * Math.PI) - Math.PI / 2;
+            return (
+              <motion.div
+                key={`splash-${i}`}
+                className="absolute rounded-full pointer-events-none"
+                style={{
+                  width: 3 + (i % 2) * 2,
+                  height: 3 + (i % 2) * 2,
+                  background: "hsl(var(--pineapple-gold) / 0.7)",
+                  left: "50%",
+                  top: "5%",
+                  zIndex: 22,
+                }}
+                animate={{
+                  opacity: phase === 2 ? [0, 1, 0] : 0,
+                  x: phase === 2 ? [0, Math.cos(angle) * (15 + i * 5)] : 0,
+                  y: phase === 2 ? [0, Math.sin(angle) * (12 + i * 4)] : 0,
+                  scale: phase === 2 ? [0, 1, 0] : 0,
+                }}
+                transition={{
+                  duration: 0.7,
+                  delay: 0.6 + i * 0.06,
+                  ease: "easeOut",
+                }}
+              />
+            );
+          })}
+
+          {/* ═══ PHASE 2-3: JUICE FILL LEVEL RISING ═══ */}
+          <motion.div
+            className="absolute bottom-[8%] left-[20%] right-[20%] rounded-b-md overflow-hidden pointer-events-none"
+            style={{
+              transformOrigin: "bottom",
+              zIndex: 21,
+              height: "65%",
+              background: "linear-gradient(to top, hsl(var(--pineapple-gold) / 0.5), hsl(var(--pineapple-gold) / 0.25), transparent)",
+              mixBlendMode: "overlay",
+            }}
+            animate={{
+              scaleY: phase >= 3 ? 1 : phase === 2 ? [0, 0.3, 0.7] : 0,
+              opacity: phase >= 2 ? 0.9 : 0,
+            }}
+            transition={{
+              duration: phase === 2 ? 2 : 0.8,
               ease: "easeOut",
             }}
           />
-        );
-      })}
 
-      {/* ═══ PHASE 3: JUICE STREAM ═══ */}
-      <motion.div
-        className="absolute pointer-events-none"
-        style={{
-          width: 10, bottom: "10%", height: "22%",
-          background: "linear-gradient(to bottom, hsl(var(--pineapple-gold) / 0.85), hsl(var(--pineapple-gold) / 0.6), hsl(var(--pineapple-gold) / 0.15))",
-          borderRadius: 8, zIndex: 18, filter: "blur(0.5px)", transformOrigin: "top center",
-        }}
-        animate={{
-          opacity: phase === 3 ? [0, 0.9, 1] : 0,
-          scaleY: phase === 3 ? [0, 0.4, 1] : 0,
-        }}
-        transition={{ duration: 1.2, ease: "easeOut" }}
-      />
+          {/* Rising bubbles */}
+          {Array.from({ length: 4 }, (_, i) => (
+            <motion.div
+              key={`bubble-${i}`}
+              className="absolute rounded-full pointer-events-none"
+              style={{
+                width: 2 + (i % 2) * 2,
+                height: 2 + (i % 2) * 2,
+                background: "hsl(0 0% 100% / 0.4)",
+                left: `${28 + i * 12}%`,
+                bottom: `${18 + i * 6}%`,
+                zIndex: 22,
+              }}
+              animate={{
+                opacity: phase === 2 || phase === 3 ? [0, 0.8, 0] : 0,
+                y: phase === 2 || phase === 3 ? [0, -20, -40] : 0,
+              }}
+              transition={{
+                duration: 1.8,
+                delay: 0.5 + i * 0.3,
+                ease: "easeOut",
+                repeat: phase === 2 || phase === 3 ? Infinity : 0,
+                repeatDelay: 1,
+              }}
+            />
+          ))}
+        </motion.div>
 
-      {/* Side drips */}
-      {[-7, 7].map((offset, i) => (
+        {/* Glass shadow on surface */}
         <motion.div
-          key={`drip-${i}`}
-          className="absolute pointer-events-none"
+          className="absolute -bottom-3 left-1/2 -translate-x-1/2 pointer-events-none"
           style={{
-            width: 4, bottom: "14%", height: "15%",
-            background: "linear-gradient(to bottom, hsl(var(--pineapple-gold) / 0.6), transparent)",
-            borderRadius: 4, left: `calc(50% + ${offset}px)`,
-            zIndex: 17, filter: "blur(0.5px)", transformOrigin: "top center",
+            width: "80%",
+            height: 10,
+            background: "radial-gradient(ellipse, hsl(var(--pineapple-gold) / 0.15), transparent)",
+            borderRadius: "50%",
           }}
-          animate={{
-            opacity: phase === 3 ? 0.7 : 0,
-            scaleY: phase === 3 ? 1 : 0,
-          }}
-          transition={{ duration: 1, delay: 0.2 + i * 0.15, ease: "easeOut" }}
-        />
-      ))}
-
-      {/* ═══ PHASE 4: GLASS RISES & FILLS ═══ */}
-      <motion.div
-        className="relative"
-        style={{ zIndex: 28 }}
-        animate={{
-          opacity: phase >= 3 ? 1 : 0,
-          y: phase >= 4 ? 15 : phase === 3 ? 60 : 250,
-          scale: phase >= 4 ? 1 : 0.9,
-        }}
-        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-      >
-        <motion.img
-          src={pineappleJuiceGlass}
-          alt="Fresh Pineapple Juice"
-          className="w-28 md:w-40 lg:w-44"
-          style={{ filter: "drop-shadow(0 10px 25px hsl(var(--pineapple-gold) / 0.25))" }}
+          animate={{ opacity: phase >= 1 ? 0.6 : 0 }}
+          transition={{ duration: 0.5 }}
         />
 
-        {/* Juice fill */}
-        <motion.div
-          className="absolute bottom-[8%] left-[18%] right-[18%] rounded-b-md overflow-hidden pointer-events-none"
-          style={{
-            transformOrigin: "bottom", zIndex: 29, height: "68%",
-            background: "linear-gradient(to top, hsl(var(--pineapple-gold) / 0.45), hsl(var(--pineapple-gold) / 0.2), transparent)",
-            mixBlendMode: "overlay",
-          }}
-          animate={{
-            scaleY: phase >= 4 ? 1 : phase === 3 ? 0.2 : 0,
-            opacity: phase >= 4 ? 0.95 : phase === 3 ? 0.3 : 0,
-          }}
-          transition={{ duration: 1.8, ease: "easeOut" }}
-        />
-
-        {/* Bubbles */}
-        {Array.from({ length: 5 }, (_, i) => (
-          <motion.div
-            key={`bubble-${i}`}
-            className="absolute rounded-full pointer-events-none"
-            style={{
-              width: 2 + (i % 3) * 2, height: 2 + (i % 3) * 2,
-              background: `hsl(0 0% 100% / ${0.35 + i * 0.05})`,
-              left: `${25 + i * 10}%`, bottom: `${15 + i * 5}%`, zIndex: 30,
-            }}
-            animate={{
-              opacity: phase === 4 ? [0, 0.8, 0] : 0,
-              y: phase === 4 ? [0, -28, -45] : 0,
-            }}
-            transition={{ duration: 1.5, delay: 0.4 + i * 0.2, ease: "easeOut" }}
-          />
-        ))}
-
-        {/* Glass glow */}
+        {/* Glass glow aura */}
         <motion.div
           className="absolute inset-0 -z-10 rounded-full pointer-events-none"
-          style={{ background: "radial-gradient(circle, hsl(var(--pineapple-gold) / 0.2) 0%, transparent 65%)" }}
-          animate={{
-            opacity: phase >= 4 ? 1 : 0,
-            scale: phase >= 5 ? 1.6 : phase >= 4 ? 1.3 : 0.8,
+          style={{
+            background: "radial-gradient(circle, hsl(var(--pineapple-gold) / 0.2) 0%, transparent 65%)",
           }}
-          transition={{ duration: 1 }}
+          animate={{
+            opacity: phase >= 3 ? 1 : phase >= 2 ? 0.5 : 0,
+            scale: phase >= 3 ? 1.8 : 1.2,
+          }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
         />
       </motion.div>
 
-      {/* ═══ PHASE 5: "JUST ₹10" BADGE ═══ */}
+      {/* ═══ PHASE 4: "JUST ₹10" BADGE ═══ */}
       <motion.div
-        className="absolute bottom-4 md:bottom-8"
+        className="absolute bottom-6 md:bottom-10"
         style={{ zIndex: 40 }}
         animate={{
-          scale: phase === 5 ? 1 : 0,
-          opacity: phase === 5 ? 1 : 0,
-          y: phase === 5 ? 0 : 30,
+          scale: phase === 4 ? [0, 1.1, 1] : phase >= 4 ? 1 : 0,
+          opacity: phase >= 4 ? 1 : 0,
+          y: phase >= 4 ? 0 : 20,
         }}
-        transition={{ duration: 0.8, ease: [0.34, 1.56, 0.64, 1] }}
+        transition={{
+          duration: 0.6,
+          ease: [0.34, 1.56, 0.64, 1],
+        }}
       >
-        <div className="bg-primary text-primary-foreground rounded-full px-8 py-3 md:px-10 md:py-4 shadow-pineapple relative overflow-hidden">
-          <span className="font-display text-2xl md:text-3xl font-bold tracking-wide">JUST ₹10</span>
+        <div className="bg-primary text-primary-foreground rounded-full px-7 py-2.5 md:px-9 md:py-3.5 shadow-pineapple relative overflow-hidden">
+          <span className="font-display text-xl md:text-2xl font-bold tracking-wide">JUST ₹10</span>
           <motion.div
             className="absolute inset-0 pointer-events-none"
-            style={{ background: "linear-gradient(90deg, transparent 0%, hsl(0 0% 100% / 0.3) 50%, transparent 100%)" }}
-            animate={phase === 5 ? { x: ["-100%", "200%"] } : {}}
-            transition={{ duration: 1.5, delay: 0.3, ease: "easeInOut" }}
+            style={{
+              background: "linear-gradient(90deg, transparent 0%, hsl(0 0% 100% / 0.25) 50%, transparent 100%)",
+            }}
+            animate={phase >= 4 ? { x: ["-100%", "200%"] } : {}}
+            transition={{ duration: 1.5, delay: 0.4, ease: "easeInOut" }}
           />
         </div>
       </motion.div>
 
-      {/* Sparkles on reveal */}
-      {Array.from({ length: 8 }, (_, i) => {
-        const a = (i / 8) * Math.PI * 2;
-        const d = 60 + (i % 3) * 25;
+      {/* Subtle sparkles on final phase */}
+      {Array.from({ length: 6 }, (_, i) => {
+        const a = (i / 6) * Math.PI * 2;
+        const d = 50 + (i % 3) * 20;
         return (
           <motion.div
-            key={`sparkle-${i}`}
+            key={`spark-${i}`}
             className="absolute pointer-events-none rounded-full"
             style={{
-              width: 3 + (i % 2) * 2, height: 3 + (i % 2) * 2,
+              width: 3,
+              height: 3,
               background: "hsl(var(--pineapple-gold))",
-              boxShadow: "0 0 6px 2px hsl(var(--pineapple-gold) / 0.5)",
-              bottom: "10%", zIndex: 38,
+              boxShadow: "0 0 6px hsl(var(--pineapple-gold) / 0.6)",
+              bottom: "15%",
+              zIndex: 35,
             }}
             animate={{
-              opacity: phase === 5 ? [0, 1, 0] : 0,
-              x: phase === 5 ? [0, Math.cos(a) * d] : 0,
-              y: phase === 5 ? [0, Math.sin(a) * d] : 0,
-              scale: phase === 5 ? [0, 1.3, 0] : 0,
+              opacity: phase === 4 ? [0, 1, 0] : 0,
+              x: phase === 4 ? [0, Math.cos(a) * d] : 0,
+              y: phase === 4 ? [0, Math.sin(a) * d] : 0,
             }}
-            transition={{ duration: 0.8, delay: 0.3 + i * 0.06, ease: "easeOut" }}
+            transition={{ duration: 0.8, delay: 0.2 + i * 0.05, ease: "easeOut" }}
           />
         );
       })}
