@@ -6,44 +6,47 @@
 
 @layer base {
   :root {
-    --background: 48 100% 99%;
-    --foreground: 30 10% 15%;
+    --background: 25 15% 8%;
+    --foreground: 45 40% 85%;
 
-    --card: 45 60% 97%;
-    --card-foreground: 30 10% 15%;
+    --card: 28 20% 12%;
+    --card-foreground: 45 35% 80%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 30 10% 15%;
+    --popover: 25 18% 10%;
+    --popover-foreground: 45 35% 80%;
 
-    --primary: 45 100% 51%;
-    --primary-foreground: 30 10% 15%;
+    --primary: 38 85% 55%;
+    --primary-foreground: 25 15% 8%;
 
-    --secondary: 90 40% 45%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 32 25% 18%;
+    --secondary-foreground: 45 35% 80%;
 
-    --muted: 45 30% 94%;
-    --muted-foreground: 30 10% 40%;
+    --muted: 28 15% 15%;
+    --muted-foreground: 45 25% 60%;
 
-    --accent: 45 80% 60%;
-    --accent-foreground: 30 10% 15%;
+    --accent: 35 70% 50%;
+    --accent-foreground: 25 15% 8%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 45 40% 85%;
-    --input: 45 40% 85%;
-    --ring: 45 100% 51%;
+    --border: 32 20% 22%;
+    --input: 32 20% 22%;
+    --ring: 38 85% 55%;
 
     --radius: 0.75rem;
 
-    --pineapple-gold: 40 100% 50%;
-    --pineapple-light: 45 100% 90%;
-    --pineapple-dark: 35 85% 35%;
+    --pineapple-gold: 38 90% 60%;
+    --pineapple-light: 42 70% 80%;
+    --pineapple-dark: 28 40% 25%;
     --leaf-green: 120 30% 40%;
     --leaf-light: 120 25% 85%;
-    --cream: 45 50% 96%;
-    --shop-dark: 30 15% 12%;
-    --shop-warm: 38 60% 20%;
+    --cream: 35 25% 20%;
+    --shop-dark: 25 15% 8%;
+    --shop-warm: 32 35% 15%;
+    --wood-brown: 28 25% 18%;
+    --wood-light: 35 30% 25%;
+    --wood-dark: 25 20% 12%;
 
     --font-display: 'Inter', system-ui, sans-serif;
     --font-body: 'Inter', system-ui, sans-serif;
