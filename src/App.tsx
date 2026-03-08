@@ -11,6 +11,7 @@ import MenuPage from "./pages/MenuPage";
 import FranchisePage from "./pages/FranchisePage";
 import Franchise3LakhPage from "./pages/Franchise3LakhPage";
 import Franchise5LakhPage from "./pages/Franchise5LakhPage";
+import GalleryPage from "./pages/GalleryPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
