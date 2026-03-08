@@ -13,7 +13,7 @@ const content = {
     trainingTitle: "Juice Training",
     trainingDesc: "Company will teach juice making.",
     trainingLabel: "Training juices:",
-    trainingJuices: ["Pineapple", "Apple", "Mango", "Jamun"],
+    trainingJuices: ["Pineapple", "Apple", "Mango", "Jaam"],
     trainingNote: "Company will give 4 juice liquids free first time.",
     itemsTitle: "Items From Company",
     itemsDesc: "Company will give these items:",
