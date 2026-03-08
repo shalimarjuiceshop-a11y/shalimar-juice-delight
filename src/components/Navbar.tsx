@@ -7,6 +7,7 @@ import sjsLogo from "@/assets/sjs-logo.jpeg";
 const navLinks = [
   { to: "/", label: "Home" },
   { to: "/menu", label: "Menu" },
+  { to: "/gallery", label: "Gallery" },
   { to: "/franchise", label: "Franchise" },
 ];
 
