@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Star, Sparkles } from "lucide-react";
+import { Star, Sparkles, MessageCircle } from "lucide-react";
 import { drinks, categories, type DrinkCategory } from "@/data/menuData";
 
 const stagger = {
