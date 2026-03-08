@@ -149,7 +149,7 @@ const Franchise3LakhPage = () => {
               ))}
             </ul>
             <div className="bg-pineapple-light/50 rounded-lg p-3">
-              <p className="font-body text-sm text-foreground font-medium">✅ {t.trainingNote}</p>
+              <p className="font-body text-sm text-foreground font-medium flex items-center gap-2"><Check size={16} className="text-secondary flex-shrink-0" /> {t.trainingNote}</p>
             </div>
           </motion.div>
 
