@@ -9,7 +9,6 @@ const navLinks = [
   { to: "/menu", label: "Menu" },
   { to: "/gallery", label: "Gallery" },
   { to: "/franchise", label: "Franchise" },
-  { to: "/contact", label: "Contact" },
 ];
 
 const Navbar = () => {
@@ -60,16 +59,12 @@ const Navbar = () => {
               )}
             </Link>
           ))}
-          <motion.a
-            href="https://wa.me/919852779933"
-            target="_blank"
-            rel="noreferrer"
+          <Link
+            to="/contact"
             className="ml-3 bg-primary text-primary-foreground font-body text-sm font-semibold px-5 py-2 rounded-full hover:brightness-105 transition-all"
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.97 }}
           >
             Contact Us
-          </motion.a>
+          </Link>
         </div>
 
         {/* Mobile toggle */}
@@ -113,18 +108,19 @@ const Navbar = () => {
                   </Link>
                 </motion.div>
               ))}
-              <motion.a
-                href="https://wa.me/919852779933"
-                target="_blank"
-                rel="noreferrer"
-                onClick={() => setOpen(false)}
-                className="mt-1 bg-primary text-primary-foreground font-body text-sm font-semibold px-4 py-2.5 rounded-lg text-center"
+              <motion.div
                 initial={{ opacity: 0, x: -16 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2, duration: 0.3 }}
               >
-                Contact Us
-              </motion.a>
+                <Link
+                  to="/contact"
+                  onClick={() => setOpen(false)}
+                  className="block mt-1 bg-primary text-primary-foreground font-body text-sm font-semibold px-4 py-2.5 rounded-lg text-center"
+                >
+                  Contact Us
+                </Link>
+              </motion.div>
             </div>
           </motion.div>
         )}
