@@ -8,17 +8,15 @@ const Footer = () => (
         {/* Brand */}
         <div>
           <div className="flex items-center gap-3 mb-4">
-            <img src={sjsLogo} alt="SJS Logo" className="w-14 h-14 rounded-full object-cover border-2 shadow-lg glow-gold-soft" style={{ borderColor: "hsl(45 100% 51%)" }} />
+            <img src={sjsLogo} alt="SJS Logo" className="w-12 h-12 rounded-full object-cover border border-primary/30 shadow-md" />
             <div>
-              <h3 className="font-display text-xl font-black text-gradient-gold drop-shadow-lg" style={{ textShadow: "0 2px 8px hsl(45 100% 51% / 0.4)" }}>
+              <h3 className="font-display text-xl font-bold text-foreground">
                 Shalimar Juice
               </h3>
-              <p className="text-sm font-bold mt-1" 
+              <p className="text-sm font-medium mt-0.5 text-muted-foreground" 
                  dir="rtl" 
                  style={{ 
-                   fontFamily: "'Noto Nastaliq Urdu', serif", 
-                   color: "hsl(45 90% 75%)",
-                   textShadow: "0 1px 3px hsl(30 10% 15% / 0.6)"
+                   fontFamily: "'Noto Nastaliq Urdu', serif"
                  }}>
                 شالیمار جوس
               </p>

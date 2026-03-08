@@ -27,21 +27,18 @@ const Navbar = () => {
           <motion.img
             src={sjsLogo}
             alt="Shalimar Juice Shop Logo"
-            className="w-12 h-12 rounded-full object-cover border-2 shadow-lg glow-gold-soft"
-            style={{ borderColor: "hsl(45 100% 51%)" }}
-            whileHover={{ scale: 1.08, rotate: 3 }}
+            className="w-11 h-11 rounded-full object-cover border border-primary/30 shadow-md"
+            whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 300 }}
           />
           <div className="leading-none">
-            <h1 className="font-display text-xl font-black tracking-tight text-gradient-gold drop-shadow-lg text-glow-gold">
+            <h1 className="font-display text-lg font-bold tracking-tight text-foreground">
               Shalimar Juice
             </h1>
-            <p className="block text-sm font-bold mt-0.5" 
+            <p className="block text-xs font-medium mt-1 text-muted-foreground" 
                dir="rtl" 
                style={{ 
-                 fontFamily: "'Noto Nastaliq Urdu', serif", 
-                 color: "hsl(45 90% 70%)",
-                 textShadow: "0 2px 4px hsl(30 10% 15% / 0.5)"
+                 fontFamily: "'Noto Nastaliq Urdu', serif"
                }}>
               شالیمار جوس
             </p>
