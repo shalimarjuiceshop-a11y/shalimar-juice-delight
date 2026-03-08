@@ -29,7 +29,7 @@ const Footer = () => (
         <div>
           <h4 className="font-display text-base font-semibold mb-3 text-foreground">Shop Info</h4>
           <div className="space-y-2 text-sm text-muted-foreground font-body">
-            <p className="flex items-start gap-2"><MapPin size={14} className="mt-0.5 shrink-0" /> Jamil Colony, Perfect Complex, Walgaon Road, Amravati</p>
+            <p className="flex items-start gap-2"><MapPin size={14} className="mt-0.5 shrink-0" /> Perfect Complex, Jamil Colony, Front of Mohammadia Masjid, Walgaon Road, Amravati, Maharashtra – 444601, India</p>
             <p className="flex items-center gap-2"><User size={14} /> Owner: Sameer Ahmad</p>
             <p className="flex items-center gap-2"><Phone size={14} /> WhatsApp: +91 98527 79933</p>
           </div>
