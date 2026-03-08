@@ -100,7 +100,7 @@ const Index = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className="relative flex justify-center items-center -mt-4 md:-mt-8"
+            className="relative flex justify-center items-center -mt-8 md:-mt-12"
           >
             <JuicePourAnimation />
           </motion.div>
