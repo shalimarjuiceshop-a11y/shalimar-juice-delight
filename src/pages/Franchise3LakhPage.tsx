@@ -126,7 +126,7 @@ const Franchise3LakhPage = () => {
             </div>
           </div>
           <motion.h1 {...fadeUp} className="font-display text-3xl md:text-4xl font-bold text-foreground">
-            🍍 {t.title}
+            {t.title}
           </motion.h1>
           <p className="font-body text-muted-foreground mt-2">{t.subtitle}</p>
         </div>
