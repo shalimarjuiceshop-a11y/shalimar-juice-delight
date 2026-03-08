@@ -98,9 +98,106 @@
     border-color: hsl(45 40% 80%);
   }
   .shadow-pineapple {
-    box-shadow: 0 8px 30px -8px hsl(45 100% 51% / 0.2);
+    box-shadow: 0 8px 30px -8px hsl(45 100% 51% / 0.25), 0 4px 12px -4px hsl(45 80% 50% / 0.15);
   }
   .card-pineapple {
     @apply bg-card rounded-xl border border-pineapple shadow-pineapple;
+  }
+  
+  /* Glassmorphism */
+  .glass {
+    background: hsl(45 60% 97% / 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid hsl(45 40% 85% / 0.5);
+  }
+  .glass-dark {
+    background: hsl(30 15% 12% / 0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid hsl(45 30% 30% / 0.3);
+  }
+  
+  /* Glow Effects */
+  .glow-gold {
+    box-shadow: 0 0 20px hsl(45 100% 51% / 0.4), 0 0 40px hsl(45 100% 51% / 0.2), 0 4px 16px hsl(45 80% 50% / 0.3);
+  }
+  .glow-gold-soft {
+    box-shadow: 0 0 12px hsl(45 100% 51% / 0.25), 0 4px 20px hsl(45 80% 50% / 0.15);
+  }
+  .text-glow-gold {
+    text-shadow: 0 0 20px hsl(45 100% 51% / 0.5), 0 0 40px hsl(45 100% 51% / 0.3);
+  }
+  
+  /* Card Enhancements */
+  .card-premium {
+    @apply bg-card rounded-2xl border border-border;
+    box-shadow: 
+      0 1px 2px hsl(30 10% 15% / 0.04),
+      0 4px 8px hsl(30 10% 15% / 0.04),
+      0 8px 16px hsl(30 10% 15% / 0.04);
+  }
+  .card-premium:hover {
+    box-shadow: 
+      0 4px 8px hsl(45 100% 51% / 0.08),
+      0 8px 24px hsl(45 100% 51% / 0.12),
+      0 16px 32px hsl(30 10% 15% / 0.08);
+    border-color: hsl(45 100% 51% / 0.3);
+  }
+  
+  /* Button Glow */
+  .btn-glow {
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-glow::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(135deg, hsl(45 100% 60% / 0.5), hsl(35 90% 45% / 0.5));
+    border-radius: inherit;
+    filter: blur(8px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+  }
+  .btn-glow:hover::before {
+    opacity: 1;
+  }
+  
+  /* Animated Gradient Background */
+  .bg-gradient-animated {
+    background: linear-gradient(-45deg, hsl(30 15% 12%), hsl(38 60% 20%), hsl(35 40% 25%), hsl(40 50% 22%));
+    background-size: 400% 400%;
+    animation: gradient-shift 15s ease infinite;
+  }
+  
+  @keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* Shimmer Effect */
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  .shimmer::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(45 100% 90% / 0.1),
+      transparent
+    );
+    transform: translateX(-100%);
+    animation: shimmer 2s infinite;
+  }
+  
+  @keyframes shimmer {
+    100% { transform: translateX(100%); }
   }
 }
