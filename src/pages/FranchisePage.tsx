@@ -93,7 +93,7 @@ const FranchisePage = () => {
           animate={{ opacity: 1, y: 0 }}
           className="font-display text-3xl md:text-4xl font-bold text-foreground"
         >
-          🍍 {t.title}
+          {t.title}
         </motion.h1>
         <p className="font-body text-muted-foreground mt-2 max-w-xl mx-auto px-4">{t.subtitle}</p>
       </section>
@@ -173,7 +173,7 @@ const FranchisePage = () => {
               ))}
             </ul>
             <div className="mt-4 card-pineapple p-4">
-              <p className="font-body text-sm text-foreground font-medium">✅ {t.firstMonth}</p>
+              <p className="font-body text-sm text-foreground font-medium flex items-center gap-2"><Check size={16} className="text-secondary flex-shrink-0" /> {t.firstMonth}</p>
               <p className="font-body text-sm text-muted-foreground mt-1">{t.refill} <strong>₹1000</strong></p>
             </div>
           </div>

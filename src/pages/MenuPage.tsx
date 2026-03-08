@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
+import { Star } from "lucide-react";
 import { drinks, categories, type DrinkCategory } from "@/data/menuData";
 
 const MenuPage = () => {
@@ -102,7 +103,7 @@ const MenuPage = () => {
                   ₹{drink.price}
                 </span>
                 {drink.highlight && (
-                  <span className="mt-2 font-body text-xs text-pineapple-dark font-medium">⭐ Bestseller</span>
+                  <span className="mt-2 font-body text-xs text-pineapple-dark font-medium inline-flex items-center gap-1"><Star size={12} className="fill-pineapple-dark" /> Bestseller</span>
                 )}
               </motion.div>
             ))}

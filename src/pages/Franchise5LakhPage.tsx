@@ -130,7 +130,7 @@ const Franchise5LakhPage = () => {
             </div>
           </div>
           <motion.h1 {...fadeUp} className="font-display text-3xl md:text-4xl font-bold text-foreground">
-            🍍 {t.title}
+            {t.title}
           </motion.h1>
           <p className="font-body text-muted-foreground mt-2">{t.subtitle}</p>
         </div>
@@ -153,7 +153,7 @@ const Franchise5LakhPage = () => {
               ))}
             </ul>
             <div className="bg-pineapple-light/50 rounded-lg p-3">
-              <p className="font-body text-sm text-foreground font-medium">✅ {t.trainingNote}</p>
+              <p className="font-body text-sm text-foreground font-medium flex items-center gap-2"><Check size={16} className="text-secondary flex-shrink-0" /> {t.trainingNote}</p>
             </div>
           </motion.div>
 
@@ -172,7 +172,7 @@ const Franchise5LakhPage = () => {
             </ul>
             <p className="font-body text-sm text-muted-foreground italic">{t.itemsNote}</p>
             <div className="bg-pineapple-light/50 rounded-lg p-3 mt-3">
-              <p className="font-body text-sm text-foreground font-medium">📦 {t.itemsDuration}</p>
+              <p className="font-body text-sm text-foreground font-medium flex items-center gap-2"><Package size={16} className="text-pineapple-dark flex-shrink-0" /> {t.itemsDuration}</p>
             </div>
           </motion.div>
 
@@ -182,7 +182,7 @@ const Franchise5LakhPage = () => {
               <Droplets size={20} className="text-pineapple-dark" /> {t.liquidTitle}
             </h2>
             <ul className="space-y-2">
-              <li className="font-body text-sm text-foreground">✅ {t.liquidFree}</li>
+              <li className="flex items-center gap-2 font-body text-sm text-foreground"><Check size={16} className="text-secondary flex-shrink-0" /> {t.liquidFree}</li>
               <li className="font-body text-sm text-foreground">{t.liquidBuy}</li>
               <li className="font-body text-sm text-foreground font-semibold">{t.liquidPrice}</li>
             </ul>

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, Handshake, Citrus, GlassWater, Store } from "lucide-react";
+import { ArrowRight, Handshake, Citrus, GlassWater, Store, Snowflake } from "lucide-react";
 import JuicePourAnimation from "@/components/JuicePourAnimation";
 import hotMilk from "@/assets/hot-milk.png";
 
@@ -144,8 +144,8 @@ const Index = () => {
               viewport={{ once: true }}
               className="text-center md:text-left"
             >
-              <span className="inline-block text-xs font-body font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full mb-4 bg-primary/20 text-primary">
-                ❄️ Winter Special
+              <span className="inline-flex items-center gap-1.5 text-xs font-body font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full mb-4 bg-primary/20 text-primary">
+                <Snowflake size={14} /> Winter Special
               </span>
               <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-3 text-foreground leading-tight">
                 Special for <span className="text-gradient-gold">Winter</span>
