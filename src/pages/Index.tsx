@@ -10,29 +10,31 @@ const stagger = {
   show: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
 };
 
+const smoothEase = [0.22, 1, 0.36, 1] as const;
+
 const fadeUp = {
   hidden: { opacity: 0, y: 24, filter: "blur(6px)" },
-  show: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
+  show: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.7, ease: smoothEase as unknown as [number, number, number, number] } },
 };
 
 const fadeIn = {
   hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { duration: 0.8, ease: "easeOut" } },
+  show: { opacity: 1, transition: { duration: 0.8 } },
 };
 
 const slideInLeft = {
   hidden: { opacity: 0, x: -40, filter: "blur(4px)" },
-  show: { opacity: 1, x: 0, filter: "blur(0px)", transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
+  show: { opacity: 1, x: 0, filter: "blur(0px)", transition: { duration: 0.8, ease: smoothEase as unknown as [number, number, number, number] } },
 };
 
 const slideInRight = {
   hidden: { opacity: 0, x: 40, filter: "blur(4px)" },
-  show: { opacity: 1, x: 0, filter: "blur(0px)", transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
+  show: { opacity: 1, x: 0, filter: "blur(0px)", transition: { duration: 0.8, ease: smoothEase as unknown as [number, number, number, number] } },
 };
 
 const scaleUp = {
   hidden: { opacity: 0, scale: 0.92, filter: "blur(4px)" },
-  show: { opacity: 1, scale: 1, filter: "blur(0px)", transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
+  show: { opacity: 1, scale: 1, filter: "blur(0px)", transition: { duration: 0.6, ease: smoothEase as unknown as [number, number, number, number] } },
 };
 
 const Index = () => {
