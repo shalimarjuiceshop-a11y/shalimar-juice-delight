@@ -172,7 +172,7 @@ const Franchise5LakhPage = () => {
             </ul>
             <p className="font-body text-sm text-muted-foreground italic">{t.itemsNote}</p>
             <div className="bg-pineapple-light/50 rounded-lg p-3 mt-3">
-              <p className="font-body text-sm text-foreground font-medium">📦 {t.itemsDuration}</p>
+              <p className="font-body text-sm text-foreground font-medium flex items-center gap-2"><Package size={16} className="text-pineapple-dark flex-shrink-0" /> {t.itemsDuration}</p>
             </div>
           </motion.div>
 
