@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
+import { Star } from "lucide-react";
 import { drinks, categories, type DrinkCategory } from "@/data/menuData";
 
 const MenuPage = () => {
