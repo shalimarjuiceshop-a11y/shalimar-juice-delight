@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Handshake } from "lucide-react";
 import JuicePourAnimation from "@/components/JuicePourAnimation";
-
+import hotMilk from "@/assets/hot-milk.png";
 
 const Index = () => {
   return (
@@ -142,21 +142,51 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Special Summer Drink */}
-      <section className="py-16 bg-pineapple-gradient">
-        <div className="container mx-auto px-4 text-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-          >
-            <span className="text-5xl mb-4 block">❄️</span>
-            <h2 className="font-display text-2xl md:text-3xl font-bold mb-2 text-foreground">Special Winter Drink</h2>
-            <p className="font-body text-lg text-muted-foreground mb-4">Warm up this winter with our special hot drink!</p>
-            <span className="inline-block bg-primary text-primary-foreground font-display text-2xl font-bold px-8 py-3 rounded-full shadow-pineapple">
-              Only ₹30
-            </span>
-          </motion.div>
+      {/* Special Winter Drink */}
+      <section className="py-16 md:py-20 bg-pineapple-gradient overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-8 items-center max-w-5xl mx-auto">
+            {/* Left: Text Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="text-center md:text-left"
+            >
+              <span className="inline-block text-xs font-body font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full mb-4 bg-primary/20 text-primary">
+                ❄️ Winter Special
+              </span>
+              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-3 text-foreground leading-tight">
+                Hot Energy <span className="text-gradient-gold">Milk</span>
+              </h2>
+              <p className="font-body text-base md:text-lg text-muted-foreground mb-2">
+                Warm kulhad milk topped with almonds, cashews, pistachios & saffron — the perfect winter warmer!
+              </p>
+              <p className="font-body text-sm text-muted-foreground/70 mb-6">
+                Made fresh with real dry fruits. Served hot in a traditional kulhad.
+              </p>
+              <span className="inline-block bg-primary text-primary-foreground font-display text-2xl md:text-3xl font-bold px-8 py-3 rounded-full shadow-pineapple">
+                Only ₹30
+              </span>
+            </motion.div>
+
+            {/* Right: Image */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="flex justify-center"
+            >
+              <div className="relative">
+                <div className="absolute -inset-4 bg-primary/10 rounded-3xl blur-2xl" />
+                <img
+                  src={hotMilk}
+                  alt="Hot Energy Milk with Dry Fruits in Kulhad"
+                  className="relative w-64 md:w-80 lg:w-96 rounded-2xl shadow-2xl object-cover"
+                />
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
     </main>
