@@ -15,13 +15,13 @@ const Navbar = () => {
   const location = useLocation();
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-pineapple">
-      <div className="container mx-auto flex items-center justify-between h-16 px-4">
-        <Link to="/" className="flex items-center gap-2.5">
-          <img src={sjsLogo} alt="Shalimar Juice Shop Logo" className="w-11 h-11 rounded-full object-cover border-2 border-pineapple shadow-sm" />
-          <div className="leading-snug">
-            <span className="font-display text-lg font-bold tracking-wide text-foreground">Shalimar Juice</span>
-            <span className="block text-xs text-muted-foreground" dir="rtl" style={{ fontFamily: "'Noto Nastaliq Urdu', serif", lineHeight: '1.6' }}>شالیمار جوس</span>
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-lg border-b border-border shadow-sm">
+      <div className="container mx-auto flex items-center justify-between h-14 px-4">
+        <Link to="/" className="flex items-center gap-2">
+          <img src={sjsLogo} alt="Shalimar Juice Shop Logo" className="w-9 h-9 rounded-full object-cover ring-1 ring-border" />
+          <div className="leading-tight">
+            <span className="font-display text-[15px] font-semibold tracking-tight text-foreground">Shalimar Juice</span>
+            <span className="block text-[10px] text-muted-foreground/70" dir="rtl" style={{ fontFamily: "'Noto Nastaliq Urdu', serif", lineHeight: '1.4' }}>شالیمار جوس</span>
           </div>
         </Link>
 
