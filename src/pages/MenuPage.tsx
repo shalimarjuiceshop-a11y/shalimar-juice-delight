@@ -123,14 +123,6 @@ const MenuPage = () => {
                     <span className="inline-block bg-primary text-primary-foreground font-display text-sm font-bold px-5 py-1.5 rounded-full">
                       ₹{drink.price}
                     </span>
-                    <a
-                      href={`https://wa.me/919852779933?text=${encodeURIComponent(`Hi, I want to order *${drink.name}* (₹${drink.price}) from Shalimar Juice Shop.`)}`}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-1.5 font-body text-xs font-semibold px-4 py-1.5 rounded-full bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-colors"
-                    >
-                      <MessageCircle size={12} /> Order
-                    </a>
                   </div>
                 </motion.div>
               ))}
