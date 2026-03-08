@@ -133,7 +133,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Special Winter Drink */}
+      <section className="py-16 md:py-20 bg-pineapple-gradient overflow-hidden">
       <section className="py-16 md:py-20 bg-pineapple-gradient overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-8 items-center max-w-5xl mx-auto">

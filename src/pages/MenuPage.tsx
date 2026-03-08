@@ -103,7 +103,7 @@ const MenuPage = () => {
                   ₹{drink.price}
                 </span>
                 {drink.highlight && (
-                  <span className="mt-2 font-body text-xs text-pineapple-dark font-medium">⭐ Bestseller</span>
+                  <span className="mt-2 font-body text-xs text-pineapple-dark font-medium inline-flex items-center gap-1"><Star size={12} className="fill-pineapple-dark" /> Bestseller</span>
                 )}
               </motion.div>
             ))}

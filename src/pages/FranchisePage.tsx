@@ -173,7 +173,7 @@ const FranchisePage = () => {
               ))}
             </ul>
             <div className="mt-4 card-pineapple p-4">
-              <p className="font-body text-sm text-foreground font-medium">✅ {t.firstMonth}</p>
+              <p className="font-body text-sm text-foreground font-medium flex items-center gap-2"><Check size={16} className="text-secondary flex-shrink-0" /> {t.firstMonth}</p>
               <p className="font-body text-sm text-muted-foreground mt-1">{t.refill} <strong>₹1000</strong></p>
             </div>
           </div>

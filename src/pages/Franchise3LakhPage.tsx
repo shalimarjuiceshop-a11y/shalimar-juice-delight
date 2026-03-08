@@ -175,7 +175,7 @@ const Franchise3LakhPage = () => {
               <Droplets size={20} className="text-pineapple-dark" /> {t.liquidTitle}
             </h2>
             <ul className="space-y-2">
-              <li className="font-body text-sm text-foreground">✅ {t.liquidFree}</li>
+              <li className="flex items-center gap-2 font-body text-sm text-foreground"><Check size={16} className="text-secondary flex-shrink-0" /> {t.liquidFree}</li>
               <li className="font-body text-sm text-foreground">{t.liquidBuy}</li>
               <li className="font-body text-sm text-foreground font-semibold">{t.liquidPrice}</li>
             </ul>
