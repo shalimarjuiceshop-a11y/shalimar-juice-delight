@@ -97,7 +97,7 @@ const MenuPage = () => {
                   key={drink.id}
                   variants={scaleIn}
                   whileHover={{ y: -6, transition: { duration: 0.25, ease: "easeOut" } }}
-                  className="group relative bg-card rounded-2xl border border-border p-5 md:p-6 text-center hover:shadow-pineapple hover:border-primary/30 transition-[box-shadow,border-color] duration-300"
+                  className="group relative bg-card rounded-2xl border border-border p-5 md:p-6 text-center hover:shadow-pineapple hover:border-primary/30 transition-[box-shadow,border-color] duration-300 flex flex-col"
                 >
                   {drink.highlight && (
                     <span className="absolute top-3 right-3 inline-flex items-center gap-1 bg-primary/15 text-pineapple-dark font-body text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">
@@ -119,9 +119,19 @@ const MenuPage = () => {
                   <p className="font-body text-xs text-muted-foreground mt-1 mb-3 line-clamp-2 hidden md:block">
                     {drink.description}
                   </p>
-                  <span className="inline-block bg-primary text-primary-foreground font-display text-sm font-bold px-5 py-1.5 rounded-full">
-                    ₹{drink.price}
-                  </span>
+                  <div className="mt-auto flex flex-col items-center gap-2 pt-2">
+                    <span className="inline-block bg-primary text-primary-foreground font-display text-sm font-bold px-5 py-1.5 rounded-full">
+                      ₹{drink.price}
+                    </span>
+                    <a
+                      href={`https://wa.me/919852779933?text=${encodeURIComponent(`Hi, I want to order *${drink.name}* (₹${drink.price}) from Shalimar Juice Shop.`)}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 font-body text-xs font-semibold px-4 py-1.5 rounded-full bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-colors"
+                    >
+                      <MessageCircle size={12} /> Order
+                    </a>
+                  </div>
                 </motion.div>
               ))}
             </motion.div>
