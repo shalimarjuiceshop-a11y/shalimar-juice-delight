@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Camera } from "lucide-react";
 import shopPhoto1 from "@/assets/shop-photo-1.png";
+import shopPhoto2 from "@/assets/shop-photo-2.png";
 
 const stagger = {
   hidden: {},
@@ -14,6 +15,7 @@ const fadeUp = {
 
 const photos = [
   { src: shopPhoto1, alt: "Shalimar Juice Shop - Main Counter", caption: "Our Shop" },
+  { src: shopPhoto2, alt: "Shalimar Juice Shop - Team & Fresh Juices", caption: "Our Team at Work" },
 ];
 
 const GalleryPage = () => {
