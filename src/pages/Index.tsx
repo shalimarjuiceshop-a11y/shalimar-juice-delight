@@ -42,17 +42,6 @@ const Index = () => {
             transition={{ duration: 0.7 }}
             className="text-center lg:text-left"
           >
-            {/* Shop name in Hindi - matching the actual shop board */}
-            <motion.p
-              className="font-body text-sm md:text-base tracking-widest uppercase mb-3"
-              style={{ color: "hsl(40 100% 65%)", fontFamily: "'Noto Nastaliq Urdu', serif" }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              شالیمار جوس شاپ
-            </motion.p>
-
             <motion.h1
               className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
               style={{ color: "hsl(45 100% 95%)" }}
