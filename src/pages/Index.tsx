@@ -41,7 +41,7 @@ const Index = () => {
   return (
     <main>
       {/* Hero Section */}
-      <section className="relative min-h-screen bg-hero-gradient overflow-hidden flex items-center pt-16">
+      <section className="relative min-h-screen bg-gradient-animated overflow-hidden flex items-center pt-16">
         {/* Subtle dot pattern */}
         <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(var(--pineapple-gold)) 1px, transparent 0)', backgroundSize: '48px 48px' }} />
 
