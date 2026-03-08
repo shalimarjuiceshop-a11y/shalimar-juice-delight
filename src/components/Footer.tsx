@@ -7,11 +7,21 @@ const Footer = () => (
       <div className="grid md:grid-cols-3 gap-10">
         {/* Brand */}
         <div>
-          <div className="flex items-center gap-2.5 mb-4">
-            <img src={sjsLogo} alt="SJS Logo" className="w-12 h-12 rounded-full object-cover border-2 shadow-sm" style={{ borderColor: "hsl(40 40% 30%)" }} />
+          <div className="flex items-center gap-3 mb-4">
+            <img src={sjsLogo} alt="SJS Logo" className="w-14 h-14 rounded-full object-cover border-2 shadow-lg glow-gold-soft" style={{ borderColor: "hsl(45 100% 51%)" }} />
             <div>
-              <h3 className="font-display text-base font-bold" style={{ color: "hsl(45 100% 96%)" }}>Shalimar Juice</h3>
-              <p className="text-[10px]" dir="rtl" style={{ fontFamily: "'Noto Nastaliq Urdu', serif", color: "hsl(45 30% 55%)" }}>شالیمار جوس</p>
+              <h3 className="font-display text-xl font-black text-gradient-gold drop-shadow-lg" style={{ textShadow: "0 2px 8px hsl(45 100% 51% / 0.4)" }}>
+                Shalimar Juice
+              </h3>
+              <p className="text-sm font-bold mt-1" 
+                 dir="rtl" 
+                 style={{ 
+                   fontFamily: "'Noto Nastaliq Urdu', serif", 
+                   color: "hsl(45 90% 75%)",
+                   textShadow: "0 1px 3px hsl(30 10% 15% / 0.6)"
+                 }}>
+                شالیمار جوس
+              </p>
             </div>
           </div>
           <p className="text-sm font-body leading-relaxed mb-4" style={{ color: "hsl(45 20% 60%)" }}>
