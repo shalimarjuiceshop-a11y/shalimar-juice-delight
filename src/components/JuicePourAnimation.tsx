@@ -323,9 +323,9 @@ const JuicePourAnimation = () => {
               zIndex: 34,
             }}
             animate={{
-              opacity: phase === 4 ? [0, 1, 0] : 0,
-              x: phase === 4 ? [0, Math.cos(a) * d] : 0,
-              y: phase === 4 ? [0, Math.sin(a) * d] : 0,
+              opacity: phase === 5 ? [0, 1, 0] : 0,
+              x: phase === 5 ? [0, Math.cos(a) * d] : 0,
+              y: phase === 5 ? [0, Math.sin(a) * d] : 0,
             }}
             transition={{
               duration: 0.7,
