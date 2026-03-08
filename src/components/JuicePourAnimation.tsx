@@ -6,7 +6,7 @@ import pineappleJuiceGlass from "@/assets/pineapple-juice-glass.png";
 
 // Phase durations in ms
 // 0=cut, 1=slices rise, 2=glass slides in (empty), 3=juice fills, 4=glass zoom, 5=price
-const TIMINGS = [2500, 1200, 1500, 1800, 1500, 2500];
+const TIMINGS = [5000, 2400, 3000, 3600, 3000, 5000];
 
 const JuicePourAnimation = () => {
   const [phase, setPhase] = useState(0);
@@ -30,7 +30,7 @@ const JuicePourAnimation = () => {
   }, []);
 
   return (
-    <div className="relative w-full flex items-center justify-center min-h-[400px] md:min-h-[480px] select-none overflow-hidden">
+    <div className="relative w-full flex items-center justify-center min-h-[500px] md:min-h-[600px] select-none overflow-hidden">
       {/* Soft ambient glow */}
       <motion.div
         className="absolute pointer-events-none"
@@ -59,7 +59,7 @@ const JuicePourAnimation = () => {
         <img
           src={pineappleFruit}
           alt="Fresh Pineapple"
-          className="h-40 md:h-52 w-auto"
+          className="h-52 md:h-72 w-auto"
           style={{ objectFit: "contain" }}
         />
       </motion.div>
@@ -158,7 +158,7 @@ const JuicePourAnimation = () => {
           <img
             src={pineappleSlices}
             alt=""
-            className="h-10 md:h-12 w-auto"
+            className="h-14 md:h-16 w-auto"
             style={{ objectFit: "contain" }}
           />
         </motion.div>
@@ -184,7 +184,7 @@ const JuicePourAnimation = () => {
         <img
           src={pineappleJuiceGlass}
           alt="₹10 Pineapple Juice Glass"
-          className="h-32 md:h-40 w-auto"
+          className="h-44 md:h-56 w-auto"
           style={{
             objectFit: "contain",
             filter:
