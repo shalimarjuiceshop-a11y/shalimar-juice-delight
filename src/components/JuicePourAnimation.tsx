@@ -18,7 +18,7 @@ const JuicePourAnimation = () => {
     const advance = (p: number) => {
       if (cancelled) return;
       setPhase(p);
-      const next = p >= 4 ? 0 : p + 1;
+      const next = p >= 5 ? 0 : p + 1;
       timeout = setTimeout(() => advance(next), TIMINGS[p]);
     };
 
