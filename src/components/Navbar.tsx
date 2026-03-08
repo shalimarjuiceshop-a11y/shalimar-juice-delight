@@ -59,16 +59,12 @@ const Navbar = () => {
               )}
             </Link>
           ))}
-          <motion.a
-            href="https://wa.me/919852779933"
-            target="_blank"
-            rel="noreferrer"
+          <Link
+            to="/contact"
             className="ml-3 bg-primary text-primary-foreground font-body text-sm font-semibold px-5 py-2 rounded-full hover:brightness-105 transition-all"
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.97 }}
           >
             Contact Us
-          </motion.a>
+          </Link>
         </div>
 
         {/* Mobile toggle */}
