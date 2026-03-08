@@ -184,7 +184,7 @@ const JuicePourAnimation = () => {
         <img
           src={pineappleJuiceGlass}
           alt="₹10 Pineapple Juice Glass"
-          className="h-32 md:h-40 w-auto"
+          className="h-44 md:h-56 w-auto"
           style={{
             objectFit: "contain",
             filter:
