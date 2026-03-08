@@ -94,7 +94,15 @@ const content = {
   },
 };
 
-const fadeUp = { initial: { opacity: 0, y: 20 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true } };
+const stagger = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.08 } },
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 16 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
 
 const Franchise3LakhPage = () => {
   const [searchParams] = useSearchParams();
@@ -103,21 +111,23 @@ const Franchise3LakhPage = () => {
 
   return (
     <main className="pt-20 min-h-screen bg-background">
-      <section className="py-10 bg-pineapple-gradient">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between mb-4">
+      {/* Header */}
+      <section className="relative py-14 md:py-18 bg-pineapple-gradient overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(var(--foreground)) 1px, transparent 0)', backgroundSize: '40px 40px' }} />
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="flex items-center justify-between mb-5">
             <Link to="/franchise" className="inline-flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-foreground transition-colors">
               <ArrowLeft size={16} /> {t.back}
             </Link>
-            <div className="flex gap-2">
+            <div className="flex gap-1">
               {(["hinglish", "hindi"] as Lang[]).map((l) => (
                 <button
                   key={l}
                   onClick={() => setLang(l)}
-                  className={`font-body text-xs font-semibold px-4 py-1.5 rounded-full border transition-all ${
+                  className={`font-body text-xs font-semibold px-5 py-2 rounded-full transition-all duration-200 ${
                     lang === l
-                      ? "bg-primary text-primary-foreground border-primary"
-                      : "bg-card text-foreground border-pineapple hover:bg-pineapple-light"
+                      ? "bg-primary text-primary-foreground shadow-pineapple"
+                      : "text-muted-foreground hover:text-foreground hover:bg-muted"
                   }`}
                 >
                   {l === "hinglish" ? "English" : "हिंदी"}
@@ -125,111 +135,136 @@ const Franchise3LakhPage = () => {
               ))}
             </div>
           </div>
-          <motion.h1 {...fadeUp} className="font-display text-3xl md:text-4xl font-bold text-foreground">
+          <motion.h1
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="font-display text-3xl md:text-4xl font-extrabold tracking-tight text-foreground"
+          >
             {t.title}
           </motion.h1>
-          <p className="font-body text-muted-foreground mt-2">{t.subtitle}</p>
+          <p className="font-body text-base text-muted-foreground mt-2">{t.subtitle}</p>
         </div>
       </section>
 
-      <section className="py-10">
-        <div className="container mx-auto px-4 max-w-3xl">
+      {/* Content */}
+      <section className="py-12 md:py-16">
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          animate="show"
+          className="container mx-auto px-4 max-w-3xl space-y-6"
+        >
           {/* Training */}
-          <motion.div {...fadeUp} className="card-pineapple p-6 mb-8">
-            <h2 className="font-display text-xl font-bold text-foreground flex items-center gap-2 mb-4">
-              <GraduationCap size={20} className="text-pineapple-dark" /> {t.trainingTitle}
+          <motion.div variants={fadeUp} className="bg-card rounded-2xl border border-border p-7">
+            <h2 className="font-display text-lg font-bold text-foreground flex items-center gap-2.5 mb-4">
+              <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center">
+                <GraduationCap size={18} className="text-primary" />
+              </div>
+              {t.trainingTitle}
             </h2>
             <p className="font-body text-sm text-foreground mb-3">{t.trainingDesc}</p>
             <p className="font-body text-sm font-semibold text-foreground mb-2">{t.trainingLabel}</p>
-            <ul className="space-y-2 mb-4">
+            <ul className="space-y-2.5 mb-4">
               {t.trainingJuices.map((item) => (
-                <li key={item} className="flex items-center gap-2 font-body text-sm text-foreground">
-                  <Check size={16} className="text-secondary flex-shrink-0" /> {item}
+                <li key={item} className="flex items-center gap-2.5 font-body text-sm text-foreground">
+                  <Check size={15} className="text-secondary flex-shrink-0" /> {item}
                 </li>
               ))}
             </ul>
-            <div className="bg-pineapple-light/50 rounded-lg p-3">
-              <p className="font-body text-sm text-foreground font-medium flex items-center gap-2"><Check size={16} className="text-secondary flex-shrink-0" /> {t.trainingNote}</p>
+            <div className="bg-muted/60 rounded-xl p-4">
+              <p className="font-body text-sm text-foreground font-medium flex items-center gap-2"><Check size={15} className="text-secondary flex-shrink-0" /> {t.trainingNote}</p>
             </div>
           </motion.div>
 
           {/* Items */}
-          <motion.div {...fadeUp} transition={{ delay: 0.1 }} className="card-pineapple p-6 mb-8">
-            <h2 className="font-display text-xl font-bold text-foreground flex items-center gap-2 mb-4">
-              <Package size={20} className="text-pineapple-dark" /> {t.itemsTitle}
+          <motion.div variants={fadeUp} className="bg-card rounded-2xl border border-border p-7">
+            <h2 className="font-display text-lg font-bold text-foreground flex items-center gap-2.5 mb-4">
+              <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center">
+                <Package size={18} className="text-primary" />
+              </div>
+              {t.itemsTitle}
             </h2>
             <p className="font-body text-sm text-foreground mb-3">{t.itemsDesc}</p>
-            <ul className="space-y-2 mb-4">
+            <ul className="space-y-2.5 mb-4">
               {t.items.map((item) => (
-                <li key={item} className="flex items-center gap-2 font-body text-sm text-foreground">
-                  <Check size={16} className="text-secondary flex-shrink-0" /> {item}
+                <li key={item} className="flex items-center gap-2.5 font-body text-sm text-foreground">
+                  <Check size={15} className="text-secondary flex-shrink-0" /> {item}
                 </li>
               ))}
             </ul>
-            <p className="font-body text-sm text-muted-foreground italic">{t.itemsNote}</p>
+            <p className="font-body text-sm text-muted-foreground">{t.itemsNote}</p>
           </motion.div>
 
           {/* Liquid */}
-          <motion.div {...fadeUp} transition={{ delay: 0.2 }} className="card-pineapple p-6 mb-8">
-            <h2 className="font-display text-xl font-bold text-foreground flex items-center gap-2 mb-4">
-              <Droplets size={20} className="text-pineapple-dark" /> {t.liquidTitle}
+          <motion.div variants={fadeUp} className="bg-card rounded-2xl border border-border p-7">
+            <h2 className="font-display text-lg font-bold text-foreground flex items-center gap-2.5 mb-4">
+              <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center">
+                <Droplets size={18} className="text-primary" />
+              </div>
+              {t.liquidTitle}
             </h2>
-            <ul className="space-y-2">
-              <li className="flex items-center gap-2 font-body text-sm text-foreground"><Check size={16} className="text-secondary flex-shrink-0" /> {t.liquidFree}</li>
-              <li className="font-body text-sm text-foreground">{t.liquidBuy}</li>
-              <li className="font-body text-sm text-foreground font-semibold">{t.liquidPrice}</li>
+            <ul className="space-y-2.5">
+              <li className="flex items-center gap-2.5 font-body text-sm text-foreground"><Check size={15} className="text-secondary flex-shrink-0" /> {t.liquidFree}</li>
+              <li className="font-body text-sm text-foreground pl-[27px]">{t.liquidBuy}</li>
+              <li className="font-body text-sm text-foreground font-semibold pl-[27px]">{t.liquidPrice}</li>
             </ul>
           </motion.div>
 
           {/* Rules */}
-          <motion.div {...fadeUp} transition={{ delay: 0.3 }} className="card-pineapple p-6 mb-8">
-            <h2 className="font-display text-xl font-bold text-foreground flex items-center gap-2 mb-4">
-              <Shield size={20} className="text-pineapple-dark" /> {t.rulesTitle}
+          <motion.div variants={fadeUp} className="bg-card rounded-2xl border border-border p-7">
+            <h2 className="font-display text-lg font-bold text-foreground flex items-center gap-2.5 mb-4">
+              <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center">
+                <Shield size={18} className="text-primary" />
+              </div>
+              {t.rulesTitle}
             </h2>
-            <ul className="space-y-2">
+            <ul className="space-y-2.5">
               {t.rules.map((rule, i) => (
-                <li key={i} className="flex items-start gap-2 font-body text-sm text-foreground">
-                  <AlertTriangle size={16} className="text-pineapple-dark mt-0.5 flex-shrink-0" /> {rule}
+                <li key={i} className="flex items-start gap-2.5 font-body text-sm text-foreground">
+                  <AlertTriangle size={15} className="text-pineapple-dark mt-0.5 flex-shrink-0" /> {rule}
                 </li>
               ))}
             </ul>
           </motion.div>
 
           {/* Important Note */}
-          <motion.div {...fadeUp} transition={{ delay: 0.4 }} className="border-2 border-destructive/30 bg-destructive/5 rounded-xl p-6 mb-8">
-            <h2 className="font-display text-xl font-bold text-foreground flex items-center gap-2 mb-4">
-              <AlertTriangle size={20} className="text-destructive" /> {t.noteTitle}
+          <motion.div variants={fadeUp} className="bg-destructive/5 rounded-2xl border border-destructive/20 p-7">
+            <h2 className="font-display text-lg font-bold text-foreground flex items-center gap-2.5 mb-4">
+              <div className="w-9 h-9 rounded-lg bg-destructive/10 flex items-center justify-center">
+                <AlertTriangle size={18} className="text-destructive" />
+              </div>
+              {t.noteTitle}
             </h2>
             <p className="font-body text-sm font-semibold text-foreground mb-3">{t.noteLeaveLabel}</p>
-            <ul className="space-y-2 mb-4">
+            <ul className="space-y-2 mb-5">
               {t.noteLeavePoints.map((p, i) => (
-                <li key={i} className="flex items-start gap-2 font-body text-sm text-foreground">
-                  <span className="text-destructive font-bold">•</span> {p}
+                <li key={i} className="flex items-start gap-2.5 font-body text-sm text-foreground">
+                  <span className="w-1.5 h-1.5 rounded-full bg-destructive mt-1.5 flex-shrink-0" /> {p}
                 </li>
               ))}
             </ul>
             <p className="font-body text-sm font-semibold text-foreground mb-3">{t.noteAfterLabel}</p>
             <ul className="space-y-2">
               {t.noteAfterPoints.map((p, i) => (
-                <li key={i} className="flex items-start gap-2 font-body text-sm text-foreground">
-                  <span className="text-destructive font-bold">•</span> {p}
+                <li key={i} className="flex items-start gap-2.5 font-body text-sm text-foreground">
+                  <span className="w-1.5 h-1.5 rounded-full bg-destructive mt-1.5 flex-shrink-0" /> {p}
                 </li>
               ))}
             </ul>
           </motion.div>
 
           {/* CTA */}
-          <motion.div {...fadeUp} transition={{ delay: 0.5 }} className="text-center py-6">
+          <motion.div variants={fadeUp} className="text-center pt-4 pb-2">
             <a
               href="https://wa.me/919852779933?text=I%20am%20interested%20in%20the%203%20Lakh%20franchise%20plan"
               target="_blank"
               rel="noreferrer"
-              className="inline-block bg-primary text-primary-foreground font-body text-sm font-semibold px-8 py-3 rounded-full hover:brightness-105 transition"
+              className="inline-block bg-primary text-primary-foreground font-body text-sm font-semibold px-8 py-3.5 rounded-full hover:brightness-105 hover:scale-[1.02] transition-all shadow-pineapple"
             >
               {t.cta}
             </a>
           </motion.div>
-        </div>
+        </motion.div>
       </section>
     </main>
   );

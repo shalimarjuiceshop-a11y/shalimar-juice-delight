@@ -65,6 +65,16 @@ const plans = [
   { duration: "5 Years", price: "₹10 Lakh", durationHi: "5 साल", priceHi: "₹10 लाख", pending: true },
 ];
 
+const stagger = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.08 } },
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 16 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
 const FranchisePage = () => {
   const [lang, setLang] = useState<Lang>("hinglish");
   const t = content[lang];
@@ -72,141 +82,187 @@ const FranchisePage = () => {
   return (
     <main className="pt-20 min-h-screen bg-background">
       {/* Header */}
-      <section className="py-10 bg-pineapple-gradient text-center">
-        <div className="flex justify-center gap-2 mb-4">
-          {(["hinglish", "hindi"] as Lang[]).map((l) => (
-            <button
-              key={l}
-              onClick={() => setLang(l)}
-              className={`font-body text-xs font-semibold px-4 py-1.5 rounded-full border transition-all ${
-                lang === l
-                  ? "bg-primary text-primary-foreground border-primary"
-                  : "bg-card text-foreground border-pineapple hover:bg-pineapple-light"
-              }`}
-            >
-              {l === "hinglish" ? "English" : "हिंदी"}
-            </button>
-          ))}
+      <section className="relative py-16 md:py-20 bg-pineapple-gradient overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(var(--foreground)) 1px, transparent 0)', backgroundSize: '40px 40px' }} />
+        <div className="container mx-auto px-4 relative z-10 text-center">
+          <div className="flex justify-center gap-1 mb-6">
+            {(["hinglish", "hindi"] as Lang[]).map((l) => (
+              <button
+                key={l}
+                onClick={() => setLang(l)}
+                className={`font-body text-xs font-semibold px-5 py-2 rounded-full transition-all duration-200 ${
+                  lang === l
+                    ? "bg-primary text-primary-foreground shadow-pineapple"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                }`}
+              >
+                {l === "hinglish" ? "English" : "हिंदी"}
+              </button>
+            ))}
+          </div>
+          <motion.div variants={stagger} initial="hidden" animate="show">
+            <motion.h1 variants={fadeUp} className="font-display text-4xl md:text-5xl font-extrabold tracking-tight text-foreground">
+              {t.title}
+            </motion.h1>
+            <motion.p variants={fadeUp} className="font-body text-base md:text-lg text-muted-foreground mt-3 max-w-lg mx-auto">
+              {t.subtitle}
+            </motion.p>
+          </motion.div>
         </div>
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="font-display text-3xl md:text-4xl font-bold text-foreground"
-        >
-          {t.title}
-        </motion.h1>
-        <p className="font-body text-muted-foreground mt-2 max-w-xl mx-auto px-4">{t.subtitle}</p>
       </section>
 
       {/* Pricing Cards */}
-      <section className="py-12">
+      <section className="py-14 md:py-18">
         <div className="container mx-auto px-4">
-          <h2 className="font-display text-2xl font-bold text-center mb-8 text-foreground">{t.pricing}</h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <motion.h2
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="font-display text-2xl md:text-3xl font-extrabold tracking-tight text-center mb-10 text-foreground"
+          >
+            {t.pricing}
+          </motion.h2>
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6"
+          >
             {plans.map((plan, i) => {
               const CardWrapper = plan.link ? Link : "div";
               const wrapperProps = plan.link ? { to: plan.link } : {};
 
               return (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                >
+                <motion.div key={i} variants={fadeUp}>
                   <CardWrapper
                     {...(wrapperProps as any)}
-                    className={`card-pineapple p-6 text-center relative block transition-all ${
+                    className={`block bg-card rounded-2xl border border-border p-7 text-center relative transition-all duration-300 ${
                       plan.pending
-                        ? "opacity-60 cursor-not-allowed"
-                        : "hover:scale-105 hover:shadow-lg cursor-pointer"
+                        ? "opacity-50 cursor-not-allowed"
+                        : "hover:shadow-pineapple hover:border-primary/30 hover:-translate-y-1 cursor-pointer"
                     } ${plan.popular ? "ring-2 ring-primary" : ""}`}
                   >
                     {plan.popular && (
-                      <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-xs font-body font-bold px-3 py-1 rounded-full">
+                      <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-[10px] font-body font-bold uppercase tracking-wider px-4 py-1 rounded-full">
                         Popular
                       </span>
                     )}
                     {plan.pending && (
-                      <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-muted text-muted-foreground text-xs font-body font-bold px-3 py-1 rounded-full">
+                      <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-muted text-muted-foreground text-[10px] font-body font-bold px-4 py-1 rounded-full">
                         {t.comingSoon}
                       </span>
                     )}
-                    <Building2 className="mx-auto mb-3 text-pineapple-dark" size={28} />
-                    <h3 className="font-display text-lg font-semibold text-foreground">
+                    <div className="w-11 h-11 mx-auto mb-4 rounded-xl bg-primary/10 flex items-center justify-center">
+                      <Building2 className="w-5 h-5 text-primary" strokeWidth={1.5} />
+                    </div>
+                    <h3 className="font-display text-base font-bold text-foreground">
                       {lang === "hindi" ? plan.durationHi : plan.duration}
                     </h3>
-                    <p className="font-display text-3xl font-bold text-gradient-gold mt-2">
+                    <p className="font-display text-3xl font-extrabold text-gradient-gold mt-2 mb-3">
                       {lang === "hindi" ? plan.priceHi : plan.price}
                     </p>
                     {plan.link && (
-                      <span className="inline-flex items-center gap-1 mt-3 font-body text-xs font-semibold text-primary">
-                        {t.viewDetails} <ArrowRight size={14} />
+                      <span className="inline-flex items-center gap-1 font-body text-xs font-semibold text-primary">
+                        {t.viewDetails} <ArrowRight size={13} />
                       </span>
                     )}
                     {plan.pending && (
-                      <span className="inline-flex items-center gap-1 mt-3 font-body text-xs text-muted-foreground">
-                        <Lock size={14} /> {t.comingSoon}
+                      <span className="inline-flex items-center gap-1 font-body text-xs text-muted-foreground">
+                        <Lock size={13} /> {t.comingSoon}
                       </span>
                     )}
                   </CardWrapper>
                 </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Facilities */}
-      <section className="py-12 bg-card">
-        <div className="container mx-auto px-4 grid md:grid-cols-2 gap-10">
-          <div>
-            <h2 className="font-display text-xl font-bold mb-4 text-foreground flex items-center gap-2">
-              <Package size={20} className="text-pineapple-dark" /> {t.facilities}
-            </h2>
-            <ul className="space-y-3">
-              {t.facilityItems.map((item, i) => (
-                <li key={i} className="flex items-start gap-2 font-body text-sm text-foreground">
-                  <Check size={16} className="text-secondary mt-0.5 flex-shrink-0" /> {item}
-                </li>
-              ))}
-            </ul>
-            <div className="mt-4 card-pineapple p-4">
-              <p className="font-body text-sm text-foreground font-medium flex items-center gap-2"><Check size={16} className="text-secondary flex-shrink-0" /> {t.firstMonth}</p>
-              <p className="font-body text-sm text-muted-foreground mt-1">{t.refill} <strong>₹1000</strong></p>
-            </div>
-          </div>
+      {/* Facilities & Training */}
+      <section className="py-14 bg-muted/40">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <div className="grid md:grid-cols-2 gap-8">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-card rounded-2xl border border-border p-7"
+            >
+              <h2 className="font-display text-lg font-bold text-foreground flex items-center gap-2.5 mb-5">
+                <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <Package size={18} className="text-primary" />
+                </div>
+                {t.facilities}
+              </h2>
+              <ul className="space-y-3">
+                {t.facilityItems.map((item, i) => (
+                  <li key={i} className="flex items-start gap-2.5 font-body text-sm text-foreground">
+                    <Check size={15} className="text-secondary mt-0.5 flex-shrink-0" /> {item}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-5 bg-muted/60 rounded-xl p-4">
+                <p className="font-body text-sm text-foreground font-medium flex items-center gap-2"><Check size={15} className="text-secondary flex-shrink-0" /> {t.firstMonth}</p>
+                <p className="font-body text-xs text-muted-foreground mt-1.5">{t.refill} <strong>₹1000</strong></p>
+              </div>
+            </motion.div>
 
-          <div>
-            <h2 className="font-display text-xl font-bold mb-4 text-foreground flex items-center gap-2">
-              <GraduationCap size={20} className="text-pineapple-dark" /> {t.training}
-            </h2>
-            <ul className="space-y-3">
-              {t.trainingItems.map((item, i) => (
-                <li key={i} className="flex items-start gap-2 font-body text-sm text-foreground">
-                  <Check size={16} className="text-secondary mt-0.5 flex-shrink-0" /> {item}
-                </li>
-              ))}
-            </ul>
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.08 }}
+              className="bg-card rounded-2xl border border-border p-7"
+            >
+              <h2 className="font-display text-lg font-bold text-foreground flex items-center gap-2.5 mb-5">
+                <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <GraduationCap size={18} className="text-primary" />
+                </div>
+                {t.training}
+              </h2>
+              <ul className="space-y-3">
+                {t.trainingItems.map((item, i) => (
+                  <li key={i} className="flex items-start gap-2.5 font-body text-sm text-foreground">
+                    <Check size={15} className="text-secondary mt-0.5 flex-shrink-0" /> {item}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Rules */}
-      <section className="py-12">
+      <section className="py-14">
         <div className="container mx-auto px-4 max-w-2xl">
-          <h2 className="font-display text-xl font-bold mb-6 text-center text-foreground flex items-center justify-center gap-2">
-            <AlertTriangle size={20} className="text-pineapple-dark" /> {t.rules}
-          </h2>
-          <div className="space-y-3">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-8"
+          >
+            <h2 className="font-display text-2xl font-extrabold tracking-tight text-foreground inline-flex items-center gap-2.5">
+              <AlertTriangle size={20} className="text-pineapple-dark" /> {t.rules}
+            </h2>
+          </motion.div>
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="space-y-3"
+          >
             {[t.shopSize, t.agreement, t.nonRefundable, t.staffHiring, t.nameRule].map((rule, i) => (
-              <div key={i} className="card-pineapple p-4 flex items-start gap-3">
-                <span className="text-pineapple-dark font-bold font-body text-sm">{i + 1}.</span>
+              <motion.div key={i} variants={fadeUp} className="bg-card rounded-xl border border-border p-4 flex items-start gap-3">
+                <span className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <span className="font-display text-xs font-bold text-primary">{i + 1}</span>
+                </span>
                 <p className="font-body text-sm text-foreground">{rule}</p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
     </main>
