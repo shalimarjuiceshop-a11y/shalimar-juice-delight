@@ -64,9 +64,9 @@ const MenuPage = () => {
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ type: "spring", stiffness: 400, damping: 20 }}
-                className={`relative font-body text-sm font-semibold px-6 py-2.5 rounded-full transition-colors duration-200 ${
+                className={`relative font-body text-sm font-semibold px-6 py-2.5 rounded-full transition-all duration-300 ${
                   activeCategory === cat.key
-                    ? "bg-primary text-primary-foreground shadow-pineapple"
+                    ? "bg-primary text-primary-foreground glow-gold-soft"
                     : "text-muted-foreground hover:text-foreground hover:bg-muted"
                 }`}
               >
