@@ -58,7 +58,7 @@ const content = {
     trainingTitle: "जूस ट्रेनिंग",
     trainingDesc: "कंपनी जूस बनाना सिखाएगी।",
     trainingLabel: "ट्रेनिंग जूस:",
-    trainingJuices: ["अनानास", "सेब", "आम", "जामुन"],
+    trainingJuices: ["अनानास", "सेब", "आम", "जाम"],
     trainingNote: "कंपनी पहली बार 4 जूस लिक्विड मुफ्त देगी।",
     itemsTitle: "कंपनी से सामान",
     itemsDesc: "कंपनी ये सामान देगी:",
