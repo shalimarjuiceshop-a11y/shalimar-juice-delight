@@ -30,7 +30,7 @@ const JuicePourAnimation = () => {
   }, []);
 
   return (
-    <div className="relative w-full flex items-center justify-center min-h-[500px] md:min-h-[600px] select-none overflow-hidden">
+    <div className="relative w-full flex items-center justify-center min-h-[300px] md:min-h-[500px] select-none overflow-hidden">
       {/* Soft ambient glow */}
       <motion.div
         className="absolute pointer-events-none"
