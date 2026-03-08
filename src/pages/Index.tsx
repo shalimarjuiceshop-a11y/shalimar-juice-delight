@@ -85,7 +85,7 @@ const Index = () => {
             >
               <Link
                 to="/menu"
-                className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-body text-sm font-semibold px-7 py-3.5 rounded-full hover:brightness-105 hover:scale-[1.02] transition-all duration-300 shadow-pineapple"
+                className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-body text-sm font-semibold px-7 py-3.5 rounded-full hover:brightness-105 hover:scale-[1.02] transition-all duration-300 glow-gold btn-glow"
               >
                 View Menu <ArrowRight size={16} />
               </Link>
