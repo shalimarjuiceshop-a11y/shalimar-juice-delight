@@ -6,7 +6,7 @@ const FloatingWhatsApp = () => (
     href="https://wa.me/919852779933"
     target="_blank"
     rel="noreferrer"
-    className="fixed bottom-6 right-6 z-50 bg-secondary hover:bg-secondary/90 text-secondary-foreground rounded-full px-5 py-3 shadow-lg flex items-center gap-2"
+    className="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#25D366]/90 text-white rounded-full px-5 py-3 shadow-lg flex items-center gap-2 glow-gold-soft"
     aria-label="Chat on WhatsApp"
     initial={{ opacity: 0, y: 40, scale: 0.8 }}
     animate={{ opacity: 1, y: 0, scale: 1 }}
