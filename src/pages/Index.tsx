@@ -150,9 +150,9 @@ const Index = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
           >
-            <span className="text-5xl mb-4 block">☀️</span>
-            <h2 className="font-display text-2xl md:text-3xl font-bold mb-2 text-foreground">Special Summer Drink</h2>
-            <p className="font-body text-lg text-muted-foreground mb-4">Beat the heat with our refreshing summer special!</p>
+            <span className="text-5xl mb-4 block">❄️</span>
+            <h2 className="font-display text-2xl md:text-3xl font-bold mb-2 text-foreground">Special Winter Drink</h2>
+            <p className="font-body text-lg text-muted-foreground mb-4">Warm up this winter with our special hot drink!</p>
             <span className="inline-block bg-primary text-primary-foreground font-display text-2xl font-bold px-8 py-3 rounded-full shadow-pineapple">
               Only ₹30
             </span>
