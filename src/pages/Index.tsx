@@ -157,8 +157,11 @@ const Index = () => {
                 ❄️ Winter Special
               </span>
               <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-3 text-foreground leading-tight">
-                Hot Energy <span className="text-gradient-gold">Milk</span>
+                Special for <span className="text-gradient-gold">Winter</span>
               </h2>
+              <p className="font-display text-xl md:text-2xl font-semibold mb-2 text-foreground/80">
+                Milk with Dry Fruits
+              </p>
               <p className="font-body text-base md:text-lg text-muted-foreground mb-2">
                 Warm kulhad milk topped with almonds, cashews, pistachios & saffron — the perfect winter warmer!
               </p>
