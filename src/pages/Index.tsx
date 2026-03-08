@@ -145,7 +145,7 @@ const Index = () => {
                 key={i}
                 variants={scaleUp}
                 whileHover={{ y: -6, transition: { duration: 0.3, ease: "easeOut" } }}
-                className="bg-card rounded-2xl border border-border p-8 text-center hover:shadow-pineapple hover:border-primary/20 transition-[box-shadow,border-color] duration-300"
+                className="card-premium p-8 text-center transition-all duration-300"
               >
                 <motion.div
                   className="w-12 h-12 mx-auto mb-5 rounded-xl bg-primary/10 flex items-center justify-center"
