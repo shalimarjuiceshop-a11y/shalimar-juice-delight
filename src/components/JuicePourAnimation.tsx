@@ -5,7 +5,8 @@ import pineappleSlices from "@/assets/pineapple-slices.png";
 import pineappleJuiceGlass from "@/assets/pineapple-juice-glass.png";
 
 // Phase durations in ms
-const TIMINGS = [2500, 1200, 1500, 2000, 2500];
+// 0=cut, 1=slices rise, 2=glass slides in (empty), 3=juice fills, 4=glass zoom, 5=price
+const TIMINGS = [2500, 1200, 1500, 1800, 1500, 2500];
 
 const JuicePourAnimation = () => {
   const [phase, setPhase] = useState(0);
