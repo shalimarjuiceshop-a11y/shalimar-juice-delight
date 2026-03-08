@@ -76,7 +76,7 @@ const ContactPage = () => {
                 href="https://wa.me/919852779933"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-body text-sm font-semibold px-6 py-3 rounded-full hover:brightness-105 transition-all shadow-pineapple"
+                className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-body text-sm font-semibold px-6 py-3 rounded-full hover:brightness-105 transition-all glow-gold-soft btn-glow"
               >
                 <MessageCircle size={16} /> WhatsApp
               </a>

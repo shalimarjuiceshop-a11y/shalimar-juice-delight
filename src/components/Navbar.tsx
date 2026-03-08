@@ -61,7 +61,7 @@ const Navbar = () => {
           ))}
           <Link
             to="/contact"
-            className="ml-3 bg-primary text-primary-foreground font-body text-sm font-semibold px-5 py-2 rounded-full hover:brightness-105 transition-all"
+            className="ml-3 bg-primary text-primary-foreground font-body text-sm font-semibold px-5 py-2 rounded-full hover:brightness-105 transition-all btn-glow glow-gold-soft"
           >
             Contact Us
           </Link>
