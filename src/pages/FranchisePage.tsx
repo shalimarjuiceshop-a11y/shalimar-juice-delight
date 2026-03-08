@@ -93,7 +93,7 @@ const FranchisePage = () => {
           animate={{ opacity: 1, y: 0 }}
           className="font-display text-3xl md:text-4xl font-bold text-foreground"
         >
-          🍍 {t.title}
+          {t.title}
         </motion.h1>
         <p className="font-body text-muted-foreground mt-2 max-w-xl mx-auto px-4">{t.subtitle}</p>
       </section>
