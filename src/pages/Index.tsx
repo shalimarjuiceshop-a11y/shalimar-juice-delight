@@ -144,8 +144,8 @@ const Index = () => {
               viewport={{ once: true }}
               className="text-center md:text-left"
             >
-              <span className="inline-block text-xs font-body font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full mb-4 bg-primary/20 text-primary">
-                ❄️ Winter Special
+              <span className="inline-flex items-center gap-1.5 text-xs font-body font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full mb-4 bg-primary/20 text-primary">
+                <Snowflake size={14} /> Winter Special
               </span>
               <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-3 text-foreground leading-tight">
                 Special for <span className="text-gradient-gold">Winter</span>
