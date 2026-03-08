@@ -58,7 +58,7 @@ const GalleryPage = () => {
                 key={i}
                 variants={fadeUp}
                 whileHover={{ y: -4, transition: { duration: 0.25 } }}
-                className="group bg-card rounded-2xl border border-border overflow-hidden hover:shadow-pineapple hover:border-primary/30 transition-all duration-300"
+                className="group card-premium overflow-hidden transition-all duration-300"
               >
                 <div className="relative overflow-hidden aspect-[4/3]">
                   <img

@@ -120,7 +120,7 @@ const MenuPage = () => {
                     {drink.description}
                   </p>
                   <div className="mt-auto flex flex-col items-center gap-2 pt-2">
-                    <span className="inline-block bg-primary text-primary-foreground font-display text-sm font-bold px-5 py-1.5 rounded-full">
+                    <span className="inline-block bg-primary text-primary-foreground font-display text-sm font-bold px-5 py-1.5 rounded-full glow-gold-soft">
                       ₹{drink.price}
                     </span>
                   </div>
