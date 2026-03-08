@@ -171,7 +171,7 @@ const JuicePourAnimation = () => {
         animate={{
           opacity: phase >= 2 ? 1 : 0,
           x: phase >= 2 ? 0 : 250,
-          scale: phase === 4 ? 1.4 : phase >= 2 ? 1 : 0.8,
+          scale: phase === 4 ? 1.4 : 1,
           y: phase === 4 ? -20 : 0,
         }}
         transition={{
