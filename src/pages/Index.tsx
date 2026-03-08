@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Handshake } from "lucide-react";
 import JuicePourAnimation from "@/components/JuicePourAnimation";
-
+import hotMilk from "@/assets/hot-milk.png";
 
 const Index = () => {
   return (
