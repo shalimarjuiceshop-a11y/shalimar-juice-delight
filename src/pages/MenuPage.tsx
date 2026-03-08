@@ -54,7 +54,7 @@ const MenuPage = () => {
       </section>
 
       {/* Category Tabs */}
-      <section className="sticky top-16 z-30 bg-background/95 backdrop-blur-sm border-b border-border">
+      <section className="sticky top-16 z-30 glass border-b border-border/50">
         <div className="container mx-auto px-4">
           <div className="flex justify-center gap-1 py-3">
             {categories.map((cat) => (
@@ -64,9 +64,9 @@ const MenuPage = () => {
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ type: "spring", stiffness: 400, damping: 20 }}
-                className={`relative font-body text-sm font-semibold px-6 py-2.5 rounded-full transition-colors duration-200 ${
+                className={`relative font-body text-sm font-semibold px-6 py-2.5 rounded-full transition-all duration-300 ${
                   activeCategory === cat.key
-                    ? "bg-primary text-primary-foreground shadow-pineapple"
+                    ? "bg-primary text-primary-foreground glow-gold-soft"
                     : "text-muted-foreground hover:text-foreground hover:bg-muted"
                 }`}
               >
@@ -97,7 +97,7 @@ const MenuPage = () => {
                   key={drink.id}
                   variants={scaleIn}
                   whileHover={{ y: -6, transition: { duration: 0.25, ease: "easeOut" } }}
-                  className="group relative bg-card rounded-2xl border border-border p-5 md:p-6 text-center hover:shadow-pineapple hover:border-primary/30 transition-[box-shadow,border-color] duration-300 flex flex-col"
+                  className="group relative card-premium p-5 md:p-6 text-center transition-all duration-300 flex flex-col"
                 >
                   {drink.highlight && (
                     <span className="absolute top-3 right-3 inline-flex items-center gap-1 bg-primary/15 text-pineapple-dark font-body text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">
@@ -120,7 +120,7 @@ const MenuPage = () => {
                     {drink.description}
                   </p>
                   <div className="mt-auto flex flex-col items-center gap-2 pt-2">
-                    <span className="inline-block bg-primary text-primary-foreground font-display text-sm font-bold px-5 py-1.5 rounded-full">
+                    <span className="inline-block bg-primary text-primary-foreground font-display text-sm font-bold px-5 py-1.5 rounded-full glow-gold-soft">
                       ₹{drink.price}
                     </span>
                   </div>

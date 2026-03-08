@@ -52,7 +52,7 @@ const ContactPage = () => {
               <motion.div
                 key={i}
                 variants={fadeUp}
-                className="bg-card rounded-2xl border border-border p-5 flex items-start gap-4 hover:shadow-pineapple hover:border-primary/20 transition-all duration-300"
+                className="card-premium p-5 flex items-start gap-4 transition-all duration-300"
               >
                 <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
                   <item.icon className="w-5 h-5 text-primary" strokeWidth={1.5} />
@@ -76,7 +76,7 @@ const ContactPage = () => {
                 href="https://wa.me/919852779933"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-body text-sm font-semibold px-6 py-3 rounded-full hover:brightness-105 transition-all shadow-pineapple"
+                className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-body text-sm font-semibold px-6 py-3 rounded-full hover:brightness-105 transition-all glow-gold-soft btn-glow"
               >
                 <MessageCircle size={16} /> WhatsApp
               </a>

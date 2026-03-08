@@ -41,7 +41,7 @@ const Index = () => {
   return (
     <main>
       {/* Hero Section */}
-      <section className="relative min-h-screen bg-hero-gradient overflow-hidden flex items-center pt-16">
+      <section className="relative min-h-screen bg-gradient-animated overflow-hidden flex items-center pt-16">
         {/* Subtle dot pattern */}
         <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(var(--pineapple-gold)) 1px, transparent 0)', backgroundSize: '48px 48px' }} />
 
@@ -85,7 +85,7 @@ const Index = () => {
             >
               <Link
                 to="/menu"
-                className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-body text-sm font-semibold px-7 py-3.5 rounded-full hover:brightness-105 hover:scale-[1.02] transition-all duration-300 shadow-pineapple"
+                className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-body text-sm font-semibold px-7 py-3.5 rounded-full hover:brightness-105 hover:scale-[1.02] transition-all duration-300 glow-gold btn-glow"
               >
                 View Menu <ArrowRight size={16} />
               </Link>
@@ -145,7 +145,7 @@ const Index = () => {
                 key={i}
                 variants={scaleUp}
                 whileHover={{ y: -6, transition: { duration: 0.3, ease: "easeOut" } }}
-                className="bg-card rounded-2xl border border-border p-8 text-center hover:shadow-pineapple hover:border-primary/20 transition-[box-shadow,border-color] duration-300"
+                className="card-premium p-8 text-center transition-all duration-300"
               >
                 <motion.div
                   className="w-12 h-12 mx-auto mb-5 rounded-xl bg-primary/10 flex items-center justify-center"
@@ -190,7 +190,7 @@ const Index = () => {
               </motion.p>
               <motion.span
                 variants={scaleUp}
-                className="inline-block bg-primary text-primary-foreground font-display text-xl md:text-2xl font-bold px-8 py-3 rounded-full shadow-pineapple"
+                className="inline-block bg-primary text-primary-foreground font-display text-xl md:text-2xl font-bold px-8 py-3 rounded-full glow-gold"
               >
                 Only ₹30
               </motion.span>
