@@ -5,7 +5,8 @@ import pineappleSlices from "@/assets/pineapple-slices.png";
 import pineappleJuiceGlass from "@/assets/pineapple-juice-glass.png";
 
 // Phase durations in ms
-const TIMINGS = [2500, 1200, 1500, 2000, 2500];
+// 0=cut, 1=slices rise, 2=glass slides in (empty), 3=juice fills, 4=glass zoom, 5=price
+const TIMINGS = [2500, 1200, 1500, 1800, 1500, 2500];
 
 const JuicePourAnimation = () => {
   const [phase, setPhase] = useState(0);
@@ -17,7 +18,7 @@ const JuicePourAnimation = () => {
     const advance = (p: number) => {
       if (cancelled) return;
       setPhase(p);
-      const next = p >= 4 ? 0 : p + 1;
+      const next = p >= 5 ? 0 : p + 1;
       timeout = setTimeout(() => advance(next), TIMINGS[p]);
     };
 
@@ -163,19 +164,21 @@ const JuicePourAnimation = () => {
         </motion.div>
       ))}
 
-      {/* ── PHASE 2: GLASS SLIDES FROM RIGHT ── */}
+      {/* ── PHASE 2: EMPTY GLASS SLIDES FROM RIGHT ── */}
       <motion.div
         className="absolute"
         style={{ zIndex: 25, bottom: "16%" }}
         animate={{
           opacity: phase >= 2 ? 1 : 0,
-          x: phase >= 3 ? 0 : phase === 2 ? 0 : 200,
-          scale: phase >= 2 ? 1 : 0.8,
+          x: phase >= 2 ? 0 : 250,
+          scale: phase === 4 ? 1.4 : phase >= 2 ? 1 : 0.8,
+          y: phase === 4 ? -20 : 0,
         }}
         transition={{
           x: { duration: 1, ease: [0.22, 1, 0.36, 1] },
           opacity: { duration: 0.4 },
-          scale: { duration: 0.6, ease: "easeOut" },
+          scale: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+          y: { duration: 0.8, ease: "easeOut" },
         }}
       >
         <img
@@ -235,6 +238,20 @@ const JuicePourAnimation = () => {
             }}
           />
         ))}
+
+        {/* ── PHASE 4: GLOW ON ZOOM ── */}
+        <motion.div
+          className="absolute inset-0 -z-10 rounded-full pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(circle, hsl(var(--pineapple-gold) / 0.2) 0%, transparent 60%)",
+          }}
+          animate={{
+            opacity: phase === 4 ? 1 : 0,
+            scale: phase === 4 ? 1.8 : 1,
+          }}
+          transition={{ duration: 0.8 }}
+        />
       </motion.div>
 
       {/* Juice stream from slices to glass */}
@@ -252,20 +269,20 @@ const JuicePourAnimation = () => {
           filter: "blur(0.5px)",
         }}
         animate={{
-          opacity: phase === 2 || phase === 3 ? [0, 0.85, 0.6] : 0,
-          scaleY: phase === 2 || phase === 3 ? [0, 1, 0.8] : 0,
+          opacity: phase === 3 ? [0, 0.85, 0.6] : 0,
+          scaleY: phase === 3 ? [0, 1, 0.8] : 0,
         }}
         transition={{ duration: 1.2, ease: "easeOut" }}
       />
 
-      {/* ── PHASE 4: "JUST ₹10" BADGE ── */}
+      {/* ── PHASE 5: "JUST ₹10" BADGE ── */}
       <motion.div
         className="absolute bottom-2 md:bottom-6"
         style={{ zIndex: 35 }}
         animate={{
-          opacity: phase === 4 ? 1 : 0,
-          scale: phase === 4 ? [0.6, 1.08, 1] : 0.6,
-          y: phase === 4 ? 0 : 20,
+          opacity: phase === 5 ? 1 : 0,
+          scale: phase === 5 ? [0.6, 1.08, 1] : 0.6,
+          y: phase === 5 ? 0 : 20,
         }}
         transition={{
           duration: 0.8,
@@ -283,7 +300,7 @@ const JuicePourAnimation = () => {
               background:
                 "linear-gradient(90deg, transparent 0%, hsl(0 0% 100% / 0.3) 50%, transparent 100%)",
             }}
-            animate={phase === 4 ? { x: ["-100%", "200%"] } : {}}
+            animate={phase === 5 ? { x: ["-100%", "200%"] } : {}}
             transition={{ duration: 1.2, delay: 0.3, ease: "easeInOut" }}
           />
         </div>
@@ -306,9 +323,9 @@ const JuicePourAnimation = () => {
               zIndex: 34,
             }}
             animate={{
-              opacity: phase === 4 ? [0, 1, 0] : 0,
-              x: phase === 4 ? [0, Math.cos(a) * d] : 0,
-              y: phase === 4 ? [0, Math.sin(a) * d] : 0,
+              opacity: phase === 5 ? [0, 1, 0] : 0,
+              x: phase === 5 ? [0, Math.cos(a) * d] : 0,
+              y: phase === 5 ? [0, Math.sin(a) * d] : 0,
             }}
             transition={{
               duration: 0.7,
