@@ -147,7 +147,7 @@ const JuicePourAnimation = () => {
                 ? -50 - i * 12
                 : 0,
             rotate: -3 + i * 2,
-            scale: phase >= 1 && phase <= 2 ? 1 : 0.4,
+            scale: 1,
           }}
           transition={{
             duration: 0.7,
