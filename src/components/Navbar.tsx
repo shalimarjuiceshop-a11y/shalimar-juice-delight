@@ -23,17 +23,28 @@ const Navbar = () => {
       className="fixed top-0 left-0 right-0 z-50 glass-dark"
     >
       <div className="container mx-auto flex items-center justify-between h-16 px-4">
-        <Link to="/" className="flex items-center gap-2.5">
+        <Link to="/" className="flex items-center gap-3">
           <motion.img
             src={sjsLogo}
             alt="Shalimar Juice Shop Logo"
-            className="w-10 h-10 rounded-full object-cover border-2 border-border shadow-sm"
+            className="w-12 h-12 rounded-full object-cover border-2 shadow-lg glow-gold-soft"
+            style={{ borderColor: "hsl(45 100% 51%)" }}
             whileHover={{ scale: 1.08, rotate: 3 }}
             transition={{ type: "spring", stiffness: 300 }}
           />
-          <div className="leading-tight">
-            <span className="font-display text-base font-bold tracking-tight text-foreground">Shalimar Juice</span>
-            <span className="block text-[10px] text-muted-foreground/70" dir="rtl" style={{ fontFamily: "'Noto Nastaliq Urdu', serif", lineHeight: '1.5' }}>شالیمار جوس</span>
+          <div className="leading-none">
+            <h1 className="font-display text-xl font-black tracking-tight text-gradient-gold drop-shadow-lg text-glow-gold">
+              Shalimar Juice
+            </h1>
+            <p className="block text-sm font-bold mt-0.5" 
+               dir="rtl" 
+               style={{ 
+                 fontFamily: "'Noto Nastaliq Urdu', serif", 
+                 color: "hsl(45 90% 70%)",
+                 textShadow: "0 2px 4px hsl(30 10% 15% / 0.5)"
+               }}>
+              شالیمار جوس
+            </p>
           </div>
         </Link>
 
