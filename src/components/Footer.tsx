@@ -1,4 +1,4 @@
-import { MapPin, Phone, User, Instagram } from "lucide-react";
+import { MapPin, Phone, User, Instagram, Mail } from "lucide-react";
 import sjsLogo from "@/assets/sjs-logo.jpeg";
 
 const Footer = () => (
