@@ -51,7 +51,7 @@ const JuicePourAnimation = () => {
         style={{ zIndex: 10, bottom: "22%" }}
         animate={{
           opacity: phase <= 1 ? 1 : 0,
-          scale: phase <= 1 ? 1 : 0.7,
+          scale: 1,
           y: phase === 0 ? 0 : -10,
         }}
         transition={{ duration: 0.6, ease: "easeInOut" }}
