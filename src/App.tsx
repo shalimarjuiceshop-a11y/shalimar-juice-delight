@@ -9,6 +9,8 @@ import FloatingWhatsApp from "./components/FloatingWhatsApp";
 import Index from "./pages/Index";
 import MenuPage from "./pages/MenuPage";
 import FranchisePage from "./pages/FranchisePage";
+import Franchise3LakhPage from "./pages/Franchise3LakhPage";
+import Franchise5LakhPage from "./pages/Franchise5LakhPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
