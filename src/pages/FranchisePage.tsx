@@ -84,7 +84,7 @@ const FranchisePage = () => {
                   : "bg-card text-foreground border-pineapple hover:bg-pineapple-light"
               }`}
             >
-              {l === "hinglish" ? "Hinglish" : "हिंदी"}
+              {l === "hinglish" ? "English" : "हिंदी"}
             </button>
           ))}
         </div>
