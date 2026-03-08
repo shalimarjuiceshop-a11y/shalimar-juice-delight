@@ -36,12 +36,14 @@
 
     --radius: 0.75rem;
 
-    --pineapple-gold: 42 100% 50%;
-    --pineapple-light: 48 100% 90%;
-    --pineapple-dark: 38 80% 40%;
+    --pineapple-gold: 40 100% 50%;
+    --pineapple-light: 45 100% 90%;
+    --pineapple-dark: 35 85% 35%;
     --leaf-green: 120 30% 40%;
     --leaf-light: 120 25% 85%;
     --cream: 45 50% 96%;
+    --shop-dark: 30 15% 12%;
+    --shop-warm: 38 60% 20%;
 
     --font-display: 'Playfair Display', serif;
     --font-body: 'DM Sans', sans-serif;
