@@ -1,4 +1,4 @@
-import { MapPin, Phone, User, Instagram } from "lucide-react";
+import { MapPin, Phone, User, Instagram, Mail } from "lucide-react";
 import sjsLogo from "@/assets/sjs-logo.jpeg";
 
 const Footer = () => (
@@ -32,6 +32,7 @@ const Footer = () => (
             <p className="flex items-start gap-2"><MapPin size={14} className="mt-0.5 shrink-0" /> Perfect Complex, Jamil Colony, Front of Mohammadia Masjid, Walgaon Road, Amravati, Maharashtra – 444601, India</p>
             <p className="flex items-center gap-2"><User size={14} /> Owner: Sameer Ahmad</p>
             <p className="flex items-center gap-2"><Phone size={14} /> WhatsApp: +91 98527 79933</p>
+            <p className="flex items-center gap-2"><Mail size={14} /> shalimarjuiceshop@gmail.com</p>
           </div>
         </div>
 
