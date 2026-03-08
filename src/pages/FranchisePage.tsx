@@ -82,8 +82,8 @@ const FranchisePage = () => {
   return (
     <main className="pt-20 min-h-screen bg-background">
       {/* Header */}
-      <section className="relative py-16 md:py-20 bg-pineapple-gradient overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(var(--foreground)) 1px, transparent 0)', backgroundSize: '40px 40px' }} />
+      <section className="relative py-16 md:py-20 bg-page-header overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(var(--pineapple-gold)) 1px, transparent 0)', backgroundSize: '48px 48px' }} />
         <div className="container mx-auto px-4 relative z-10 text-center">
           <div className="flex justify-center gap-1 mb-6">
             {(["hinglish", "hindi"] as Lang[]).map((l) => (
@@ -93,18 +93,19 @@ const FranchisePage = () => {
                 className={`font-body text-xs font-semibold px-5 py-2 rounded-full transition-all duration-200 ${
                   lang === l
                     ? "bg-primary text-primary-foreground shadow-pineapple"
-                    : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                    : "hover:bg-accent/10"
                 }`}
+                style={lang === l ? {} : { color: "hsl(45 30% 65%)" }}
               >
                 {l === "hinglish" ? "English" : "हिंदी"}
               </button>
             ))}
           </div>
           <motion.div variants={stagger} initial="hidden" animate="show">
-            <motion.h1 variants={fadeUp} className="font-display text-4xl md:text-5xl font-extrabold tracking-tight text-foreground">
+            <motion.h1 variants={fadeUp} className="font-display text-4xl md:text-5xl font-extrabold tracking-tight" style={{ color: "hsl(45 100% 96%)" }}>
               {t.title}
             </motion.h1>
-            <motion.p variants={fadeUp} className="font-body text-base md:text-lg text-muted-foreground mt-3 max-w-lg mx-auto">
+            <motion.p variants={fadeUp} className="font-body text-base md:text-lg mt-3 max-w-lg mx-auto" style={{ color: "hsl(45 30% 70%)" }}>
               {t.subtitle}
             </motion.p>
           </motion.div>

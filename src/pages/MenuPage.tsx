@@ -28,8 +28,8 @@ const MenuPage = () => {
   return (
     <main className="pt-20 min-h-screen bg-background">
       {/* Hero Header */}
-      <section className="relative py-16 md:py-20 bg-pineapple-gradient overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(var(--foreground)) 1px, transparent 0)', backgroundSize: '40px 40px' }} />
+      <section className="relative py-16 md:py-20 bg-page-header overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(var(--pineapple-gold)) 1px, transparent 0)', backgroundSize: '48px 48px' }} />
         <div className="container mx-auto px-4 relative z-10 text-center">
           <motion.div
             variants={stagger}
@@ -38,14 +38,15 @@ const MenuPage = () => {
           >
             <motion.span
               variants={fadeUp}
-              className="inline-flex items-center gap-1.5 text-xs font-body font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full mb-5 bg-primary/15 text-pineapple-dark"
+              className="inline-flex items-center gap-1.5 text-xs font-body font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full mb-5 border border-accent/30"
+              style={{ color: "hsl(45 60% 70%)", background: "hsl(45 100% 50% / 0.08)" }}
             >
               <Sparkles size={13} /> Fresh & Natural
             </motion.span>
-            <motion.h1 variants={fadeUp} className="font-display text-4xl md:text-5xl font-extrabold tracking-tight text-foreground">
+            <motion.h1 variants={fadeUp} className="font-display text-4xl md:text-5xl font-extrabold tracking-tight" style={{ color: "hsl(45 100% 96%)" }}>
               Our <span className="text-gradient-gold">Menu</span>
             </motion.h1>
-            <motion.p variants={fadeUp} className="font-body text-base md:text-lg text-muted-foreground mt-3 max-w-md mx-auto">
+            <motion.p variants={fadeUp} className="font-body text-base md:text-lg mt-3 max-w-md mx-auto" style={{ color: "hsl(45 30% 70%)" }}>
               Fresh juices, shakes & more — handcrafted daily with real fruits.
             </motion.p>
           </motion.div>
