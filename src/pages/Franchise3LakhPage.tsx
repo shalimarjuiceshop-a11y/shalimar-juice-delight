@@ -143,7 +143,7 @@ const Franchise3LakhPage = () => {
           >
             {t.title}
           </motion.h1>
-          <p className="font-body text-base mt-2" style={{ color: "hsl(45 30% 70%)" }}>{t.subtitle}</p>
+          <p className="font-body text-base mt-2 text-header-muted">{t.subtitle}</p>
         </div>
       </section>
 

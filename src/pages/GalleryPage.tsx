@@ -73,7 +73,7 @@ const GalleryPage = () => {
             <motion.h1 variants={fadeUp} className="font-display text-4xl md:text-5xl font-extrabold tracking-tight text-header-light">
               Photo <span className="text-gradient-gold">Gallery</span>
             </motion.h1>
-            <motion.p variants={fadeUp} className="font-body text-base md:text-lg mt-3 max-w-md mx-auto" style={{ color: "hsl(45 30% 70%)" }}>
+            <motion.p variants={fadeUp} className="font-body text-base md:text-lg mt-3 max-w-md mx-auto text-header-muted">
               A glimpse of Shalimar Juice Shop & our fresh preparations.
             </motion.p>
           </motion.div>

@@ -105,7 +105,7 @@ const FranchisePage = () => {
             <motion.h1 variants={fadeUp} className="font-display text-4xl md:text-5xl font-extrabold tracking-tight text-header-light">
               {t.title}
             </motion.h1>
-            <motion.p variants={fadeUp} className="font-body text-base md:text-lg mt-3 max-w-lg mx-auto" style={{ color: "hsl(45 30% 70%)" }}>
+            <motion.p variants={fadeUp} className="font-body text-base md:text-lg mt-3 max-w-lg mx-auto text-header-muted">
               {t.subtitle}
             </motion.p>
           </motion.div>
