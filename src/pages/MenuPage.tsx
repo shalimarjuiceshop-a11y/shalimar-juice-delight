@@ -166,7 +166,6 @@ const MenuPage = () => {
               {filteredDrinks.map((drink, index) => (
                 <TiltCard
                   key={drink.id}
-                  onClick={() => setSelectedDrink(drink)}
                   className="group"
                 >
                   <motion.div
