@@ -112,15 +112,15 @@ const MenuPage = () => {
                       loading="lazy"
                     />
                   </div>
-                  <h3 className="font-display text-sm md:text-base font-bold text-foreground leading-snug">
+                  <h3 className="font-display text-base md:text-lg font-bold text-foreground leading-snug">
                     {drink.name}
                   </h3>
-                  <p className="font-body text-xs text-muted-foreground mt-1 mb-3 line-clamp-2 hidden md:block">
+                  <p className="font-body text-xs text-muted-foreground mt-1 mb-3 line-clamp-2">
                     {drink.description}
                   </p>
                   <div className="mt-auto flex flex-col items-center gap-2 pt-2">
-                    <span className="inline-block bg-primary text-primary-foreground font-display text-sm font-bold px-5 py-1.5 rounded-full glow-gold-soft">
-                      ₹{drink.price}
+                    <span className="inline-flex items-center gap-1.5 bg-primary text-primary-foreground font-display text-sm md:text-base font-bold px-5 py-1.5 rounded-full glow-gold-soft">
+                      ₹{drink.price} <span className="font-body text-[11px] font-semibold opacity-80">/ glass</span>
                     </span>
                   </div>
                 </motion.div>
