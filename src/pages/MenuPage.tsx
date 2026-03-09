@@ -157,7 +157,7 @@ const MenuPage = () => {
               initial="hidden"
               animate="show"
               exit={{ opacity: 0, scale: 0.98, transition: { duration: 0.2 } }}
-              className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"
+              className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-8"
             >
               {filteredDrinks.map((drink, index) => (
                 <motion.div
@@ -184,8 +184,8 @@ const MenuPage = () => {
                   )}
 
                   {/* Image Container */}
-                  <div className="relative pt-6 pb-2 px-4">
-                    <div className="relative w-28 h-28 md:w-36 md:h-36 mx-auto">
+                  <div className="relative pt-8 pb-4 px-4">
+                    <div className="relative w-36 h-36 md:w-44 md:h-44 lg:w-48 lg:h-48 mx-auto">
                       {/* Glow behind image */}
                       <motion.div 
                         className="absolute inset-0 rounded-full bg-primary/10 scale-75 group-hover:scale-110 transition-transform duration-700"
@@ -195,20 +195,20 @@ const MenuPage = () => {
                       <motion.img
                         src={drink.image}
                         alt={drink.name}
-                        className="relative w-full h-full object-contain drop-shadow-lg"
+                        className="relative w-full h-full object-contain drop-shadow-xl"
                         loading="lazy"
-                        whileHover={{ scale: 1.15, rotate: 3 }}
+                        whileHover={{ scale: 1.1, rotate: 2 }}
                         transition={{ type: "spring", stiffness: 300 }}
                       />
                     </div>
                   </div>
 
                   {/* Content */}
-                  <div className="p-4 pt-2 text-center">
-                    <h3 className="font-display text-base md:text-lg font-bold text-foreground leading-tight">
+                  <div className="p-4 pt-3 text-center">
+                    <h3 className="font-display text-lg md:text-xl font-bold text-foreground leading-tight">
                       {drink.name}
                     </h3>
-                    <p className="font-body text-[11px] md:text-xs text-muted-foreground mt-1.5 line-clamp-2 min-h-[2.5em]">
+                    <p className="font-body text-xs md:text-sm text-muted-foreground mt-2 line-clamp-2 min-h-[2.5em]">
                       {drink.description}
                     </p>
 
