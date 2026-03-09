@@ -98,7 +98,7 @@ const Navbar = () => {
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="md:hidden overflow-hidden bg-background border-b border-border"
           >
-            <div className="flex flex-col gap-1 p-3">
+            <div className="flex flex-col gap-2 p-4">
               {navLinks.map((link, i) => (
                 <motion.div
                   key={link.to}
@@ -109,11 +109,14 @@ const Navbar = () => {
                   <Link
                     to={link.to}
                     onClick={() => setOpen(false)}
-                    className={`block font-body text-sm font-medium px-4 py-2.5 rounded-lg transition-colors ${
+                    className={`block font-body text-sm font-bold px-4 py-3 rounded-xl transition-all duration-200 border ${
                       location.pathname === link.to
-                        ? "bg-muted text-foreground"
-                        : "text-muted-foreground hover:bg-muted/50 hover:text-foreground"
+                        ? "bg-primary/15 text-foreground border-primary/30 glow-gold-soft"
+                        : "text-muted-foreground hover:bg-primary/10 hover:text-foreground border-transparent hover:border-primary/20"
                     }`}
+                    style={{
+                      color: location.pathname === link.to ? 'hsl(45 100% 96%)' : 'hsl(45 60% 70%)'
+                    }}
                   >
                     {link.label}
                   </Link>
@@ -127,7 +130,7 @@ const Navbar = () => {
                 <Link
                   to="/contact"
                   onClick={() => setOpen(false)}
-                  className="block mt-1 bg-primary text-primary-foreground font-body text-sm font-semibold px-4 py-2.5 rounded-lg text-center"
+                  className="block mt-2 bg-primary text-primary-foreground font-body text-sm font-bold px-4 py-3 rounded-xl text-center glow-gold-soft border border-primary/20"
                 >
                   Contact Us
                 </Link>
