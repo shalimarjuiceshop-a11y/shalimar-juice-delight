@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, Clock, MessageCircle, Instagram } from "lucide-react";
+import ShopLocator from "@/components/ShopLocator";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
