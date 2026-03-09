@@ -55,8 +55,7 @@ const Index = () => {
           >
             <motion.span
               variants={fadeUp}
-              className="inline-block font-body text-xs font-semibold tracking-[0.2em] uppercase px-4 py-1.5 rounded-full mb-6 border border-accent/30"
-              style={{ color: "hsl(45 60% 70%)", background: "hsl(45 100% 50% / 0.08)" }}
+              className="inline-block font-body text-xs font-semibold tracking-[0.2em] uppercase px-4 py-1.5 rounded-full mb-6 border border-accent/30 text-header-muted bg-primary/10"
             >
               Since Generations
             </motion.span>
