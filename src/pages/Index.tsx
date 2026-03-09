@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Handshake, Citrus, GlassWater, Store, Snowflake } from "lucide-react";
 import JuicePourAnimation from "@/components/JuicePourAnimation";
-import ShopLocator from "@/components/ShopLocator";
 import hotMilk from "@/assets/hot-milk.png";
 
 // Smooth stagger container
@@ -220,9 +219,6 @@ const Index = () => {
           </div>
         </div>
       </section>
-
-      {/* Shop Locator Section */}
-      <ShopLocator />
     </main>
   );
 };
