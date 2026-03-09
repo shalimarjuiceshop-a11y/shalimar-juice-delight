@@ -10,8 +10,6 @@ import FloatingWhatsApp from "./components/FloatingWhatsApp";
 import FloatingFruits from "./components/FloatingFruits";
 import AnimatedRoutes from "./components/AnimatedRoutes";
 import SplashScreen from "./components/SplashScreen";
-import { CartProvider } from "./components/OrderCart";
-import CartButton from "./components/OrderCart";
 
 const queryClient = new QueryClient();
 
@@ -22,19 +20,16 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <CartProvider>
-          <Toaster />
-          <Sonner />
-          {showSplash && <SplashScreen onComplete={handleSplashComplete} />}
-          <BrowserRouter>
-            <FloatingFruits />
-            <Navbar />
-            <AnimatedRoutes />
-            <Footer />
-            <FloatingWhatsApp />
-            <CartButton />
-          </BrowserRouter>
-        </CartProvider>
+        <Toaster />
+        <Sonner />
+        {showSplash && <SplashScreen onComplete={handleSplashComplete} />}
+        <BrowserRouter>
+          <FloatingFruits />
+          <Navbar />
+          <AnimatedRoutes />
+          <Footer />
+          <FloatingWhatsApp />
+        </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
   );
