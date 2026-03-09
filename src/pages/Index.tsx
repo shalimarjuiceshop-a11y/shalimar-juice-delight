@@ -88,8 +88,7 @@ const Index = () => {
               </Link>
               <Link
                 to="/franchise"
-                className="inline-flex items-center gap-2 border font-body text-sm font-semibold px-7 py-3.5 rounded-full transition-all duration-300 hover:bg-accent/10"
-                style={{ borderColor: "hsl(40 60% 40%)", color: "hsl(45 80% 80%)" }}
+                className="inline-flex items-center gap-2 border border-header-accent font-body text-sm font-semibold px-7 py-3.5 rounded-full transition-all duration-300 hover:bg-accent/10 text-header-light"
               >
                 Get Franchise <Handshake size={16} />
               </Link>

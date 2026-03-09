@@ -46,7 +46,7 @@ const Footer = () => (
 
         {/* Location */}
         <div>
-          <h4 className="font-display text-sm font-bold uppercase tracking-wider mb-4 text-[hsl(var(--footer-heading))]">Location</h4>
+          <h4 className="font-display text-sm font-bold uppercase tracking-wider mb-4 text-footer-heading">Location</h4>
           <iframe
             title="Shalimar Juice Location"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.0!2d77.78!3d20.93!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDU1JzQ4LjAiTiA3N8KwNDYnNDguMCJF!5e0!3m2!1sen!2sin!4v1234567890"

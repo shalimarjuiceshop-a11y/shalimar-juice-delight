@@ -32,7 +32,7 @@ export const drinks: Drink[] = [
 
   { id: "5", name: "Pineapple Juice", price: 50, image: pineappleJuice, category: "juices", description: "100% fresh pineapple juice", highlight: true },
   { id: "6", name: "Apple Juice", price: 50, image: appleJuice, category: "juices", description: "Pure fresh apple juice" },
-  { id: "7", name: "Kharbuz Juice", price: 50, image: kharbuzJuice, category: "juices", description: "Sweet refreshing kharbuz juice" },
+  { id: "7", name: "Kharbuja Juice", price: 50, image: kharbuzJuice, category: "juices", description: "Sweet refreshing muskmelon juice" },
   { id: "8", name: "Orange Juice", price: 50, image: orangeJuice, category: "juices", description: "Tangy fresh orange juice" },
   { id: "9", name: "Mosambi Juice", price: 50, image: mosambijuice, category: "juices", description: "Refreshing sweet lime juice" },
 

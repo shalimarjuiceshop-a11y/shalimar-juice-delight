@@ -113,7 +113,7 @@ const FranchisePage = () => {
       </section>
 
       {/* Pricing Cards */}
-      <section className="py-14 md:py-18">
+      <section className="py-14 md:py-20">
         <div className="container mx-auto px-4">
           <motion.h2
             initial={{ opacity: 0, y: 12 }}
