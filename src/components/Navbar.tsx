@@ -51,17 +51,20 @@ const Navbar = () => {
             <Link
               key={link.to}
               to={link.to}
-              className={`relative font-body text-sm font-medium px-4 py-2 rounded-full transition-all duration-200 ${
+              className={`relative font-body text-sm font-bold px-5 py-2.5 rounded-full transition-all duration-200 border ${
                 location.pathname === link.to
-                  ? "text-foreground bg-muted"
-                  : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                  ? "text-foreground bg-primary/15 border-primary/30 glow-gold-soft"
+                  : "text-cream hover:text-foreground hover:bg-primary/10 border-transparent hover:border-primary/20"
               }`}
+              style={{
+                color: location.pathname === link.to ? 'hsl(45 100% 96%)' : 'hsl(45 80% 85%)'
+              }}
             >
               {link.label}
               {location.pathname === link.to && (
                 <motion.div
                   layoutId="nav-indicator"
-                  className="absolute inset-0 bg-muted rounded-full -z-10"
+                  className="absolute inset-0 bg-primary/15 rounded-full -z-10 border border-primary/30"
                   transition={{ type: "spring", stiffness: 350, damping: 30 }}
                 />
               )}
@@ -69,7 +72,7 @@ const Navbar = () => {
           ))}
           <Link
             to="/contact"
-            className="ml-3 bg-primary text-primary-foreground font-body text-sm font-semibold px-5 py-2 rounded-full hover:brightness-105 transition-all btn-glow glow-gold-soft"
+            className="ml-3 bg-primary text-primary-foreground font-body text-sm font-bold px-6 py-2.5 rounded-full hover:brightness-110 hover:scale-[1.02] transition-all btn-glow glow-gold border border-primary/20"
           >
             Contact Us
           </Link>
