@@ -138,20 +138,11 @@ const FranchisePage = () => {
                 <motion.div key={i} variants={fadeUp}>
                   <CardWrapper
                     {...(wrapperProps as any)}
-                    className={`block bg-card rounded-2xl border border-border p-7 text-center relative transition-all duration-300 ${
-                      plan.pending
-                        ? "opacity-50 cursor-not-allowed"
-                        : "hover:shadow-pineapple hover:border-primary/30 hover:-translate-y-1 cursor-pointer"
-                    } ${plan.popular ? "ring-2 ring-primary" : ""}`}
+                    className={`block bg-card rounded-2xl border border-border p-7 text-center relative transition-all duration-300 hover:shadow-pineapple hover:border-primary/30 hover:-translate-y-1 cursor-pointer ${plan.popular ? "ring-2 ring-primary" : ""}`}
                   >
                     {plan.popular && (
                       <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-[10px] font-body font-bold uppercase tracking-wider px-4 py-1 rounded-full">
                         Popular
-                      </span>
-                    )}
-                    {plan.pending && (
-                      <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-muted text-muted-foreground text-[10px] font-body font-bold px-4 py-1 rounded-full">
-                        {t.comingSoon}
                       </span>
                     )}
                     <div className="w-11 h-11 mx-auto mb-4 rounded-xl bg-primary/10 flex items-center justify-center">
@@ -166,11 +157,6 @@ const FranchisePage = () => {
                     {plan.link && (
                       <span className="inline-flex items-center gap-1 font-body text-xs font-semibold text-primary">
                         {t.viewDetails} <ArrowRight size={13} />
-                      </span>
-                    )}
-                    {plan.pending && (
-                      <span className="inline-flex items-center gap-1 font-body text-xs text-muted-foreground">
-                        <Lock size={13} /> {t.comingSoon}
                       </span>
                     )}
                   </CardWrapper>
