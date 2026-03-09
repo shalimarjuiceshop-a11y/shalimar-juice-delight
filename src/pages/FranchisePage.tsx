@@ -95,17 +95,17 @@ const FranchisePage = () => {
                     ? "bg-primary text-primary-foreground shadow-pineapple"
                     : "hover:bg-accent/10"
                 }`}
-                style={lang === l ? {} : { color: "hsl(var(--muted-foreground))" }}
+                style={lang === l ? {} : { color: "hsl(45 30% 65%)" }}
               >
                 {l === "hinglish" ? "English" : "हिंदी"}
               </button>
             ))}
           </div>
           <motion.div variants={stagger} initial="hidden" animate="show">
-            <motion.h1 variants={fadeUp} className="font-display text-4xl md:text-5xl font-extrabold tracking-tight text-foreground">
+            <motion.h1 variants={fadeUp} className="font-display text-4xl md:text-5xl font-extrabold tracking-tight" style={{ color: "hsl(45 100% 96%)" }}>
               {t.title}
             </motion.h1>
-            <motion.p variants={fadeUp} className="font-body text-base md:text-lg mt-3 max-w-lg mx-auto text-muted-foreground">
+            <motion.p variants={fadeUp} className="font-body text-base md:text-lg mt-3 max-w-lg mx-auto" style={{ color: "hsl(45 30% 70%)" }}>
               {t.subtitle}
             </motion.p>
           </motion.div>

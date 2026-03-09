@@ -61,11 +61,6 @@ export default {
           light: "hsl(var(--leaf-light))",
         },
         cream: "hsl(var(--cream))",
-        wood: {
-          DEFAULT: "hsl(var(--wood-brown))",
-          light: "hsl(var(--wood-light))",
-          dark: "hsl(var(--wood-dark))",
-        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
