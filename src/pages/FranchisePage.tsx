@@ -61,8 +61,8 @@ const content = {
 const plans = [
   { duration: "1 Year", price: "₹3 Lakh", durationHi: "1 साल", priceHi: "₹3 लाख", link: "/franchise/3-lakh" },
   { duration: "2 Years", price: "₹5 Lakh", durationHi: "2 साल", priceHi: "₹5 लाख", popular: true, link: "/franchise/5-lakh" },
-  { duration: "3 Years", price: "₹7 Lakh", durationHi: "3 साल", priceHi: "₹7 लाख", pending: true },
-  { duration: "5 Years", price: "₹10 Lakh", durationHi: "5 साल", priceHi: "₹10 लाख", pending: true },
+  { duration: "3 Years", price: "₹7 Lakh", durationHi: "3 साल", priceHi: "₹7 लाख", link: "/franchise/7-lakh" },
+  { duration: "5 Years", price: "₹10 Lakh", durationHi: "5 साल", priceHi: "₹10 लाख", link: "/franchise/10-lakh" },
 ];
 
 const stagger = {
