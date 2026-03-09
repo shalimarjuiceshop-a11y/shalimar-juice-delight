@@ -242,7 +242,7 @@ const JuicePourAnimation = () => {
       >
         <div className="relative">
           <img
-            src={pineappleJuiceGlass}
+            src={pineappleShakeGlass}
             alt="Fresh Pineapple Juice Glass"
             className="h-40 sm:h-52 md:h-60 lg:h-68 w-auto"
             style={{
