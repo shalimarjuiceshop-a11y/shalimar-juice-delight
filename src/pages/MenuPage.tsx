@@ -157,7 +157,7 @@ const MenuPage = () => {
               initial="hidden"
               animate="show"
               exit={{ opacity: 0, scale: 0.98, transition: { duration: 0.2 } }}
-              className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6"
+              className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-8"
             >
               {filteredDrinks.map((drink, index) => (
                 <motion.div
