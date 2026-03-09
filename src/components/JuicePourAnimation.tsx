@@ -155,8 +155,8 @@ const JuicePourAnimation = () => {
           y: phase === 0 ? [0, -8, 0] : 30,
         }}
         transition={{
-          opacity: { duration: 0.6, ease: smoothEase as unknown as number[] },
-          scale: { duration: 0.7, ease: smoothEase as unknown as number[] },
+          opacity: { duration: 0.6, ease: smoothEase },
+          scale: { duration: 0.7, ease: smoothEase },
           rotate: { duration: 4, repeat: Infinity, ease: "easeInOut" },
           y: { duration: 3, repeat: phase === 0 ? Infinity : 0, ease: "easeInOut" },
         }}
