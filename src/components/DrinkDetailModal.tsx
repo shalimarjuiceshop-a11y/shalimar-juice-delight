@@ -92,55 +92,29 @@ const DrinkDetailModal = ({ drink, onClose, onOrder }: DrinkDetailModalProps) =>
               </div>
 
               {/* Ingredients */}
-              {details && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 }}
-                  className="mb-5"
-                >
-                  <h4 className="font-display text-xs font-bold uppercase tracking-widest text-muted-foreground mb-2">
-                    Ingredients
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {details.ingredients.map((ing, i) => (
-                      <motion.span
-                        key={ing}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 0.25 + i * 0.05 }}
-                        className="px-3 py-1.5 rounded-full bg-muted text-foreground font-body text-xs font-semibold"
-                      >
-                        {ing}
-                      </motion.span>
-                    ))}
-                  </div>
-                </motion.div>
-              )}
-
-              {/* Nutrition */}
-              {details && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 }}
-                  className="grid grid-cols-3 gap-3 mb-6"
-                >
-                  {details.nutrition.map((item, i) => (
-                    <motion.div
-                      key={item.label}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.35 + i * 0.05 }}
-                      className="bg-muted/60 rounded-xl p-3 text-center"
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="mb-6"
+              >
+                <h4 className="font-display text-xs font-bold uppercase tracking-widest text-muted-foreground mb-2">
+                  Ingredients
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {ingredients.map((ing, i) => (
+                    <motion.span
+                      key={ing}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.25 + i * 0.05 }}
+                      className="px-3 py-1.5 rounded-full bg-muted text-foreground font-body text-xs font-semibold"
                     >
-                      <span className="text-primary mb-1 block">{item.icon}</span>
-                      <span className="font-display text-sm font-black text-foreground block">{item.value}</span>
-                      <span className="font-body text-[10px] text-muted-foreground">{item.label}</span>
-                    </motion.div>
+                      {ing}
+                    </motion.span>
                   ))}
-                </motion.div>
-              )}
+                </div>
+              </motion.div>
 
               {/* Price & Actions */}
               <div className="flex items-center gap-3">
