@@ -6,16 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import FloatingWhatsApp from "./components/FloatingWhatsApp";
-import Index from "./pages/Index";
-import MenuPage from "./pages/MenuPage";
-import FranchisePage from "./pages/FranchisePage";
-import Franchise3LakhPage from "./pages/Franchise3LakhPage";
-import Franchise5LakhPage from "./pages/Franchise5LakhPage";
-import Franchise7LakhPage from "./pages/Franchise7LakhPage";
-import Franchise10LakhPage from "./pages/Franchise10LakhPage";
-import GalleryPage from "./pages/GalleryPage";
-import ContactPage from "./pages/ContactPage";
-import NotFound from "./pages/NotFound";
+import AnimatedRoutes from "./components/AnimatedRoutes";
 
 const queryClient = new QueryClient();
 
