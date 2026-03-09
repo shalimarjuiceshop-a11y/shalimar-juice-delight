@@ -4,7 +4,7 @@ import { Star, Sparkles, CupSoda, Citrus, Nut, Crown, ShoppingBag } from "lucide
 import { drinks, categories, type DrinkCategory, type Drink } from "@/data/menuData";
 import FlavorQuiz from "@/components/FlavorQuiz";
 import TiltCard from "@/components/TiltCard";
-import DrinkDetailModal from "@/components/DrinkDetailModal";
+
 
 const smoothEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 const springBounce = { type: "spring" as const, stiffness: 400, damping: 25 };
@@ -32,7 +32,7 @@ const categoryIcons: Record<DrinkCategory, React.ReactNode> = {
 
 const MenuPage = () => {
   const [activeCategory, setActiveCategory] = useState<DrinkCategory>("juices");
-  const [selectedDrink, setSelectedDrink] = useState<Drink | null>(null);
+  
   const filteredDrinks = drinks.filter((d) => d.category === activeCategory);
 
   const handleWhatsAppOrder = (drinkName: string, price: number) => {
@@ -166,7 +166,6 @@ const MenuPage = () => {
               {filteredDrinks.map((drink, index) => (
                 <TiltCard
                   key={drink.id}
-                  onClick={() => setSelectedDrink(drink)}
                   className="group"
                 >
                   <motion.div
@@ -333,12 +332,6 @@ const MenuPage = () => {
           </motion.div>
         </div>
       </section>
-      {/* Drink Detail Modal */}
-      <DrinkDetailModal
-        drink={selectedDrink}
-        onClose={() => setSelectedDrink(null)}
-        onOrder={handleWhatsAppOrder}
-      />
     </main>
   );
 };
