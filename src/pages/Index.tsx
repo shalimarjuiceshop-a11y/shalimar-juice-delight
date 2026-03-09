@@ -224,6 +224,9 @@ const Index = () => {
 
       {/* Shop Locator Section */}
       <ShopLocator />
+
+      {/* QR Code Menu Section */}
+      <QRCodeMenu />
     </main>
   );
 };
