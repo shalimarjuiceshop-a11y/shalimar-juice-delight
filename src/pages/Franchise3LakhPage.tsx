@@ -116,7 +116,7 @@ const Franchise3LakhPage = () => {
         <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(var(--pineapple-gold)) 1px, transparent 0)', backgroundSize: '48px 48px' }} />
         <div className="container mx-auto px-4 relative z-10">
           <div className="flex items-center justify-between mb-5">
-            <Link to="/franchise" className="inline-flex items-center gap-2 font-body text-sm transition-colors hover:opacity-80" style={{ color: "hsl(45 30% 65%)" }}>
+            <Link to="/franchise" className="inline-flex items-center gap-2 font-body text-sm transition-colors hover:opacity-80 text-header-accent">
               <ArrowLeft size={16} /> {t.back}
             </Link>
             <div className="flex gap-1">
