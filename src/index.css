@@ -45,6 +45,16 @@
     --shop-dark: 30 15% 12%;
     --shop-warm: 38 60% 20%;
 
+    --whatsapp: 142 70% 49%;
+    --whatsapp-foreground: 0 0% 100%;
+    --status-open: 142 71% 45%;
+    --status-closed: 0 84% 60%;
+    --footer-text: 45 20% 60%;
+    --footer-heading: 45 60% 75%;
+    --header-light: 45 100% 96%;
+    --header-muted: 45 30% 70%;
+    --header-accent: 45 30% 65%;
+
     --font-display: 'Inter', system-ui, sans-serif;
     --font-body: 'Inter', system-ui, sans-serif;
 
