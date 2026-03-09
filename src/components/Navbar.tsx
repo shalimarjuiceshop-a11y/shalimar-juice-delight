@@ -54,15 +54,15 @@ const Navbar = () => {
               to={link.to}
               className={`relative font-body text-sm font-medium px-4 py-2 rounded-full transition-all duration-200 ${
                 location.pathname === link.to
-                  ? "text-foreground bg-muted"
-                  : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                  ? "text-primary-foreground bg-primary/20 backdrop-blur-sm"
+                  : "text-header-muted hover:text-cream hover:bg-white/10"
               }`}
             >
               {link.label}
               {location.pathname === link.to && (
                 <motion.div
                   layoutId="nav-indicator"
-                  className="absolute inset-0 bg-muted rounded-full -z-10"
+                  className="absolute inset-0 bg-primary/20 backdrop-blur-sm rounded-full -z-10 border border-primary/30"
                   transition={{ type: "spring", stiffness: 350, damping: 30 }}
                 />
               )}
@@ -109,8 +109,8 @@ const Navbar = () => {
                     onClick={() => setOpen(false)}
                     className={`block font-body text-sm font-medium px-4 py-2.5 rounded-lg transition-colors ${
                       location.pathname === link.to
-                        ? "bg-muted text-foreground"
-                        : "text-muted-foreground hover:bg-muted/50 hover:text-foreground"
+                        ? "bg-primary/15 text-primary font-semibold"
+                        : "text-foreground/70 hover:bg-muted hover:text-foreground"
                     }`}
                   >
                     {link.label}
