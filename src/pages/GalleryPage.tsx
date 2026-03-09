@@ -277,6 +277,7 @@ const GalleryPage = () => {
         className="text-center font-body text-sm text-muted-foreground pb-12"
       >
         More content coming soon! 📸🎬
+      </motion.p>
 
       {/* Lightbox */}
       <AnimatePresence>
