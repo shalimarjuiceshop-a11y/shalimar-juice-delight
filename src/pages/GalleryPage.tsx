@@ -223,33 +223,33 @@ const GalleryPage = () => {
             </motion.p>
           </motion.div>
 
-          {/* Instagram Embed Grid */}
+          {/* Instagram CTA */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: smoothEase }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto"
+            className="max-w-2xl mx-auto"
           >
-            {instagramPosts.map((postUrl, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
-                className="card-premium overflow-hidden"
-              >
-                <iframe
-                  src={`${postUrl}embed`}
-                  className="w-full border-0"
-                  style={{ minHeight: "480px" }}
-                  loading="lazy"
-                  allowTransparency
-                  title={`Instagram post ${i + 1}`}
-                />
-              </motion.div>
-            ))}
+            <a
+              href="https://www.instagram.com/shalimarjuiceshop/"
+              target="_blank"
+              rel="noreferrer"
+              className="group card-premium block overflow-hidden hover:shadow-xl transition-all duration-300"
+            >
+              <div className="p-8 md:p-12 text-center space-y-4">
+                <div className="w-20 h-20 mx-auto rounded-full bg-gradient-to-tr from-pink-500 via-purple-500 to-orange-400 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <Instagram size={36} className="text-white" />
+                </div>
+                <h3 className="font-display text-2xl font-extrabold text-foreground">@shalimarjuiceshop</h3>
+                <p className="font-body text-sm text-muted-foreground max-w-sm mx-auto">
+                  Fresh juice photos, daily specials, behind-the-scenes reels aur bahut kuch! 🍍🥤
+                </p>
+                <div className="inline-flex items-center gap-2 text-primary font-body text-sm font-bold group-hover:gap-3 transition-all duration-300">
+                  Visit our Instagram <ExternalLink size={14} />
+                </div>
+              </div>
+            </a>
           </motion.div>
 
           <motion.div
