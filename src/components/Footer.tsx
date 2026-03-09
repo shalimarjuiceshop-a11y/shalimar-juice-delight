@@ -27,7 +27,7 @@ const Footer = () => (
             href="https://www.instagram.com/shalimarjuiceshop/"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full font-body font-medium text-xs transition-colors bg-primary/10 text-[hsl(var(--footer-heading))]"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full font-body font-medium text-xs transition-colors bg-primary/10 text-footer-heading hover:bg-primary/20"
           >
             <Instagram size={14} strokeWidth={2} /> Follow on Instagram
           </a>
