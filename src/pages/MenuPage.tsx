@@ -63,14 +63,14 @@ const MenuPage = () => {
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ type: "spring", stiffness: 400, damping: 20 }}
-                className={`relative font-body text-sm font-semibold px-6 py-2.5 rounded-full transition-all duration-300 ${
+                className={`relative font-body text-sm font-semibold px-5 md:px-6 py-2.5 rounded-full transition-all duration-300 inline-flex items-center gap-2 ${
                   activeCategory === cat.key
                     ? "bg-primary text-primary-foreground glow-gold-soft"
                     : "text-muted-foreground hover:text-foreground hover:bg-muted"
                 }`}
               >
-                {cat.label}
-                <span className={`ml-1.5 text-xs font-bold ${activeCategory === cat.key ? "opacity-90" : "opacity-50"}`}>
+                <span>{cat.label}</span>
+                <span className={`text-[11px] font-bold px-2 py-0.5 rounded-full ${activeCategory === cat.key ? "bg-primary-foreground/15 text-primary-foreground" : "bg-muted text-foreground"}`}>
                   {cat.price}
                 </span>
               </motion.button>
