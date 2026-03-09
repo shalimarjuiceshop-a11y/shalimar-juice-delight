@@ -62,8 +62,7 @@ const Index = () => {
 
             <motion.h1
               variants={fadeUp}
-              className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight mb-6"
-              style={{ color: "hsl(45 100% 96%)" }}
+              className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight mb-6 text-header-light"
             >
               Fresh <span className="text-gradient-gold">Pineapple Juice</span>
               <br />
