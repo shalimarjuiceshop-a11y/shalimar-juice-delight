@@ -127,9 +127,9 @@ const Franchise3LakhPage = () => {
                   className={`font-body text-xs font-semibold px-5 py-2 rounded-full transition-all duration-200 ${
                     lang === l
                       ? "bg-primary text-primary-foreground shadow-pineapple"
-                      : "hover:bg-accent/10"
+                      : "text-header-accent hover:bg-accent/10"
                   }`}
-                  style={lang === l ? {} : { color: "hsl(45 30% 65%)" }}
+                >
                 >
                   {l === "hinglish" ? "English" : "हिंदी"}
                 </button>
