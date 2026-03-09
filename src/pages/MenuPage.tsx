@@ -86,12 +86,11 @@ const MenuPage = () => {
             {/* Quick Stats */}
             <motion.div variants={fadeUp} className="flex justify-center gap-6 md:gap-10 mt-8">
               {[
-                { label: "Drinks", value: `${drinks.length}+` },
-                { label: "Years", value: "25+" },
-                { label: "Happy Customers", value: "1L+" },
+                { label: "Menu Items", value: `${drinks.length}`, icon: "🍹" },
+                { label: "Categories", value: `${categories.length}`, icon: "📋" },
               ].map((stat) => (
                 <div key={stat.label} className="text-center">
-                  <p className="font-display text-2xl md:text-3xl font-black text-primary">{stat.value}</p>
+                  <p className="font-display text-2xl md:text-3xl font-black text-primary">{stat.icon} {stat.value}</p>
                   <p className="font-body text-[10px] md:text-xs uppercase tracking-wider mt-1" style={{ color: "hsl(45 30% 60%)" }}>{stat.label}</p>
                 </div>
               ))}
