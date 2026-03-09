@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Flame, Crown } from "lucide-react";
+import { X, ShoppingBag, Crown } from "lucide-react";
 import type { Drink } from "@/data/menuData";
 
 const smoothEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
@@ -129,9 +129,9 @@ const DrinkDetailModal = ({ drink, onClose, onOrder }: DrinkDetailModalProps) =>
                   onClick={() => onOrder(drink.name, drink.price)}
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
-                  className="flex-1 flex items-center justify-center gap-2 bg-leaf text-white font-body text-sm font-bold py-3.5 rounded-2xl hover:brightness-110 transition-all"
+                  className="flex-1 flex items-center justify-center gap-2 bg-whatsapp text-whatsapp-foreground font-body text-sm font-bold py-3.5 rounded-2xl hover:brightness-110 transition-all"
                 >
-                  <Flame size={16} /> Order on WhatsApp
+                  <ShoppingBag size={16} /> Order on WhatsApp
                 </motion.button>
               </div>
             </div>

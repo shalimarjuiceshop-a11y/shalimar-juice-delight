@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Star, Sparkles, CupSoda, Citrus, Nut, Crown, Flame } from "lucide-react";
+import { Star, Sparkles, CupSoda, Citrus, Nut, Crown, ShoppingBag } from "lucide-react";
 import { drinks, categories, type DrinkCategory, type Drink } from "@/data/menuData";
 import FlavorQuiz from "@/components/FlavorQuiz";
 import TiltCard from "@/components/TiltCard";
@@ -230,9 +230,9 @@ const MenuPage = () => {
                           onClick={(e) => { e.stopPropagation(); handleWhatsAppOrder(drink.name, drink.price); }}
                           whileHover={{ scale: 1.03 }}
                           whileTap={{ scale: 0.97 }}
-                          className="flex items-center justify-center gap-1.5 bg-leaf text-white font-body text-xs font-bold px-4 py-2 rounded-xl hover:brightness-110 transition-all"
+                          className="flex items-center justify-center gap-1.5 bg-whatsapp text-whatsapp-foreground font-body text-xs font-bold px-4 py-2 rounded-xl hover:brightness-110 transition-all"
                         >
-                          <Flame size={12} /> Order Now
+                          <ShoppingBag size={12} /> Order Now
                         </motion.button>
                       </div>
                     </div>
@@ -326,9 +326,9 @@ const MenuPage = () => {
               rel="noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-2 bg-leaf text-white font-body font-bold text-base px-8 py-4 rounded-2xl hover:brightness-110 transition-all shadow-lg"
+              className="inline-flex items-center gap-2 bg-whatsapp text-whatsapp-foreground font-body font-bold text-base px-8 py-4 rounded-2xl hover:brightness-110 transition-all shadow-lg"
             >
-              <Flame size={18} /> Order on WhatsApp
+              <ShoppingBag size={18} /> Order on WhatsApp
             </motion.a>
           </motion.div>
         </div>

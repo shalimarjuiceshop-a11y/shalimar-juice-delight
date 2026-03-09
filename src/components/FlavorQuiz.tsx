@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, RotateCcw, ArrowRight, Flame } from "lucide-react";
+import { Sparkles, RotateCcw, ArrowRight, ShoppingBag } from "lucide-react";
 import { drinks } from "@/data/menuData";
 
 const smoothEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
@@ -263,9 +263,9 @@ const FlavorQuiz = () => {
                       onClick={handleWhatsAppOrder}
                       whileHover={{ scale: 1.03 }}
                       whileTap={{ scale: 0.97 }}
-                      className="flex items-center justify-center gap-1.5 bg-leaf text-white font-body text-sm font-bold px-6 py-3 rounded-xl hover:brightness-110 transition-all"
+                      className="flex items-center justify-center gap-1.5 bg-whatsapp text-whatsapp-foreground font-body text-sm font-bold px-6 py-3 rounded-xl hover:brightness-110 transition-all"
                     >
-                      <Flame size={14} /> Order on WhatsApp
+                      <ShoppingBag size={14} /> Order on WhatsApp
                     </motion.button>
                     <motion.button
                       onClick={reset}

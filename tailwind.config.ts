@@ -61,6 +61,14 @@ export default {
           light: "hsl(var(--leaf-light))",
         },
         cream: "hsl(var(--cream))",
+        whatsapp: {
+          DEFAULT: "hsl(var(--whatsapp))",
+          foreground: "hsl(var(--whatsapp-foreground))",
+        },
+        status: {
+          open: "hsl(var(--status-open))",
+          closed: "hsl(var(--status-closed))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
