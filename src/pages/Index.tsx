@@ -55,16 +55,14 @@ const Index = () => {
           >
             <motion.span
               variants={fadeUp}
-              className="inline-block font-body text-xs font-semibold tracking-[0.2em] uppercase px-4 py-1.5 rounded-full mb-6 border border-accent/30"
-              style={{ color: "hsl(45 60% 70%)", background: "hsl(45 100% 50% / 0.08)" }}
+              className="inline-block font-body text-xs font-semibold tracking-[0.2em] uppercase px-4 py-1.5 rounded-full mb-6 border border-accent/30 text-header-muted bg-primary/10"
             >
               Since Generations
             </motion.span>
 
             <motion.h1
               variants={fadeUp}
-              className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight mb-6"
-              style={{ color: "hsl(45 100% 96%)" }}
+              className="font-display text-4xl md:text-5xl lg:text-6xl font-extrabold leading-[1.1] tracking-tight mb-6 text-header-light"
             >
               Fresh <span className="text-gradient-gold">Pineapple Juice</span>
               <br />
@@ -73,8 +71,7 @@ const Index = () => {
 
             <motion.p
               variants={fadeUp}
-              className="font-body text-base md:text-lg mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed"
-              style={{ color: "hsl(45 30% 70%)" }}
+              className="font-body text-base md:text-lg mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed text-header-muted"
             >
               Fresh fruit juices made daily at Shalimar Juice Shop. Experience the taste of real, natural pineapple goodness.
             </motion.p>
@@ -91,8 +88,7 @@ const Index = () => {
               </Link>
               <Link
                 to="/franchise"
-                className="inline-flex items-center gap-2 border font-body text-sm font-semibold px-7 py-3.5 rounded-full transition-all duration-300 hover:bg-accent/10"
-                style={{ borderColor: "hsl(40 60% 40%)", color: "hsl(45 80% 80%)" }}
+                className="inline-flex items-center gap-2 border border-header-accent font-body text-sm font-semibold px-7 py-3.5 rounded-full transition-all duration-300 hover:bg-accent/10 text-header-light"
               >
                 Get Franchise <Handshake size={16} />
               </Link>

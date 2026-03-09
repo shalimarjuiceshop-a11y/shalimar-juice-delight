@@ -69,6 +69,15 @@ export default {
           open: "hsl(var(--status-open))",
           closed: "hsl(var(--status-closed))",
         },
+        footer: {
+          text: "hsl(var(--footer-text))",
+          heading: "hsl(var(--footer-heading))",
+        },
+        header: {
+          light: "hsl(var(--header-light))",
+          muted: "hsl(var(--header-muted))",
+          accent: "hsl(var(--header-accent))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",

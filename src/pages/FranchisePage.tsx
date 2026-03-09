@@ -93,19 +93,18 @@ const FranchisePage = () => {
                 className={`font-body text-xs font-semibold px-5 py-2 rounded-full transition-all duration-200 ${
                   lang === l
                     ? "bg-primary text-primary-foreground shadow-pineapple"
-                    : "hover:bg-accent/10"
+                    : "text-header-accent hover:bg-accent/10"
                 }`}
-                style={lang === l ? {} : { color: "hsl(45 30% 65%)" }}
               >
                 {l === "hinglish" ? "English" : "हिंदी"}
               </button>
             ))}
           </div>
           <motion.div variants={stagger} initial="hidden" animate="show">
-            <motion.h1 variants={fadeUp} className="font-display text-4xl md:text-5xl font-extrabold tracking-tight" style={{ color: "hsl(45 100% 96%)" }}>
+            <motion.h1 variants={fadeUp} className="font-display text-4xl md:text-5xl font-extrabold tracking-tight text-header-light">
               {t.title}
             </motion.h1>
-            <motion.p variants={fadeUp} className="font-body text-base md:text-lg mt-3 max-w-lg mx-auto" style={{ color: "hsl(45 30% 70%)" }}>
+            <motion.p variants={fadeUp} className="font-body text-base md:text-lg mt-3 max-w-lg mx-auto text-header-muted">
               {t.subtitle}
             </motion.p>
           </motion.div>
@@ -113,7 +112,7 @@ const FranchisePage = () => {
       </section>
 
       {/* Pricing Cards */}
-      <section className="py-14 md:py-18">
+      <section className="py-14 md:py-20">
         <div className="container mx-auto px-4">
           <motion.h2
             initial={{ opacity: 0, y: 12 }}
