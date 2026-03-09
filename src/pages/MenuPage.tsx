@@ -184,8 +184,8 @@ const MenuPage = () => {
                   )}
 
                   {/* Image Container - Fixed size for consistency */}
-                  <div className="relative pt-6 pb-2 px-4">
-                    <div className="relative w-32 h-40 md:w-40 md:h-48 mx-auto flex items-center justify-center">
+                  <div className="relative pt-4 pb-2 px-3">
+                    <div className="relative h-36 md:h-44 mx-auto flex items-end justify-center">
                       {/* Glow behind image */}
                       <motion.div 
                         className="absolute inset-0 rounded-full bg-primary/10 scale-75 group-hover:scale-110 transition-transform duration-700"
@@ -195,10 +195,9 @@ const MenuPage = () => {
                       <motion.img
                         src={drink.image}
                         alt={drink.name}
-                        className="relative max-w-full max-h-full object-contain drop-shadow-lg"
-                        style={{ maxHeight: "100%", maxWidth: "100%" }}
+                        className="relative h-full w-auto object-contain drop-shadow-lg"
                         loading="lazy"
-                        whileHover={{ scale: 1.1, rotate: 2 }}
+                        whileHover={{ scale: 1.08 }}
                         transition={{ type: "spring", stiffness: 300 }}
                       />
                     </div>
