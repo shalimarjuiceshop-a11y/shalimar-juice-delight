@@ -184,8 +184,8 @@ const MenuPage = () => {
                     </motion.span>
                   )}
 
-                  {/* Image Container */}
-                  <div className="relative pt-8 pb-4 px-4">
+                  {/* Image Container - 3D Perspective */}
+                  <div className="relative pt-8 pb-4 px-4" style={{ perspective: "600px" }}>
                     <div className="relative w-36 h-36 md:w-44 md:h-44 lg:w-48 lg:h-48 mx-auto">
                       {/* Glow behind image */}
                       <motion.div 
