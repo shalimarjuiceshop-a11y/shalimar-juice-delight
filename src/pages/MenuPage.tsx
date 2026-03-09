@@ -82,7 +82,7 @@ const MenuPage = () => {
               </span>
             </motion.h1>
             
-            <motion.p variants={fadeUp} className="font-body text-base md:text-lg mt-4 max-w-lg mx-auto leading-relaxed" style={{ color: "hsl(45 40% 75%)" }}>
+            <motion.p variants={fadeUp} className="font-body text-base md:text-lg mt-4 max-w-lg mx-auto leading-relaxed text-header-muted">
               Fresh juices, creamy shakes & premium dry fruit specials — 
               <span className="text-primary font-semibold"> handcrafted daily</span> with real fruits.
             </motion.p>
