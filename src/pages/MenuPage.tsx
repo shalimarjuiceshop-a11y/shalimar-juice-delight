@@ -278,11 +278,11 @@ const MenuPage = () => {
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                     className="flex-shrink-0 w-40 md:w-48 bg-card rounded-2xl border border-border p-4 text-center hover:border-primary/30 hover:shadow-pineapple transition-all duration-300"
                   >
-                    <div className="relative">
+                    <div className="relative h-28 md:h-32 flex items-center justify-center">
                       <img
                         src={drink.image}
                         alt={drink.name}
-                        className="w-24 h-24 md:w-28 md:h-28 object-contain mx-auto mb-3 drop-shadow-md"
+                        className="max-w-full max-h-full object-contain mx-auto drop-shadow-md"
                         loading="lazy"
                       />
                     </div>
