@@ -38,15 +38,14 @@ const MenuPage = () => {
           >
             <motion.span
               variants={fadeUp}
-              className="inline-flex items-center gap-1.5 text-xs font-body font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full mb-5 border border-accent/30"
-              style={{ color: "hsl(45 60% 70%)", background: "hsl(45 100% 50% / 0.08)" }}
+              className="inline-flex items-center gap-1.5 text-xs font-body font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full mb-5 border border-primary/30 bg-primary/10 text-primary"
             >
               <Sparkles size={13} /> Fresh & Natural
             </motion.span>
-            <motion.h1 variants={fadeUp} className="font-display text-4xl md:text-5xl font-extrabold tracking-tight" style={{ color: "hsl(45 100% 96%)" }}>
+            <motion.h1 variants={fadeUp} className="font-display text-4xl md:text-5xl font-extrabold tracking-tight text-cream">
               Our <span className="text-gradient-gold">Menu</span>
             </motion.h1>
-            <motion.p variants={fadeUp} className="font-body text-base md:text-lg mt-3 max-w-md mx-auto" style={{ color: "hsl(45 30% 70%)" }}>
+            <motion.p variants={fadeUp} className="font-body text-base md:text-lg mt-3 max-w-md mx-auto text-pineapple-light">
               Fresh juices, shakes & more — handcrafted daily with real fruits.
             </motion.p>
           </motion.div>
@@ -64,14 +63,14 @@ const MenuPage = () => {
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ type: "spring", stiffness: 400, damping: 20 }}
-                className={`relative font-body text-sm font-semibold px-6 py-2.5 rounded-full transition-all duration-300 ${
+                className={`relative font-body text-sm font-semibold px-5 md:px-6 py-2.5 rounded-full transition-all duration-300 inline-flex items-center gap-2 ${
                   activeCategory === cat.key
                     ? "bg-primary text-primary-foreground glow-gold-soft"
                     : "text-muted-foreground hover:text-foreground hover:bg-muted"
                 }`}
               >
-                {cat.label}
-                <span className={`ml-1.5 text-xs font-bold ${activeCategory === cat.key ? "opacity-90" : "opacity-50"}`}>
+                <span>{cat.label}</span>
+                <span className={`text-[11px] font-bold px-2 py-0.5 rounded-full ${activeCategory === cat.key ? "bg-primary-foreground/15 text-primary-foreground" : "bg-muted text-foreground"}`}>
                   {cat.price}
                 </span>
               </motion.button>
@@ -113,15 +112,15 @@ const MenuPage = () => {
                       loading="lazy"
                     />
                   </div>
-                  <h3 className="font-display text-sm md:text-base font-bold text-foreground leading-snug">
+                  <h3 className="font-display text-base md:text-lg font-bold text-foreground leading-snug">
                     {drink.name}
                   </h3>
-                  <p className="font-body text-xs text-muted-foreground mt-1 mb-3 line-clamp-2 hidden md:block">
+                  <p className="font-body text-xs text-muted-foreground mt-1 mb-3 line-clamp-2">
                     {drink.description}
                   </p>
                   <div className="mt-auto flex flex-col items-center gap-2 pt-2">
-                    <span className="inline-block bg-primary text-primary-foreground font-display text-sm font-bold px-5 py-1.5 rounded-full glow-gold-soft">
-                      ₹{drink.price}
+                    <span className="inline-flex items-center gap-1.5 bg-primary text-primary-foreground font-display text-sm md:text-base font-bold px-5 py-1.5 rounded-full glow-gold-soft">
+                      ₹{drink.price} <span className="font-body text-[11px] font-semibold opacity-80">/ glass</span>
                     </span>
                   </div>
                 </motion.div>
