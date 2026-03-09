@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Star, Sparkles, CupSoda, Citrus, Nut, Crown, Flame } from "lucide-react";
 import { drinks, categories, type DrinkCategory } from "@/data/menuData";
+import FlavorQuiz from "@/components/FlavorQuiz";
 
 const smoothEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 const springBounce = { type: "spring" as const, stiffness: 400, damping: 25 };
@@ -183,8 +184,8 @@ const MenuPage = () => {
                     </motion.span>
                   )}
 
-                  {/* Image Container */}
-                  <div className="relative pt-8 pb-4 px-4">
+                  {/* Image Container - 3D Perspective */}
+                  <div className="relative pt-8 pb-4 px-4" style={{ perspective: "600px" }}>
                     <div className="relative w-36 h-36 md:w-44 md:h-44 lg:w-48 lg:h-48 mx-auto">
                       {/* Glow behind image */}
                       <motion.div 
@@ -192,13 +193,19 @@ const MenuPage = () => {
                         animate={{ opacity: [0.3, 0.6, 0.3] }}
                         transition={{ duration: 3, repeat: Infinity }}
                       />
-                      <motion.img
+                        <motion.img
                         src={drink.image}
                         alt={drink.name}
                         className="relative w-full h-full object-contain drop-shadow-xl"
                         loading="lazy"
-                        whileHover={{ scale: 1.1, rotate: 2 }}
-                        transition={{ type: "spring", stiffness: 300 }}
+                        style={{ transformStyle: "preserve-3d" }}
+                        whileHover={{ 
+                          scale: 1.1, 
+                          rotateY: 15, 
+                          rotateX: -8,
+                          filter: "drop-shadow(8px 16px 24px hsl(45 100% 51% / 0.3))"
+                        }}
+                        transition={{ type: "spring", stiffness: 200, damping: 15 }}
                       />
                     </div>
                   </div>
@@ -296,6 +303,9 @@ const MenuPage = () => {
           </div>
         </div>
       </section>
+
+      {/* Flavor Quiz */}
+      <FlavorQuiz />
 
       {/* CTA Section */}
       <section className="py-16 bg-page-header relative overflow-hidden">
