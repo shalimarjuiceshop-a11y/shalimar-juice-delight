@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, RotateCcw, ArrowRight, Flame } from "lucide-react";
+import { Sparkles, RotateCcw, ArrowRight, ShoppingBag } from "lucide-react";
 import { drinks } from "@/data/menuData";
 
 const smoothEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
