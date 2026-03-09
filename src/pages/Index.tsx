@@ -220,6 +220,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Shop Locator Section */}
+      <ShopLocator />
     </main>
   );
 };
