@@ -83,15 +83,13 @@ const MenuPage = () => {
               <span className="text-primary font-semibold"> handcrafted daily</span> with real fruits.
             </motion.p>
 
-            {/* Quick Stats */}
-            <motion.div variants={fadeUp} className="flex justify-center gap-6 md:gap-10 mt-8">
-              {[
-                { label: "Menu Items", value: `${drinks.length}`, icon: "🍹" },
-                { label: "Categories", value: `${categories.length}`, icon: "📋" },
-              ].map((stat) => (
-                <div key={stat.label} className="text-center">
-                  <p className="font-display text-2xl md:text-3xl font-black text-primary">{stat.icon} {stat.value}</p>
-                  <p className="font-body text-[10px] md:text-xs uppercase tracking-wider mt-1" style={{ color: "hsl(45 30% 60%)" }}>{stat.label}</p>
+            {/* Category Quick View */}
+            <motion.div variants={fadeUp} className="flex justify-center gap-4 md:gap-8 mt-8 flex-wrap">
+              {categories.map((cat) => (
+                <div key={cat.key} className="flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10">
+                  <span className="text-primary">{categoryIcons[cat.key]}</span>
+                  <span className="font-display text-sm font-bold text-cream">{cat.label}</span>
+                  <span className="font-display text-sm font-black text-primary">{cat.price}</span>
                 </div>
               ))}
             </motion.div>
