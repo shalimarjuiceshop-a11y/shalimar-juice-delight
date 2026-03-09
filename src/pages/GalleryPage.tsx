@@ -23,10 +23,8 @@ const photos = [
   { src: shopPhoto3, alt: "Shalimar Juice Shop - Fresh Juice Counter", caption: "Fresh Juice Counter" },
 ];
 
-const instagramPosts = [
-  "https://www.instagram.com/p/shalimarjuiceshop/",
-  "https://www.instagram.com/reel/shalimarjuiceshop/",
-  "https://www.instagram.com/p/shalimarjuiceshop2/",
+const instagramReels = [
+  "https://www.instagram.com/reel/DVmkM40jLBH/",
 ];
 
 const reelVideos = [
