@@ -29,7 +29,6 @@ const categoryIcons: Record<DrinkCategory, React.ReactNode> = {
 
 const MenuPage = () => {
   const [activeCategory, setActiveCategory] = useState<DrinkCategory>("juices");
-  const [activeCategory, setActiveCategory] = useState<DrinkCategory>("juices");
   const filteredDrinks = drinks.filter((d) => d.category === activeCategory);
 
   const handleWhatsAppOrder = (drinkName: string, price: number) => {
