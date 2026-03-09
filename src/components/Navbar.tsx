@@ -32,13 +32,14 @@ const Navbar = () => {
             transition={{ type: "spring", stiffness: 300 }}
           />
           <div className="leading-none">
-            <h1 className="font-display text-lg font-bold tracking-tight text-foreground">
+            <h1 className="font-display text-lg font-bold tracking-tight text-cream">
               Shalimar Juice
             </h1>
-            <p className="block text-xs font-medium mt-1 text-muted-foreground" 
+            <p className="block text-xs font-medium mt-1" 
                dir="rtl" 
                style={{ 
-                 fontFamily: "'Noto Nastaliq Urdu', serif"
+                 fontFamily: "'Noto Nastaliq Urdu', serif",
+                 color: "hsl(45 80% 75%)"
                }}>
               شالیمار جوس
             </p>
