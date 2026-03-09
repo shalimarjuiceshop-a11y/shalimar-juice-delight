@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Star, Sparkles, CupSoda, Citrus, Nut, Crown, Flame } from "lucide-react";
+import { Star, Sparkles, CupSoda, Citrus, Nut, Crown, ShoppingBag } from "lucide-react";
 import { drinks, categories, type DrinkCategory, type Drink } from "@/data/menuData";
 import FlavorQuiz from "@/components/FlavorQuiz";
 import TiltCard from "@/components/TiltCard";
