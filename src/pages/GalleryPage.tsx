@@ -23,9 +23,6 @@ const photos = [
   { src: shopPhoto3, alt: "Shalimar Juice Shop - Fresh Juice Counter", caption: "Fresh Juice Counter" },
 ];
 
-const instagramReels = [
-  "https://www.instagram.com/reel/DVmkM40jLBH/",
-];
 
 const reelVideos = [
   { title: "Pineapple Juice Making", thumbnail: "https://images.unsplash.com/photo-1589820296156-2454bb8a6ad1?w=400&h=700&fit=crop", url: "https://www.instagram.com/shalimarjuiceshop/" },
