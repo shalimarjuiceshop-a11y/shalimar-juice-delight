@@ -193,13 +193,19 @@ const MenuPage = () => {
                         animate={{ opacity: [0.3, 0.6, 0.3] }}
                         transition={{ duration: 3, repeat: Infinity }}
                       />
-                      <motion.img
+                        <motion.img
                         src={drink.image}
                         alt={drink.name}
                         className="relative w-full h-full object-contain drop-shadow-xl"
                         loading="lazy"
-                        whileHover={{ scale: 1.1, rotate: 2 }}
-                        transition={{ type: "spring", stiffness: 300 }}
+                        style={{ transformStyle: "preserve-3d" }}
+                        whileHover={{ 
+                          scale: 1.1, 
+                          rotateY: 15, 
+                          rotateX: -8,
+                          filter: "drop-shadow(8px 16px 24px hsl(45 100% 51% / 0.3))"
+                        }}
+                        transition={{ type: "spring", stiffness: 200, damping: 15 }}
                       />
                     </div>
                   </div>
