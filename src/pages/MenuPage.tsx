@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Star, Sparkles, GlassWater, Cherry, Leaf, Crown, Flame } from "lucide-react";
+import { Star, Sparkles, CupSoda, Citrus, Nut, Crown, Flame } from "lucide-react";
 import { drinks, categories, type DrinkCategory } from "@/data/menuData";
 
 const smoothEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
@@ -22,9 +22,9 @@ const scaleIn = {
 };
 
 const categoryIcons: Record<DrinkCategory, React.ReactNode> = {
-  shakes: <Cherry size={16} />,
-  juices: <GlassWater size={16} />,
-  dryfruit: <Leaf size={16} />,
+  shakes: <CupSoda size={16} />,
+  juices: <Citrus size={16} />,
+  dryfruit: <Nut size={16} />,
 };
 
 const MenuPage = () => {
