@@ -183,9 +183,9 @@ const MenuPage = () => {
                     </motion.span>
                   )}
 
-                  {/* Image Container - Fixed size for consistency */}
-                  <div className="relative pt-4 pb-2 px-3">
-                    <div className="relative h-36 md:h-44 mx-auto flex items-end justify-center">
+                  {/* Image Container */}
+                  <div className="relative pt-6 pb-2 px-4">
+                    <div className="relative w-28 h-28 md:w-36 md:h-36 mx-auto">
                       {/* Glow behind image */}
                       <motion.div 
                         className="absolute inset-0 rounded-full bg-primary/10 scale-75 group-hover:scale-110 transition-transform duration-700"
@@ -195,9 +195,9 @@ const MenuPage = () => {
                       <motion.img
                         src={drink.image}
                         alt={drink.name}
-                        className="relative h-full w-auto object-contain drop-shadow-lg"
+                        className="relative w-full h-full object-contain drop-shadow-lg"
                         loading="lazy"
-                        whileHover={{ scale: 1.08 }}
+                        whileHover={{ scale: 1.15, rotate: 3 }}
                         transition={{ type: "spring", stiffness: 300 }}
                       />
                     </div>
@@ -277,11 +277,11 @@ const MenuPage = () => {
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                     className="flex-shrink-0 w-40 md:w-48 bg-card rounded-2xl border border-border p-4 text-center hover:border-primary/30 hover:shadow-pineapple transition-all duration-300"
                   >
-                    <div className="relative h-28 md:h-32 flex items-center justify-center">
+                    <div className="relative">
                       <img
                         src={drink.image}
                         alt={drink.name}
-                        className="max-w-full max-h-full object-contain mx-auto drop-shadow-md"
+                        className="w-24 h-24 md:w-28 md:h-28 object-contain mx-auto mb-3 drop-shadow-md"
                         loading="lazy"
                       />
                     </div>
