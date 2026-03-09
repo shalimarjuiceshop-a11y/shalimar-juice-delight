@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Star, Sparkles, CupSoda, Citrus, Nut, Crown, Flame } from "lucide-react";
-import { drinks, categories, type DrinkCategory } from "@/data/menuData";
+import { drinks, categories, type DrinkCategory, type Drink } from "@/data/menuData";
 import FlavorQuiz from "@/components/FlavorQuiz";
+import TiltCard from "@/components/TiltCard";
+import DrinkDetailModal from "@/components/DrinkDetailModal";
 
 const smoothEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 const springBounce = { type: "spring" as const, stiffness: 400, damping: 25 };
@@ -30,6 +32,7 @@ const categoryIcons: Record<DrinkCategory, React.ReactNode> = {
 
 const MenuPage = () => {
   const [activeCategory, setActiveCategory] = useState<DrinkCategory>("juices");
+  const [selectedDrink, setSelectedDrink] = useState<Drink | null>(null);
   const filteredDrinks = drinks.filter((d) => d.category === activeCategory);
 
   const handleWhatsAppOrder = (drinkName: string, price: number) => {
@@ -161,85 +164,80 @@ const MenuPage = () => {
               className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-8"
             >
               {filteredDrinks.map((drink, index) => (
-                <motion.div
+                <TiltCard
                   key={drink.id}
-                  variants={scaleIn}
-                  whileHover={{ y: -8, transition: { duration: 0.3, ease: "easeOut" } }}
-                  className="group relative bg-card rounded-3xl border border-border overflow-hidden transition-all duration-500 hover:border-primary/40 hover:shadow-pineapple"
+                  onClick={() => setSelectedDrink(drink)}
+                  className="group"
                 >
-                  {/* Card Glow Effect */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10" />
-                  </div>
-
-                  {/* Badge */}
-                  {drink.highlight && (
-                    <motion.span 
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ delay: index * 0.1, type: "spring" }}
-                      className="absolute top-3 right-3 z-10 inline-flex items-center gap-1 bg-primary text-primary-foreground font-body text-[9px] font-black uppercase tracking-wider px-2.5 py-1.5 rounded-full shadow-lg"
-                    >
-                      <Crown size={10} className="fill-current" /> Bestseller
-                    </motion.span>
-                  )}
-
-                  {/* Image Container - 3D Perspective */}
-                  <div className="relative pt-8 pb-4 px-4" style={{ perspective: "600px" }}>
-                    <div className="relative w-36 h-36 md:w-44 md:h-44 lg:w-48 lg:h-48 mx-auto">
-                      {/* Glow behind image */}
-                      <motion.div 
-                        className="absolute inset-0 rounded-full bg-primary/10 scale-75 group-hover:scale-110 transition-transform duration-700"
-                        animate={{ opacity: [0.3, 0.6, 0.3] }}
-                        transition={{ duration: 3, repeat: Infinity }}
-                      />
-                        <motion.img
-                        src={drink.image}
-                        alt={drink.name}
-                        className="relative w-full h-full object-contain drop-shadow-xl"
-                        loading="lazy"
-                        style={{ transformStyle: "preserve-3d" }}
-                        whileHover={{ 
-                          scale: 1.1, 
-                          rotateY: 15, 
-                          rotateX: -8,
-                          filter: "drop-shadow(8px 16px 24px hsl(45 100% 51% / 0.3))"
-                        }}
-                        transition={{ type: "spring", stiffness: 200, damping: 15 }}
-                      />
+                  <motion.div
+                    variants={scaleIn}
+                    className="relative bg-card rounded-3xl border border-border overflow-hidden transition-all duration-500 hover:border-primary/40 hover:shadow-pineapple"
+                  >
+                    {/* Card Glow Effect */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10" />
                     </div>
-                  </div>
 
-                  {/* Content */}
-                  <div className="p-4 pt-3 text-center">
-                    <h3 className="font-display text-lg md:text-xl font-bold text-foreground leading-tight">
-                      {drink.name}
-                    </h3>
-                    <p className="font-body text-xs md:text-sm text-muted-foreground mt-2 line-clamp-2 min-h-[2.5em]">
-                      {drink.description}
-                    </p>
-
-                    {/* Price & Order */}
-                    <div className="mt-4 flex flex-col gap-2">
+                    {/* Badge */}
+                    {drink.highlight && (
                       <motion.span 
-                        className="inline-flex items-center justify-center gap-1 bg-primary text-primary-foreground font-display text-lg md:text-xl font-black px-5 py-2 rounded-2xl glow-gold-soft mx-auto"
-                        whileHover={{ scale: 1.05 }}
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ delay: index * 0.1, type: "spring" }}
+                        className="absolute top-3 right-3 z-10 inline-flex items-center gap-1 bg-primary text-primary-foreground font-body text-[9px] font-black uppercase tracking-wider px-2.5 py-1.5 rounded-full shadow-lg"
                       >
-                        ₹{drink.price}
-                        <span className="font-body text-[10px] font-semibold opacity-70 ml-0.5">/ glass</span>
+                        <Crown size={10} className="fill-current" /> Bestseller
                       </motion.span>
+                    )}
 
-                      <motion.button
-                        onClick={() => handleWhatsAppOrder(drink.name, drink.price)}
-                        whileHover={{ scale: 1.03 }}
-                        whileTap={{ scale: 0.97 }}
-                        className="flex items-center justify-center gap-1.5 bg-leaf text-white font-body text-xs font-bold px-4 py-2 rounded-xl hover:brightness-110 transition-all"
-                      >
-                        <Flame size={12} /> Order Now
-                      </motion.button>
+                    {/* Image Container */}
+                    <div className="relative pt-8 pb-4 px-4">
+                      <div className="relative w-36 h-36 md:w-44 md:h-44 lg:w-48 lg:h-48 mx-auto">
+                        <motion.div 
+                          className="absolute inset-0 rounded-full bg-primary/10 scale-75 group-hover:scale-110 transition-transform duration-700"
+                          animate={{ opacity: [0.3, 0.6, 0.3] }}
+                          transition={{ duration: 3, repeat: Infinity }}
+                        />
+                        <img
+                          src={drink.image}
+                          alt={drink.name}
+                          className="relative w-full h-full object-contain drop-shadow-xl transition-transform duration-300 group-hover:scale-105"
+                          loading="lazy"
+                        />
+                      </div>
                     </div>
-                  </div>
-                </motion.div>
+
+                    {/* Content */}
+                    <div className="p-4 pt-3 text-center">
+                      <h3 className="font-display text-lg md:text-xl font-bold text-foreground leading-tight">
+                        {drink.name}
+                      </h3>
+                      <p className="font-body text-xs md:text-sm text-muted-foreground mt-2 line-clamp-2 min-h-[2.5em]">
+                        {drink.description}
+                      </p>
+
+                      {/* Price & Order */}
+                      <div className="mt-4 flex flex-col gap-2">
+                        <motion.span 
+                          className="inline-flex items-center justify-center gap-1 bg-primary text-primary-foreground font-display text-lg md:text-xl font-black px-5 py-2 rounded-2xl glow-gold-soft mx-auto"
+                          whileHover={{ scale: 1.05 }}
+                        >
+                          ₹{drink.price}
+                          <span className="font-body text-[10px] font-semibold opacity-70 ml-0.5">/ glass</span>
+                        </motion.span>
+
+                        <motion.button
+                          onClick={(e) => { e.stopPropagation(); handleWhatsAppOrder(drink.name, drink.price); }}
+                          whileHover={{ scale: 1.03 }}
+                          whileTap={{ scale: 0.97 }}
+                          className="flex items-center justify-center gap-1.5 bg-leaf text-white font-body text-xs font-bold px-4 py-2 rounded-xl hover:brightness-110 transition-all"
+                        >
+                          <Flame size={12} /> Order Now
+                        </motion.button>
+                      </div>
+                    </div>
+                  </motion.div>
+                </TiltCard>
               ))}
             </motion.div>
           </AnimatePresence>
@@ -335,6 +333,12 @@ const MenuPage = () => {
           </motion.div>
         </div>
       </section>
+      {/* Drink Detail Modal */}
+      <DrinkDetailModal
+        drink={selectedDrink}
+        onClose={() => setSelectedDrink(null)}
+        onOrder={handleWhatsAppOrder}
+      />
     </main>
   );
 };
