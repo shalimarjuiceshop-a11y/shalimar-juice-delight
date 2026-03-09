@@ -71,8 +71,7 @@ const Index = () => {
 
             <motion.p
               variants={fadeUp}
-              className="font-body text-base md:text-lg mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed"
-              style={{ color: "hsl(45 30% 70%)" }}
+              className="font-body text-base md:text-lg mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed text-header-muted"
             >
               Fresh fruit juices made daily at Shalimar Juice Shop. Experience the taste of real, natural pineapple goodness.
             </motion.p>
