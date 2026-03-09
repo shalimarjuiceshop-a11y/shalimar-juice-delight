@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Star, Sparkles, CupSoda, Citrus, Nut, Crown, Flame } from "lucide-react";
+import { Star, Sparkles, CupSoda, Citrus, Nut, Crown, Flame, Plus } from "lucide-react";
 import { drinks, categories, type DrinkCategory } from "@/data/menuData";
+import { useCart } from "@/components/OrderCart";
 
 const smoothEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 const springBounce = { type: "spring" as const, stiffness: 400, damping: 25 };
