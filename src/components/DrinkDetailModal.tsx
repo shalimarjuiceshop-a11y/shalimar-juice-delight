@@ -4,33 +4,7 @@ import type { Drink } from "@/data/menuData";
 
 const smoothEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
-// Fun ingredient/nutrition data per category
-const categoryDetails: Record<string, { ingredients: string[]; nutrition: { label: string; value: string; icon: React.ReactNode }[] }> = {
-  juices: {
-    ingredients: ["Fresh Fruit", "Ice", "No Sugar Added", "No Preservatives"],
-    nutrition: [
-      { label: "Calories", value: "~80 kcal", icon: <Zap size={14} /> },
-      { label: "Vitamin C", value: "High", icon: <Droplets size={14} /> },
-      { label: "Natural", value: "100%", icon: <Leaf size={14} /> },
-    ],
-  },
-  shakes: {
-    ingredients: ["Fresh Fruit", "Full Cream Milk", "Ice", "Light Sugar"],
-    nutrition: [
-      { label: "Calories", value: "~150 kcal", icon: <Zap size={14} /> },
-      { label: "Protein", value: "5g", icon: <Droplets size={14} /> },
-      { label: "Natural", value: "100%", icon: <Leaf size={14} /> },
-    ],
-  },
-  dryfruit: {
-    ingredients: ["Milk", "Almonds", "Cashews", "Saffron", "Pistachios"],
-    nutrition: [
-      { label: "Calories", value: "~200 kcal", icon: <Zap size={14} /> },
-      { label: "Protein", value: "8g", icon: <Droplets size={14} /> },
-      { label: "Healthy Fats", value: "Rich", icon: <Leaf size={14} /> },
-    ],
-  },
-};
+const ingredients = ["Fresh Fruit", "Ice"];
 
 interface DrinkDetailModalProps {
   drink: Drink | null;
@@ -39,7 +13,6 @@ interface DrinkDetailModalProps {
 }
 
 const DrinkDetailModal = ({ drink, onClose, onOrder }: DrinkDetailModalProps) => {
-  const details = drink ? categoryDetails[drink.category] : null;
 
   return (
     <AnimatePresence>
