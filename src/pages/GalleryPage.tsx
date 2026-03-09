@@ -23,6 +23,19 @@ const photos = [
   { src: shopPhoto3, alt: "Shalimar Juice Shop - Fresh Juice Counter", caption: "Fresh Juice Counter" },
 ];
 
+const instagramPosts = [
+  "https://www.instagram.com/p/shalimarjuiceshop/",
+  "https://www.instagram.com/reel/shalimarjuiceshop/",
+  "https://www.instagram.com/p/shalimarjuiceshop2/",
+];
+
+const reelVideos = [
+  { title: "Pineapple Juice Making", thumbnail: "https://images.unsplash.com/photo-1589820296156-2454bb8a6ad1?w=400&h=700&fit=crop", url: "https://www.instagram.com/shalimarjuiceshop/" },
+  { title: "Fresh Apple Shake", thumbnail: "https://images.unsplash.com/photo-1622597467836-f3285f2131b8?w=400&h=700&fit=crop", url: "https://www.instagram.com/shalimarjuiceshop/" },
+  { title: "Mango Season Special", thumbnail: "https://images.unsplash.com/photo-1546173159-315724a31696?w=400&h=700&fit=crop", url: "https://www.instagram.com/shalimarjuiceshop/" },
+  { title: "Dry Fruit Milk Recipe", thumbnail: "https://images.unsplash.com/photo-1571934811356-5cc061b6821f?w=400&h=700&fit=crop", url: "https://www.instagram.com/shalimarjuiceshop/" },
+];
+
 const GalleryPage = () => {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
