@@ -230,10 +230,6 @@ const MenuPage = () => {
                           onClick={(e) => { e.stopPropagation(); handleWhatsAppOrder(drink.name, drink.price); }}
                           whileHover={{ scale: 1.03 }}
                           whileTap={{ scale: 0.97 }}
-                        <motion.button
-                          onClick={(e) => { e.stopPropagation(); handleWhatsAppOrder(drink.name, drink.price); }}
-                          whileHover={{ scale: 1.03 }}
-                          whileTap={{ scale: 0.97 }}
                           className="flex items-center justify-center gap-1.5 bg-whatsapp text-whatsapp-foreground font-body text-xs font-bold px-4 py-2 rounded-xl hover:brightness-110 transition-all"
                         >
                           <ShoppingBag size={12} /> Order Now
