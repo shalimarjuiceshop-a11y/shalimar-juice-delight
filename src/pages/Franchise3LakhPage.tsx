@@ -139,8 +139,7 @@ const Franchise3LakhPage = () => {
           <motion.h1
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            className="font-display text-3xl md:text-4xl font-extrabold tracking-tight"
-            style={{ color: "hsl(45 100% 96%)" }}
+            className="font-display text-3xl md:text-4xl font-extrabold tracking-tight text-header-light"
           >
             {t.title}
           </motion.h1>
