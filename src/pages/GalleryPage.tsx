@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Camera, X, ChevronLeft, ChevronRight, ZoomIn, Instagram, Play, ExternalLink } from "lucide-react";
 import shopPhoto1 from "@/assets/shop-photo-1.png";
