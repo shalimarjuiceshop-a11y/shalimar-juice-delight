@@ -230,9 +230,13 @@ const MenuPage = () => {
                           onClick={(e) => { e.stopPropagation(); handleWhatsAppOrder(drink.name, drink.price); }}
                           whileHover={{ scale: 1.03 }}
                           whileTap={{ scale: 0.97 }}
-                          className="flex items-center justify-center gap-1.5 bg-leaf text-white font-body text-xs font-bold px-4 py-2 rounded-xl hover:brightness-110 transition-all"
+                        <motion.button
+                          onClick={(e) => { e.stopPropagation(); handleWhatsAppOrder(drink.name, drink.price); }}
+                          whileHover={{ scale: 1.03 }}
+                          whileTap={{ scale: 0.97 }}
+                          className="flex items-center justify-center gap-1.5 bg-whatsapp text-whatsapp-foreground font-body text-xs font-bold px-4 py-2 rounded-xl hover:brightness-110 transition-all"
                         >
-                          <Flame size={12} /> Order Now
+                          <ShoppingBag size={12} /> Order Now
                         </motion.button>
                       </div>
                     </div>
