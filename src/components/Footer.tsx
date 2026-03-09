@@ -10,17 +10,17 @@ const Footer = () => (
           <div className="flex items-center gap-3 mb-4">
             <img src={sjsLogo} alt="SJS Logo" className="w-12 h-12 rounded-full object-cover border border-primary/30 shadow-md" />
             <div>
-              <h3 className="font-display text-xl font-bold text-cream">
+            <h3 className="font-display text-xl font-bold text-cream">
                 Shalimar Juice
               </h3>
-              <p className="text-sm font-medium mt-0.5 text-[hsl(var(--footer-heading))]" 
+              <p className="text-sm font-medium mt-0.5 text-footer-heading" 
                  dir="rtl" 
                  style={{ fontFamily: "'Noto Nastaliq Urdu', serif" }}>
                 شالیمار جوس
               </p>
             </div>
           </div>
-          <p className="text-sm font-body leading-relaxed mb-4 text-[hsl(var(--footer-text))]">
+          <p className="text-sm font-body leading-relaxed mb-4 text-footer-text">
             Fresh fruit juices made daily. Taste the real freshness of pineapple!
           </p>
           <a
