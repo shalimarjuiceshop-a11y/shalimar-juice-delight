@@ -17,7 +17,6 @@ const openingHours = [
 ];
 
 const ShopLocator = () => {
-  // Check if currently open (rough estimate)
   const now = new Date();
   const hour = now.getHours();
   const isCurrentlyOpen = hour >= 8 && hour < 22;
@@ -51,8 +50,8 @@ const ShopLocator = () => {
           >
             {/* Status Badge */}
             <motion.div variants={fadeUp} className="flex items-center gap-2">
-              <span className={`w-2.5 h-2.5 rounded-full ${isCurrentlyOpen ? 'bg-green-500 animate-pulse' : 'bg-red-500'}`} />
-              <span className={`font-body text-sm font-semibold ${isCurrentlyOpen ? 'text-green-600' : 'text-red-500'}`}>
+              <span className={`w-2.5 h-2.5 rounded-full ${isCurrentlyOpen ? 'bg-status-open animate-pulse' : 'bg-status-closed'}`} />
+              <span className={`font-body text-sm font-semibold ${isCurrentlyOpen ? 'text-status-open' : 'text-status-closed'}`}>
                 {isCurrentlyOpen ? 'Open Now' : 'Closed Now'}
               </span>
             </motion.div>
@@ -157,7 +156,6 @@ const ShopLocator = () => {
                 style={{ border: 0 }}
               />
             </div>
-            {/* Decorative gradient behind map */}
             <div className="absolute -inset-4 bg-primary/5 rounded-3xl blur-2xl -z-10" />
           </motion.div>
         </div>

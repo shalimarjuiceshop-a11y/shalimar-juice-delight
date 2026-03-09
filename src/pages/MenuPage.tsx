@@ -330,9 +330,9 @@ const MenuPage = () => {
               rel="noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-2 bg-leaf text-white font-body font-bold text-base px-8 py-4 rounded-2xl hover:brightness-110 transition-all shadow-lg"
+              className="inline-flex items-center gap-2 bg-whatsapp text-whatsapp-foreground font-body font-bold text-base px-8 py-4 rounded-2xl hover:brightness-110 transition-all shadow-lg"
             >
-              <Flame size={18} /> Order on WhatsApp
+              <ShoppingBag size={18} /> Order on WhatsApp
             </motion.a>
           </motion.div>
         </div>
