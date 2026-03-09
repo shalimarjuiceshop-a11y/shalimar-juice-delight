@@ -67,7 +67,6 @@ const GalleryPage = () => {
               variants={fadeUp}
               className="inline-flex items-center gap-1.5 text-xs font-body font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full mb-5 border border-accent/30 text-header-muted bg-primary/10"
             >
-            >
               <Camera size={13} /> Our Shop
             </motion.span>
             <motion.h1 variants={fadeUp} className="font-display text-4xl md:text-5xl font-extrabold tracking-tight text-header-light">

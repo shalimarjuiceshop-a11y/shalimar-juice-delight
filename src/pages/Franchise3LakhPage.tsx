@@ -130,7 +130,6 @@ const Franchise3LakhPage = () => {
                       : "text-header-accent hover:bg-accent/10"
                   }`}
                 >
-                >
                   {l === "hinglish" ? "English" : "हिंदी"}
                 </button>
               ))}

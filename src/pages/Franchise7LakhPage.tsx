@@ -150,11 +150,11 @@ const Franchise7LakhPage = () => {
   return (
     <main className="pt-20 min-h-screen bg-background">
       {/* Header */}
-      <section className="relative py-14 md:py-18 bg-page-header overflow-hidden">
+      <section className="relative py-14 md:py-20 bg-page-header overflow-hidden">
         <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(var(--pineapple-gold)) 1px, transparent 0)', backgroundSize: '48px 48px' }} />
         <div className="container mx-auto px-4 relative z-10">
           <div className="flex items-center justify-between mb-5">
-            <Link to="/franchise" className="inline-flex items-center gap-2 font-body text-sm transition-colors hover:opacity-80" style={{ color: "hsl(45 30% 65%)" }}>
+            <Link to="/franchise" className="inline-flex items-center gap-2 font-body text-sm transition-colors hover:opacity-80 text-header-accent">
               <ArrowLeft size={16} /> {t.back}
             </Link>
             <div className="flex gap-1">
@@ -165,9 +165,8 @@ const Franchise7LakhPage = () => {
                   className={`font-body text-xs font-semibold px-5 py-2 rounded-full transition-all duration-200 ${
                     lang === l
                       ? "bg-primary text-primary-foreground shadow-pineapple"
-                      : "hover:bg-accent/10"
+                      : "text-header-accent hover:bg-accent/10"
                   }`}
-                  style={lang === l ? {} : { color: "hsl(45 30% 65%)" }}
                 >
                   {l === "hinglish" ? "English" : "हिंदी"}
                 </button>
@@ -177,12 +176,11 @@ const Franchise7LakhPage = () => {
           <motion.h1
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            className="font-display text-3xl md:text-4xl font-extrabold tracking-tight"
-            style={{ color: "hsl(45 100% 96%)" }}
+            className="font-display text-3xl md:text-4xl font-extrabold tracking-tight text-header-light"
           >
             {t.title}
           </motion.h1>
-          <p className="font-body text-base mt-2" style={{ color: "hsl(45 30% 70%)" }}>{t.subtitle}</p>
+          <p className="font-body text-base mt-2 text-header-muted">{t.subtitle}</p>
         </div>
       </section>
 

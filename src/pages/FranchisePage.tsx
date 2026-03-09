@@ -96,7 +96,6 @@ const FranchisePage = () => {
                     : "text-header-accent hover:bg-accent/10"
                 }`}
               >
-              >
                 {l === "hinglish" ? "English" : "हिंदी"}
               </button>
             ))}
