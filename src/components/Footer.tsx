@@ -35,8 +35,8 @@ const Footer = () => (
 
         {/* Shop Info */}
         <div>
-          <h4 className="font-display text-sm font-bold uppercase tracking-wider mb-4 text-[hsl(var(--footer-heading))]">Shop Info</h4>
-          <div className="space-y-3 text-sm font-body text-[hsl(var(--footer-text))]">
+          <h4 className="font-display text-sm font-bold uppercase tracking-wider mb-4 text-footer-heading">Shop Info</h4>
+          <div className="space-y-3 text-sm font-body text-footer-text">
             <p className="flex items-start gap-2.5"><MapPin size={14} className="mt-0.5 shrink-0 text-primary" /> Perfect Complex, Jamil Colony, Front of Mohammadia Masjid, Walgaon Road, Amravati, Maharashtra – 444601</p>
             <p className="flex items-center gap-2.5"><UserRound size={14} className="shrink-0 text-primary" /> Owner: Sameer Ahmad</p>
             <p className="flex items-center gap-2.5"><Phone size={14} className="shrink-0 text-primary" /> +91 98527 79933</p>
