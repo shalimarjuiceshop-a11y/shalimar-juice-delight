@@ -21,6 +21,7 @@ const App = () => (
         <AnimatedRoutes />
         <Footer />
         <FloatingWhatsApp />
+        <PineappleMascot />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
