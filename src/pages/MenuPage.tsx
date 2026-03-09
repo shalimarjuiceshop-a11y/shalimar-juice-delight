@@ -304,6 +304,9 @@ const MenuPage = () => {
         </div>
       </section>
 
+      {/* Flavor Quiz */}
+      <FlavorQuiz />
+
       {/* CTA Section */}
       <section className="py-16 bg-page-header relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(45 100% 70%) 1px, transparent 0)', backgroundSize: '32px 32px' }} />
