@@ -95,7 +95,7 @@ const FranchisePage = () => {
                     ? "bg-primary text-primary-foreground shadow-pineapple"
                     : "hover:bg-accent/10"
                 }`}
-                style={lang === l ? {} : { color: "hsl(45 30% 65%)" }}
+                style={lang === l ? {} : { color: "hsl(var(--muted-foreground))" }}
               >
                 {l === "hinglish" ? "English" : "हिंदी"}
               </button>
