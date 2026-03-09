@@ -54,7 +54,7 @@ const MenuPage = () => {
       </section>
 
       {/* Category Tabs */}
-      <section className="sticky top-16 z-30 glass border-b border-border/50">
+      <section className="sticky top-16 z-30 glass-dark border-b border-border/50">
         <div className="container mx-auto px-4">
           <div className="flex justify-center gap-1 py-3">
             {categories.map((cat) => (
