@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import FloatingWhatsApp from "./components/FloatingWhatsApp";
+import PineappleMascot from "./components/PineappleMascot";
 import AnimatedRoutes from "./components/AnimatedRoutes";
 
 const queryClient = new QueryClient();
@@ -20,6 +21,7 @@ const App = () => (
         <AnimatedRoutes />
         <Footer />
         <FloatingWhatsApp />
+        <PineappleMascot />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
