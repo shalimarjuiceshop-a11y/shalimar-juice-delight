@@ -204,11 +204,11 @@ const MenuPage = () => {
                   </div>
 
                   {/* Content */}
-                  <div className="p-4 pt-2 text-center">
-                    <h3 className="font-display text-base md:text-lg font-bold text-foreground leading-tight">
+                  <div className="p-4 pt-3 text-center">
+                    <h3 className="font-display text-lg md:text-xl font-bold text-foreground leading-tight">
                       {drink.name}
                     </h3>
-                    <p className="font-body text-[11px] md:text-xs text-muted-foreground mt-1.5 line-clamp-2 min-h-[2.5em]">
+                    <p className="font-body text-xs md:text-sm text-muted-foreground mt-2 line-clamp-2 min-h-[2.5em]">
                       {drink.description}
                     </p>
 
