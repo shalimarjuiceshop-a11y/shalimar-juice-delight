@@ -23,9 +23,6 @@ const photos = [
   { src: shopPhoto3, alt: "Shalimar Juice Shop - Fresh Juice Counter", caption: "Fresh Juice Counter" },
 ];
 
-const instagramReels = [
-  "https://www.instagram.com/reel/DVmkM40jLBH/",
-];
 
 const reelVideos = [
   { title: "Pineapple Juice Making", thumbnail: "https://images.unsplash.com/photo-1589820296156-2454bb8a6ad1?w=400&h=700&fit=crop", url: "https://www.instagram.com/shalimarjuiceshop/" },
@@ -201,95 +198,6 @@ const GalleryPage = () => {
       </section>
 
       {/* Instagram Section */}
-      <section className="py-14 md:py-20 overflow-hidden">
-        <div className="container mx-auto px-4">
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            className="text-center mb-10"
-          >
-            <motion.span variants={fadeUp} className="inline-flex items-center gap-1.5 text-[11px] font-body font-bold tracking-[0.15em] uppercase px-4 py-1.5 rounded-full mb-4 bg-gradient-to-r from-pink-500/10 via-purple-500/10 to-orange-500/10 text-pink-600">
-              <Instagram size={12} /> Follow Us
-            </motion.span>
-            <motion.h2 variants={fadeUp} className="font-display text-3xl md:text-4xl font-extrabold tracking-tight text-foreground">
-              On <span className="text-gradient-gold">Instagram</span>
-            </motion.h2>
-            <motion.p variants={fadeUp} className="font-body text-sm text-muted-foreground mt-3 max-w-md mx-auto">
-              Follow @shalimarjuiceshop for daily updates, offers & behind-the-scenes!
-            </motion.p>
-          </motion.div>
-
-          {/* Instagram Reel Embed */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: smoothEase }}
-            className="flex flex-col items-center gap-8 max-w-5xl mx-auto"
-          >
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 w-full justify-items-center">
-              {instagramReels.map((reelUrl, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1, duration: 0.5 }}
-                  className="card-premium overflow-hidden w-full max-w-[350px]"
-                >
-                  <iframe
-                    src={`${reelUrl}embed`}
-                    className="w-full border-0"
-                    style={{ minHeight: "520px" }}
-                    loading="lazy"
-                    allowTransparency
-                    title={`Instagram reel ${i + 1}`}
-                  />
-                </motion.div>
-              ))}
-            </div>
-
-            {/* CTA Card */}
-            <a
-              href="https://www.instagram.com/shalimarjuiceshop/"
-              target="_blank"
-              rel="noreferrer"
-              className="group card-premium block overflow-hidden hover:shadow-xl transition-all duration-300 w-full max-w-xl"
-            >
-              <div className="p-6 md:p-8 text-center space-y-3">
-                <div className="w-16 h-16 mx-auto rounded-full bg-gradient-to-tr from-pink-500 via-purple-500 to-orange-400 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                  <Instagram size={28} className="text-white" />
-                </div>
-                <h3 className="font-display text-xl font-extrabold text-foreground">@shalimarjuiceshop</h3>
-                <p className="font-body text-sm text-muted-foreground">
-                  Follow for daily specials & behind-the-scenes! 🍍🥤
-                </p>
-                <div className="inline-flex items-center gap-2 text-primary font-body text-sm font-bold group-hover:gap-3 transition-all duration-300">
-                  Visit our Instagram <ExternalLink size={14} />
-                </div>
-              </div>
-            </a>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-center mt-8"
-          >
-            <a
-              href="https://www.instagram.com/shalimarjuiceshop/"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 via-purple-500 to-orange-500 text-white font-body text-sm font-bold px-7 py-3.5 rounded-full hover:brightness-110 hover:scale-[1.02] transition-all duration-300 shadow-lg"
-            >
-              <Instagram size={18} /> Follow @shalimarjuiceshop <ExternalLink size={14} />
-            </a>
-          </motion.div>
-        </div>
-      </section>
 
       <motion.p
         initial={{ opacity: 0 }}
