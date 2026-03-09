@@ -317,7 +317,7 @@ const MenuPage = () => {
             <h3 className="font-display text-2xl md:text-3xl font-black text-cream mb-3">
               Ready to <span className="text-gradient-gold">Order?</span>
             </h3>
-            <p className="font-body text-sm mb-6" style={{ color: "hsl(45 30% 65%)" }}>
+            <p className="font-body text-sm mb-6 text-header-accent">
               Order directly on WhatsApp for quick delivery
             </p>
             <motion.a
