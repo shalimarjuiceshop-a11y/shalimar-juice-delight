@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Star, Sparkles, CupSoda, Citrus, Nut, Crown, Flame, Plus } from "lucide-react";
+import { Star, Sparkles, CupSoda, Citrus, Nut, Crown, Flame } from "lucide-react";
 import { drinks, categories, type DrinkCategory } from "@/data/menuData";
-import { useCart } from "@/components/OrderCart";
 
 const smoothEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 const springBounce = { type: "spring" as const, stiffness: 400, damping: 25 };
@@ -29,7 +28,6 @@ const categoryIcons: Record<DrinkCategory, React.ReactNode> = {
 };
 
 const MenuPage = () => {
-  const { addItem } = useCart();
   const [activeCategory, setActiveCategory] = useState<DrinkCategory>("juices");
   const filteredDrinks = drinks.filter((d) => d.category === activeCategory);
 
@@ -224,24 +222,14 @@ const MenuPage = () => {
                         <span className="font-body text-[10px] font-semibold opacity-70 ml-0.5">/ glass</span>
                       </motion.span>
 
-                      <div className="flex gap-2">
-                        <motion.button
-                          onClick={() => addItem(drink)}
-                          whileHover={{ scale: 1.05 }}
-                          whileTap={{ scale: 0.95 }}
-                          className="flex-1 flex items-center justify-center gap-1.5 bg-primary text-primary-foreground font-body text-xs font-bold px-3 py-2 rounded-xl hover:brightness-110 transition-all"
-                        >
-                          <Plus size={12} /> Add
-                        </motion.button>
-                        <motion.button
-                          onClick={() => handleWhatsAppOrder(drink.name, drink.price)}
-                          whileHover={{ scale: 1.03 }}
-                          whileTap={{ scale: 0.97 }}
-                          className="flex items-center justify-center gap-1.5 bg-leaf text-white font-body text-xs font-bold px-3 py-2 rounded-xl hover:brightness-110 transition-all"
-                        >
-                          <Flame size={12} /> Order
-                        </motion.button>
-                      </div>
+                      <motion.button
+                        onClick={() => handleWhatsAppOrder(drink.name, drink.price)}
+                        whileHover={{ scale: 1.03 }}
+                        whileTap={{ scale: 0.97 }}
+                        className="flex items-center justify-center gap-1.5 bg-leaf text-white font-body text-xs font-bold px-4 py-2 rounded-xl hover:brightness-110 transition-all"
+                      >
+                        <Flame size={12} /> Order Now
+                      </motion.button>
                     </div>
                   </div>
                 </motion.div>
