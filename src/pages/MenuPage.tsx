@@ -332,12 +332,6 @@ const MenuPage = () => {
           </motion.div>
         </div>
       </section>
-      {/* Drink Detail Modal */}
-      <DrinkDetailModal
-        drink={selectedDrink}
-        onClose={() => setSelectedDrink(null)}
-        onOrder={handleWhatsAppOrder}
-      />
     </main>
   );
 };
