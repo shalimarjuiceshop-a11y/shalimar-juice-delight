@@ -2,7 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useMemo } from "react";
 import pineappleFruit from "@/assets/pineapple-fruit.png";
 import pineappleSlices from "@/assets/pineapple-slices.png";
-import pineappleJuiceGlass from "@/assets/pineapple-juice-glass.png";
+import pineappleShakeGlass from "@/assets/pineapple-shake.png";
 
 // Phase durations in ms
 // 0: Pineapple entrance (3s) → 1: Slicing (2.5s) → 2: Glass slides in (3s) → 3: Hero glass + badge (4s) → repeat
