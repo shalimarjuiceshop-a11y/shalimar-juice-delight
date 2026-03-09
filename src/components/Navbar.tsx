@@ -78,7 +78,7 @@ const Navbar = () => {
 
         {/* Mobile toggle */}
         <motion.button
-          className="md:hidden text-foreground p-2 rounded-lg hover:bg-muted transition-colors"
+          className="md:hidden text-cream p-2 rounded-lg hover:bg-muted/20 transition-colors"
           onClick={() => setOpen(!open)}
           whileTap={{ scale: 0.9 }}
         >
