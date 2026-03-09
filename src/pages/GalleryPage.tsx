@@ -121,16 +121,149 @@ const GalleryPage = () => {
             ))}
           </motion.div>
 
-          <motion.p
+        </div>
+      </section>
+
+      {/* Video Reels Section */}
+      <section className="py-14 md:py-20 bg-muted/40 overflow-hidden">
+        <div className="container mx-auto px-4">
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="text-center mb-10"
+          >
+            <motion.span variants={fadeUp} className="inline-flex items-center gap-1.5 text-[11px] font-body font-bold tracking-[0.15em] uppercase px-4 py-1.5 rounded-full mb-4 bg-primary/10 text-primary">
+              <Play size={12} /> Watch & Enjoy
+            </motion.span>
+            <motion.h2 variants={fadeUp} className="font-display text-3xl md:text-4xl font-extrabold tracking-tight text-foreground">
+              Juice <span className="text-gradient-gold">Reels</span>
+            </motion.h2>
+            <motion.p variants={fadeUp} className="font-body text-sm text-muted-foreground mt-3 max-w-md mx-auto">
+              Watch how we make fresh juices — real fruits, real taste!
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 max-w-5xl mx-auto"
+          >
+            {reelVideos.map((reel, i) => (
+              <motion.a
+                key={i}
+                variants={fadeUp}
+                href={reel.url}
+                target="_blank"
+                rel="noreferrer"
+                whileHover={{ y: -6, scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="group relative card-premium overflow-hidden aspect-[9/16] cursor-pointer"
+              >
+                <img
+                  src={reel.thumbnail}
+                  alt={reel.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+                {/* Play overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-foreground/10 to-transparent flex flex-col items-center justify-end p-3">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <motion.div
+                      className="w-12 h-12 rounded-full bg-primary/90 flex items-center justify-center opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 shadow-lg"
+                      whileHover={{ scale: 1.2 }}
+                    >
+                      <Play size={20} className="text-primary-foreground ml-0.5" fill="currentColor" />
+                    </motion.div>
+                  </div>
+                  <p className="font-display text-xs font-bold text-white text-center leading-tight drop-shadow-lg">
+                    {reel.title}
+                  </p>
+                </div>
+              </motion.a>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Instagram Section */}
+      <section className="py-14 md:py-20 overflow-hidden">
+        <div className="container mx-auto px-4">
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="text-center mb-10"
+          >
+            <motion.span variants={fadeUp} className="inline-flex items-center gap-1.5 text-[11px] font-body font-bold tracking-[0.15em] uppercase px-4 py-1.5 rounded-full mb-4 bg-gradient-to-r from-pink-500/10 via-purple-500/10 to-orange-500/10 text-pink-600">
+              <Instagram size={12} /> Follow Us
+            </motion.span>
+            <motion.h2 variants={fadeUp} className="font-display text-3xl md:text-4xl font-extrabold tracking-tight text-foreground">
+              On <span className="text-gradient-gold">Instagram</span>
+            </motion.h2>
+            <motion.p variants={fadeUp} className="font-body text-sm text-muted-foreground mt-3 max-w-md mx-auto">
+              Follow @shalimarjuiceshop for daily updates, offers & behind-the-scenes!
+            </motion.p>
+          </motion.div>
+
+          {/* Instagram Embed Grid */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: smoothEase }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto"
+          >
+            {instagramPosts.map((postUrl, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, duration: 0.5 }}
+                className="card-premium overflow-hidden"
+              >
+                <iframe
+                  src={`${postUrl}embed`}
+                  className="w-full border-0"
+                  style={{ minHeight: "480px" }}
+                  loading="lazy"
+                  allowTransparency
+                  title={`Instagram post ${i + 1}`}
+                />
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-center font-body text-sm text-muted-foreground mt-10"
+            className="text-center mt-8"
           >
-            More photos coming soon! 📸
-          </motion.p>
+            <a
+              href="https://www.instagram.com/shalimarjuiceshop/"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 via-purple-500 to-orange-500 text-white font-body text-sm font-bold px-7 py-3.5 rounded-full hover:brightness-110 hover:scale-[1.02] transition-all duration-300 shadow-lg"
+            >
+              <Instagram size={18} /> Follow @shalimarjuiceshop <ExternalLink size={14} />
+            </a>
+          </motion.div>
         </div>
       </section>
+
+      <motion.p
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        className="text-center font-body text-sm text-muted-foreground pb-12"
+      >
+        More content coming soon! 📸🎬
 
       {/* Lightbox */}
       <AnimatePresence>
