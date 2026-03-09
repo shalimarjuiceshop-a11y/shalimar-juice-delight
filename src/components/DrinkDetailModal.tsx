@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Flame, Crown, Droplets, Leaf, Zap } from "lucide-react";
+import { X, Flame, Crown } from "lucide-react";
 import type { Drink } from "@/data/menuData";
 
 const smoothEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
