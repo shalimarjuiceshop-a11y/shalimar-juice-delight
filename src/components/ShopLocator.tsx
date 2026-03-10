@@ -18,7 +18,7 @@ const openingHours = [
 const ShopLocator = () => {
   const now = new Date();
   const hour = now.getHours();
-  const isCurrentlyOpen = hour >= 8 && hour < 22;
+  const isCurrentlyOpen = hour >= 11 && hour < 23;
 
   return (
     <section className="py-16 md:py-24 bg-background overflow-hidden">
