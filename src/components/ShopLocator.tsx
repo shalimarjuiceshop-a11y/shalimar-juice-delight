@@ -12,8 +12,7 @@ const stagger = {
 };
 
 const openingHours = [
-  { day: "Mon – Thu", time: "8:00 AM – 10:00 PM", isOpen: true },
-  { day: "Fri – Sun", time: "8:00 AM – 11:00 PM", isOpen: true },
+  { day: "Mon – Sun", time: "11:00 AM – 11:00 PM", isOpen: true },
 ];
 
 const ShopLocator = () => {
