@@ -12,14 +12,13 @@ const stagger = {
 };
 
 const openingHours = [
-  { day: "Mon – Thu", time: "8:00 AM – 10:00 PM", isOpen: true },
-  { day: "Fri – Sun", time: "8:00 AM – 11:00 PM", isOpen: true },
+  { day: "Mon – Sun", time: "11:00 AM – 11:00 PM", isOpen: true },
 ];
 
 const ShopLocator = () => {
   const now = new Date();
   const hour = now.getHours();
-  const isCurrentlyOpen = hour >= 8 && hour < 22;
+  const isCurrentlyOpen = hour >= 11 && hour < 23;
 
   return (
     <section className="py-16 md:py-24 bg-background overflow-hidden">
