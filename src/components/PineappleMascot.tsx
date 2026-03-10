@@ -5,12 +5,38 @@ import { useLocation } from "react-router-dom";
 const smoothEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 // Messages per route
-const routeMessages: Record<string, string[]> = {
-  "/": [
+const getWeatherMessages = (): string[] => {
+  // Check if weather data is cached
+  try {
+    const cached = sessionStorage.getItem("sjs_weather_temp");
+    if (cached) {
+      const temp = parseInt(cached);
+      if (temp >= 35) return [
+        "Garmi hai! 🍍 Pineapple Juice piyo!",
+        "Thanda thanda juice lo! 🥤",
+        "Pineapple Juice = Best cooler! 🧊",
+      ];
+      if (temp >= 25) return [
+        "Mango Shake try karo! 🥭",
+        "Mosambi Juice bhi mast hai! 🍊",
+        "Perfect weather for juice! 🌤️",
+      ];
+      return [
+        "Thand hai! Falooda try karo! 🍨",
+        "Hot milk with dry fruits! ☕",
+        "Warm falooda = perfect! 🥶",
+      ];
+    }
+  } catch {}
+  return [
     "Welcome! 🍍 Try our fresh juices!",
     "Sirf ₹10 mein juice! 🤩",
     "Since generations... pure taste! ✨",
-  ],
+  ];
+};
+
+const routeMessages: Record<string, string[]> = {
+  "/": getWeatherMessages(),
   "/menu": [
     "Hungry? Pick your favorite! 😋",
     "Try our Bestsellers! 🏆",
