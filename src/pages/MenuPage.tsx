@@ -189,7 +189,7 @@ const MenuPage = () => {
                       </motion.span>
                     )}
 
-                    {/* Image Container */}
+                    {/* Image Container - 360° Spin on Hover */}
                     <div className="relative pt-8 pb-4 px-4">
                       <div className="relative w-36 h-36 md:w-44 md:h-44 lg:w-48 lg:h-48 mx-auto">
                         <motion.div 
@@ -197,11 +197,17 @@ const MenuPage = () => {
                           animate={{ opacity: [0.3, 0.6, 0.3] }}
                           transition={{ duration: 3, repeat: Infinity }}
                         />
-                        <img
+                        <motion.img
                           src={drink.image}
                           alt={drink.name}
-                          className="relative w-full h-full object-contain drop-shadow-xl transition-transform duration-300 group-hover:scale-105"
+                          className="relative w-full h-full object-contain drop-shadow-xl"
                           loading="lazy"
+                          whileHover={{ 
+                            rotateY: 360,
+                            scale: 1.1,
+                            transition: { rotateY: { duration: 1.2, ease: "easeInOut" }, scale: { duration: 0.3 } }
+                          }}
+                          style={{ transformStyle: "preserve-3d" }}
                         />
                       </div>
                     </div>
