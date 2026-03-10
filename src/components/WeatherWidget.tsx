@@ -59,11 +59,13 @@ const WeatherWidget = () => {
         const res = await fetch("https://wttr.in/Hyderabad?format=j1");
         const data = await res.json();
         const current = data.current_condition[0];
+        const temp = parseInt(current.temp_C);
         setWeather({
-          temp: parseInt(current.temp_C),
+          temp,
           condition: current.weatherDesc[0].value,
           city: "Hyderabad",
         });
+        try { sessionStorage.setItem("sjs_weather_temp", String(temp)); } catch {}
       } catch {
         // Fallback weather
         setWeather({ temp: 32, condition: "Sunny", city: "Hyderabad" });
