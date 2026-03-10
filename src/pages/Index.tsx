@@ -94,6 +94,11 @@ const Index = () => {
                 Get Franchise <Handshake size={16} />
               </Link>
             </motion.div>
+
+            {/* Weather Widget */}
+            <motion.div variants={fadeUp} className="mt-6">
+              <WeatherWidget />
+            </motion.div>
           </motion.div>
 
           {/* Right: Juice Pour Animation */}
