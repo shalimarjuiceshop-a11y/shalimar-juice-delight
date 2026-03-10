@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Handshake, Citrus, GlassWater, Store, Snowflake } from "lucide-react";
 import JuicePourAnimation from "@/components/JuicePourAnimation";
-import WeatherWidget from "@/components/WeatherWidget";
 import hotMilk from "@/assets/hot-milk.png";
 
 // Smooth stagger container
@@ -93,11 +92,6 @@ const Index = () => {
               >
                 Get Franchise <Handshake size={16} />
               </Link>
-            </motion.div>
-
-            {/* Weather Widget */}
-            <motion.div variants={fadeUp} className="mt-6">
-              <WeatherWidget />
             </motion.div>
           </motion.div>
 
