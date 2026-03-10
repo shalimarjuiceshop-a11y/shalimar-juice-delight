@@ -155,40 +155,22 @@ const GalleryPage = () => {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 max-w-5xl mx-auto"
+            className="flex justify-center max-w-lg mx-auto"
           >
-            {reelVideos.map((reel, i) => (
-              <motion.a
+            {instagramReels.map((reel, i) => (
+              <motion.div
                 key={i}
                 variants={fadeUp}
-                href={reel.url}
-                target="_blank"
-                rel="noreferrer"
-                whileHover={{ y: -6, scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="group relative card-premium overflow-hidden aspect-[9/16] cursor-pointer"
+                className="w-full card-premium overflow-hidden rounded-2xl"
               >
-                <img
-                  src={reel.thumbnail}
-                  alt={reel.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                <iframe
+                  src={`https://www.instagram.com/reel/${reel.reelId}/embed/`}
+                  className="w-full aspect-[9/16] border-0"
+                  allowFullScreen
                   loading="lazy"
+                  title={reel.title}
                 />
-                {/* Play overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-foreground/10 to-transparent flex flex-col items-center justify-end p-3">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <motion.div
-                      className="w-12 h-12 rounded-full bg-primary/90 flex items-center justify-center opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300 shadow-lg"
-                      whileHover={{ scale: 1.2 }}
-                    >
-                      <Play size={20} className="text-primary-foreground ml-0.5" fill="currentColor" />
-                    </motion.div>
-                  </div>
-                  <p className="font-display text-xs font-bold text-white text-center leading-tight drop-shadow-lg">
-                    {reel.title}
-                  </p>
-                </div>
-              </motion.a>
+              </motion.div>
             ))}
           </motion.div>
         </div>
