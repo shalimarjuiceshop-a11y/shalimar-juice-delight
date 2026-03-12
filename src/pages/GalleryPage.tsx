@@ -4,6 +4,7 @@ import { Camera, X, ChevronLeft, ChevronRight, ZoomIn, Instagram, Play, External
 import shopPhoto1 from "@/assets/shop-photo-1.png";
 import shopPhoto2 from "@/assets/shop-photo-2.png";
 import shopPhoto3 from "@/assets/shop-photo-3.png";
+import winterSpecial from "@/assets/winter-special.png";
 
 const smoothEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -21,6 +22,7 @@ const photos = [
   { src: shopPhoto1, alt: "Shalimar Juice Shop - Main Counter", caption: "Our Shop" },
   { src: shopPhoto2, alt: "Shalimar Juice Shop - Team & Fresh Juices", caption: "Our Team at Work" },
   { src: shopPhoto3, alt: "Shalimar Juice Shop - Fresh Juice Counter", caption: "Fresh Juice Counter" },
+  { src: winterSpecial, alt: "Winter Special - Delicious Kullad Drink", caption: "Winter Special - Very Delicious! Just ₹30 - Try it!" },
 ];
 
 
