@@ -22,6 +22,7 @@ const photos = [
   { src: shopPhoto1, alt: "Shalimar Juice Shop - Main Counter", caption: "Our Shop" },
   { src: shopPhoto2, alt: "Shalimar Juice Shop - Team & Fresh Juices", caption: "Our Team at Work" },
   { src: shopPhoto3, alt: "Shalimar Juice Shop - Fresh Juice Counter", caption: "Fresh Juice Counter" },
+  { src: winterSpecial, alt: "Winter Special - Delicious Kullad Drink", caption: "Winter Special - Very Delicious! Just ₹30 - Try it!" },
 ];
 
 
