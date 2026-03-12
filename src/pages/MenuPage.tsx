@@ -4,6 +4,7 @@ import { Star, Sparkles, CupSoda, Citrus, Nut, Crown, ShoppingBag } from "lucide
 import { drinks, categories, type DrinkCategory, type Drink } from "@/data/menuData";
 import FlavorQuiz from "@/components/FlavorQuiz";
 import TiltCard from "@/components/TiltCard";
+import JuicePourAnimation from "@/components/JuicePourAnimation";
 
 
 const smoothEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
