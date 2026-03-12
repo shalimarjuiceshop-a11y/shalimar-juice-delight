@@ -102,6 +102,24 @@ const MenuPage = () => {
         </div>
       </section>
 
+      {/* Juice Making Animation */}
+      <section className="relative py-6 md:py-10 bg-gradient-to-b from-shop-dark via-shop-warm to-background overflow-hidden">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-2"
+          >
+            <span className="inline-flex items-center gap-1.5 text-[10px] font-body font-bold tracking-[0.2em] uppercase px-3 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary">
+              🍍 Watch the Magic
+            </span>
+          </motion.div>
+          <JuicePourAnimation />
+        </div>
+      </section>
+
       {/* Category Tabs - Premium Glass */}
       <section className="sticky top-16 z-30 glass border-b border-border/40 shadow-lg">
         <div className="container mx-auto px-4">
