@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -13,31 +13,42 @@ const navLinks = [
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+
+  useEffect(() => {
+    const handler = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handler, { passive: true });
+    return () => window.removeEventListener("scroll", handler);
+  }, []);
 
   return (
     <motion.nav
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed top-0 left-0 right-0 z-50 glass-dark"
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? "glass-dark shadow-lg shadow-black/10"
+          : "bg-transparent"
+      }`}
     >
-      <div className="container mx-auto flex items-center justify-between h-16 px-4">
-        <Link to="/" className="flex items-center gap-3">
+      <div className="container mx-auto flex items-center justify-between h-[4.5rem] px-4">
+        <Link to="/" className="flex items-center gap-3 group">
           <motion.img
             src={sjsLogo}
             alt="Shalimar Juice Shop Logo"
-            className="w-11 h-11 rounded-full object-cover border border-primary/30 shadow-md"
-            whileHover={{ scale: 1.02 }}
+            className="w-11 h-11 rounded-full object-cover border-2 border-primary/30 shadow-lg group-hover:border-primary/50 transition-colors"
+            whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
           />
           <div className="leading-none">
             <h1 className="font-display text-lg font-bold tracking-tight text-cream">
               Shalimar Juice
             </h1>
-            <p className="block text-xs font-medium mt-1" 
-               dir="rtl" 
-               style={{ 
+            <p className="block text-[11px] font-medium mt-1"
+               dir="rtl"
+               style={{
                  fontFamily: "'Noto Nastaliq Urdu', serif",
                  color: "hsl(45 80% 75%)"
                }}>
@@ -54,15 +65,15 @@ const Navbar = () => {
               to={link.to}
               className={`relative font-body text-sm font-medium px-4 py-2 rounded-full transition-all duration-200 ${
                 location.pathname === link.to
-                  ? "text-primary-foreground bg-primary/20 backdrop-blur-sm"
-                  : "text-header-muted hover:text-cream hover:bg-white/10"
+                  ? "text-cream"
+                  : "text-header-muted hover:text-cream hover:bg-white/5"
               }`}
             >
               {link.label}
               {location.pathname === link.to && (
                 <motion.div
                   layoutId="nav-indicator"
-                  className="absolute inset-0 bg-primary/20 backdrop-blur-sm rounded-full -z-10 border border-primary/30"
+                  className="absolute inset-0 bg-primary/15 backdrop-blur-sm rounded-full -z-10 border border-primary/25"
                   transition={{ type: "spring", stiffness: 350, damping: 30 }}
                 />
               )}
@@ -70,7 +81,7 @@ const Navbar = () => {
           ))}
           <Link
             to="/contact"
-            className="ml-3 bg-primary text-primary-foreground font-body text-sm font-semibold px-5 py-2 rounded-full hover:brightness-105 transition-all btn-glow glow-gold-soft"
+            className="ml-4 bg-primary text-primary-foreground font-body text-sm font-bold px-6 py-2.5 rounded-full hover:brightness-110 hover:scale-[1.03] transition-all duration-300 glow-gold-soft"
           >
             Contact Us
           </Link>
@@ -78,7 +89,7 @@ const Navbar = () => {
 
         {/* Mobile toggle */}
         <motion.button
-          className="md:hidden text-cream p-2 rounded-lg hover:bg-muted/20 transition-colors"
+          className="md:hidden text-cream p-2 rounded-xl hover:bg-white/10 transition-colors"
           onClick={() => setOpen(!open)}
           whileTap={{ scale: 0.9 }}
         >
@@ -93,24 +104,24 @@ const Navbar = () => {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="md:hidden overflow-hidden bg-background border-b border-border"
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            className="md:hidden overflow-hidden glass-dark border-t border-white/5"
           >
-            <div className="flex flex-col gap-1 p-3">
+            <div className="flex flex-col gap-1 p-4">
               {navLinks.map((link, i) => (
                 <motion.div
                   key={link.to}
-                  initial={{ opacity: 0, x: -16 }}
+                  initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.06, duration: 0.3, ease: "easeOut" }}
                 >
                   <Link
                     to={link.to}
                     onClick={() => setOpen(false)}
-                    className={`block font-body text-sm font-medium px-4 py-2.5 rounded-lg transition-colors ${
+                    className={`block font-body text-sm font-medium px-4 py-3 rounded-xl transition-colors ${
                       location.pathname === link.to
                         ? "bg-primary/15 text-primary font-semibold"
-                        : "text-foreground/70 hover:bg-muted hover:text-foreground"
+                        : "text-cream/70 hover:bg-white/5 hover:text-cream"
                     }`}
                   >
                     {link.label}
@@ -118,14 +129,14 @@ const Navbar = () => {
                 </motion.div>
               ))}
               <motion.div
-                initial={{ opacity: 0, x: -16 }}
+                initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.2, duration: 0.3 }}
+                transition={{ delay: 0.25, duration: 0.3 }}
               >
                 <Link
                   to="/contact"
                   onClick={() => setOpen(false)}
-                  className="block mt-1 bg-primary text-primary-foreground font-body text-sm font-semibold px-4 py-2.5 rounded-lg text-center"
+                  className="block mt-2 bg-primary text-primary-foreground font-body text-sm font-bold px-4 py-3 rounded-xl text-center glow-gold-soft"
                 >
                   Contact Us
                 </Link>
