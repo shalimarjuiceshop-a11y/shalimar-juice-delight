@@ -55,7 +55,7 @@
     --header-muted: 45 30% 70%;
     --header-accent: 45 30% 65%;
 
-    --font-display: 'Playfair Display', Georgia, serif;
+    --font-display: 'DM Sans', system-ui, sans-serif;
     --font-body: 'DM Sans', system-ui, sans-serif;
 
     --sidebar-background: 0 0% 98%;
