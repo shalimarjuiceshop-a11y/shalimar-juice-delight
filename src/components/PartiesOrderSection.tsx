@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { PartyPopper, Users, Phone, Star, ArrowRight, Sparkles, GlassWater } from "lucide-react";
+import partyCounterImg from "@/assets/party-juice-counter.png";
 
 const smoothEase = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
@@ -108,6 +109,35 @@ const PartiesOrderSection = () => {
           >
             Wedding, birthday, office party or any event — we bring fresh juice counters to your place!
           </motion.p>
+        </motion.div>
+
+        {/* Party Counter Image */}
+        <motion.div
+          variants={scaleUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-60px" }}
+          className="mb-14 flex justify-center"
+        >
+          <motion.div
+            className="relative rounded-2xl overflow-hidden max-w-2xl w-full group"
+            whileHover={{ scale: 1.02 }}
+            transition={{ type: "spring", stiffness: 200 }}
+          >
+            <div className="absolute -inset-1 rounded-2xl opacity-40 group-hover:opacity-60 transition-opacity duration-500" style={{ background: "linear-gradient(135deg, hsl(45 100% 51% / 0.3), transparent, hsl(45 100% 51% / 0.15))" }} />
+            <img
+              src={partyCounterImg}
+              alt="Shalimar Live Juice Counter Setup for Parties"
+              className="relative w-full rounded-2xl object-cover shadow-2xl"
+              style={{ maxHeight: "340px" }}
+            />
+            <div className="absolute inset-0 rounded-2xl" style={{ background: "linear-gradient(to top, hsl(30 15% 10% / 0.5), transparent 50%)" }} />
+            <div className="absolute bottom-4 left-4 right-4">
+              <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-medium" style={{ background: "hsl(45 100% 51% / 0.9)", color: "hsl(30 15% 10%)" }}>
+                <Star size={12} /> Our Live Juice Counter Setup
+              </span>
+            </div>
+          </motion.div>
         </motion.div>
 
         {/* Feature cards */}
