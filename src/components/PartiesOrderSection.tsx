@@ -22,23 +22,23 @@ const scaleUp = {
 const features = [
   {
     icon: Users,
-    title: "50–500+ Guests",
-    desc: "From small gatherings to large weddings — we handle any crowd size.",
+    title: "50 to 500+ Guests",
+    desc: "Small party or big wedding — we serve any number of guests easily.",
   },
   {
     icon: GlassWater,
-    title: "Fresh Juice Bar",
-    desc: "Live juice counter setup at your venue with fresh fruits & variety.",
+    title: "Live Juice Counter",
+    desc: "We set up a fresh juice counter at your place with many fruit options.",
   },
   {
     icon: Star,
-    title: "Premium Quality",
-    desc: "Same fresh, no-preservative taste that Shalimar is known for.",
+    title: "Best Quality",
+    desc: "Same fresh and pure taste that Shalimar is famous for — no chemicals.",
   },
   {
     icon: Sparkles,
-    title: "Custom Menu",
-    desc: "Choose your flavors — Pineapple, Mango, Mixed Fruit & seasonal specials.",
+    title: "Pick Your Flavors",
+    desc: "Choose what you like — Pineapple, Mango, Mixed Fruit & more!",
   },
 ];
 
@@ -97,8 +97,8 @@ const PartiesOrderSection = () => {
             className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4 leading-[1.1]"
             style={{ color: "hsl(45 100% 96%)" }}
           >
-            Parties & Events? <br />
-            <span className="text-gradient-gold">We've Got You Covered!</span>
+            Having a Party? <br />
+            <span className="text-gradient-gold">We'll Handle the Juice!</span>
           </motion.h2>
 
           <motion.p
@@ -106,7 +106,7 @@ const PartiesOrderSection = () => {
             className="text-base md:text-lg max-w-xl mx-auto leading-relaxed"
             style={{ color: "hsl(45 30% 70%)" }}
           >
-            Make your celebrations unforgettable with fresh juice counters — weddings, birthdays, corporate events & more.
+            Wedding, birthday, office party or any event — we bring fresh juice counters to your place!
           </motion.p>
         </motion.div>
 
@@ -174,7 +174,7 @@ const PartiesOrderSection = () => {
               className="group inline-flex items-center gap-2 bg-primary text-primary-foreground text-sm font-semibold px-8 py-3.5 rounded-full hover:brightness-105 hover:scale-[1.02] transition-all duration-300 glow-gold btn-glow"
             >
               <Phone size={16} />
-              Book for Your Party
+              Order for Your Party
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </Link>
             <a
@@ -196,7 +196,7 @@ const PartiesOrderSection = () => {
             className="mt-5 text-xs"
             style={{ color: "hsl(45 20% 50%)" }}
           >
-            Call or WhatsApp to discuss your event requirements
+            Call or WhatsApp us to plan your party
           </motion.p>
         </motion.div>
       </div>
