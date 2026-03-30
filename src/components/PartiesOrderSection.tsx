@@ -22,23 +22,23 @@ const scaleUp = {
 const features = [
   {
     icon: Users,
-    title: "50–500+ Guests",
-    desc: "From small gatherings to large weddings — we handle any crowd size.",
+    title: "50 to 500+ Guests",
+    desc: "Small party or big wedding — we serve any number of guests easily.",
   },
   {
     icon: GlassWater,
-    title: "Fresh Juice Bar",
-    desc: "Live juice counter setup at your venue with fresh fruits & variety.",
+    title: "Live Juice Counter",
+    desc: "We set up a fresh juice counter at your place with many fruit options.",
   },
   {
     icon: Star,
-    title: "Premium Quality",
-    desc: "Same fresh, no-preservative taste that Shalimar is known for.",
+    title: "Best Quality",
+    desc: "Same fresh and pure taste that Shalimar is famous for — no chemicals.",
   },
   {
     icon: Sparkles,
-    title: "Custom Menu",
-    desc: "Choose your flavors — Pineapple, Mango, Mixed Fruit & seasonal specials.",
+    title: "Pick Your Flavors",
+    desc: "Choose what you like — Pineapple, Mango, Mixed Fruit & more!",
   },
 ];
 
