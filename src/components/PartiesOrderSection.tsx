@@ -174,7 +174,7 @@ const PartiesOrderSection = () => {
               className="group inline-flex items-center gap-2 bg-primary text-primary-foreground text-sm font-semibold px-8 py-3.5 rounded-full hover:brightness-105 hover:scale-[1.02] transition-all duration-300 glow-gold btn-glow"
             >
               <Phone size={16} />
-              Book for Your Party
+              Order for Your Party
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </Link>
             <a
