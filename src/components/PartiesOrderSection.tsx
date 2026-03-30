@@ -196,7 +196,7 @@ const PartiesOrderSection = () => {
             className="mt-5 text-xs"
             style={{ color: "hsl(45 20% 50%)" }}
           >
-            Call or WhatsApp to discuss your event requirements
+            Call or WhatsApp us to plan your party
           </motion.p>
         </motion.div>
       </div>

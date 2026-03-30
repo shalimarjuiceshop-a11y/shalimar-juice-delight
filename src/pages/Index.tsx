@@ -40,9 +40,9 @@ const scaleUp = {
 };
 
 const testimonials = [
-  { name: "Rahul Sharma", text: "Best pineapple juice I've ever had! The taste is incredibly fresh and natural. I visit every week.", rating: 5, location: "Amravati" },
-  { name: "Priya Deshmukh", text: "Winter Special milk with dry fruits is absolutely divine. My whole family loves it!", rating: 5, location: "Amravati" },
-  { name: "Ahmed Khan", text: "Been coming here since childhood. The quality has never dropped. Truly a legacy of taste.", rating: 5, location: "Amravati" },
+  { name: "Sajid Ahmad", text: "Best pineapple juice I've ever had! The taste is so fresh and natural. I come here every week.", rating: 5, location: "Amravati" },
+  { name: "Rizwan Khan", text: "Winter Special milk with dry fruits is amazing. My whole family loves it!", rating: 5, location: "Amravati" },
+  { name: "Shaikh Sohel", text: "Been coming here since childhood. The quality never dropped. Truly the best juice shop.", rating: 5, location: "Amravati" },
 ];
 
 const Index = () => {
