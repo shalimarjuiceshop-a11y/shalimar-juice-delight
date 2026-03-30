@@ -212,6 +212,9 @@ const Index = () => {
         </div>
       </section>
 
+      {/* ═══ PARTIES ORDER ═══ */}
+      <PartiesOrderSection />
+
       {/* ═══ TESTIMONIALS ═══ */}
       <section className="py-20 md:py-28 bg-background overflow-hidden">
         <div className="container mx-auto px-4 max-w-5xl">
