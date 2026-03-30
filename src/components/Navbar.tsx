@@ -29,9 +29,16 @@ const Navbar = () => {
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "glass-dark shadow-lg shadow-black/10"
-          : "bg-transparent"
+          ? "shadow-lg shadow-black/20"
+          : ""
       }`}
+      style={{
+        background: scrolled
+          ? "hsl(30 15% 10% / 0.95)"
+          : "hsl(30 15% 12% / 0.9)",
+        backdropFilter: "blur(16px)",
+        WebkitBackdropFilter: "blur(16px)",
+      }}
     >
       <div className="container mx-auto flex items-center justify-between h-[4.5rem] px-4">
         <Link to="/" className="flex items-center gap-3 group">
