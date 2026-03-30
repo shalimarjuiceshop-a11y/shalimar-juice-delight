@@ -97,8 +97,8 @@ const PartiesOrderSection = () => {
             className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4 leading-[1.1]"
             style={{ color: "hsl(45 100% 96%)" }}
           >
-            Parties & Events? <br />
-            <span className="text-gradient-gold">We've Got You Covered!</span>
+            Having a Party? <br />
+            <span className="text-gradient-gold">We'll Handle the Juice!</span>
           </motion.h2>
 
           <motion.p
@@ -106,7 +106,7 @@ const PartiesOrderSection = () => {
             className="text-base md:text-lg max-w-xl mx-auto leading-relaxed"
             style={{ color: "hsl(45 30% 70%)" }}
           >
-            Make your celebrations unforgettable with fresh juice counters — weddings, birthdays, corporate events & more.
+            Wedding, birthday, office party or any event — we bring fresh juice counters to your place!
           </motion.p>
         </motion.div>
 
