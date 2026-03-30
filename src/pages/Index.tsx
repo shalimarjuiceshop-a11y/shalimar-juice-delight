@@ -4,6 +4,7 @@ import { ArrowRight, Handshake, Citrus, GlassWater, Store, Snowflake } from "luc
 import JuicePourAnimation from "@/components/JuicePourAnimation";
 import MarqueeBanner from "@/components/MarqueeBanner";
 import TestimonialCard from "@/components/TestimonialCard";
+import PartiesOrderSection from "@/components/PartiesOrderSection";
 import hotMilk from "@/assets/hot-milk.png";
 
 const smoothEase = [0.22, 1, 0.36, 1] as [number, number, number, number];
