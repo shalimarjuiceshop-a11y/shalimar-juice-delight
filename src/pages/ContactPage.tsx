@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import ShopLocator from "@/components/ShopLocator";
+import PartyOrderForm from "@/components/PartyOrderForm";
+import FranchiseInquiryForm from "@/components/FranchiseInquiryForm";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -32,6 +34,12 @@ const ContactPage = () => {
             Humse miliye ya call karein — hum hamesha aapki seva mein hain!
           </motion.p>
         </motion.div>
+
+        {/* Two Forms Side by Side */}
+        <div className="grid md:grid-cols-2 gap-6 md:gap-8 mb-16">
+          <PartyOrderForm />
+          <FranchiseInquiryForm />
+        </div>
       </div>
 
       {/* Shop Locator Component */}
