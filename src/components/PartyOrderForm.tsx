@@ -4,7 +4,7 @@ import { PartyPopper, Send, User, Phone, MapPin, Users } from "lucide-react";
 import { z } from "zod";
 import { toast } from "sonner";
 
-const WHATSAPP_NUMBER = "919370XXXXXXX";
+const WHATSAPP_NUMBER = "919852779933";
 
 const schema = z.object({
   name: z.string().trim().min(2, "Name is required").max(100),
