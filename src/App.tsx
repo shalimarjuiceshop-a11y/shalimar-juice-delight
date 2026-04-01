@@ -8,6 +8,8 @@ import Footer from "./components/Footer";
 import FloatingWhatsApp from "./components/FloatingWhatsApp";
 import PineappleMascot from "./components/PineappleMascot";
 import AnimatedRoutes from "./components/AnimatedRoutes";
+import FloatingCart from "./components/FloatingCart";
+import { CartProvider } from "./contexts/CartContext";
 
 const queryClient = new QueryClient();
 
@@ -17,11 +19,14 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Navbar />
-        <AnimatedRoutes />
-        <Footer />
-        <FloatingWhatsApp />
-        <PineappleMascot />
+        <CartProvider>
+          <Navbar />
+          <AnimatedRoutes />
+          <Footer />
+          <FloatingWhatsApp />
+          <FloatingCart />
+          <PineappleMascot />
+        </CartProvider>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

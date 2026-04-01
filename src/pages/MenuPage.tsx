@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Star, Sparkles, CupSoda, Citrus, Nut, Crown, ShoppingBag } from "lucide-react";
+import { Star, Sparkles, CupSoda, Citrus, Nut, Crown, ShoppingBag, Plus } from "lucide-react";
 import { drinks, categories, type DrinkCategory, type Drink } from "@/data/menuData";
 import FlavorQuiz from "@/components/FlavorQuiz";
 import TiltCard from "@/components/TiltCard";
-
+import { useCart } from "@/contexts/CartContext";
 
 const smoothEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 const springBounce = { type: "spring" as const, stiffness: 400, damping: 25 };
@@ -32,7 +32,8 @@ const categoryIcons: Record<DrinkCategory, React.ReactNode> = {
 
 const MenuPage = () => {
   const [activeCategory, setActiveCategory] = useState<DrinkCategory>("juices");
-  
+  const cartCtx = useCart();
+
   const filteredDrinks = drinks.filter((d) => d.category === activeCategory);
 
   const handleWhatsAppOrder = (drinkName: string, price: number) => {
@@ -40,27 +41,32 @@ const MenuPage = () => {
     window.open(`https://wa.me/919852779933?text=${encodeURIComponent(message)}`, "_blank");
   };
 
+  const getItemQty = (drinkId: string) => {
+    if (!cartCtx) return 0;
+    const item = cartCtx.cart.find((c) => c.drink.id === drinkId);
+    return item?.qty || 0;
+  };
+
   return (
     <main className="pt-16 min-h-screen bg-background">
-      {/* Hero Header - Premium Dark */}
+      {/* Hero Header */}
       <section className="relative py-20 md:py-24 bg-page-header overflow-hidden">
-        {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(45 100% 70%) 1px, transparent 0)', backgroundSize: '40px 40px' }} />
-          <motion.div 
+          <motion.div
             className="absolute top-10 left-10 w-32 h-32 rounded-full"
             style={{ background: "radial-gradient(circle, hsl(45 100% 50% / 0.15) 0%, transparent 70%)" }}
             animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           />
-          <motion.div 
+          <motion.div
             className="absolute bottom-10 right-20 w-48 h-48 rounded-full"
             style={{ background: "radial-gradient(circle, hsl(35 80% 45% / 0.12) 0%, transparent 70%)" }}
             animate={{ scale: [1.2, 1, 1.2], opacity: [0.2, 0.4, 0.2] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
           />
         </div>
-        
+
         <div className="container mx-auto px-4 relative z-10 text-center">
           <motion.div variants={stagger} initial="hidden" animate="show">
             <motion.div variants={fadeUp} className="inline-flex items-center gap-2 mb-6">
@@ -68,12 +74,12 @@ const MenuPage = () => {
                 <Sparkles size={12} className="animate-pulse" /> 100% Fresh & Natural
               </span>
             </motion.div>
-            
+
             <motion.h1 variants={fadeUp} className="font-display text-4xl md:text-6xl font-black tracking-tight">
               <span className="text-cream">Our </span>
               <span className="relative inline-block">
                 <span className="text-gradient-gold">Menu</span>
-                <motion.span 
+                <motion.span
                   className="absolute -bottom-1 left-0 right-0 h-1 rounded-full bg-primary"
                   initial={{ scaleX: 0 }}
                   animate={{ scaleX: 1 }}
@@ -81,13 +87,22 @@ const MenuPage = () => {
                 />
               </span>
             </motion.h1>
-            
+
             <motion.p variants={fadeUp} className="font-body text-base md:text-lg mt-4 max-w-lg mx-auto leading-relaxed text-header-muted">
-              Fresh juices, creamy shakes & premium dry fruit specials — 
+              Fresh juices, creamy shakes & premium dry fruit specials —
               <span className="text-primary font-semibold"> handcrafted daily</span> with real fruits.
             </motion.p>
 
-            {/* Category Quick View */}
+            {/* Cart Mode Indicator */}
+            {cartCtx?.mode && (
+              <motion.div variants={fadeUp} className="mt-4">
+                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 border border-primary/40 text-primary font-body text-xs font-bold">
+                  <ShoppingBag size={14} />
+                  {cartCtx.mode === "shop" ? "🏪 Shop Order Mode" : "🏠 Home Delivery Mode"} — Tap + to add drinks
+                </span>
+              </motion.div>
+            )}
+
             <motion.div variants={fadeUp} className="flex justify-center gap-4 md:gap-8 mt-8 flex-wrap">
               {categories.map((cat) => (
                 <div key={cat.key} className="flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10">
@@ -101,7 +116,7 @@ const MenuPage = () => {
         </div>
       </section>
 
-      {/* Category Tabs - Premium Glass */}
+      {/* Category Tabs */}
       <section className="sticky top-16 z-30 glass border-b border-border/40 shadow-lg">
         <div className="container mx-auto px-4">
           <div className="flex justify-center gap-2 md:gap-3 py-4">
@@ -123,8 +138,8 @@ const MenuPage = () => {
                 </span>
                 <span className="hidden md:inline">{cat.label}</span>
                 <span className={`text-xs font-black px-2.5 py-1 rounded-full ${
-                  activeCategory === cat.key 
-                    ? "bg-primary-foreground/20 text-primary-foreground" 
+                  activeCategory === cat.key
+                    ? "bg-primary-foreground/20 text-primary-foreground"
                     : "bg-primary/15 text-primary"
                 }`}>
                   {cat.price}
@@ -135,11 +150,10 @@ const MenuPage = () => {
         </div>
       </section>
 
-      {/* Product Grid - Premium Cards */}
+      {/* Product Grid */}
       <section className="py-14 md:py-20">
         <div className="container mx-auto px-4">
-          {/* Category Title */}
-          <motion.div 
+          <motion.div
             key={`title-${activeCategory}`}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -164,22 +178,17 @@ const MenuPage = () => {
               className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-8"
             >
               {filteredDrinks.map((drink, index) => (
-                <TiltCard
-                  key={drink.id}
-                  className="group"
-                >
+                <TiltCard key={drink.id} className="group">
                   <motion.div
                     variants={scaleIn}
                     className="relative bg-card rounded-3xl border border-border overflow-hidden transition-all duration-500 hover:border-primary/40 hover:shadow-pineapple"
                   >
-                    {/* Card Glow Effect */}
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
                       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10" />
                     </div>
 
-                    {/* Badge */}
                     {drink.highlight && (
-                      <motion.span 
+                      <motion.span
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
                         transition={{ delay: index * 0.1, type: "spring" }}
@@ -189,10 +198,9 @@ const MenuPage = () => {
                       </motion.span>
                     )}
 
-                    {/* Image Container - 360° Spin on Hover */}
                     <div className="relative pt-8 pb-4 px-4">
                       <div className="relative w-36 h-36 md:w-44 md:h-44 lg:w-48 lg:h-48 mx-auto">
-                        <motion.div 
+                        <motion.div
                           className="absolute inset-0 rounded-full bg-primary/10 scale-75 group-hover:scale-110 transition-transform duration-700"
                           animate={{ opacity: [0.3, 0.6, 0.3] }}
                           transition={{ duration: 3, repeat: Infinity }}
@@ -202,7 +210,7 @@ const MenuPage = () => {
                           alt={drink.name}
                           className="relative w-full h-full object-contain drop-shadow-xl"
                           loading="lazy"
-                          whileHover={{ 
+                          whileHover={{
                             rotateY: 360,
                             scale: 1.1,
                             transition: { rotateY: { duration: 1.2, ease: "easeInOut" }, scale: { duration: 0.3 } }
@@ -212,7 +220,6 @@ const MenuPage = () => {
                       </div>
                     </div>
 
-                    {/* Content */}
                     <div className="p-4 pt-3 text-center">
                       <h3 className="font-display text-lg md:text-xl font-bold text-foreground leading-tight">
                         {drink.name}
@@ -221,9 +228,8 @@ const MenuPage = () => {
                         {drink.description}
                       </p>
 
-                      {/* Price & Order */}
                       <div className="mt-4 flex flex-col gap-2">
-                        <motion.span 
+                        <motion.span
                           className="inline-flex items-center justify-center gap-1 bg-primary text-primary-foreground font-display text-lg md:text-xl font-black px-5 py-2 rounded-2xl glow-gold-soft mx-auto"
                           whileHover={{ scale: 1.05 }}
                         >
@@ -231,14 +237,29 @@ const MenuPage = () => {
                           <span className="font-body text-[10px] font-semibold opacity-70 ml-0.5">/ glass</span>
                         </motion.span>
 
-                        <motion.button
-                          onClick={(e) => { e.stopPropagation(); handleWhatsAppOrder(drink.name, drink.price); }}
-                          whileHover={{ scale: 1.03 }}
-                          whileTap={{ scale: 0.97 }}
-                          className="flex items-center justify-center gap-1.5 bg-whatsapp text-whatsapp-foreground font-body text-xs font-bold px-4 py-2 rounded-xl hover:brightness-110 transition-all"
-                        >
-                          <ShoppingBag size={12} /> Order Now
-                        </motion.button>
+                        <div className="flex gap-2">
+                          {/* Add to Cart Button */}
+                          {cartCtx?.mode ? (
+                            <motion.button
+                              onClick={(e) => { e.stopPropagation(); cartCtx.addToCart(drink); }}
+                              whileHover={{ scale: 1.03 }}
+                              whileTap={{ scale: 0.97 }}
+                              className="flex-1 flex items-center justify-center gap-1.5 bg-primary text-primary-foreground font-body text-xs font-bold px-4 py-2 rounded-xl hover:brightness-110 transition-all"
+                            >
+                              <Plus size={12} />
+                              {getItemQty(drink.id) > 0 ? `In Cart (${getItemQty(drink.id)})` : "Add to Cart"}
+                            </motion.button>
+                          ) : (
+                            <motion.button
+                              onClick={(e) => { e.stopPropagation(); handleWhatsAppOrder(drink.name, drink.price); }}
+                              whileHover={{ scale: 1.03 }}
+                              whileTap={{ scale: 0.97 }}
+                              className="flex-1 flex items-center justify-center gap-1.5 bg-whatsapp text-whatsapp-foreground font-body text-xs font-bold px-4 py-2 rounded-xl hover:brightness-110 transition-all"
+                            >
+                              <ShoppingBag size={12} /> Order Now
+                            </motion.button>
+                          )}
+                        </div>
                       </div>
                     </div>
                   </motion.div>
@@ -249,7 +270,7 @@ const MenuPage = () => {
         </div>
       </section>
 
-      {/* All Drinks Showcase - Premium Slider */}
+      {/* All Drinks Showcase */}
       <section className="py-16 md:py-20 bg-gradient-to-b from-muted/30 via-muted/50 to-muted/30 overflow-hidden">
         <div className="container mx-auto px-4">
           <motion.div
@@ -271,10 +292,9 @@ const MenuPage = () => {
           </motion.div>
 
           <div className="relative">
-            {/* Gradient Overlays */}
             <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-muted/80 to-transparent z-10 pointer-events-none" />
             <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-muted/80 to-transparent z-10 pointer-events-none" />
-            
+
             <div className="overflow-hidden rounded-2xl">
               <motion.div
                 className="flex gap-5 animate-slide-left"
@@ -288,17 +308,21 @@ const MenuPage = () => {
                     className="flex-shrink-0 w-40 md:w-48 bg-card rounded-2xl border border-border p-4 text-center hover:border-primary/30 hover:shadow-pineapple transition-all duration-300"
                   >
                     <div className="relative">
-                      <img
-                        src={drink.image}
-                        alt={drink.name}
-                        className="w-24 h-24 md:w-28 md:h-28 object-contain mx-auto mb-3 drop-shadow-md"
-                        loading="lazy"
-                      />
+                      <img src={drink.image} alt={drink.name} className="w-24 h-24 md:w-28 md:h-28 object-contain mx-auto mb-3 drop-shadow-md" loading="lazy" />
                     </div>
                     <h3 className="font-display text-sm font-bold text-foreground line-clamp-1">{drink.name}</h3>
                     <span className="inline-flex items-center gap-1 mt-2 bg-primary text-primary-foreground font-display text-sm font-black px-4 py-1.5 rounded-full">
                       ₹{drink.price}
                     </span>
+                    {cartCtx?.mode && (
+                      <motion.button
+                        onClick={() => cartCtx.addToCart(drink)}
+                        whileTap={{ scale: 0.9 }}
+                        className="mt-2 w-full flex items-center justify-center gap-1 bg-primary/10 text-primary font-body text-[11px] font-bold py-1.5 rounded-lg hover:bg-primary/20 transition-colors"
+                      >
+                        <Plus size={10} /> Add
+                      </motion.button>
+                    )}
                   </motion.div>
                 ))}
               </motion.div>
@@ -307,7 +331,6 @@ const MenuPage = () => {
         </div>
       </section>
 
-      {/* Flavor Quiz */}
       <FlavorQuiz />
 
       {/* CTA Section */}
