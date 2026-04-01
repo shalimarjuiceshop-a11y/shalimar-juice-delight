@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Check, AlertTriangle, Building2, GraduationCap, Package, Lock, ArrowRight } from "lucide-react";
+import { Check, AlertTriangle, Building2, GraduationCap, Package, ArrowRight, ClipboardList, Truck, Eye, Shield } from "lucide-react";
 
 type Lang = "hinglish" | "hindi";
 
@@ -30,6 +30,21 @@ const content = {
     trainingItems: ["Pineapple juice", "Apple juice", "Mango juice"],
     viewDetails: "View Details",
     comingSoon: "Coming Soon",
+    // Franchise Matter
+    franchiseMatterTitle: "Franchise Important Notes",
+    franchiseMatterItems: [
+      { icon: Eye, text: "After your franchise goes live, a company representative will visit your shop once every month or every 1-2 months." },
+      { icon: Shield, text: "All campers (large water cans) sold at your shop will be of the company's brand only." },
+      { icon: ClipboardList, text: "All profit from selling campers will be 100% yours (the franchisee's)." },
+      { icon: Package, text: "Maintenance and care of the campers is your responsibility." },
+      { icon: AlertTriangle, text: "All company rules must be strictly followed." },
+    ],
+    // Main Matter
+    mainMatterTitle: "Main Matter / Orders",
+    mainMatterItems: [
+      { icon: ClipboardList, text: "We accept orders for weddings and parties." },
+      { icon: Truck, text: "Any carting/transport charges for order delivery will be paid directly by the customer." },
+    ],
   },
   hindi: {
     title: "फ्रेंचाइज़ी अवसर",
@@ -55,6 +70,21 @@ const content = {
     trainingItems: ["अनानास जूस", "सेब जूस", "आम जूस"],
     viewDetails: "विवरण देखें",
     comingSoon: "जल्द आ रहा है",
+    // Franchise Matter
+    franchiseMatterTitle: "फ्रेंचाइजी से जुड़ी जरूरी बातें",
+    franchiseMatterItems: [
+      { icon: Eye, text: "हमारी फ्रेंचाइजी लाइव होने के बाद, कंपनी का कोई भी एक व्यक्ति हर महीने या 1-2 महीने में एक बार आपकी शॉप पर विजिट करेगा।" },
+      { icon: Shield, text: "आपकी शॉप पर जो भी कैम्पर (पानी के बड़े केन) बिकेंगे, वह कंपनी के ब्रांड के ही होंगे।" },
+      { icon: ClipboardList, text: "कैम्पर बेचने पर जो भी मुनाफा होगा, वह पूरा फ्रेंचाइजी लेने वाले (आपका) ही होगा।" },
+      { icon: Package, text: "कैम्पर के रखरखाव या उससे जुड़ी चीजों का ध्यान रखना होगा।" },
+      { icon: AlertTriangle, text: "कंपनी के हर नियम का पालन करना जरूरी है।" },
+    ],
+    // Main Matter
+    mainMatterTitle: "मुख्य बातें / ऑर्डर",
+    mainMatterItems: [
+      { icon: ClipboardList, text: "हमारे यहाँ शादी और पार्टी के लिए ऑर्डर लिए जाते हैं।" },
+      { icon: Truck, text: "ऑर्डर की डिलीवरी के लिए जो भी कार्टिंग चार्ज लगेगा, वह सीधा ग्राहक को ही देना होगा।" },
+    ],
   },
 };
 
@@ -107,6 +137,102 @@ const FranchisePage = () => {
             <motion.p variants={fadeUp} className="font-body text-base md:text-lg mt-3 max-w-lg mx-auto text-header-muted">
               {t.subtitle}
             </motion.p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Franchise Matter Section */}
+      <section className="py-14 md:py-20">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-10"
+          >
+            <span className="inline-flex items-center gap-1.5 text-[10px] font-body font-bold tracking-widest uppercase px-3 py-1.5 rounded-full bg-primary/10 text-primary mb-4">
+              <ClipboardList size={12} /> Part 1
+            </span>
+            <h2 className="font-display text-2xl md:text-3xl font-extrabold tracking-tight text-foreground">
+              {t.franchiseMatterTitle}
+            </h2>
+          </motion.div>
+
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="space-y-4"
+          >
+            {t.franchiseMatterItems.map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <motion.div
+                  key={i}
+                  variants={fadeUp}
+                  className="bg-card rounded-2xl border border-border p-5 md:p-6 flex items-start gap-4 hover:border-primary/30 hover:shadow-pineapple transition-all duration-300"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Icon size={18} className="text-primary" />
+                  </div>
+                  <div>
+                    <span className="font-display text-xs font-bold text-primary mb-1 block">
+                      {lang === "hindi" ? `नोट ${i + 1}` : `Note ${i + 1}`}
+                    </span>
+                    <p className="font-body text-sm md:text-base text-foreground leading-relaxed">{item.text}</p>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Main Matter / Orders Section */}
+      <section className="py-14 bg-muted/30">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-10"
+          >
+            <span className="inline-flex items-center gap-1.5 text-[10px] font-body font-bold tracking-widest uppercase px-3 py-1.5 rounded-full bg-primary/10 text-primary mb-4">
+              <Truck size={12} /> Part 2
+            </span>
+            <h2 className="font-display text-2xl md:text-3xl font-extrabold tracking-tight text-foreground">
+              {t.mainMatterTitle}
+            </h2>
+          </motion.div>
+
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="space-y-4"
+          >
+            {t.mainMatterItems.map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <motion.div
+                  key={i}
+                  variants={fadeUp}
+                  className="bg-card rounded-2xl border border-border p-5 md:p-6 flex items-start gap-4 hover:border-primary/30 hover:shadow-pineapple transition-all duration-300"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Icon size={18} className="text-primary" />
+                  </div>
+                  <div>
+                    <span className="font-display text-xs font-bold text-primary mb-1 block">
+                      {lang === "hindi" ? `नोट ${i + 1}` : `Note ${i + 1}`}
+                    </span>
+                    <p className="font-body text-sm md:text-base text-foreground leading-relaxed">{item.text}</p>
+                  </div>
+                </motion.div>
+              );
+            })}
           </motion.div>
         </div>
       </section>
