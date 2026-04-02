@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Star, Sparkles, CupSoda, Citrus, Nut, Crown, ShoppingBag, Plus } from "lucide-react";
-import { drinks, categories, type DrinkCategory, type Drink } from "@/data/menuData";
+import { useNavigate } from "react-router-dom";
+import { Star, Sparkles, CupSoda, Citrus, Nut, Crown, ShoppingBag } from "lucide-react";
+import { drinks, categories, type DrinkCategory } from "@/data/menuData";
 import FlavorQuiz from "@/components/FlavorQuiz";
 import TiltCard from "@/components/TiltCard";
-import { useCart } from "@/contexts/CartContext";
 
 const smoothEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 const springBounce = { type: "spring" as const, stiffness: 400, damping: 25 };
@@ -32,19 +32,12 @@ const categoryIcons: Record<DrinkCategory, React.ReactNode> = {
 
 const MenuPage = () => {
   const [activeCategory, setActiveCategory] = useState<DrinkCategory>("juices");
-  const cartCtx = useCart();
+  const navigate = useNavigate();
 
   const filteredDrinks = drinks.filter((d) => d.category === activeCategory);
 
-  const handleWhatsAppOrder = (drinkName: string, price: number) => {
-    const message = `Hi! I would like to order *${drinkName}* (₹${price}) from Shalimar Juice Shop.`;
-    window.open(`https://wa.me/919852779933?text=${encodeURIComponent(message)}`, "_blank");
-  };
-
-  const getItemQty = (drinkId: string) => {
-    if (!cartCtx) return 0;
-    const item = cartCtx.cart.find((c) => c.drink.id === drinkId);
-    return item?.qty || 0;
+  const handleOrderNow = (drinkId: string) => {
+    navigate(`/order?drink=${drinkId}`);
   };
 
   return (
@@ -92,16 +85,6 @@ const MenuPage = () => {
               Fresh juices, creamy shakes & premium dry fruit specials —
               <span className="text-primary font-semibold"> handcrafted daily</span> with real fruits.
             </motion.p>
-
-            {/* Cart Mode Indicator */}
-            {cartCtx?.mode && (
-              <motion.div variants={fadeUp} className="mt-4">
-                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 border border-primary/40 text-primary font-body text-xs font-bold">
-                  <ShoppingBag size={14} />
-                  {cartCtx.mode === "shop" ? "🏪 Shop Order Mode" : "🏠 Home Delivery Mode"} — Tap + to add drinks
-                </span>
-              </motion.div>
-            )}
 
             <motion.div variants={fadeUp} className="flex justify-center gap-4 md:gap-8 mt-8 flex-wrap">
               {categories.map((cat) => (
@@ -237,29 +220,14 @@ const MenuPage = () => {
                           <span className="font-body text-[10px] font-semibold opacity-70 ml-0.5">/ glass</span>
                         </motion.span>
 
-                        <div className="flex gap-2">
-                          {/* Add to Cart Button */}
-                          {cartCtx?.mode ? (
-                            <motion.button
-                              onClick={(e) => { e.stopPropagation(); cartCtx.addToCart(drink); }}
-                              whileHover={{ scale: 1.03 }}
-                              whileTap={{ scale: 0.97 }}
-                              className="flex-1 flex items-center justify-center gap-1.5 bg-primary text-primary-foreground font-body text-xs font-bold px-4 py-2 rounded-xl hover:brightness-110 transition-all"
-                            >
-                              <Plus size={12} />
-                              {getItemQty(drink.id) > 0 ? `In Cart (${getItemQty(drink.id)})` : "Add to Cart"}
-                            </motion.button>
-                          ) : (
-                            <motion.button
-                              onClick={(e) => { e.stopPropagation(); handleWhatsAppOrder(drink.name, drink.price); }}
-                              whileHover={{ scale: 1.03 }}
-                              whileTap={{ scale: 0.97 }}
-                              className="flex-1 flex items-center justify-center gap-1.5 bg-whatsapp text-whatsapp-foreground font-body text-xs font-bold px-4 py-2 rounded-xl hover:brightness-110 transition-all"
-                            >
-                              <ShoppingBag size={12} /> Order Now
-                            </motion.button>
-                          )}
-                        </div>
+                        <motion.button
+                          onClick={(e) => { e.stopPropagation(); handleOrderNow(drink.id); }}
+                          whileHover={{ scale: 1.03 }}
+                          whileTap={{ scale: 0.97 }}
+                          className="flex items-center justify-center gap-1.5 bg-whatsapp text-whatsapp-foreground font-body text-xs font-bold px-4 py-2 rounded-xl hover:brightness-110 transition-all"
+                        >
+                          <ShoppingBag size={12} /> Order Now
+                        </motion.button>
                       </div>
                     </div>
                   </motion.div>
@@ -305,7 +273,8 @@ const MenuPage = () => {
                     key={`${drink.id}-${i}`}
                     whileHover={{ y: -6, scale: 1.03 }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className="flex-shrink-0 w-40 md:w-48 bg-card rounded-2xl border border-border p-4 text-center hover:border-primary/30 hover:shadow-pineapple transition-all duration-300"
+                    className="flex-shrink-0 w-40 md:w-48 bg-card rounded-2xl border border-border p-4 text-center hover:border-primary/30 hover:shadow-pineapple transition-all duration-300 cursor-pointer"
+                    onClick={() => handleOrderNow(drink.id)}
                   >
                     <div className="relative">
                       <img src={drink.image} alt={drink.name} className="w-24 h-24 md:w-28 md:h-28 object-contain mx-auto mb-3 drop-shadow-md" loading="lazy" />
@@ -314,15 +283,6 @@ const MenuPage = () => {
                     <span className="inline-flex items-center gap-1 mt-2 bg-primary text-primary-foreground font-display text-sm font-black px-4 py-1.5 rounded-full">
                       ₹{drink.price}
                     </span>
-                    {cartCtx?.mode && (
-                      <motion.button
-                        onClick={() => cartCtx.addToCart(drink)}
-                        whileTap={{ scale: 0.9 }}
-                        className="mt-2 w-full flex items-center justify-center gap-1 bg-primary/10 text-primary font-body text-[11px] font-bold py-1.5 rounded-lg hover:bg-primary/20 transition-colors"
-                      >
-                        <Plus size={10} /> Add
-                      </motion.button>
-                    )}
                   </motion.div>
                 ))}
               </motion.div>

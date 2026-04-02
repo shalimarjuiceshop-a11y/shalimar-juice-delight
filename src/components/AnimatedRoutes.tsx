@@ -3,6 +3,7 @@ import { AnimatePresence } from "framer-motion";
 import PageTransition from "./PageTransition";
 import Index from "@/pages/Index";
 import MenuPage from "@/pages/MenuPage";
+import OrderPage from "@/pages/OrderPage";
 import FranchisePage from "@/pages/FranchisePage";
 import Franchise3LakhPage from "@/pages/Franchise3LakhPage";
 import Franchise5LakhPage from "@/pages/Franchise5LakhPage";
@@ -20,6 +21,7 @@ const AnimatedRoutes = () => {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<PageTransition><Index /></PageTransition>} />
         <Route path="/menu" element={<PageTransition><MenuPage /></PageTransition>} />
+        <Route path="/order" element={<PageTransition><OrderPage /></PageTransition>} />
         <Route path="/gallery" element={<PageTransition><GalleryPage /></PageTransition>} />
         <Route path="/contact" element={<PageTransition><ContactPage /></PageTransition>} />
         <Route path="/franchise" element={<PageTransition><FranchisePage /></PageTransition>} />

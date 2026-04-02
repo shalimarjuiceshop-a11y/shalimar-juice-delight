@@ -94,7 +94,7 @@ const PartiesOrderSection = () => {
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </Link>
               <a
-                href="https://wa.me/919370abortnumber"
+                href="https://wa.me/919852779933"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 border font-medium text-sm px-7 py-3.5 rounded-full transition-all duration-300 hover:scale-[1.02]"
