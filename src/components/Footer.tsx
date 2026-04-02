@@ -74,7 +74,7 @@ const Footer = () => (
           <h4 className="font-display text-sm font-bold uppercase tracking-wider mb-5 text-footer-heading">Location</h4>
           <iframe
             title="Shalimar Juice Location"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.0!2d77.78!3d20.93!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDU1JzQ4LjAiTiA3N8KwNDYnNDguMCJF!5e0!3m2!1sen!2sin!4v1234567890"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3721.5!2d77.7676!3d20.9325!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd6a5a45bffffff%3A0x1234567890abcdef!2sJamil%20Colony%2C%20Amravati%2C%20Maharashtra%20444601!5e0!3m2!1sen!2sin!4v1700000000000"
             className="w-full h-40 rounded-2xl border border-border/50"
             loading="lazy"
           />
