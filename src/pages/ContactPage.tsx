@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import ShopLocator from "@/components/ShopLocator";
+import MapWalkingAnimation from "@/components/MapWalkingAnimation";
 import PartyOrderForm from "@/components/PartyOrderForm";
 import FranchiseInquiryForm from "@/components/FranchiseInquiryForm";
 
