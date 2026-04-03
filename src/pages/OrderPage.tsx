@@ -19,7 +19,7 @@ const stagger = {
 
 const popIn = {
   hidden: { opacity: 0, scale: 0.8 },
-  show: { opacity: 1, scale: 1, transition: { type: "spring", stiffness: 400, damping: 20 } },
+  show: { opacity: 1, scale: 1, transition: { type: "spring" as const, stiffness: 400, damping: 20 } },
   exit: { opacity: 0, scale: 0.8, x: -30, transition: { duration: 0.25 } },
 };
 
