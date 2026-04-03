@@ -9,17 +9,12 @@ const content = {
   hinglish: {
     title: "Franchise Opportunity",
     subtitle: "Start your own Shalimar Juice shop with our affordable franchise plans.",
-    pricing: "Franchise Pricing",
+    pricing: "Franchise Packages",
     facilities: "What You Get",
     training: "Training Includes",
-    rules: "Important Rules",
+    allRulesTitle: "All Important Rules & Notes",
     refill: "After first month, refill cost:",
     firstMonth: "First month liquid provided FREE!",
-    shopSize: "Shop size must be at least 100 feet.",
-    agreement: "Franchise agreement is required.",
-    nonRefundable: "Franchise payment is non-refundable.",
-    staffHiring: "Staff hiring is the responsibility of the shop owner.",
-    nameRule: "Company name cannot be used after leaving the franchise.",
     facilityItems: [
       "Juice making training",
       "3 juice mixers",
@@ -30,36 +25,30 @@ const content = {
     trainingItems: ["Pineapple juice", "Apple juice", "Mango juice"],
     viewDetails: "View Details",
     comingSoon: "Coming Soon",
-    // Franchise Matter
-    franchiseMatterTitle: "Franchise Important Notes",
-    franchiseMatterItems: [
-      { icon: Eye, text: "After your franchise goes live, a company representative will visit your shop once every month or every 1-2 months." },
-      { icon: Shield, text: "All campers (large water cans) sold at your shop will be of the company's brand only." },
-      { icon: ClipboardList, text: "All profit from selling campers will be 100% yours (the franchisee's)." },
-      { icon: Package, text: "Maintenance and care of the campers is your responsibility." },
-      { icon: AlertTriangle, text: "All company rules must be strictly followed." },
-    ],
-    // Main Matter
-    mainMatterTitle: "Main Matter / Orders",
-    mainMatterItems: [
-      { icon: ClipboardList, text: "We accept orders for weddings and parties." },
-      { icon: Truck, text: "Any carting/transport charges for order delivery will be paid directly by the customer." },
+    allRules: [
+      { icon: Eye, text: "After your franchise goes live, a company representative will visit your shop once every month or every 1-2 months.", label: "Company Visits" },
+      { icon: Shield, text: "All campers (large water cans) sold at your shop will be of the company's brand only.", label: "Brand Campers" },
+      { icon: ClipboardList, text: "All profit from selling campers will be 100% yours (the franchisee's).", label: "Your Profit" },
+      { icon: Package, text: "Maintenance and care of the campers is your responsibility.", label: "Maintenance" },
+      { icon: AlertTriangle, text: "All company rules must be strictly followed.", label: "Follow Rules" },
+      { icon: ClipboardList, text: "We accept orders for weddings and parties.", label: "Party Orders" },
+      { icon: Truck, text: "Any carting/transport charges for order delivery will be paid directly by the customer.", label: "Transport Charges" },
+      { icon: AlertTriangle, text: "Shop size must be at least 100 feet.", label: "Shop Size" },
+      { icon: ClipboardList, text: "Franchise agreement is required.", label: "Agreement" },
+      { icon: AlertTriangle, text: "Franchise payment is non-refundable.", label: "Non-Refundable" },
+      { icon: Shield, text: "Staff hiring is the responsibility of the shop owner.", label: "Staff" },
+      { icon: AlertTriangle, text: "Company name cannot be used after leaving the franchise.", label: "Name Usage" },
     ],
   },
   hindi: {
     title: "फ्रेंचाइज़ी अवसर",
     subtitle: "हमारी किफायती फ्रेंचाइज़ी योजनाओं के साथ अपनी खुद की शालीमार जूस शॉप शुरू करें।",
-    pricing: "फ्रेंचाइज़ी मूल्य",
+    pricing: "फ्रेंचाइज़ी पैकेज",
     facilities: "आपको क्या मिलेगा",
     training: "ट्रेनिंग में शामिल",
-    rules: "महत्वपूर्ण नियम",
+    allRulesTitle: "सभी महत्वपूर्ण नियम और नोट्स",
     refill: "पहले महीने के बाद, रिफिल की कीमत:",
     firstMonth: "पहले महीने का लिक्विड मुफ्त!",
-    shopSize: "दुकान का आकार कम से कम 100 फीट होना चाहिए।",
-    agreement: "फ्रेंचाइज़ी एग्रीमेंट जरूरी है।",
-    nonRefundable: "फ्रेंचाइज़ी भुगतान वापस नहीं होगा।",
-    staffHiring: "स्टाफ की भर्ती दुकान मालिक की जिम्मेदारी है।",
-    nameRule: "फ्रेंचाइज़ी छोड़ने के बाद कंपनी का नाम इस्तेमाल नहीं किया जा सकता।",
     facilityItems: [
       "जूस बनाने की ट्रेनिंग",
       "3 जूस मिक्सर",
@@ -70,20 +59,19 @@ const content = {
     trainingItems: ["अनानास जूस", "सेब जूस", "आम जूस"],
     viewDetails: "विवरण देखें",
     comingSoon: "जल्द आ रहा है",
-    // Franchise Matter
-    franchiseMatterTitle: "फ्रेंचाइजी से जुड़ी जरूरी बातें",
-    franchiseMatterItems: [
-      { icon: Eye, text: "हमारी फ्रेंचाइजी लाइव होने के बाद, कंपनी का कोई भी एक व्यक्ति हर महीने या 1-2 महीने में एक बार आपकी शॉप पर विजिट करेगा।" },
-      { icon: Shield, text: "आपकी शॉप पर जो भी कैम्पर (पानी के बड़े केन) बिकेंगे, वह कंपनी के ब्रांड के ही होंगे।" },
-      { icon: ClipboardList, text: "कैम्पर बेचने पर जो भी मुनाफा होगा, वह पूरा फ्रेंचाइजी लेने वाले (आपका) ही होगा।" },
-      { icon: Package, text: "कैम्पर के रखरखाव या उससे जुड़ी चीजों का ध्यान रखना होगा।" },
-      { icon: AlertTriangle, text: "कंपनी के हर नियम का पालन करना जरूरी है।" },
-    ],
-    // Main Matter
-    mainMatterTitle: "मुख्य बातें / ऑर्डर",
-    mainMatterItems: [
-      { icon: ClipboardList, text: "हमारे यहाँ शादी और पार्टी के लिए ऑर्डर लिए जाते हैं।" },
-      { icon: Truck, text: "ऑर्डर की डिलीवरी के लिए जो भी कार्टिंग चार्ज लगेगा, वह सीधा ग्राहक को ही देना होगा।" },
+    allRules: [
+      { icon: Eye, text: "हमारी फ्रेंचाइजी लाइव होने के बाद, कंपनी का कोई भी एक व्यक्ति हर महीने या 1-2 महीने में एक बार आपकी शॉप पर विजिट करेगा।", label: "कंपनी विज़िट" },
+      { icon: Shield, text: "आपकी शॉप पर जो भी कैम्पर (पानी के बड़े केन) बिकेंगे, वह कंपनी के ब्रांड के ही होंगे।", label: "ब्रांड कैम्पर" },
+      { icon: ClipboardList, text: "कैम्पर बेचने पर जो भी मुनाफा होगा, वह पूरा फ्रेंचाइजी लेने वाले (आपका) ही होगा।", label: "आपका मुनाफा" },
+      { icon: Package, text: "कैम्पर के रखरखाव या उससे जुड़ी चीजों का ध्यान रखना होगा।", label: "रखरखाव" },
+      { icon: AlertTriangle, text: "कंपनी के हर नियम का पालन करना जरूरी है।", label: "नियमों का पालन" },
+      { icon: ClipboardList, text: "हमारे यहाँ शादी और पार्टी के लिए ऑर्डर लिए जाते हैं।", label: "पार्टी ऑर्डर" },
+      { icon: Truck, text: "ऑर्डर की डिलीवरी के लिए जो भी कार्टिंग चार्ज लगेगा, वह सीधा ग्राहक को ही देना होगा।", label: "ट्रांसपोर्ट" },
+      { icon: AlertTriangle, text: "दुकान का आकार कम से कम 100 फीट होना चाहिए।", label: "दुकान का आकार" },
+      { icon: ClipboardList, text: "फ्रेंचाइज़ी एग्रीमेंट जरूरी है।", label: "एग्रीमेंट" },
+      { icon: AlertTriangle, text: "फ्रेंचाइज़ी भुगतान वापस नहीं होगा।", label: "नॉन-रिफंडेबल" },
+      { icon: Shield, text: "स्टाफ की भर्ती दुकान मालिक की जिम्मेदारी है।", label: "स्टाफ" },
+      { icon: AlertTriangle, text: "फ्रेंचाइज़ी छोड़ने के बाद कंपनी का नाम इस्तेमाल नहीं किया जा सकता।", label: "नाम का उपयोग" },
     ],
   },
 };
@@ -141,103 +129,7 @@ const FranchisePage = () => {
         </div>
       </section>
 
-      {/* Franchise Matter Section */}
-      <section className="py-14 md:py-20">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-10"
-          >
-            <span className="inline-flex items-center gap-1.5 text-[10px] font-body font-bold tracking-widest uppercase px-3 py-1.5 rounded-full bg-primary/10 text-primary mb-4">
-              <ClipboardList size={12} /> Part 1
-            </span>
-            <h2 className="font-display text-2xl md:text-3xl font-extrabold tracking-tight text-foreground">
-              {t.franchiseMatterTitle}
-            </h2>
-          </motion.div>
-
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            className="space-y-4"
-          >
-            {t.franchiseMatterItems.map((item, i) => {
-              const Icon = item.icon;
-              return (
-                <motion.div
-                  key={i}
-                  variants={fadeUp}
-                  className="bg-card rounded-2xl border border-border p-5 md:p-6 flex items-start gap-4 hover:border-primary/30 hover:shadow-pineapple transition-all duration-300"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Icon size={18} className="text-primary" />
-                  </div>
-                  <div>
-                    <span className="font-display text-xs font-bold text-primary mb-1 block">
-                      {lang === "hindi" ? `नोट ${i + 1}` : `Note ${i + 1}`}
-                    </span>
-                    <p className="font-body text-sm md:text-base text-foreground leading-relaxed">{item.text}</p>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Main Matter / Orders Section */}
-      <section className="py-14 bg-muted/30">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-10"
-          >
-            <span className="inline-flex items-center gap-1.5 text-[10px] font-body font-bold tracking-widest uppercase px-3 py-1.5 rounded-full bg-primary/10 text-primary mb-4">
-              <Truck size={12} /> Part 2
-            </span>
-            <h2 className="font-display text-2xl md:text-3xl font-extrabold tracking-tight text-foreground">
-              {t.mainMatterTitle}
-            </h2>
-          </motion.div>
-
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            className="space-y-4"
-          >
-            {t.mainMatterItems.map((item, i) => {
-              const Icon = item.icon;
-              return (
-                <motion.div
-                  key={i}
-                  variants={fadeUp}
-                  className="bg-card rounded-2xl border border-border p-5 md:p-6 flex items-start gap-4 hover:border-primary/30 hover:shadow-pineapple transition-all duration-300"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Icon size={18} className="text-primary" />
-                  </div>
-                  <div>
-                    <span className="font-display text-xs font-bold text-primary mb-1 block">
-                      {lang === "hindi" ? `नोट ${i + 1}` : `Note ${i + 1}`}
-                    </span>
-                    <p className="font-body text-sm md:text-base text-foreground leading-relaxed">{item.text}</p>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Pricing Cards */}
+      {/* 1. Franchise Packages — FIRST */}
       <section className="py-14 md:py-20">
         <div className="container mx-auto px-4">
           <motion.h2
@@ -292,7 +184,7 @@ const FranchisePage = () => {
         </div>
       </section>
 
-      {/* Facilities & Training */}
+      {/* 2. What You Get + Training — side by side */}
       <section className="py-14 bg-muted/40">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="grid md:grid-cols-2 gap-8">
@@ -346,19 +238,23 @@ const FranchisePage = () => {
         </div>
       </section>
 
-      {/* Rules */}
-      <section className="py-14">
-        <div className="container mx-auto px-4 max-w-2xl">
+      {/* 3. All Important Rules & Notes — MERGED */}
+      <section className="py-14 md:py-20">
+        <div className="container mx-auto px-4 max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-8"
+            className="text-center mb-10"
           >
-            <h2 className="font-display text-2xl font-extrabold tracking-tight text-foreground inline-flex items-center gap-2.5">
-              <AlertTriangle size={20} className="text-pineapple-dark" /> {t.rules}
+            <span className="inline-flex items-center gap-1.5 text-[10px] font-body font-bold tracking-widest uppercase px-3 py-1.5 rounded-full bg-destructive/10 text-destructive mb-4">
+              <AlertTriangle size={12} /> Important
+            </span>
+            <h2 className="font-display text-2xl md:text-3xl font-extrabold tracking-tight text-foreground">
+              {t.allRulesTitle}
             </h2>
           </motion.div>
+
           <motion.div
             variants={stagger}
             initial="hidden"
@@ -366,14 +262,27 @@ const FranchisePage = () => {
             viewport={{ once: true }}
             className="space-y-3"
           >
-            {[t.shopSize, t.agreement, t.nonRefundable, t.staffHiring, t.nameRule].map((rule, i) => (
-              <motion.div key={i} variants={fadeUp} className="bg-card rounded-xl border border-border p-4 flex items-start gap-3">
-                <span className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <span className="font-display text-xs font-bold text-primary">{i + 1}</span>
-                </span>
-                <p className="font-body text-sm text-foreground">{rule}</p>
-              </motion.div>
-            ))}
+            {t.allRules.map((rule, i) => {
+              const Icon = rule.icon;
+              return (
+                <motion.div
+                  key={i}
+                  variants={fadeUp}
+                  className="bg-card rounded-2xl border border-border p-5 md:p-6 flex items-start gap-4 hover:border-primary/30 hover:shadow-pineapple transition-all duration-300"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Icon size={18} className="text-primary" />
+                  </div>
+                  <div className="flex-1">
+                    <span className="font-display text-xs font-bold text-primary mb-1 block">{rule.label}</span>
+                    <p className="font-body text-sm md:text-base text-foreground leading-relaxed">{rule.text}</p>
+                  </div>
+                  <span className="w-7 h-7 rounded-full bg-muted flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <span className="font-display text-[11px] font-bold text-muted-foreground">{i + 1}</span>
+                  </span>
+                </motion.div>
+              );
+            })}
           </motion.div>
         </div>
       </section>

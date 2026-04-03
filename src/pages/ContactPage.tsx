@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import ShopLocator from "@/components/ShopLocator";
+import MapWalkingAnimation from "@/components/MapWalkingAnimation";
 import PartyOrderForm from "@/components/PartyOrderForm";
 import FranchiseInquiryForm from "@/components/FranchiseInquiryForm";
 
@@ -39,6 +40,10 @@ const ContactPage = () => {
         <div className="grid md:grid-cols-2 gap-6 md:gap-8 mb-16">
           <PartyOrderForm />
           <FranchiseInquiryForm />
+        </div>
+        {/* Animated Map */}
+        <div className="mb-16">
+          <MapWalkingAnimation />
         </div>
       </div>
 
