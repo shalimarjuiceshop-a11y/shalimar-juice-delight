@@ -41,6 +41,10 @@ const ContactPage = () => {
           <PartyOrderForm />
           <FranchiseInquiryForm />
         </div>
+        {/* Animated Map */}
+        <div className="mb-16">
+          <MapWalkingAnimation />
+        </div>
       </div>
 
       {/* Shop Locator Component */}
