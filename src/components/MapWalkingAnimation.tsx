@@ -1,17 +1,9 @@
 import { motion } from "framer-motion";
-import { useMemo } from "react";
 
 const MapWalkingAnimation = () => {
   const now = new Date();
   const hour = now.getHours();
   const isOpen = hour >= 11 && hour < 23;
-
-  // Path points for walking animation (SVG coordinates)
-  const pathPoints = useMemo(() => ({
-    // Man walks from left along a road to the shop
-    x: [20, 60, 110, 160, 210, 250, 280],
-    y: [140, 125, 115, 110, 108, 106, 100],
-  }), []);
 
   if (!isOpen) {
     return (
@@ -25,159 +17,221 @@ const MapWalkingAnimation = () => {
     );
   }
 
+  // Full walk cycle: walk right to shop (0→100%), pause at shop, walk back left with drink (100%→0%), repeat
+  // Duration: 10s total. 0-45% walk right, 45-55% at shop, 55-100% walk back
   return (
-    <div className="relative w-full h-[180px] md:h-[220px] rounded-2xl overflow-hidden bg-gradient-to-br from-emerald-50 to-green-100 dark:from-emerald-950/30 dark:to-green-900/20 border border-border">
-      <svg viewBox="0 0 340 200" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
-        {/* Sky gradient */}
+    <div className="relative w-full h-[200px] md:h-[240px] rounded-2xl overflow-hidden bg-gradient-to-br from-emerald-50 to-green-100 dark:from-emerald-950/30 dark:to-green-900/20 border border-border">
+      <svg viewBox="0 0 400 200" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
         <defs>
           <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
             <stop offset="0%" stopColor="hsl(200, 80%, 85%)" />
             <stop offset="100%" stopColor="hsl(130, 40%, 88%)" />
           </linearGradient>
           <linearGradient id="roadGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="hsl(220, 10%, 65%)" />
-            <stop offset="100%" stopColor="hsl(220, 10%, 55%)" />
+            <stop offset="0%" stopColor="hsl(220, 10%, 70%)" />
+            <stop offset="100%" stopColor="hsl(220, 10%, 58%)" />
           </linearGradient>
         </defs>
 
         {/* Background */}
-        <rect x="0" y="0" width="340" height="200" fill="url(#skyGrad)" />
+        <rect x="0" y="0" width="400" height="200" fill="url(#skyGrad)" />
 
         {/* Ground */}
-        <rect x="0" y="145" width="340" height="55" fill="hsl(130, 30%, 75%)" rx="0" />
+        <rect x="0" y="155" width="400" height="45" fill="hsl(130, 30%, 72%)" />
+        {/* Grass patches */}
+        {[30, 80, 140, 200, 280, 350].map((x, i) => (
+          <g key={`grass-${i}`}>
+            <line x1={x} y1={155} x2={x - 2} y2={149} stroke="hsl(130, 40%, 55%)" strokeWidth="1.5" />
+            <line x1={x + 3} y1={155} x2={x + 4} y2={148} stroke="hsl(130, 35%, 50%)" strokeWidth="1.5" />
+          </g>
+        ))}
 
         {/* Road */}
-        <path d="M 0 140 Q 80 125 170 120 Q 260 115 340 110" fill="none" stroke="url(#roadGrad)" strokeWidth="22" strokeLinecap="round" />
-        {/* Road center line (blue path) */}
-        <motion.path
-          d="M 0 140 Q 80 125 170 120 Q 260 115 340 110"
-          fill="none"
-          stroke="hsl(220, 80%, 60%)"
-          strokeWidth="2.5"
-          strokeDasharray="8 6"
+        <rect x="0" y="130" width="400" height="28" fill="hsl(220, 8%, 55%)" rx="2" />
+        <rect x="0" y="131" width="400" height="2" fill="hsl(220, 8%, 45%)" />
+        {/* Road dashed center line */}
+        <motion.line
+          x1="0" y1="144" x2="400" y2="144"
+          stroke="hsl(50, 90%, 60%)"
+          strokeWidth="2"
+          strokeDasharray="12 8"
           initial={{ strokeDashoffset: 0 }}
-          animate={{ strokeDashoffset: -28 }}
+          animate={{ strokeDashoffset: -40 }}
           transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
         />
 
         {/* Trees */}
-        {[40, 100, 180].map((x, i) => (
-          <g key={i}>
-            <rect x={x - 2} y={75 + i * 3} width="4" height="18" fill="hsl(25, 50%, 40%)" rx="1" />
-            <circle cx={x} cy={72 + i * 3} r="12" fill="hsl(130, 45%, 45%)" />
-            <circle cx={x - 5} cy={76 + i * 3} r="8" fill="hsl(130, 40%, 50%)" />
-            <circle cx={x + 5} cy={76 + i * 3} r="8" fill="hsl(130, 40%, 50%)" />
+        {[50, 130, 230].map((x, i) => (
+          <g key={`tree-${i}`}>
+            <rect x={x - 2.5} y={90 + i * 4} width="5" height="20" fill="hsl(25, 50%, 38%)" rx="2" />
+            <circle cx={x} cy={85 + i * 4} r="14" fill="hsl(130, 45%, 42%)" />
+            <circle cx={x - 7} cy={90 + i * 4} r="9" fill="hsl(130, 40%, 48%)" />
+            <circle cx={x + 7} cy={90 + i * 4} r="9" fill="hsl(130, 40%, 48%)" />
           </g>
         ))}
 
         {/* Shalimar Shop Building */}
         <g>
-          {/* Building */}
-          <rect x="260" y="55" width="60" height="50" fill="hsl(45, 90%, 65%)" rx="4" stroke="hsl(35, 70%, 45%)" strokeWidth="1.5" />
-          {/* Roof */}
-          <polygon points="255,55 290,35 325,55" fill="hsl(15, 60%, 50%)" stroke="hsl(15, 50%, 40%)" strokeWidth="1" />
+          <rect x="300" y="68" width="70" height="62" fill="hsl(45, 85%, 65%)" rx="4" stroke="hsl(35, 65%, 42%)" strokeWidth="1.5" />
+          <polygon points="293,68 335,42 377,68" fill="hsl(15, 55%, 48%)" stroke="hsl(15, 45%, 38%)" strokeWidth="1" />
           {/* Door */}
-          <rect x="280" y="80" width="16" height="25" fill="hsl(25, 60%, 35%)" rx="2" />
+          <rect x="325" y="100" width="18" height="30" fill="hsl(25, 55%, 32%)" rx="3" />
+          <circle cx="340" cy="116" r="1.5" fill="hsl(45, 80%, 60%)" />
           {/* Window */}
-          <rect x="266" y="68" width="10" height="10" fill="hsl(200, 60%, 80%)" rx="1" stroke="hsl(35, 70%, 45%)" strokeWidth="0.8" />
-          {/* Sign */}
-          <rect x="263" y="56" width="54" height="10" fill="hsl(35, 80%, 40%)" rx="2" />
-          <text x="290" y="64" textAnchor="middle" fill="hsl(45, 100%, 95%)" fontSize="5" fontWeight="bold" fontFamily="sans-serif">SHALIMAR</text>
-          {/* Pineapple icon on top */}
-          <text x="290" y="32" textAnchor="middle" fontSize="12">🍍</text>
-          {/* Open sign glow */}
+          <rect x="306" y="82" width="14" height="12" fill="hsl(200, 60%, 80%)" rx="2" stroke="hsl(35, 65%, 42%)" strokeWidth="1" />
+          <line x1="313" y1="82" x2="313" y2="94" stroke="hsl(35, 65%, 42%)" strokeWidth="0.8" />
+          <line x1="306" y1="88" x2="320" y2="88" stroke="hsl(35, 65%, 42%)" strokeWidth="0.8" />
+          {/* Window 2 */}
+          <rect x="350" y="82" width="14" height="12" fill="hsl(200, 60%, 80%)" rx="2" stroke="hsl(35, 65%, 42%)" strokeWidth="1" />
+          {/* Sign board */}
+          <rect x="303" y="69" width="64" height="12" fill="hsl(35, 75%, 35%)" rx="2" />
+          <text x="335" y="79" textAnchor="middle" fill="hsl(45, 100%, 92%)" fontSize="6.5" fontWeight="bold" fontFamily="sans-serif">SHALIMAR</text>
+          {/* Pineapple */}
+          <text x="335" y="40" textAnchor="middle" fontSize="14">🍍</text>
+          {/* Open light */}
           <motion.circle
-            cx="290"
-            cy="90"
-            r="3"
+            cx="335" cy="110" r="3.5"
             fill="hsl(130, 70%, 50%)"
-            animate={{ opacity: [0.4, 1, 0.4] }}
+            animate={{ opacity: [0.3, 1, 0.3] }}
             transition={{ duration: 1.5, repeat: Infinity }}
           />
         </g>
 
-        {/* Walking Man - Cartoon style */}
+        {/* Location pin bouncing */}
         <motion.g
-          animate={{
-            x: pathPoints.x,
-            y: pathPoints.y.map(y => y - 140),
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "linear",
-            times: [0, 0.15, 0.3, 0.5, 0.7, 0.85, 1],
-          }}
-        >
-          {/* Body */}
-          <circle cx="0" cy="-18" r="6" fill="hsl(30, 60%, 60%)" /> {/* Head */}
-          <rect x="-4" y="-12" width="8" height="14" fill="hsl(210, 70%, 55%)" rx="3" /> {/* Shirt */}
-          {/* Legs - animated walking */}
-          <motion.line
-            x1="-2" y1="2" x2="-5" y2="12"
-            stroke="hsl(220, 30%, 35%)" strokeWidth="2.5" strokeLinecap="round"
-            animate={{ x2: [-5, -1, -5] }}
-            transition={{ duration: 0.4, repeat: Infinity }}
-          />
-          <motion.line
-            x1="2" y1="2" x2="5" y2="12"
-            stroke="hsl(220, 30%, 35%)" strokeWidth="2.5" strokeLinecap="round"
-            animate={{ x2: [5, 1, 5] }}
-            transition={{ duration: 0.4, repeat: Infinity, delay: 0.2 }}
-          />
-          {/* Arms */}
-          <motion.line
-            x1="-4" y1="-8" x2="-9" y2="-1"
-            stroke="hsl(30, 60%, 60%)" strokeWidth="2" strokeLinecap="round"
-            animate={{ x2: [-9, -5, -9] }}
-            transition={{ duration: 0.4, repeat: Infinity, delay: 0.2 }}
-          />
-          <motion.line
-            x1="4" y1="-8" x2="9" y2="-1"
-            stroke="hsl(30, 60%, 60%)" strokeWidth="2" strokeLinecap="round"
-            animate={{ x2: [9, 5, 9] }}
-            transition={{ duration: 0.4, repeat: Infinity }}
-          />
-          {/* Juice glass in hand */}
-          <motion.g
-            animate={{ x: [9, 5, 9] }}
-            transition={{ duration: 0.4, repeat: Infinity }}
-          >
-            <rect x="7" y="-4" width="5" height="7" fill="hsl(45, 90%, 60%)" rx="1" />
-            <text x="9.5" y="1" textAnchor="middle" fontSize="4">🥤</text>
-          </motion.g>
-          {/* Happy face */}
-          <circle cx="-2" cy="-20" r="1" fill="hsl(0, 0%, 20%)" /> {/* Left eye */}
-          <circle cx="2" cy="-20" r="1" fill="hsl(0, 0%, 20%)" /> {/* Right eye */}
-          <path d="M -2 -16 Q 0 -14 2 -16" fill="none" stroke="hsl(0, 0%, 20%)" strokeWidth="0.8" /> {/* Smile */}
-        </motion.g>
-
-        {/* Location pin at shop */}
-        <motion.g
-          animate={{ y: [0, -4, 0] }}
+          animate={{ y: [0, -5, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
         >
-          <path d="M 290 45 L 290 50" stroke="hsl(0, 70%, 55%)" strokeWidth="1.5" />
-          <circle cx="290" cy="42" r="4" fill="hsl(0, 70%, 55%)" />
-          <circle cx="290" cy="42" r="2" fill="hsl(0, 0%, 100%)" />
+          <path d="M 335 55 Q 335 48 335 52" stroke="hsl(0, 70%, 50%)" strokeWidth="2" />
+          <circle cx="335" cy="48" r="5" fill="hsl(0, 70%, 50%)" />
+          <circle cx="335" cy="48" r="2.5" fill="white" />
+        </motion.g>
+
+        {/* Walking Man */}
+        <motion.g
+          animate={{
+            x: [30, 80, 140, 200, 260, 300, 300, 300, 260, 200, 140, 80, 30, 30],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: "linear",
+            times: [0, 0.07, 0.15, 0.22, 0.30, 0.38, 0.42, 0.48, 0.56, 0.64, 0.72, 0.80, 0.88, 1],
+          }}
+        >
+          {/* Body positioned on road */}
+          <g transform="translate(0, 108)">
+            {/* Head */}
+            <circle cx="0" cy="-20" r="7" fill="hsl(30, 55%, 60%)" />
+            {/* Hair */}
+            <ellipse cx="0" cy="-25" rx="6" ry="3" fill="hsl(0, 0%, 20%)" />
+            {/* Eyes */}
+            <circle cx="-2.5" cy="-21" r="1.2" fill="hsl(0, 0%, 15%)" />
+            <circle cx="2.5" cy="-21" r="1.2" fill="hsl(0, 0%, 15%)" />
+            {/* Smile */}
+            <path d="M -2.5 -17 Q 0 -14.5 2.5 -17" fill="none" stroke="hsl(0, 0%, 20%)" strokeWidth="1" strokeLinecap="round" />
+            {/* Body / Shirt */}
+            <rect x="-5" y="-13" width="10" height="16" fill="hsl(210, 70%, 52%)" rx="4" />
+            {/* Legs animated */}
+            <motion.line
+              x1="-3" y1="3" x2="-6" y2="15"
+              stroke="hsl(220, 25%, 32%)" strokeWidth="3" strokeLinecap="round"
+              animate={{ x2: [-6, -1, -6] }}
+              transition={{ duration: 0.35, repeat: Infinity }}
+            />
+            <motion.line
+              x1="3" y1="3" x2="6" y2="15"
+              stroke="hsl(220, 25%, 32%)" strokeWidth="3" strokeLinecap="round"
+              animate={{ x2: [6, 1, 6] }}
+              transition={{ duration: 0.35, repeat: Infinity, delay: 0.175 }}
+            />
+            {/* Shoes */}
+            <motion.ellipse
+              cx="-6" cy="16" rx="3" ry="2"
+              fill="hsl(25, 40%, 30%)"
+              animate={{ cx: [-6, -1, -6] }}
+              transition={{ duration: 0.35, repeat: Infinity }}
+            />
+            <motion.ellipse
+              cx="6" cy="16" rx="3" ry="2"
+              fill="hsl(25, 40%, 30%)"
+              animate={{ cx: [6, 1, 6] }}
+              transition={{ duration: 0.35, repeat: Infinity, delay: 0.175 }}
+            />
+            {/* Arms */}
+            <motion.line
+              x1="-5" y1="-9" x2="-10" y2="-1"
+              stroke="hsl(30, 55%, 60%)" strokeWidth="2.5" strokeLinecap="round"
+              animate={{ x2: [-10, -5, -10] }}
+              transition={{ duration: 0.35, repeat: Infinity, delay: 0.175 }}
+            />
+            <motion.line
+              x1="5" y1="-9" x2="10" y2="-1"
+              stroke="hsl(30, 55%, 60%)" strokeWidth="2.5" strokeLinecap="round"
+              animate={{ x2: [10, 5, 10] }}
+              transition={{ duration: 0.35, repeat: Infinity }}
+            />
+            {/* Juice in hand (appears after visiting shop) */}
+            <motion.g
+              animate={{ 
+                opacity: [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0],
+              }}
+              transition={{
+                duration: 12,
+                repeat: Infinity,
+                times: [0, 0.07, 0.15, 0.22, 0.30, 0.38, 0.42, 0.48, 0.56, 0.64, 0.72, 0.80, 0.88, 1],
+              }}
+            >
+              <motion.g
+                animate={{ x: [10, 5, 10] }}
+                transition={{ duration: 0.35, repeat: Infinity }}
+              >
+                <rect x="8" y="-6" width="6" height="9" fill="hsl(45, 90%, 55%)" rx="1.5" stroke="hsl(35, 70%, 40%)" strokeWidth="0.5" />
+                <rect x="7.5" y="-7" width="7" height="2" fill="hsl(45, 80%, 50%)" rx="1" />
+                <circle cx="11" cy="-2" r="2" fill="hsl(45, 100%, 65%)" opacity="0.6" />
+              </motion.g>
+            </motion.g>
+          </g>
         </motion.g>
 
         {/* Clouds */}
-        <motion.g animate={{ x: [0, 15, 0] }} transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}>
-          <ellipse cx="70" cy="25" rx="20" ry="8" fill="white" opacity="0.7" />
-          <ellipse cx="60" cy="22" rx="14" ry="7" fill="white" opacity="0.6" />
+        <motion.g animate={{ x: [0, 20, 0] }} transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}>
+          <ellipse cx="80" cy="22" rx="22" ry="9" fill="white" opacity="0.7" />
+          <ellipse cx="68" cy="18" rx="15" ry="8" fill="white" opacity="0.6" />
+          <ellipse cx="90" cy="19" rx="12" ry="6" fill="white" opacity="0.5" />
         </motion.g>
-        <motion.g animate={{ x: [0, -10, 0] }} transition={{ duration: 15, repeat: Infinity, ease: "easeInOut", delay: 3 }}>
-          <ellipse cx="200" cy="18" rx="18" ry="7" fill="white" opacity="0.5" />
-          <ellipse cx="212" cy="15" rx="12" ry="6" fill="white" opacity="0.4" />
+        <motion.g animate={{ x: [0, -15, 0] }} transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 4 }}>
+          <ellipse cx="240" cy="16" rx="20" ry="8" fill="white" opacity="0.5" />
+          <ellipse cx="255" cy="13" rx="14" ry="7" fill="white" opacity="0.4" />
+        </motion.g>
+
+        {/* Sun */}
+        <motion.g
+          animate={{ rotate: [0, 360] }}
+          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+          style={{ transformOrigin: "370px 25px" }}
+        >
+          <circle cx="370" cy="25" r="12" fill="hsl(45, 100%, 65%)" />
+          {[0, 45, 90, 135, 180, 225, 270, 315].map((angle) => (
+            <line
+              key={angle}
+              x1={370 + 15 * Math.cos(angle * Math.PI / 180)}
+              y1={25 + 15 * Math.sin(angle * Math.PI / 180)}
+              x2={370 + 19 * Math.cos(angle * Math.PI / 180)}
+              y2={25 + 19 * Math.sin(angle * Math.PI / 180)}
+              stroke="hsl(45, 100%, 65%)"
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
+          ))}
         </motion.g>
       </svg>
 
       {/* Label */}
       <div className="absolute bottom-2 left-3">
-        <span className="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-background/80 backdrop-blur-sm border border-border text-[10px] font-body font-semibold text-foreground">
-          <span className="w-1.5 h-1.5 rounded-full bg-status-open animate-pulse" />
-          Walking to Shalimar Shop...
+        <span className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-background/80 backdrop-blur-sm border border-border text-[10px] font-body font-semibold text-foreground">
+          <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
+          Walking to Shalimar 🍍
         </span>
       </div>
     </div>

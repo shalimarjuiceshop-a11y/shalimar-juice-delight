@@ -28,7 +28,7 @@ const slideInRight = {
 const features = [
   { icon: Users, title: "50 to 500+ Guests", desc: "Small party or big wedding — we serve any number of guests easily." },
   { icon: GlassWater, title: "Live Juice Counter", desc: "We set up a fresh juice counter at your place with many fruit options." },
-  { icon: Star, title: "Best Quality", desc: "Same fresh and pure taste that Shalimar is famous for — no chemicals." },
+  { icon: Star, title: "Best Quality", desc: "Same fresh and pure taste that Shalimar is famous for." },
   { icon: Sparkles, title: "Pick Your Flavors", desc: "Choose what you like — Pineapple, Mango, Mixed Fruit & more!" },
 ];
 
@@ -86,7 +86,7 @@ const PartiesOrderSection = () => {
             {/* CTA buttons */}
             <motion.div variants={fadeUp} className="flex flex-wrap gap-4 items-center">
               <Link
-                to="/contact"
+                to="/party-order"
                 className="group inline-flex items-center gap-2 bg-primary text-primary-foreground text-sm font-semibold px-8 py-3.5 rounded-full hover:brightness-105 hover:scale-[1.02] transition-all duration-300 glow-gold btn-glow"
               >
                 <Phone size={16} />
