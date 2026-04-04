@@ -1,21 +1,6 @@
 import { motion } from "framer-motion";
 
 const MapWalkingAnimation = () => {
-  const now = new Date();
-  const hour = now.getHours();
-  const isOpen = hour >= 11 && hour < 23;
-
-  if (!isOpen) {
-    return (
-      <div className="relative w-full h-[180px] md:h-[220px] rounded-2xl overflow-hidden bg-muted/30 border border-border flex items-center justify-center">
-        <div className="text-center">
-          <span className="text-3xl block mb-2">🌙</span>
-          <p className="font-body text-xs text-muted-foreground font-medium">Shop is closed now</p>
-          <p className="font-body text-[10px] text-muted-foreground/60">Opens at 11:00 AM</p>
-        </div>
-      </div>
-    );
-  }
 
   // Full walk cycle: walk right to shop (0→100%), pause at shop, walk back left with drink (100%→0%), repeat
   // Duration: 10s total. 0-45% walk right, 45-55% at shop, 55-100% walk back
