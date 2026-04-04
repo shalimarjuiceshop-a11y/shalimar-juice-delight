@@ -11,6 +11,7 @@ import Franchise7LakhPage from "@/pages/Franchise7LakhPage";
 import Franchise10LakhPage from "@/pages/Franchise10LakhPage";
 import GalleryPage from "@/pages/GalleryPage";
 import ContactPage from "@/pages/ContactPage";
+import PartyOrderPage from "@/pages/PartyOrderPage";
 import NotFound from "@/pages/NotFound";
 
 const AnimatedRoutes = () => {
