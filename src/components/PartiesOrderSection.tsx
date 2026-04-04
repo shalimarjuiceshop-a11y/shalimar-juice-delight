@@ -86,7 +86,7 @@ const PartiesOrderSection = () => {
             {/* CTA buttons */}
             <motion.div variants={fadeUp} className="flex flex-wrap gap-4 items-center">
               <Link
-                to="/contact"
+                to="/party-order"
                 className="group inline-flex items-center gap-2 bg-primary text-primary-foreground text-sm font-semibold px-8 py-3.5 rounded-full hover:brightness-105 hover:scale-[1.02] transition-all duration-300 glow-gold btn-glow"
               >
                 <Phone size={16} />

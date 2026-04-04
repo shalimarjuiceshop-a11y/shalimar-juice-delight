@@ -25,6 +25,7 @@ const AnimatedRoutes = () => {
         <Route path="/order" element={<PageTransition><OrderPage /></PageTransition>} />
         <Route path="/gallery" element={<PageTransition><GalleryPage /></PageTransition>} />
         <Route path="/contact" element={<PageTransition><ContactPage /></PageTransition>} />
+        <Route path="/party-order" element={<PageTransition><PartyOrderPage /></PageTransition>} />
         <Route path="/franchise" element={<PageTransition><FranchisePage /></PageTransition>} />
         <Route path="/franchise/3-lakh" element={<PageTransition><Franchise3LakhPage /></PageTransition>} />
         <Route path="/franchise/5-lakh" element={<PageTransition><Franchise5LakhPage /></PageTransition>} />
