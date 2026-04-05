@@ -163,7 +163,7 @@ const FranchisePage = () => {
       </section>
 
       {/* Franchise Packages */}
-      <section className="py-16 md:py-24">
+      <section className="py-10 md:py-16">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
