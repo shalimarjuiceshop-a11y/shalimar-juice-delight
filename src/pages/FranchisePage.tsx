@@ -148,7 +148,7 @@ const FranchisePage = () => {
             ))}
           </div>
           <motion.div variants={stagger} initial="hidden" animate="show">
-            <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 mb-6">
+            <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 mb-4">
               <Sparkles size={14} className="text-primary" />
               <span className="font-body text-xs font-semibold text-primary">Trusted Franchise Model</span>
             </motion.div>
