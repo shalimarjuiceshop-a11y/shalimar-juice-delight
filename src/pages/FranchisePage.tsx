@@ -152,7 +152,7 @@ const FranchisePage = () => {
               <Sparkles size={14} className="text-primary" />
               <span className="font-body text-xs font-semibold text-primary">Trusted Franchise Model</span>
             </motion.div>
-            <motion.h1 variants={fadeUp} className="font-display text-4xl md:text-6xl font-extrabold tracking-tight text-foreground leading-tight">
+            <motion.h1 variants={fadeUp} className="font-display text-3xl md:text-5xl font-extrabold tracking-tight text-foreground leading-tight">
               {t.title}
             </motion.h1>
             <motion.p variants={fadeUp} className="font-body text-base md:text-lg mt-4 max-w-xl mx-auto text-muted-foreground leading-relaxed">
