@@ -132,7 +132,7 @@ const FranchisePage = () => {
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-accent/5" />
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(var(--pineapple-gold)) 1px, transparent 0)', backgroundSize: '48px 48px' }} />
         <div className="container mx-auto px-4 relative z-10 text-center">
-          <div className="flex justify-center gap-1 mb-8">
+          <div className="flex justify-center gap-1 mb-5">
             {(["hinglish", "hindi"] as Lang[]).map((l) => (
               <button
                 key={l}
