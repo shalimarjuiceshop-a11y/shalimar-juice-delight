@@ -128,11 +128,11 @@ const FranchisePage = () => {
   return (
     <main className="pt-20 min-h-screen bg-background">
       {/* Header */}
-      <section className="relative py-20 md:py-28 overflow-hidden">
+      <section className="relative py-8 md:py-12 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-accent/5" />
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(var(--pineapple-gold)) 1px, transparent 0)', backgroundSize: '48px 48px' }} />
         <div className="container mx-auto px-4 relative z-10 text-center">
-          <div className="flex justify-center gap-1 mb-8">
+          <div className="flex justify-center gap-1 mb-5">
             {(["hinglish", "hindi"] as Lang[]).map((l) => (
               <button
                 key={l}
@@ -148,14 +148,14 @@ const FranchisePage = () => {
             ))}
           </div>
           <motion.div variants={stagger} initial="hidden" animate="show">
-            <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 mb-6">
+            <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 mb-4">
               <Sparkles size={14} className="text-primary" />
               <span className="font-body text-xs font-semibold text-primary">Trusted Franchise Model</span>
             </motion.div>
-            <motion.h1 variants={fadeUp} className="font-display text-4xl md:text-6xl font-extrabold tracking-tight text-foreground leading-tight">
+            <motion.h1 variants={fadeUp} className="font-display text-3xl md:text-5xl font-extrabold tracking-tight text-foreground leading-tight">
               {t.title}
             </motion.h1>
-            <motion.p variants={fadeUp} className="font-body text-base md:text-lg mt-4 max-w-xl mx-auto text-muted-foreground leading-relaxed">
+            <motion.p variants={fadeUp} className="font-body text-sm md:text-base mt-2 max-w-xl mx-auto text-muted-foreground leading-relaxed">
               {t.subtitle}
             </motion.p>
           </motion.div>
@@ -163,7 +163,7 @@ const FranchisePage = () => {
       </section>
 
       {/* Franchise Packages */}
-      <section className="py-16 md:py-24">
+      <section className="py-10 md:py-16">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
