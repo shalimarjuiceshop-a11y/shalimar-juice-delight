@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { PartyPopper, Users, Phone, Star, ArrowRight, Sparkles, GlassWater } from "lucide-react";
-import partySetup from "@/assets/party-juice-setup.jpg";
+import partySetup from "@/assets/party-setup-new.png";
 
 const smoothEase = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
@@ -26,7 +26,7 @@ const slideInRight = {
 };
 
 const features = [
-  { icon: Users, title: "50 to 500+ Guests", desc: "Small party or big wedding — we serve any number of guests easily." },
+  { icon: Users, title: "500 to 10,000+ Guests", desc: "Small party or big wedding — we serve any number of guests easily." },
   { icon: GlassWater, title: "Live Juice Counter", desc: "We set up a fresh juice counter at your place with many fruit options." },
   { icon: Star, title: "Best Quality", desc: "Same fresh and pure taste that Shalimar is famous for." },
   { icon: Sparkles, title: "Pick Your Flavors", desc: "Choose what you like — Pineapple, Mango, Mixed Fruit & more!" },

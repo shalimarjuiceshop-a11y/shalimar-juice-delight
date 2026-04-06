@@ -210,4 +210,13 @@
   @keyframes shimmer {
     100% { transform: translateX(100%); }
   }
+
+  /* Smooth slide for infinite carousel */
+  @keyframes slide-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-33.333%); }
+  }
+  .animate-slide-left {
+    animation: slide-left 30s linear infinite;
+  }
 }
