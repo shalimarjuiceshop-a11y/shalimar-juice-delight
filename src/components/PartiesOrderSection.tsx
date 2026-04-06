@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { PartyPopper, Users, Phone, Star, ArrowRight, Sparkles, GlassWater } from "lucide-react";
-import partySetup from "@/assets/party-setup-clean.jpg";
+import partySetup from "@/assets/party-setup-premium.jpg";
 
 const smoothEase = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
@@ -18,11 +18,6 @@ const fadeUp = {
 const scaleUp = {
   hidden: { opacity: 0, scale: 0.9 },
   show: { opacity: 1, scale: 1, transition: { duration: 0.6, ease: smoothEase } },
-};
-
-const slideInRight = {
-  hidden: { opacity: 0, x: 60, filter: "blur(8px)" },
-  show: { opacity: 1, x: 0, filter: "blur(0px)", transition: { duration: 0.8, ease: smoothEase } },
 };
 
 const features = [
@@ -105,35 +100,50 @@ const PartiesOrderSection = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right: Image */}
+          {/* Right: Premium Image */}
           <motion.div
-            variants={slideInRight}
-            initial="hidden"
-            whileInView="show"
+            initial={{ opacity: 0, x: 60, filter: "blur(8px)" }}
+            whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+            transition={{ duration: 0.8, ease: smoothEase }}
             viewport={{ once: true, margin: "-60px" }}
-            className="flex justify-center"
+            className="flex justify-center lg:justify-end"
           >
-            <motion.div
-              className="relative rounded-2xl overflow-hidden group"
-              whileHover={{ scale: 1.03, rotate: 1 }}
-              transition={{ type: "spring", stiffness: 200 }}
-            >
-              <div className="absolute -inset-3 rounded-3xl blur-3xl" style={{ background: "hsl(45 100% 51% / 0.12)" }} />
-              <img
-                src={partySetup}
-                alt="Shalimar Live Juice Counter Setup for Parties and Events"
-                className="relative w-full max-w-lg rounded-2xl object-cover shadow-2xl"
-                loading="lazy"
-                width={1024}
-                height={768}
-              />
-              <div className="absolute inset-0 rounded-2xl" style={{ background: "linear-gradient(to top, hsl(30 15% 10% / 0.6), transparent 40%)" }} />
-              <div className="absolute bottom-4 left-4">
-                <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold" style={{ background: "hsl(45 100% 51% / 0.9)", color: "hsl(30 15% 10%)" }}>
-                  <Star size={12} /> Our Party Setup
-                </span>
-              </div>
-            </motion.div>
+            <div className="relative w-full max-w-lg">
+              {/* Outer glow ring */}
+              <div className="absolute -inset-4 rounded-[2rem] blur-2xl opacity-40" style={{ background: "linear-gradient(135deg, hsl(45 100% 51% / 0.25), hsl(35 90% 45% / 0.15))" }} />
+              
+              {/* Decorative frame accent */}
+              <div className="absolute -top-3 -left-3 w-20 h-20 border-t-2 border-l-2 rounded-tl-2xl" style={{ borderColor: "hsl(45 100% 51% / 0.4)" }} />
+              <div className="absolute -bottom-3 -right-3 w-20 h-20 border-b-2 border-r-2 rounded-br-2xl" style={{ borderColor: "hsl(45 100% 51% / 0.4)" }} />
+
+              {/* Main image */}
+              <motion.div
+                className="relative rounded-2xl overflow-hidden"
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 200, damping: 20 }}
+              >
+                <img
+                  src={partySetup}
+                  alt="Shalimar Live Juice Counter Setup for Parties and Events"
+                  className="w-full aspect-[16/10] object-cover rounded-2xl"
+                  loading="lazy"
+                  width={1280}
+                  height={720}
+                />
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 rounded-2xl" style={{ background: "linear-gradient(to top, hsl(30 15% 10% / 0.7), transparent 50%)" }} />
+                
+                {/* Badge */}
+                <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between">
+                  <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold backdrop-blur-sm" style={{ background: "hsl(45 100% 51% / 0.85)", color: "hsl(30 15% 10%)" }}>
+                    <Star size={12} /> Premium Setup
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-semibold backdrop-blur-sm" style={{ background: "hsl(0 0% 100% / 0.15)", color: "hsl(45 100% 96%)" }}>
+                    500 – 10,000+ Guests
+                  </span>
+                </div>
+              </motion.div>
+            </div>
           </motion.div>
         </div>
 
