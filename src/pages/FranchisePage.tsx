@@ -35,7 +35,7 @@ const content = {
       { icon: Package, text: "Ice crushing machine", label: "Ice Machine", type: "facility" },
       { icon: GraduationCap, text: "Training: Pineapple juice, Apple juice, Mango juice", label: "Juice Training", type: "facility" },
       { icon: Check, text: "First month liquid provided FREE!", label: "Free First Month", type: "facility" },
-      { icon: Package, text: "After first month, refill cost: ₹1000", label: "Refill Cost", type: "facility" },
+      
       { icon: Eye, text: "After your franchise goes live, a company representative will visit your shop once every month or every 1-2 months.", label: "Company Visits", type: "rule" },
       { icon: Shield, text: "All campers (large water cans) sold at your shop will be of the company's brand only.", label: "Brand Campers", type: "rule" },
       { icon: ClipboardList, text: "All profit from selling campers will be 100% yours (the franchisee's).", label: "Your Profit", type: "rule" },
@@ -66,7 +66,7 @@ const content = {
       { icon: Package, text: "बर्फ कुचलने की मशीन", label: "बर्फ मशीन", type: "facility" },
       { icon: GraduationCap, text: "ट्रेनिंग: अनानास जूस, सेब जूस, आम जूस", label: "जूस ट्रेनिंग", type: "facility" },
       { icon: Check, text: "पहले महीने का लिक्विड मुफ्त!", label: "पहला महीना मुफ्त", type: "facility" },
-      { icon: Package, text: "पहले महीने के बाद, रिफिल की कीमत: ₹1000", label: "रिफिल कीमत", type: "facility" },
+      
       { icon: Eye, text: "हमारी फ्रेंचाइजी लाइव होने के बाद, कंपनी का कोई भी एक व्यक्ति हर महीने या 1-2 महीने में एक बार आपकी शॉप पर विजिट करेगा।", label: "कंपनी विज़िट", type: "rule" },
       { icon: Shield, text: "आपकी शॉप पर जो भी कैम्पर (पानी के बड़े केन) बिकेंगे, वह कंपनी के ब्रांड के ही होंगे।", label: "ब्रांड कैम्पर", type: "rule" },
       { icon: ClipboardList, text: "कैम्पर बेचने पर जो भी मुनाफा होगा, वह पूरा फ्रेंचाइजी लेने वाले (आपका) ही होगा।", label: "आपका मुनाफा", type: "rule" },
