@@ -125,10 +125,8 @@ const PartiesOrderSection = () => {
                 <img
                   src={partySetup}
                   alt="Shalimar Live Juice Counter Setup for Parties and Events"
-                  className="w-full aspect-[16/10] object-cover rounded-2xl"
+                  className="w-full aspect-[4/5] object-cover object-center rounded-2xl"
                   loading="lazy"
-                  width={1280}
-                  height={720}
                 />
                 {/* Gradient overlay */}
                 <div className="absolute inset-0 rounded-2xl" style={{ background: "linear-gradient(to top, hsl(30 15% 10% / 0.7), transparent 50%)" }} />

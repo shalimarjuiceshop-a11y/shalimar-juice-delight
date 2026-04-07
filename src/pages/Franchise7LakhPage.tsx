@@ -16,7 +16,7 @@ const content = {
     trainingItems: [
       "Pineapple Juice",
       "Apple Juice", 
-      "Jamun Juice",
+      "Jaam Juice",
       "Mango Juice",
       "Kharboos Juice",
       "Lassi",
@@ -78,7 +78,7 @@ const content = {
     trainingItems: [
       "अनानास जूस",
       "सेब जूस",
-      "जामुन जूस", 
+      "जाम जूस", 
       "आम जूस",
       "खरबूजा जूस",
       "लस्सी",
