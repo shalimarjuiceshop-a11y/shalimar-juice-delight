@@ -23,7 +23,7 @@ const stagger = {
   show: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
 };
 
-const guestOptions = ["50-100", "100-200", "200-300", "300-500", "500+"];
+const guestOptions = ["500-1000", "1000-2000", "2000-3000", "3000-5000", "5000-10000"];
 
 const PartyOrderForm = () => {
   const [form, setForm] = useState({ name: "", mobile: "", city: "", quantity: "" });
