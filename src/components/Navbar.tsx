@@ -42,13 +42,17 @@ const Navbar = () => {
     >
       <div className="container mx-auto flex items-center justify-between h-[4.5rem] px-4">
         <Link to="/" className="flex items-center gap-3 group">
-          <motion.img
-            src={sjsLogo}
-            alt="Shalimar Juice Shop Logo"
-            className="w-11 h-11 rounded-full object-cover border-2 border-primary/30 shadow-lg group-hover:border-primary/50 transition-colors"
+          <motion.div
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
-          />
+            className="relative w-14 h-14 rounded-full bg-cream p-0.5 ring-2 ring-primary/60 shadow-[0_0_20px_hsl(45_90%_55%/0.35)] group-hover:ring-primary transition-all"
+          >
+            <img
+              src={sjsLogo}
+              alt="Shalimar Juice Shop Logo"
+              className="w-full h-full rounded-full object-cover"
+            />
+          </motion.div>
           <div className="leading-none">
             <h1 className="font-display text-lg font-bold tracking-tight text-cream">
               Shalimar Juice
