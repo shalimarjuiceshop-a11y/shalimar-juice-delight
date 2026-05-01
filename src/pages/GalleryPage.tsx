@@ -5,6 +5,15 @@ import shopPhoto1 from "@/assets/shop-photo-1.png";
 import shopPhoto2 from "@/assets/shop-photo-2.png";
 import shopPhoto3 from "@/assets/shop-photo-3.png";
 import winterSpecial from "@/assets/winter-special.png";
+import galleryKharbuja from "@/assets/gallery-kharbuja.jpeg";
+import galleryMango from "@/assets/gallery-mango.jpeg";
+import galleryGuava from "@/assets/gallery-guava.jpeg";
+import galleryApple from "@/assets/gallery-apple.jpeg";
+import galleryPineapple from "@/assets/gallery-pineapple.jpeg";
+import galleryFalooda from "@/assets/gallery-falooda.jpeg";
+import galleryLassi from "@/assets/gallery-lassi.jpeg";
+import galleryOrange from "@/assets/gallery-orange.png";
+import galleryPineappleJuice from "@/assets/gallery-pineapple-juice.png";
 
 const smoothEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -23,6 +32,15 @@ const photos = [
   { src: shopPhoto2, alt: "Shalimar Juice Shop - Team & Fresh Juices", caption: "Our Team at Work" },
   { src: shopPhoto3, alt: "Shalimar Juice Shop - Fresh Juice Counter", caption: "Fresh Juice Counter" },
   { src: winterSpecial, alt: "Winter Special - Delicious Kullad Drink", caption: "Winter Special - Very Delicious! Just ₹30 - Try it!" },
+  { src: galleryPineapple, alt: "Fresh Pineapple Shake", caption: "Signature Pineapple Shake — ₹10" },
+  { src: galleryMango, alt: "Fresh Mango Shake with Alphonso Mangoes", caption: "Royal Alphonso Mango Shake — ₹10" },
+  { src: galleryApple, alt: "Fresh Apple Shake with Kashmiri Apples", caption: "Crisp Apple Shake — ₹10" },
+  { src: galleryGuava, alt: "Fresh Guava Shake", caption: "Pink Guava Shake — ₹10" },
+  { src: galleryKharbuja, alt: "Fresh Kharbuja Muskmelon Juice", caption: "Sweet Kharbuja Juice — ₹50" },
+  { src: galleryOrange, alt: "Fresh Orange Juice", caption: "Tangy Orange Juice — ₹50" },
+  { src: galleryPineappleJuice, alt: "Fresh Pineapple Juice", caption: "Pure Pineapple Juice — ₹50" },
+  { src: galleryFalooda, alt: "Ice Cream Falooda with Sabja Seeds", caption: "Royal Ice Cream Falooda — ₹30" },
+  { src: galleryLassi, alt: "Creamy Ice Cream Lassi", caption: "Creamy Ice Cream Lassi — ₹30" },
 ];
 
 
