@@ -40,17 +40,17 @@ const Navbar = () => {
         WebkitBackdropFilter: "blur(16px)",
       }}
     >
-      <div className="container mx-auto flex items-center justify-between h-24 px-4">
+      <div className="container mx-auto flex items-center justify-between h-20 px-4">
         <Link to="/" className="flex items-center gap-3 group">
           <motion.div
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
-            className="relative h-[72px] w-[92px] md:h-[78px] md:w-[108px] rounded-xl bg-cream p-1 ring-2 ring-primary/70 shadow-[0_0_28px_hsl(45_90%_55%/0.45)] group-hover:ring-primary transition-all"
+            className="relative w-16 h-16 md:w-[68px] md:h-[68px] rounded-full bg-cream p-0.5 ring-2 ring-primary/60 shadow-[0_0_24px_hsl(45_90%_55%/0.4)] group-hover:ring-primary transition-all"
           >
             <img
               src={sjsLogo}
               alt="Shalimar Juice Shop Logo"
-              className="w-full h-full rounded-lg object-contain"
+              className="w-full h-full rounded-full object-cover"
             />
           </motion.div>
           <div className="leading-none">
