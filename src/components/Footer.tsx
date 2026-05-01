@@ -16,7 +16,9 @@ const Footer = () => (
         {/* Brand */}
         <div className="md:col-span-1">
           <div className="flex items-center gap-3 mb-5">
-            <img src={sjsLogo} alt="SJS Logo" className="w-12 h-12 rounded-full object-cover border-2 border-primary/30 shadow-lg" />
+            <div className="w-14 h-14 rounded-full bg-cream p-0.5 ring-2 ring-primary/60 shadow-[0_0_20px_hsl(45_90%_55%/0.35)]">
+              <img src={sjsLogo} alt="SJS Logo" className="w-full h-full rounded-full object-cover" />
+            </div>
             <div>
               <h3 className="font-display text-xl font-bold text-cream">
                 Shalimar Juice
