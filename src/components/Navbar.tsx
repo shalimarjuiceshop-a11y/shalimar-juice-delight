@@ -40,12 +40,12 @@ const Navbar = () => {
         WebkitBackdropFilter: "blur(16px)",
       }}
     >
-      <div className="container mx-auto flex items-center justify-between h-20 px-4">
+      <div className="container mx-auto flex items-center justify-between h-[4.5rem] px-4">
         <Link to="/" className="flex items-center gap-3 group">
           <motion.div
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
-            className="relative w-16 h-16 md:w-[68px] md:h-[68px] rounded-full bg-cream p-0.5 ring-2 ring-primary/60 shadow-[0_0_24px_hsl(45_90%_55%/0.4)] group-hover:ring-primary transition-all"
+            className="relative w-14 h-14 rounded-full bg-cream p-0.5 ring-2 ring-primary/60 shadow-[0_0_20px_hsl(45_90%_55%/0.35)] group-hover:ring-primary transition-all"
           >
             <img
               src={sjsLogo}
