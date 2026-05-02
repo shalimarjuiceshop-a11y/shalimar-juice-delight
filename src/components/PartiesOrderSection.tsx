@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { PartyPopper, Users, Phone, Star, ArrowRight, Sparkles, GlassWater } from "lucide-react";
 import partySetup from "@/assets/party-setup-premium.jpg";
+import DeliveryCyclistAnimation from "./DeliveryCyclistAnimation";
 
 const smoothEase = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
