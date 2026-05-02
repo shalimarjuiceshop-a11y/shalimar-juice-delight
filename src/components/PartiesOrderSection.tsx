@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { PartyPopper, Users, Phone, Star, ArrowRight, Sparkles, GlassWater } from "lucide-react";
 import partySetup from "@/assets/party-setup-premium.jpg";
+import DeliveryCyclistAnimation from "./DeliveryCyclistAnimation";
 
 const smoothEase = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
@@ -45,6 +46,17 @@ const PartiesOrderSection = () => {
       <motion.div className="absolute bottom-20 right-16 w-32 h-32 rounded-full" style={{ background: "hsl(45 100% 51% / 0.05)" }} animate={{ y: [0, 20, 0], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }} />
 
       <div className="container mx-auto px-4 relative z-10">
+        {/* Delivery cyclist banner — header strip */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.7, ease: smoothEase }}
+          className="max-w-5xl mx-auto mb-10 md:mb-14"
+        >
+          <DeliveryCyclistAnimation />
+        </motion.div>
+
         {/* Two-column layout: Content + Image */}
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-14">
           {/* Left: Text content */}
