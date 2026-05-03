@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Check, AlertTriangle, Building2, GraduationCap, Package, ArrowRight, ClipboardList, Truck, Eye, Shield, ChevronLeft, ChevronRight, Sparkles, Star } from "lucide-react";
+import FranchiseDealAnimation from "@/components/FranchiseDealAnimation";
 import shopPhoto1 from "@/assets/shop-photo-1.png";
 import shopPhoto2 from "@/assets/shop-photo-2.png";
 import shopPhoto3 from "@/assets/shop-photo-3.png";
@@ -158,6 +159,12 @@ const FranchisePage = () => {
             <motion.p variants={fadeUp} className="font-body text-sm md:text-base mt-2 max-w-xl mx-auto text-muted-foreground leading-relaxed">
               {t.subtitle}
             </motion.p>
+            <motion.div
+              variants={fadeUp}
+              className="max-w-3xl mx-auto mt-8"
+            >
+              <FranchiseDealAnimation />
+            </motion.div>
           </motion.div>
         </div>
       </section>

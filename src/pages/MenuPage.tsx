@@ -5,6 +5,7 @@ import { Star, Sparkles, CupSoda, Citrus, Nut, Crown, ShoppingBag } from "lucide
 import { drinks, categories, type DrinkCategory } from "@/data/menuData";
 import FlavorQuiz from "@/components/FlavorQuiz";
 import TiltCard from "@/components/TiltCard";
+import MenuTasteAnimation from "@/components/MenuTasteAnimation";
 
 const smoothEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 const springBounce = { type: "spring" as const, stiffness: 400, damping: 25 };
@@ -130,6 +131,21 @@ const MenuPage = () => {
               </motion.button>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Fun Cartoon Animation */}
+      <section className="pt-10 md:pt-14">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: smoothEase }}
+            className="max-w-4xl mx-auto"
+          >
+            <MenuTasteAnimation />
+          </motion.div>
         </div>
       </section>
 
