@@ -62,42 +62,59 @@ const MenuPage = () => {
           />
         </div>
 
-        <div className="container mx-auto px-4 relative z-10 text-center">
-          <motion.div variants={stagger} initial="hidden" animate="show">
-            <motion.div variants={fadeUp} className="inline-flex items-center gap-2 mb-6">
-              <span className="inline-flex items-center gap-1.5 text-[11px] font-body font-bold tracking-[0.2em] uppercase px-4 py-2 rounded-full border border-primary/40 bg-primary/10 text-primary">
-                <Sparkles size={12} className="animate-pulse" /> 100% Fresh & Natural
-              </span>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid md:grid-cols-[1fr_auto] items-center gap-8 md:gap-10 max-w-5xl mx-auto">
+            <motion.div variants={stagger} initial="hidden" animate="show" className="text-center md:text-left">
+              <motion.div variants={fadeUp} className="inline-flex items-center gap-2 mb-6">
+                <span className="inline-flex items-center gap-1.5 text-[11px] font-body font-bold tracking-[0.2em] uppercase px-4 py-2 rounded-full border border-primary/40 bg-primary/10 text-primary">
+                  <Sparkles size={12} className="animate-pulse" /> 100% Fresh & Natural
+                </span>
+              </motion.div>
+
+              <motion.h1 variants={fadeUp} className="font-display text-4xl md:text-6xl font-black tracking-tight">
+                <span className="text-cream">Our </span>
+                <span className="relative inline-block">
+                  <span className="text-gradient-gold">Menu</span>
+                  <motion.span
+                    className="absolute -bottom-1 left-0 right-0 h-1 rounded-full bg-primary"
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
+                    transition={{ delay: 0.8, duration: 0.6, ease: smoothEase }}
+                  />
+                </span>
+              </motion.h1>
+
+              <motion.p variants={fadeUp} className="font-body text-base md:text-lg mt-4 max-w-lg mx-auto md:mx-0 leading-relaxed text-header-muted">
+                Fresh juices, creamy shakes & premium dry fruit specials —
+                <span className="text-primary font-semibold"> handcrafted daily</span> with real fruits.
+              </motion.p>
+
+              <motion.div variants={fadeUp} className="flex justify-center md:justify-start gap-4 md:gap-6 mt-8 flex-wrap">
+                {categories.map((cat) => (
+                  <div key={cat.key} className="flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10">
+                    <span className="text-primary">{categoryIcons[cat.key]}</span>
+                    <span className="font-display text-sm font-bold text-cream">{cat.label}</span>
+                    <span className="font-display text-sm font-black text-primary">{cat.price}</span>
+                  </div>
+                ))}
+              </motion.div>
             </motion.div>
 
-            <motion.h1 variants={fadeUp} className="font-display text-4xl md:text-6xl font-black tracking-tight">
-              <span className="text-cream">Our </span>
-              <span className="relative inline-block">
-                <span className="text-gradient-gold">Menu</span>
-                <motion.span
-                  className="absolute -bottom-1 left-0 right-0 h-1 rounded-full bg-primary"
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={{ delay: 0.8, duration: 0.6, ease: smoothEase }}
-                />
-              </span>
-            </motion.h1>
-
-            <motion.p variants={fadeUp} className="font-body text-base md:text-lg mt-4 max-w-lg mx-auto leading-relaxed text-header-muted">
-              Fresh juices, creamy shakes & premium dry fruit specials —
-              <span className="text-primary font-semibold"> handcrafted daily</span> with real fruits.
-            </motion.p>
-
-            <motion.div variants={fadeUp} className="flex justify-center gap-4 md:gap-8 mt-8 flex-wrap">
-              {categories.map((cat) => (
-                <div key={cat.key} className="flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10">
-                  <span className="text-primary">{categoryIcons[cat.key]}</span>
-                  <span className="font-display text-sm font-bold text-cream">{cat.label}</span>
-                  <span className="font-display text-sm font-black text-primary">{cat.price}</span>
-                </div>
-              ))}
+            {/* Auto-flipping book beside the heading */}
+            <motion.div
+              initial={{ opacity: 0, x: 30, rotateY: -25 }}
+              animate={{ opacity: 1, x: 0, rotateY: 0 }}
+              transition={{ duration: 0.9, ease: smoothEase, delay: 0.2 }}
+              className="hidden md:block w-[280px] lg:w-[300px] shrink-0"
+            >
+              <MenuBookAnimation />
             </motion.div>
-          </motion.div>
+          </div>
+
+          {/* Book on mobile (compact, below text) */}
+          <div className="md:hidden mt-8 max-w-[260px] mx-auto">
+            <MenuBookAnimation />
+          </div>
         </div>
       </section>
 
