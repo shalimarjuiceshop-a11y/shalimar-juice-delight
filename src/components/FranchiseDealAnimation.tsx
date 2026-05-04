@@ -9,10 +9,10 @@ import { motion } from "framer-motion";
 const FranchiseDealAnimation = () => {
   return (
     <div
-      className="relative w-full h-[200px] md:h-[240px] overflow-hidden rounded-2xl border border-primary/25 shadow-pineapple"
+      className="relative w-full max-w-md mx-auto h-[180px] md:h-[210px] overflow-hidden rounded-2xl border border-primary/25 shadow-pineapple"
       style={{
         background:
-          "linear-gradient(180deg, hsl(38 70% 22%) 0%, hsl(35 55% 30%) 55%, hsl(45 65% 45%) 100%)",
+          "linear-gradient(180deg, hsl(38 75% 24%) 0%, hsl(35 60% 32%) 55%, hsl(45 70% 48%) 100%)",
       }}
     >
       {/* sun */}
