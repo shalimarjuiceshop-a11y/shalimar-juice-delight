@@ -4,6 +4,7 @@ import { useSearchParams } from "react-router-dom";
 import { ShoppingBag, Plus, Minus, Trash2, User, Phone, MapPin, AlertCircle, Send, Sparkles, GlassWater } from "lucide-react";
 import { drinks, categories } from "@/data/menuData";
 import { toast } from "sonner";
+import DeliveryBikeAnimation from "@/components/DeliveryBikeAnimation";
 
 const smoothEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
