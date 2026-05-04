@@ -6,6 +6,7 @@ import { drinks, categories, type DrinkCategory } from "@/data/menuData";
 import FlavorQuiz from "@/components/FlavorQuiz";
 import TiltCard from "@/components/TiltCard";
 import MenuTasteAnimation from "@/components/MenuTasteAnimation";
+import MenuBookAnimation from "@/components/MenuBookAnimation";
 
 const smoothEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 const springBounce = { type: "spring" as const, stiffness: 400, damping: 25 };
