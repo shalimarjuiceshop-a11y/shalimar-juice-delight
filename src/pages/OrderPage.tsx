@@ -127,21 +127,38 @@ const OrderPage = () => {
           className="absolute bottom-8 right-[10%] text-3xl opacity-15 select-none"
         >🥤</motion.div>
 
-        <div className="container mx-auto px-4 relative z-10 text-center">
-          <motion.div variants={stagger} initial="hidden" animate="show">
-            <motion.div variants={fadeUp} className="inline-flex items-center gap-2 mb-5">
-              <span className="inline-flex items-center gap-1.5 text-[11px] font-body font-bold tracking-[0.2em] uppercase px-4 py-2 rounded-full border border-primary/40 bg-primary/10 text-primary">
-                <Sparkles size={12} className="animate-pulse" /> Direct Order
-              </span>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid md:grid-cols-[1fr_auto] items-center gap-6 md:gap-10 max-w-5xl mx-auto">
+            <motion.div variants={stagger} initial="hidden" animate="show" className="text-center md:text-left">
+              <motion.div variants={fadeUp} className="inline-flex items-center gap-2 mb-5">
+                <span className="inline-flex items-center gap-1.5 text-[11px] font-body font-bold tracking-[0.2em] uppercase px-4 py-2 rounded-full border border-primary/40 bg-primary/10 text-primary">
+                  <Sparkles size={12} className="animate-pulse" /> Direct Order
+                </span>
+              </motion.div>
+              <motion.h1 variants={fadeUp} className="font-display text-3xl md:text-5xl font-black tracking-tight">
+                <span className="text-cream">Place Your </span>
+                <span className="text-gradient-gold">Order</span>
+              </motion.h1>
+              <motion.p variants={fadeUp} className="font-body text-sm md:text-base mt-3 text-header-muted max-w-md mx-auto md:mx-0">
+                Fill your details, pick your drinks, and order via WhatsApp — it's that simple! 🍍
+              </motion.p>
             </motion.div>
-            <motion.h1 variants={fadeUp} className="font-display text-3xl md:text-5xl font-black tracking-tight">
-              <span className="text-cream">Place Your </span>
-              <span className="text-gradient-gold">Order</span>
-            </motion.h1>
-            <motion.p variants={fadeUp} className="font-body text-sm md:text-base mt-3 text-header-muted max-w-md mx-auto">
-              Fill your details, pick your drinks, and order via WhatsApp — it's that simple! 🍍
-            </motion.p>
-          </motion.div>
+
+            {/* Delivery boy bike animation */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: smoothEase, delay: 0.2 }}
+              className="hidden md:block w-[260px] shrink-0"
+            >
+              <DeliveryBikeAnimation />
+            </motion.div>
+          </div>
+
+          {/* Bike on mobile */}
+          <div className="md:hidden mt-6 max-w-[240px] mx-auto">
+            <DeliveryBikeAnimation />
+          </div>
         </div>
       </section>
 
