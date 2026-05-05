@@ -2,7 +2,6 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { PartyPopper, Send, User, Phone, MapPin, Users, Building2, Sparkles, GlassWater, Music, ChevronDown } from "lucide-react";
 import { toast } from "sonner";
-import PartyEventAnimation from "@/components/PartyEventAnimation";
 
 const WHATSAPP_NUMBER = "919852779933";
 
@@ -125,9 +124,6 @@ const PartyOrderPage = () => {
             <motion.p variants={fadeUp} className="font-body text-sm md:text-base mt-4 text-header-muted max-w-lg mx-auto leading-relaxed">
               From weddings to corporate events — we bring fresh juice counters to your venue for 500 to 10,000+ guests!
             </motion.p>
-            <motion.div variants={fadeUp} className="mt-8">
-              <PartyEventAnimation />
-            </motion.div>
           </motion.div>
         </div>
       </section>
