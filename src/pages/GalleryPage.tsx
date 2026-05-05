@@ -1,6 +1,7 @@
 import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Camera, X, ChevronLeft, ChevronRight, ZoomIn, Instagram, Play, ExternalLink } from "lucide-react";
+import GalleryPhotographerAnimation from "@/components/GalleryPhotographerAnimation";
 import shopPhoto1 from "@/assets/shop-photo-1.png";
 import shopPhoto2 from "@/assets/shop-photo-2.png";
 import shopPhoto3 from "@/assets/shop-photo-3.png";
@@ -100,6 +101,9 @@ const GalleryPage = () => {
             <motion.p variants={fadeUp} className="font-body text-base md:text-lg mt-3 max-w-md mx-auto text-header-muted">
               A glimpse of Shalimar Juice Shop & our fresh preparations.
             </motion.p>
+            <motion.div variants={fadeUp} className="mt-8">
+              <GalleryPhotographerAnimation />
+            </motion.div>
           </motion.div>
         </div>
       </section>
