@@ -102,6 +102,16 @@ const GalleryPage = () => {
               A glimpse of Shalimar Juice Shop & our fresh preparations.
             </motion.p>
           </motion.div>
+
+          {/* Cute photographer cartoon clicking shop photos */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3, ease: smoothEase }}
+            className="mt-10"
+          >
+            <GalleryShopAnimation />
+          </motion.div>
         </div>
       </section>
 
