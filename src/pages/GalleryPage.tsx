@@ -1,6 +1,7 @@
 import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Camera, X, ChevronLeft, ChevronRight, ZoomIn, Instagram, Play, ExternalLink } from "lucide-react";
+import GalleryShopAnimation from "@/components/GalleryShopAnimation";
 import shopPhoto1 from "@/assets/shop-photo-1.png";
 import shopPhoto2 from "@/assets/shop-photo-2.png";
 import shopPhoto3 from "@/assets/shop-photo-3.png";
