@@ -270,6 +270,7 @@ const FranchiseDealAnimation = () => {
             );
           })}
         </motion.g>
+        </motion.g>
       </svg>
     </div>
   );
