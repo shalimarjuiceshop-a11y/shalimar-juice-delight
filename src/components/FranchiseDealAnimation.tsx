@@ -42,6 +42,22 @@ const FranchiseDealAnimation = () => {
           </radialGradient>
         </defs>
 
+        {/* ============ CAMERA (zoom into signature, then mini shop) ============ */}
+        <motion.g
+          style={{ originX: 0, originY: 0 }}
+          animate={{
+            scale: [1, 1, 2.4, 2.4, 1, 1, 1, 2.2, 2.2, 1],
+            x:     [0, 0, -434, -434, 0, 0, 0, -360, -360, 0],
+            y:     [0, 0, -342, -342, 0, 0, 0, -146, -146, 0],
+          }}
+          transition={{
+            duration: 7,
+            repeat: Infinity,
+            times: [0, 0.18, 0.24, 0.45, 0.52, 0.58, 0.74, 0.8, 0.94, 1],
+            ease: "easeInOut",
+          }}
+        >
+
         {/* ============ BACKGROUND SHOP ============ */}
         <g transform="translate(180, 14)" opacity="0.95">
           <rect x="0" y="0" width="240" height="12" fill="hsl(0 75% 45%)" />
@@ -253,6 +269,7 @@ const FranchiseDealAnimation = () => {
               />
             );
           })}
+        </motion.g>
         </motion.g>
       </svg>
     </div>
