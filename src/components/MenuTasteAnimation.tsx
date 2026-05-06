@@ -16,10 +16,12 @@ const MenuTasteAnimation = () => {
 
   useEffect(() => {
     const update = () => {
-      const istHour = new Date().getUTCHours() + 5.5;
-      const h = ((istHour % 24) + 24) % 24;
-      if (h >= 23 || h < 11) setPhase("closed");
-      else if (h >= 19) setPhase("night");
+      const now = new Date();
+      const istMinutes = now.getUTCHours() * 60 + now.getUTCMinutes() + 330;
+      const totalMin = ((istMinutes % 1440) + 1440) % 1440;
+      // Open: 11:30 AM (690) - 11:00 PM (1380). Closed otherwise.
+      if (totalMin < 690 || totalMin >= 1380) setPhase("closed");
+      else if (totalMin >= 19 * 60) setPhase("night");
       else setPhase("day");
     };
     update();
