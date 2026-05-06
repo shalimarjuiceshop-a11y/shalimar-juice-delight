@@ -1,19 +1,25 @@
 import { motion } from "framer-motion";
 
 /**
- * Cute cartoon animation for the Franchise page.
- * Two businessmen meet in front of a Shalimar Juice shop and shake hands —
- * sealing a franchise deal. A floating "DEAL!" badge + sparkles appear.
- * Pure hand-crafted SVG + Framer Motion. Loops forever.
+ * Cinematic "The Signing" sequence for the Franchise page.
+ * Phases (loop ~7s):
+ *  0.00 - 0.20  → Two cartoon men face the contract (bobbing)
+ *  0.20 - 0.45  → Slow-motion pen lowers, touches paper, GOLDEN INK flows out
+ *                 (camera zoom-in on signature via inner SVG transform)
+ *  0.45 - 0.55  → "DEAL SEALED" red stamp slams down (boom + ring)
+ *  0.55 - 0.75  → Camera zooms back; men shake hands
+ *  0.75 - 1.00  → A tiny new Shalimar Juice shop POPS UP from the contract
+ *                 with confetti — "new franchise opened!"
  */
 const FranchiseDealAnimation = () => {
   return (
     <div
-      className="relative w-full max-w-md mx-auto h-[180px] md:h-[210px] overflow-hidden rounded-2xl border border-primary/25 shadow-pineapple"
+      className="relative w-full max-w-md mx-auto h-[210px] md:h-[240px] overflow-hidden rounded-2xl border border-primary/25 shadow-pineapple"
       style={{
         background:
-          "linear-gradient(180deg, hsl(38 75% 24%) 0%, hsl(35 60% 32%) 55%, hsl(45 70% 48%) 100%)",
+          "linear-gradient(180deg, hsl(38 75% 22%) 0%, hsl(35 60% 30%) 55%, hsl(45 70% 46%) 100%)",
       }}
+      aria-label="Franchise deal signing animation"
     >
       {/* sun */}
       <div className="absolute top-3 left-8 w-14 h-14 rounded-full blur-2xl opacity-70" style={{ background: "hsl(45 100% 60%)" }} />
@@ -23,163 +29,231 @@ const FranchiseDealAnimation = () => {
       <div className="absolute bottom-0 left-0 right-0 h-[36px]" style={{ background: "linear-gradient(180deg, hsl(35 40% 30%) 0%, hsl(30 30% 18%) 100%)" }} />
       <div className="absolute bottom-[35px] left-0 right-0 h-[2px] opacity-60" style={{ background: "hsl(45 80% 55%)" }} />
 
-      <svg
-        viewBox="0 0 600 240"
-        className="absolute inset-0 w-full h-full"
-        preserveAspectRatio="xMidYMid meet"
-      >
-        {/* ===== SHALIMAR JUICE SHOP (background) ===== */}
-        <g transform="translate(180, 18)">
-          {/* roof / awning */}
-          <rect x="0" y="0" width="240" height="14" fill="hsl(0 75% 45%)" />
+      <svg viewBox="0 0 600 280" className="absolute inset-0 w-full h-full" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <linearGradient id="goldInk" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="hsl(45 100% 50%)" />
+            <stop offset="50%" stopColor="hsl(45 100% 75%)" />
+            <stop offset="100%" stopColor="hsl(38 95% 45%)" />
+          </linearGradient>
+          <radialGradient id="flashG" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="hsl(45 100% 90%)" stopOpacity="0.95" />
+            <stop offset="100%" stopColor="hsl(45 100% 60%)" stopOpacity="0" />
+          </radialGradient>
+        </defs>
+
+        {/* ============ BACKGROUND SHOP ============ */}
+        <g transform="translate(180, 14)" opacity="0.95">
+          <rect x="0" y="0" width="240" height="12" fill="hsl(0 75% 45%)" />
           {Array.from({ length: 12 }).map((_, i) => (
-            <rect key={i} x={i * 20} y="0" width="10" height="14" fill="hsl(45 95% 55%)" />
+            <rect key={i} x={i * 20} y="0" width="10" height="12" fill="hsl(45 95% 55%)" />
           ))}
-          {/* signboard */}
-          <rect x="10" y="14" width="220" height="30" fill="hsl(45 100% 55%)" stroke="hsl(30 30% 14%)" strokeWidth="2" />
-          <text x="120" y="35" textAnchor="middle" fontFamily="DM Sans" fontWeight="900" fontSize="17" fill="hsl(30 30% 14%)" letterSpacing="2">SHALIMAR JUICE</text>
-          {/* shop body */}
-          <rect x="10" y="44" width="220" height="100" fill="hsl(35 40% 18%)" stroke="hsl(45 70% 50%)" strokeWidth="1.5" />
-          {/* counter window */}
-          <rect x="22" y="58" width="196" height="62" fill="hsl(38 60% 28%)" stroke="hsl(45 80% 55%)" strokeWidth="1.5" />
-          {/* glasses on counter */}
+          <rect x="10" y="12" width="220" height="26" fill="hsl(45 100% 55%)" stroke="hsl(30 30% 14%)" strokeWidth="2" />
+          <text x="120" y="31" textAnchor="middle" fontFamily="DM Sans" fontWeight="900" fontSize="15" fill="hsl(30 30% 14%)" letterSpacing="2">SHALIMAR JUICE</text>
+          <rect x="10" y="38" width="220" height="78" fill="hsl(35 40% 18%)" stroke="hsl(45 70% 50%)" strokeWidth="1.5" />
+          <rect x="22" y="50" width="196" height="50" fill="hsl(38 60% 28%)" stroke="hsl(45 80% 55%)" strokeWidth="1.5" />
           {[0, 1, 2, 3, 4].map((i) => (
-            <g key={i} transform={`translate(${36 + i * 36}, 92)`}>
-              <path d="M 0 0 L 12 0 L 11 20 L 1 20 Z" fill={["hsl(45 100% 60%)", "hsl(15 90% 55%)", "hsl(120 50% 45%)", "hsl(280 50% 60%)", "hsl(45 100% 60%)"][i]} />
+            <g key={i} transform={`translate(${36 + i * 36}, 76)`}>
+              <path d="M 0 0 L 12 0 L 11 18 L 1 18 Z" fill={["hsl(45 100% 60%)", "hsl(15 90% 55%)", "hsl(120 50% 45%)", "hsl(280 50% 60%)", "hsl(45 100% 60%)"][i]} />
               <rect x="0" y="0" width="12" height="3" fill="hsl(45 100% 85%)" />
             </g>
           ))}
-          {/* ₹10 board */}
-          <g transform="translate(178, 52)">
-            <rect x="0" y="0" width="44" height="28" rx="3" fill="hsl(0 80% 50%)" stroke="hsl(45 100% 75%)" strokeWidth="2" />
-            <text x="22" y="20" textAnchor="middle" fontFamily="DM Sans" fontWeight="900" fontSize="15" fill="hsl(45 100% 95%)">₹10</text>
-          </g>
         </g>
 
-        {/* ===== BUSINESSMAN 1 (left) ===== */}
-        <motion.g
-          animate={{ y: [0, -1.5, 0] }}
-          transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
-        >
-          {/* legs */}
-          <rect x="195" y="186" width="13" height="22" rx="3" fill="hsl(220 30% 18%)" />
-          <rect x="213" y="186" width="13" height="22" rx="3" fill="hsl(220 30% 18%)" />
-          <ellipse cx="201" cy="210" rx="10" ry="3" fill="hsl(0 0% 8%)" />
-          <ellipse cx="219" cy="210" rx="10" ry="3" fill="hsl(0 0% 8%)" />
-          {/* suit body */}
-          <rect x="190" y="138" width="42" height="52" rx="6" fill="hsl(220 35% 22%)" />
-          {/* shirt + tie */}
-          <polygon points="205,138 211,150 217,138" fill="hsl(0 0% 96%)" />
-          <polygon points="208,142 214,142 213,162 209,162" fill="hsl(0 80% 50%)" />
-          {/* head */}
-          <circle cx="211" cy="124" r="17" fill="hsl(30 55% 78%)" />
-          <path d="M 195 122 Q 195 108 211 108 Q 227 108 227 122 Q 227 116 220 113 Q 211 110 203 113 Q 195 116 195 122 Z" fill="hsl(30 25% 16%)" />
-          {/* eyes */}
-          <circle cx="206" cy="125" r="2" fill="hsl(0 0% 10%)" />
-          <circle cx="216" cy="125" r="2" fill="hsl(0 0% 10%)" />
-          {/* smile */}
-          <path d="M 206 132 Q 211 136 216 132" stroke="hsl(0 0% 15%)" strokeWidth="1.5" fill="none" strokeLinecap="round" />
-
-          {/* RIGHT arm — extends to handshake */}
+        {/* ============ DESK / CONTRACT (CENTER) ============ */}
+        <g transform="translate(150, 168)">
+          {/* desk */}
+          <rect x="0" y="36" width="300" height="14" rx="2" fill="hsl(28 40% 22%)" stroke="hsl(30 30% 12%)" strokeWidth="1" />
+          {/* contract paper */}
           <motion.g
-            style={{ transformOrigin: "230px 150px" }}
-            animate={{ rotate: [25, -10, -10, 25, 25] }}
-            transition={{ duration: 4, repeat: Infinity, times: [0, 0.3, 0.7, 0.85, 1], ease: "easeInOut" }}
+            animate={{ y: [0, 0, 0, 0, -2, 0] }}
+            transition={{ duration: 7, repeat: Infinity, times: [0, 0.45, 0.5, 0.55, 0.6, 1] }}
           >
-            <rect x="228" y="148" width="40" height="9" rx="4" fill="hsl(220 35% 22%)" />
-            <circle cx="270" cy="153" r="6" fill="hsl(30 55% 78%)" />
-          </motion.g>
+            <rect x="80" y="6" width="140" height="36" rx="1.5" fill="hsl(40 30% 96%)" stroke="hsl(30 25% 70%)" strokeWidth="0.6" />
+            <line x1="86" y1="14" x2="214" y2="14" stroke="hsl(0 0% 75%)" strokeWidth="0.5" />
+            <line x1="86" y1="20" x2="214" y2="20" stroke="hsl(0 0% 75%)" strokeWidth="0.5" />
+            <line x1="86" y1="26" x2="170" y2="26" stroke="hsl(0 0% 75%)" strokeWidth="0.5" />
+            {/* signature line */}
+            <line x1="120" y1="36" x2="200" y2="36" stroke="hsl(0 0% 35%)" strokeWidth="0.7" />
+            <text x="120" y="40" fontFamily="DM Sans" fontWeight="700" fontSize="3.5" fill="hsl(0 0% 40%)">SIGNATURE</text>
 
-          {/* left arm */}
-          <rect x="184" y="148" width="9" height="30" rx="4" fill="hsl(220 35% 22%)" />
-          <circle cx="188" cy="178" r="5" fill="hsl(30 55% 78%)" />
-        </motion.g>
+            {/* GOLDEN SIGNATURE — drawn on as pen signs */}
+            <motion.path
+              d="M 124 33 Q 132 26 140 33 Q 148 40 156 30 Q 164 24 172 33 Q 180 40 188 31"
+              fill="none"
+              stroke="url(#goldInk)"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              style={{ filter: "drop-shadow(0 0 2px hsl(45 100% 70%))" }}
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: [0, 0, 0, 1, 1, 1, 1] }}
+              transition={{ duration: 7, repeat: Infinity, times: [0, 0.2, 0.22, 0.45, 0.55, 0.95, 1], ease: "easeInOut" }}
+            />
 
-        {/* ===== BUSINESSMAN 2 (right) ===== */}
-        <motion.g
-          animate={{ y: [0, -1.5, 0] }}
-          transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}
-        >
-          {/* legs */}
-          <rect x="370" y="186" width="13" height="22" rx="3" fill="hsl(35 30% 22%)" />
-          <rect x="388" y="186" width="13" height="22" rx="3" fill="hsl(35 30% 22%)" />
-          <ellipse cx="376" cy="210" rx="10" ry="3" fill="hsl(0 0% 8%)" />
-          <ellipse cx="394" cy="210" rx="10" ry="3" fill="hsl(0 0% 8%)" />
-          {/* suit body */}
-          <rect x="365" y="138" width="42" height="52" rx="6" fill="hsl(35 50% 35%)" />
-          {/* shirt + tie */}
-          <polygon points="380,138 386,150 392,138" fill="hsl(0 0% 96%)" />
-          <polygon points="383,142 389,142 388,162 384,162" fill="hsl(220 70% 45%)" />
-          {/* head */}
-          <circle cx="386" cy="124" r="17" fill="hsl(30 60% 72%)" />
-          <path d="M 370 122 Q 370 108 386 108 Q 402 108 402 122 Q 402 116 395 113 Q 386 110 378 113 Q 370 116 370 122 Z" fill="hsl(20 35% 18%)" />
-          {/* eyes */}
-          <circle cx="381" cy="125" r="2" fill="hsl(0 0% 10%)" />
-          <circle cx="391" cy="125" r="2" fill="hsl(0 0% 10%)" />
-          {/* smile */}
-          <path d="M 381 132 Q 386 136 391 132" stroke="hsl(0 0% 15%)" strokeWidth="1.5" fill="none" strokeLinecap="round" />
-
-          {/* LEFT arm — extends to handshake */}
-          <motion.g
-            style={{ transformOrigin: "365px 150px" }}
-            animate={{ rotate: [-25, 10, 10, -25, -25] }}
-            transition={{ duration: 4, repeat: Infinity, times: [0, 0.3, 0.7, 0.85, 1], ease: "easeInOut" }}
-          >
-            <rect x="328" y="148" width="40" height="9" rx="4" fill="hsl(35 50% 35%)" />
-            <circle cx="328" cy="153" r="6" fill="hsl(30 60% 72%)" />
-          </motion.g>
-
-          {/* right arm */}
-          <rect x="404" y="148" width="9" height="30" rx="4" fill="hsl(35 50% 35%)" />
-          <circle cx="408" cy="178" r="5" fill="hsl(30 60% 72%)" />
-        </motion.g>
-
-        {/* ===== HANDSHAKE FLASH ===== */}
-        <motion.g
-          animate={{ opacity: [0, 0, 1, 1, 0], scale: [0.4, 0.4, 1.2, 1, 0.4] }}
-          transition={{ duration: 4, repeat: Infinity, times: [0, 0.3, 0.4, 0.7, 0.85], ease: "easeOut" }}
-          style={{ transformOrigin: "299px 153px" }}
-        >
-          <circle cx="299" cy="153" r="14" fill="hsl(45 100% 70% / 0.4)" />
-          <g stroke="hsl(45 100% 75%)" strokeWidth="2" strokeLinecap="round">
-            <line x1="299" y1="138" x2="299" y2="132" />
-            <line x1="299" y1="174" x2="299" y2="168" />
-            <line x1="284" y1="153" x2="278" y2="153" />
-            <line x1="320" y1="153" x2="314" y2="153" />
-            <line x1="289" y1="143" x2="285" y2="139" />
-            <line x1="313" y1="143" x2="317" y2="139" />
-            <line x1="289" y1="163" x2="285" y2="167" />
-            <line x1="313" y1="163" x2="317" y2="167" />
-          </g>
-        </motion.g>
-
-        {/* ===== "DEAL!" BADGE ===== */}
-        <motion.g
-          animate={{ opacity: [0, 0, 0, 1, 1, 0], y: [0, 0, 0, -6, -6, -10], scale: [0.5, 0.5, 0.5, 1, 1, 0.5] }}
-          transition={{ duration: 4, repeat: Infinity, times: [0, 0.35, 0.45, 0.55, 0.85, 1], ease: "easeOut" }}
-          style={{ transformOrigin: "300px 96px" }}
-        >
-          <g transform="translate(254, 78)">
-            <ellipse cx="46" cy="18" rx="46" ry="20" fill="hsl(120 60% 40%)" stroke="hsl(45 100% 70%)" strokeWidth="2.5" />
-            <text x="46" y="24" textAnchor="middle" fontFamily="DM Sans" fontWeight="900" fontSize="18" fill="hsl(45 100% 95%)" letterSpacing="2">DEAL ✓</text>
-          </g>
-        </motion.g>
-
-        {/* sparkles around handshake */}
-        {[0, 1, 2, 3, 4].map((i) => {
-          const angle = (i / 5) * Math.PI * 2;
-          const cx = 299 + Math.cos(angle) * 28;
-          const cy = 153 + Math.sin(angle) * 22;
-          return (
+            {/* DEAL SEALED stamp */}
             <motion.g
-              key={i}
-              animate={{ opacity: [0, 1, 0], scale: [0.4, 1.2, 0.4] }}
-              transition={{ duration: 1.4, repeat: Infinity, delay: 1.2 + i * 0.12 }}
+              animate={{
+                opacity: [0, 0, 0, 0, 1, 1, 1, 0.95],
+                scale: [3, 3, 3, 2.4, 1, 1.05, 1, 1],
+                rotate: [-18, -18, -18, -18, -10, -8, -10, -10],
+              }}
+              transition={{ duration: 7, repeat: Infinity, times: [0, 0.45, 0.5, 0.52, 0.56, 0.6, 0.65, 1], ease: "easeOut" }}
+              style={{ transformOrigin: "165px 24px" }}
             >
-              <circle cx={cx} cy={cy} r="2" fill="hsl(45 100% 75%)" />
+              <ellipse cx="165" cy="24" rx="32" ry="11" fill="none" stroke="hsl(0 80% 48%)" strokeWidth="1.6" />
+              <ellipse cx="165" cy="24" rx="28" ry="8.5" fill="none" stroke="hsl(0 80% 48%)" strokeWidth="0.8" />
+              <text x="165" y="22" textAnchor="middle" fontFamily="DM Sans" fontWeight="900" fontSize="6.5" fill="hsl(0 80% 48%)" letterSpacing="1.4">DEAL</text>
+              <text x="165" y="29" textAnchor="middle" fontFamily="DM Sans" fontWeight="900" fontSize="6.5" fill="hsl(0 80% 48%)" letterSpacing="1.4">SEALED</text>
             </motion.g>
-          );
-        })}
+          </motion.g>
+
+          {/* PEN — slow descend, touch, lift */}
+          <motion.g
+            animate={{
+              y: [-30, -30, -22, -10, -2, -2, -28, -28, -28],
+              rotate: [-30, -30, -34, -38, -42, -42, -32, -32, -30],
+              x: [0, 0, 4, 10, 18, 26, 30, 30, 0],
+            }}
+            transition={{ duration: 7, repeat: Infinity, times: [0, 0.1, 0.16, 0.2, 0.24, 0.45, 0.5, 0.92, 1], ease: "easeInOut" }}
+            style={{ transformOrigin: "150px 30px" }}
+          >
+            <g transform="translate(120, 8)">
+              {/* barrel */}
+              <rect x="0" y="0" width="34" height="6" rx="1.5" fill="hsl(220 70% 35%)" stroke="hsl(0 0% 8%)" strokeWidth="0.5" />
+              <rect x="22" y="0" width="12" height="6" fill="hsl(45 100% 55%)" />
+              {/* clip */}
+              <rect x="6" y="-2" width="10" height="2" fill="hsl(0 0% 75%)" />
+              {/* tip */}
+              <polygon points="0,3 -8,6 0,7" fill="hsl(0 0% 18%)" />
+              <circle cx="-7" cy="6" r="0.9" fill="hsl(45 100% 65%)" />
+            </g>
+          </motion.g>
+        </g>
+
+        {/* ============ BUSINESSMAN 1 (left) ============ */}
+        <motion.g animate={{ y: [0, -1.5, 0] }} transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}>
+          <rect x="58" y="200" width="13" height="22" rx="3" fill="hsl(220 30% 18%)" />
+          <rect x="76" y="200" width="13" height="22" rx="3" fill="hsl(220 30% 18%)" />
+          <ellipse cx="64" cy="224" rx="10" ry="3" fill="hsl(0 0% 8%)" />
+          <ellipse cx="82" cy="224" rx="10" ry="3" fill="hsl(0 0% 8%)" />
+          <rect x="53" y="152" width="42" height="52" rx="6" fill="hsl(220 35% 22%)" />
+          <polygon points="68,152 74,164 80,152" fill="hsl(0 0% 96%)" />
+          <polygon points="71,156 77,156 76,176 72,176" fill="hsl(0 80% 50%)" />
+          <circle cx="74" cy="138" r="17" fill="hsl(30 55% 78%)" />
+          <path d="M 58 136 Q 58 122 74 122 Q 90 122 90 136 Q 90 130 83 127 Q 74 124 66 127 Q 58 130 58 136 Z" fill="hsl(30 25% 16%)" />
+          <circle cx="69" cy="139" r="2" fill="hsl(0 0% 10%)" />
+          <circle cx="79" cy="139" r="2" fill="hsl(0 0% 10%)" />
+          <path d="M 69 146 Q 74 150 79 146" stroke="hsl(0 0% 15%)" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+
+          {/* RIGHT arm — holds pen first half, then handshake */}
+          <motion.g
+            style={{ transformOrigin: "92px 164px" }}
+            animate={{ rotate: [10, 10, 35, 50, 50, 50, -5, -5, 10] }}
+            transition={{ duration: 7, repeat: Infinity, times: [0, 0.1, 0.2, 0.3, 0.45, 0.55, 0.6, 0.92, 1], ease: "easeInOut" }}
+          >
+            <rect x="90" y="162" width="40" height="9" rx="4" fill="hsl(220 35% 22%)" />
+            <circle cx="132" cy="167" r="6" fill="hsl(30 55% 78%)" />
+          </motion.g>
+
+          <rect x="47" y="162" width="9" height="30" rx="4" fill="hsl(220 35% 22%)" />
+          <circle cx="51" cy="192" r="5" fill="hsl(30 55% 78%)" />
+        </motion.g>
+
+        {/* ============ BUSINESSMAN 2 (right) ============ */}
+        <motion.g animate={{ y: [0, -1.5, 0] }} transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut", delay: 0.3 }}>
+          <rect x="510" y="200" width="13" height="22" rx="3" fill="hsl(35 30% 22%)" />
+          <rect x="528" y="200" width="13" height="22" rx="3" fill="hsl(35 30% 22%)" />
+          <ellipse cx="516" cy="224" rx="10" ry="3" fill="hsl(0 0% 8%)" />
+          <ellipse cx="534" cy="224" rx="10" ry="3" fill="hsl(0 0% 8%)" />
+          <rect x="505" y="152" width="42" height="52" rx="6" fill="hsl(35 50% 35%)" />
+          <polygon points="520,152 526,164 532,152" fill="hsl(0 0% 96%)" />
+          <polygon points="523,156 529,156 528,176 524,176" fill="hsl(220 70% 45%)" />
+          <circle cx="526" cy="138" r="17" fill="hsl(30 60% 72%)" />
+          <path d="M 510 136 Q 510 122 526 122 Q 542 122 542 136 Q 542 130 535 127 Q 526 124 518 127 Q 510 130 510 136 Z" fill="hsl(20 35% 18%)" />
+          <circle cx="521" cy="139" r="2" fill="hsl(0 0% 10%)" />
+          <circle cx="531" cy="139" r="2" fill="hsl(0 0% 10%)" />
+          <path d="M 521 146 Q 526 150 531 146" stroke="hsl(0 0% 15%)" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+
+          {/* LEFT arm — handshake after stamp */}
+          <motion.g
+            style={{ transformOrigin: "505px 164px" }}
+            animate={{ rotate: [-10, -10, -10, -10, -10, -10, 10, 10, -10] }}
+            transition={{ duration: 7, repeat: Infinity, times: [0, 0.1, 0.2, 0.3, 0.45, 0.55, 0.6, 0.92, 1], ease: "easeInOut" }}
+          >
+            <rect x="468" y="162" width="40" height="9" rx="4" fill="hsl(35 50% 35%)" />
+            <circle cx="468" cy="167" r="6" fill="hsl(30 60% 72%)" />
+          </motion.g>
+
+          <rect x="546" y="162" width="9" height="30" rx="4" fill="hsl(35 50% 35%)" />
+          <circle cx="550" cy="192" r="5" fill="hsl(30 60% 72%)" />
+        </motion.g>
+
+        {/* ============ STAMP BOOM FLASH ============ */}
+        <motion.g
+          animate={{ opacity: [0, 0, 0, 0, 1, 0.6, 0, 0], scale: [0.4, 0.4, 0.4, 0.4, 1.4, 1.8, 2.2, 0.4] }}
+          transition={{ duration: 7, repeat: Infinity, times: [0, 0.45, 0.5, 0.52, 0.56, 0.62, 0.7, 1], ease: "easeOut" }}
+          style={{ transformOrigin: "315px 192px" }}
+        >
+          <circle cx="315" cy="192" r="30" fill="url(#flashG)" />
+          <g stroke="hsl(0 80% 60%)" strokeWidth="2" strokeLinecap="round" opacity="0.85">
+            <line x1="315" y1="160" x2="315" y2="150" />
+            <line x1="345" y1="192" x2="357" y2="192" />
+            <line x1="285" y1="192" x2="273" y2="192" />
+            <line x1="335" y1="172" x2="345" y2="162" />
+            <line x1="295" y1="172" x2="285" y2="162" />
+          </g>
+        </motion.g>
+
+        {/* ============ MINI SHOP POP-UP from contract ============ */}
+        <motion.g
+          animate={{
+            opacity: [0, 0, 0, 0, 0, 0, 0, 1, 1, 1],
+            scale: [0, 0, 0, 0, 0, 0, 0.2, 1, 1.04, 1],
+            y: [10, 10, 10, 10, 10, 10, 6, 0, 0, 0],
+          }}
+          transition={{ duration: 7, repeat: Infinity, times: [0, 0.4, 0.55, 0.6, 0.65, 0.7, 0.74, 0.82, 0.88, 1], ease: [0.34, 1.56, 0.64, 1] }}
+          style={{ transformOrigin: "300px 130px" }}
+        >
+          <g transform="translate(254, 80)">
+            {/* roof */}
+            <rect x="0" y="22" width="92" height="6" fill="hsl(0 75% 48%)" />
+            {Array.from({ length: 8 }).map((_, i) => (
+              <rect key={i} x={i * 11.5} y="22" width="6" height="6" fill="hsl(45 95% 55%)" />
+            ))}
+            {/* sign */}
+            <rect x="3" y="28" width="86" height="14" rx="2" fill="hsl(45 100% 58%)" stroke="hsl(30 30% 12%)" strokeWidth="1" />
+            <text x="46" y="38" textAnchor="middle" fontFamily="DM Sans" fontWeight="900" fontSize="8" fill="hsl(30 30% 12%)" letterSpacing="1">SHALIMAR</text>
+            {/* body */}
+            <rect x="3" y="42" width="86" height="34" fill="hsl(35 40% 22%)" stroke="hsl(45 70% 50%)" strokeWidth="1" />
+            <rect x="9" y="48" width="74" height="22" fill="hsl(38 60% 30%)" stroke="hsl(45 80% 55%)" strokeWidth="1" />
+            {[0, 1, 2, 3].map((i) => (
+              <rect key={i} x={14 + i * 18} y="56" width="10" height="12" fill={["hsl(45 100% 60%)", "hsl(15 90% 55%)", "hsl(120 50% 45%)", "hsl(280 50% 60%)"][i]} />
+            ))}
+            {/* "NEW!" badge */}
+            <g>
+              <circle cx="0" cy="22" r="10" fill="hsl(120 60% 40%)" stroke="hsl(45 100% 75%)" strokeWidth="1.5" />
+              <text x="0" y="25" textAnchor="middle" fontFamily="DM Sans" fontWeight="900" fontSize="7" fill="hsl(45 100% 95%)">NEW</text>
+            </g>
+          </g>
+
+          {/* confetti around mini shop */}
+          {[0, 1, 2, 3, 4, 5, 6, 7].map((i) => {
+            const angle = (i / 8) * Math.PI * 2;
+            const cx = 300 + Math.cos(angle) * 60;
+            const cy = 110 + Math.sin(angle) * 30;
+            const colors = ["hsl(45 100% 60%)", "hsl(0 80% 55%)", "hsl(120 60% 50%)", "hsl(220 70% 55%)"];
+            return (
+              <motion.rect
+                key={i}
+                x={cx} y={cy} width="3.5" height="6" rx="1"
+                fill={colors[i % colors.length]}
+                animate={{ opacity: [0, 1, 0], rotate: [0, 180, 360], y: [cy, cy + 14, cy + 30] }}
+                transition={{ duration: 1.4, repeat: Infinity, repeatDelay: 5.6, delay: 5.6 + i * 0.04 }}
+              />
+            );
+          })}
+        </motion.g>
       </svg>
     </div>
   );
