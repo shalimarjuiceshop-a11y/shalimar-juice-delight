@@ -7,37 +7,38 @@ const smoothEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 // Messages per route
 const routeMessages: Record<string, string[]> = {
   "/": [
-    "Welcome! 🍍 Try our fresh juices!",
-    "Sirf ₹10 mein juice! 🤩",
-    "Since generations... pure taste! ✨",
+    "Aap ka swagat hai Shalimar Juice mein! 🍍",
+    "Sirf ₹10 mein taaza juice — try zaroor karna! 🤩",
+    "Generations se chala aa raha asli swaad ✨",
+    "Ek baar peelo, baar baar aaoge! 💛",
   ],
   "/menu": [
-    "Hungry? Pick your favorite! 😋",
-    "Try our Bestsellers! 🏆",
-    "Pineapple Shake is 🔥",
-    "Scroll down for the quiz! 🎯",
+    "Bhook lagi? Apna favourite chuno! 😋",
+    "Humare Bestsellers ek dum mast hai! 🏆",
+    "Pineapple Shake toh poora 🔥 hai!",
+    "Neeche scroll karo — fun quiz bhi hai! 🎯",
   ],
   "/gallery": [
-    "Dekho humari shop! 📸",
-    "Click photos for full view! 🔍",
-    "Fresh juice, fresh vibes! 🌟",
+    "Dekho humari pyaari shop ki jhalak! 📸",
+    "Photo pe tap karo, full view milega 🔍",
+    "Taaza juice, taazi vibes! 🌟",
   ],
   "/franchise": [
-    "Apna business shuru karo! 💼",
-    "Starting at just ₹3 Lakh! 🚀",
-    "50+ franchise opportunities! 📈",
+    "Apna business shuru karne ka time hai! 💼",
+    "Sirf ₹3 Lakh se shuruaat karo 🚀",
+    "50+ franchise spots — jaldi book karo! 📈",
   ],
   "/contact": [
-    "Baat karo humse! 📞",
-    "WhatsApp pe order karo! 💬",
-    "We'd love to hear from you! 💛",
+    "Humse baat karne mein sharmana mat! 📞",
+    "WhatsApp pe ek message karo, order ready! 💬",
+    "Aapka feedback humein bahut pyaara hai 💛",
   ],
 };
 
 const defaultMessages = [
-  "Hello! 🍍",
-  "Fresh juice peeo! 🥤",
-  "Kuch chahiye? 😊",
+  "Namaste! Shalimar Juice mein aapka swagat hai 🍍",
+  "Ek glass taaza juice ho jaaye? 🥤",
+  "Kuch puchna hai? Bata do humein 😊",
 ];
 
 // Pineapple face expressions
