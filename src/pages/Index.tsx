@@ -227,10 +227,10 @@ const Index = () => {
                         x: [0, i % 2 === 0 ? 14 : -14, 0],
                       }}
                       transition={{
-                        duration: 6 + (i % 3),
-                        delay: it.delay,
+                        duration: 11 + (i % 3) * 1.5,
+                        delay: it.delay * 1.6,
                         repeat: Infinity,
-                        ease: [0.4, 0, 0.7, 1],
+                        ease: [0.45, 0.05, 0.55, 1],
                       }}
                     >
                       {it.type === "almond" && (
