@@ -71,17 +71,20 @@ const MenuPage = () => {
                 </span>
               </motion.div>
 
-              <motion.h1 variants={fadeUp} className="font-display text-4xl md:text-6xl font-black tracking-tight">
-                <span className="text-cream">Our </span>
-                <span className="relative inline-block">
-                  <span className="text-gradient-gold">Menu</span>
-                  <motion.span
-                    className="absolute -bottom-1 left-0 right-0 h-1 rounded-full bg-primary"
-                    initial={{ scaleX: 0 }}
-                    animate={{ scaleX: 1 }}
-                    transition={{ delay: 0.8, duration: 0.6, ease: smoothEase }}
-                  />
+              <motion.h1 variants={fadeUp} className="font-display text-4xl md:text-6xl font-black tracking-tight flex items-center justify-center gap-3 md:gap-5 flex-wrap">
+                <span className="inline-flex items-baseline">
+                  <span className="text-cream">Our&nbsp;</span>
+                  <span className="relative inline-block">
+                    <span className="text-gradient-gold">Menu</span>
+                    <motion.span
+                      className="absolute -bottom-1 left-0 right-0 h-1 rounded-full bg-primary"
+                      initial={{ scaleX: 0 }}
+                      animate={{ scaleX: 1 }}
+                      transition={{ delay: 0.8, duration: 0.6, ease: smoothEase }}
+                    />
+                  </span>
                 </span>
+                <MenuBookAnimation />
               </motion.h1>
 
               <motion.p variants={fadeUp} className="font-body text-base md:text-lg mt-4 max-w-lg mx-auto leading-relaxed text-header-muted">
