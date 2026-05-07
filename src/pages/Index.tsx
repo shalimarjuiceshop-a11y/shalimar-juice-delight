@@ -46,6 +46,55 @@ const testimonials = [
   { name: "Shaikh Sohel", text: "Been coming here since childhood. The quality never dropped. Truly the best juice shop.", rating: 5, location: "Amravati" },
 ];
 
+// Realistic dry-fruit SVGs used in the Winter Special animation
+const FruitSVG = ({ type, idx }: { type: "almond" | "pista" | "cashew"; idx: number }) => {
+  if (type === "almond") {
+    return (
+      <svg width="20" height="30" viewBox="0 0 14 22" className="drop-shadow-[0_2px_3px_rgba(0,0,0,0.5)]">
+        <defs>
+          <radialGradient id={`alm${idx}`} cx="35%" cy="30%" r="70%">
+            <stop offset="0%" stopColor="hsl(30 60% 78%)" />
+            <stop offset="60%" stopColor="hsl(28 50% 55%)" />
+            <stop offset="100%" stopColor="hsl(25 50% 32%)" />
+          </radialGradient>
+        </defs>
+        <ellipse cx="7" cy="11" rx="5" ry="10" fill={`url(#alm${idx})`} stroke="hsl(25 55% 24%)" strokeWidth="0.5" />
+        <ellipse cx="5" cy="6" rx="1.6" ry="3" fill="hsl(35 70% 92%)" opacity="0.6" />
+      </svg>
+    );
+  }
+  if (type === "pista") {
+    return (
+      <svg width="24" height="20" viewBox="0 0 18 14" className="drop-shadow-[0_2px_3px_rgba(0,0,0,0.5)]">
+        <defs>
+          <radialGradient id={`pis${idx}`} cx="35%" cy="30%" r="70%">
+            <stop offset="0%" stopColor="hsl(80 55% 70%)" />
+            <stop offset="60%" stopColor="hsl(85 50% 45%)" />
+            <stop offset="100%" stopColor="hsl(95 45% 25%)" />
+          </radialGradient>
+        </defs>
+        <ellipse cx="9" cy="7" rx="8" ry="5.5" fill={`url(#pis${idx})`} stroke="hsl(95 50% 20%)" strokeWidth="0.5" />
+        <path d="M 4 5 Q 9 8 14 5" stroke="hsl(95 60% 28%)" strokeWidth="0.5" fill="none" />
+        <ellipse cx="6" cy="5" rx="1.6" ry="2" fill="hsl(80 55% 82%)" opacity="0.6" />
+      </svg>
+    );
+  }
+  return (
+    <svg width="28" height="20" viewBox="0 0 22 14" className="drop-shadow-[0_2px_3px_rgba(0,0,0,0.5)]">
+      <defs>
+        <radialGradient id={`csh${idx}`} cx="35%" cy="30%" r="70%">
+          <stop offset="0%" stopColor="hsl(45 70% 92%)" />
+          <stop offset="60%" stopColor="hsl(40 55% 72%)" />
+          <stop offset="100%" stopColor="hsl(35 45% 48%)" />
+        </radialGradient>
+      </defs>
+      <path d="M 3 7 Q 4 1 11 2 Q 18 3 19 7 Q 18 12 11 12 Q 4 12 3 7 Z"
+        fill={`url(#csh${idx})`} stroke="hsl(35 45% 38%)" strokeWidth="0.5" />
+      <ellipse cx="8" cy="5" rx="2.2" ry="1.6" fill="hsl(45 70% 94%)" opacity="0.65" />
+    </svg>
+  );
+};
+
 const Index = () => {
   return (
     <main className="overflow-hidden">
