@@ -19,7 +19,6 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <ScrollToTop />
-        <ScrollProgressBar />
         <Navbar />
         <AnimatedRoutes />
         <Footer />
