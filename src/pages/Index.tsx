@@ -68,7 +68,7 @@ const Index = () => {
               variants={fadeUp}
               className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight mb-6 text-header-light"
             >
-              Fresh <span className="text-gradient-gold">Pineapple Juice</span>
+              Fresh <span className="text-gradient-gold-shine">Pineapple Juice</span>
               <br />
               for a Healthy Life
             </motion.h1>
