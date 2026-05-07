@@ -6,6 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+import ScrollProgressBar from "./components/ScrollProgressBar";
 import FloatingWhatsApp from "./components/FloatingWhatsApp";
 import PineappleMascot from "./components/PineappleMascot";
 import AnimatedRoutes from "./components/AnimatedRoutes";
@@ -19,6 +20,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <ScrollToTop />
+        <ScrollProgressBar />
         <Navbar />
         <AnimatedRoutes />
         <Footer />
