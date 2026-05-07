@@ -5,6 +5,7 @@ import JuicePourAnimation from "@/components/JuicePourAnimation";
 import MarqueeBanner from "@/components/MarqueeBanner";
 import TestimonialCard from "@/components/TestimonialCard";
 import PartiesOrderSection from "@/components/PartiesOrderSection";
+import Typewriter from "@/components/Typewriter";
 import hotMilk from "@/assets/hot-milk.png";
 
 const smoothEase = [0.22, 1, 0.36, 1] as [number, number, number, number];
@@ -171,8 +172,8 @@ const Index = () => {
               <motion.h2 variants={slideInLeft} className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-3 text-foreground leading-[1.1]">
                 Special for <span className="text-gradient-gold">Winter</span>
               </motion.h2>
-              <motion.p variants={slideInLeft} className="font-display text-lg md:text-xl font-semibold mb-2 text-foreground/80">
-                Milk with Dry Fruits
+              <motion.p variants={slideInLeft} className="font-display text-lg md:text-xl font-semibold mb-2 text-foreground/80 min-h-[1.5em]">
+                <Typewriter text="Milk with Dry Fruits" speed={95} pause={2400} />
               </motion.p>
               <motion.p variants={slideInLeft} className="font-body text-sm md:text-base text-muted-foreground mb-2 leading-relaxed">
                 Warm kulhad milk topped with almonds, cashews, pistachios & saffron — the perfect winter warmer.
@@ -201,10 +202,119 @@ const Index = () => {
                 transition={{ type: "spring", stiffness: 200 }}
               >
                 <div className="absolute -inset-6 bg-primary/5 rounded-3xl blur-3xl" />
+
+                {/* Falling dry fruits — realistic SVG, slow & graceful */}
+                <div className="absolute inset-x-0 -top-10 h-[340px] md:h-[400px] pointer-events-none overflow-hidden z-20">
+                  {[
+                    { left: "18%", delay: 0, type: "almond" },
+                    { left: "32%", delay: 1.4, type: "pista" },
+                    { left: "48%", delay: 2.6, type: "cashew" },
+                    { left: "62%", delay: 0.8, type: "saffron" },
+                    { left: "76%", delay: 3.2, type: "almond" },
+                    { left: "26%", delay: 4.0, type: "cashew" },
+                    { left: "55%", delay: 5.0, type: "pista" },
+                    { left: "70%", delay: 5.8, type: "saffron" },
+                  ].map((it, i) => (
+                    <motion.div
+                      key={i}
+                      className="absolute"
+                      style={{ left: it.left, top: -24 }}
+                      initial={{ y: -30, opacity: 0, rotate: 0 }}
+                      animate={{
+                        y: [0, 360],
+                        opacity: [0, 1, 1, 0.85, 0],
+                        rotate: [0, 280],
+                        x: [0, i % 2 === 0 ? 14 : -14, 0],
+                      }}
+                      transition={{
+                        duration: 6 + (i % 3),
+                        delay: it.delay,
+                        repeat: Infinity,
+                        ease: [0.4, 0, 0.7, 1],
+                      }}
+                    >
+                      {it.type === "almond" && (
+                        <svg width="14" height="22" viewBox="0 0 14 22">
+                          <defs>
+                            <radialGradient id={`alm${i}`} cx="35%" cy="30%" r="70%">
+                              <stop offset="0%" stopColor="hsl(30 60% 78%)" />
+                              <stop offset="60%" stopColor="hsl(28 50% 58%)" />
+                              <stop offset="100%" stopColor="hsl(25 50% 36%)" />
+                            </radialGradient>
+                          </defs>
+                          <ellipse cx="7" cy="11" rx="5" ry="10" fill={`url(#alm${i})`} stroke="hsl(25 55% 28%)" strokeWidth="0.5" />
+                          <ellipse cx="5" cy="6" rx="1.6" ry="3" fill="hsl(35 65% 90%)" opacity="0.55" />
+                        </svg>
+                      )}
+                      {it.type === "pista" && (
+                        <svg width="18" height="14" viewBox="0 0 18 14">
+                          <defs>
+                            <radialGradient id={`pis${i}`} cx="35%" cy="30%" r="70%">
+                              <stop offset="0%" stopColor="hsl(80 55% 70%)" />
+                              <stop offset="60%" stopColor="hsl(85 50% 48%)" />
+                              <stop offset="100%" stopColor="hsl(95 45% 28%)" />
+                            </radialGradient>
+                          </defs>
+                          <ellipse cx="9" cy="7" rx="8" ry="5.5" fill={`url(#pis${i})`} stroke="hsl(95 50% 22%)" strokeWidth="0.5" />
+                          <path d="M 4 5 Q 9 8 14 5" stroke="hsl(95 60% 30%)" strokeWidth="0.5" fill="none" />
+                          <ellipse cx="6" cy="5" rx="1.6" ry="2" fill="hsl(80 55% 82%)" opacity="0.55" />
+                        </svg>
+                      )}
+                      {it.type === "cashew" && (
+                        <svg width="22" height="14" viewBox="0 0 22 14">
+                          <defs>
+                            <radialGradient id={`csh${i}`} cx="35%" cy="30%" r="70%">
+                              <stop offset="0%" stopColor="hsl(45 70% 92%)" />
+                              <stop offset="60%" stopColor="hsl(40 55% 75%)" />
+                              <stop offset="100%" stopColor="hsl(35 45% 52%)" />
+                            </radialGradient>
+                          </defs>
+                          <path d="M 3 7 Q 4 1 11 2 Q 18 3 19 7 Q 18 12 11 12 Q 4 12 3 7 Z"
+                            fill={`url(#csh${i})`} stroke="hsl(35 45% 42%)" strokeWidth="0.5" />
+                          <ellipse cx="8" cy="5" rx="2.2" ry="1.6" fill="hsl(45 70% 94%)" opacity="0.6" />
+                        </svg>
+                      )}
+                      {it.type === "saffron" && (
+                        <svg width="8" height="18" viewBox="0 0 8 18">
+                          <path d="M 4 1 Q 2 6 4 11 Q 6 14 4 17"
+                            stroke="hsl(15 90% 50%)" strokeWidth="1.4" strokeLinecap="round" fill="none" />
+                          <path d="M 4 2 Q 3 6 4 9" stroke="hsl(25 95% 60%)" strokeWidth="0.6" fill="none" />
+                        </svg>
+                      )}
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* Steam rising from the kulhad */}
+                <div className="absolute left-1/2 -top-6 -translate-x-1/2 w-32 h-24 pointer-events-none z-30">
+                  {[0, 1, 2].map((i) => (
+                    <motion.div
+                      key={i}
+                      className="absolute left-1/2 bottom-0 w-3 h-12 rounded-full blur-md"
+                      style={{
+                        background: "linear-gradient(to top, hsl(0 0% 100% / 0.55), hsl(0 0% 100% / 0))",
+                        marginLeft: -6 + (i - 1) * 10,
+                      }}
+                      animate={{
+                        y: [0, -50],
+                        opacity: [0, 0.8, 0],
+                        scaleX: [1, 1.8],
+                        x: [0, (i - 1) * 8],
+                      }}
+                      transition={{
+                        duration: 3,
+                        delay: i * 0.6,
+                        repeat: Infinity,
+                        ease: "easeOut",
+                      }}
+                    />
+                  ))}
+                </div>
+
                 <img
                   src={hotMilk}
                   alt="Hot Energy Milk with Dry Fruits in Kulhad"
-                  className="relative w-60 md:w-72 lg:w-80 rounded-2xl shadow-xl object-cover"
+                  className="relative w-60 md:w-72 lg:w-80 rounded-2xl shadow-xl object-cover z-10"
                 />
               </motion.div>
             </motion.div>
