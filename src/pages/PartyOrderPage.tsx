@@ -104,10 +104,76 @@ const PartyOrderPage = () => {
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 2 }}
           className="absolute bottom-10 right-[8%] text-4xl opacity-10 select-none"
         >🍍</motion.div>
+
+        {/* Premium floating juice glass — right side */}
+        <motion.div
+          aria-hidden
+          className="absolute top-1/2 right-[5%] md:right-[10%] -translate-y-1/2 hidden sm:block pointer-events-none"
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0, y: ["-50%", "calc(-50% - 8px)", "-50%"] }}
+          transition={{ opacity: { duration: 0.8 }, x: { duration: 0.8 }, y: { duration: 4, repeat: Infinity, ease: "easeInOut" } }}
+        >
+          <svg width="64" height="84" viewBox="0 0 64 84" className="drop-shadow-[0_8px_24px_hsl(45_100%_50%/0.35)]">
+            <defs>
+              <linearGradient id="pjuice" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="hsl(45 100% 65%)" />
+                <stop offset="100%" stopColor="hsl(35 90% 45%)" />
+              </linearGradient>
+              <linearGradient id="pglass" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stopColor="hsl(0 0% 100% / 0.25)" />
+                <stop offset="50%" stopColor="hsl(0 0% 100% / 0.05)" />
+                <stop offset="100%" stopColor="hsl(0 0% 100% / 0.25)" />
+              </linearGradient>
+              <clipPath id="pclip">
+                <path d="M 14 14 L 18 68 Q 18 74 24 75 L 40 75 Q 46 74 46 68 L 50 14 Z" />
+              </clipPath>
+            </defs>
+            {/* Glass back */}
+            <path d="M 14 14 L 18 68 Q 18 74 24 75 L 40 75 Q 46 74 46 68 L 50 14 Z"
+              fill="hsl(0 0% 100% / 0.04)" stroke="hsl(45 80% 80% / 0.7)" strokeWidth="1.2" />
+            {/* Juice fill */}
+            <g clipPath="url(#pclip)">
+              <motion.rect
+                x="10" y="20" width="44" height="60"
+                fill="url(#pjuice)"
+                animate={{ y: [30, 22, 30] }}
+                transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+              />
+              <motion.ellipse
+                cx="32" cy="22" rx="18" ry="2.5"
+                fill="hsl(50 100% 80%)" opacity="0.8"
+                animate={{ rx: [18, 20, 18], cy: [22, 16, 22] }}
+                transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+              />
+            </g>
+            {/* Glass front shine */}
+            <path d="M 14 14 L 18 68 Q 18 74 24 75 L 40 75 Q 46 74 46 68 L 50 14 Z" fill="url(#pglass)" />
+            <ellipse cx="32" cy="14" rx="18" ry="2.4" fill="none" stroke="hsl(0 0% 100% / 0.7)" strokeWidth="1" />
+            <path d="M 20 22 L 22 60" stroke="hsl(0 0% 100% / 0.6)" strokeWidth="1.5" strokeLinecap="round" />
+            {/* Straw */}
+            <motion.line
+              x1="38" y1="6" x2="34" y2="40"
+              stroke="hsl(0 80% 55%)" strokeWidth="2.5" strokeLinecap="round"
+              animate={{ rotate: [0, 3, 0] }} style={{ transformOrigin: "36px 8px" }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </svg>
+          {/* Floating sparkles */}
+          {[0, 1, 2].map((i) => (
+            <motion.span
+              key={i}
+              className="absolute w-1.5 h-1.5 rounded-full bg-primary"
+              style={{ left: `${10 + i * 25}px`, top: `${-8 - i * 4}px` }}
+              animate={{ y: [0, -10, 0], opacity: [0, 1, 0], scale: [0.6, 1.3, 0.6] }}
+              transition={{ duration: 2.4, repeat: Infinity, delay: i * 0.5 }}
+            />
+          ))}
+        </motion.div>
+
         <motion.div
           animate={{ y: [0, -8, 0], x: [0, 5, 0] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute top-20 right-[20%] text-3xl opacity-10 select-none"
+          className="absolute top-20 left-[20%] text-3xl opacity-10 select-none"
         >🥤</motion.div>
 
         <div className="container mx-auto px-4 relative z-10 text-center">

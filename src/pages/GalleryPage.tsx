@@ -125,36 +125,48 @@ const GalleryPage = () => {
             viewport={{ once: true }}
             className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6"
           >
-            {photos.map((photo, i) => (
-              <motion.div
-                key={i}
-                variants={fadeUp}
-                whileHover={{ y: -4, transition: { duration: 0.25 } }}
-                onClick={() => openLightbox(i)}
-                className="group card-premium overflow-hidden transition-all duration-300 cursor-pointer"
-              >
-                <div className="relative overflow-hidden aspect-[4/3]">
-                  <img
-                    src={photo.src}
-                    alt={photo.alt}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                  />
-                  {/* Zoom overlay */}
-                  <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/10 transition-colors duration-300 flex items-center justify-center">
+            {photos.map((photo, i) => {
+              const tilt = i % 3 === 0 ? -1.2 : i % 3 === 1 ? 0 : 1.2;
+              return (
+                <motion.div
+                  key={i}
+                  variants={fadeUp}
+                  whileHover={{ y: -6, rotate: 0, scale: 1.015, transition: { duration: 0.3, ease: smoothEase } }}
+                  style={{ rotate: tilt }}
+                  onClick={() => openLightbox(i)}
+                  className="group relative card-premium overflow-hidden transition-all duration-300 cursor-pointer bg-card pt-3 px-3 pb-2 rounded-2xl"
+                >
+                  {/* Polaroid washi tape */}
+                  <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-16 h-4 rounded-sm rotate-[-3deg] bg-primary/40 backdrop-blur-sm border border-primary/30 z-10" />
+                  <div className="relative overflow-hidden aspect-[4/3] rounded-xl">
+                    <img
+                      src={photo.src}
+                      alt={photo.alt}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                    {/* Zoom overlay */}
+                    <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/20 transition-colors duration-300 flex items-center justify-center">
+                      <motion.div
+                        className="w-12 h-12 rounded-full bg-card/90 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg"
+                        whileHover={{ scale: 1.1, rotate: 8 }}
+                      >
+                        <ZoomIn size={20} className="text-primary" />
+                      </motion.div>
+                    </div>
+                    {/* Corner sparkle */}
                     <motion.div
-                      className="w-12 h-12 rounded-full bg-card/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                      whileHover={{ scale: 1.1 }}
-                    >
-                      <ZoomIn size={20} className="text-foreground" />
-                    </motion.div>
+                      className="absolute top-2 right-2 w-2 h-2 rounded-full bg-primary/80 opacity-0 group-hover:opacity-100"
+                      animate={{ scale: [0.8, 1.4, 0.8], opacity: [0.4, 1, 0.4] }}
+                      transition={{ duration: 1.4, repeat: Infinity }}
+                    />
                   </div>
-                </div>
-                <div className="p-4 text-center">
-                  <p className="font-display text-sm font-bold text-foreground">{photo.caption}</p>
-                </div>
-              </motion.div>
-            ))}
+                  <div className="pt-3 pb-1 text-center">
+                    <p className="font-display text-sm font-bold text-foreground">{photo.caption}</p>
+                  </div>
+                </motion.div>
+              );
+            })}
           </motion.div>
 
         </div>
