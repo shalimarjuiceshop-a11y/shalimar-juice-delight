@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import LiveShopTimeBadge from "./LiveShopTimeBadge";
 
 /**
  * Cinematic Shalimar Juice Shop scene.
@@ -44,6 +45,7 @@ const MenuTasteAnimation = () => {
       style={{ background: skyGradient }}
       aria-label="Shalimar Juice shop animation"
     >
+      <LiveShopTimeBadge />
       {/* Stars (night + closed) */}
       {(isNight || isClosed) &&
         Array.from({ length: 22 }).map((_, i) => (
