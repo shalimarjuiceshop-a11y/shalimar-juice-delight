@@ -46,54 +46,7 @@ const testimonials = [
   { name: "Shaikh Sohel", text: "Been coming here since childhood. The quality never dropped. Truly the best juice shop.", rating: 5, location: "Amravati" },
 ];
 
-// Realistic dry-fruit SVGs used in the Winter Special animation
-const FruitSVG = ({ type, idx }: { type: "almond" | "pista" | "cashew"; idx: number }) => {
-  if (type === "almond") {
-    return (
-      <svg width="20" height="30" viewBox="0 0 14 22" className="drop-shadow-[0_2px_3px_rgba(0,0,0,0.5)]">
-        <defs>
-          <radialGradient id={`alm${idx}`} cx="35%" cy="30%" r="70%">
-            <stop offset="0%" stopColor="hsl(30 60% 78%)" />
-            <stop offset="60%" stopColor="hsl(28 50% 55%)" />
-            <stop offset="100%" stopColor="hsl(25 50% 32%)" />
-          </radialGradient>
-        </defs>
-        <ellipse cx="7" cy="11" rx="5" ry="10" fill={`url(#alm${idx})`} stroke="hsl(25 55% 24%)" strokeWidth="0.5" />
-        <ellipse cx="5" cy="6" rx="1.6" ry="3" fill="hsl(35 70% 92%)" opacity="0.6" />
-      </svg>
-    );
-  }
-  if (type === "pista") {
-    return (
-      <svg width="24" height="20" viewBox="0 0 18 14" className="drop-shadow-[0_2px_3px_rgba(0,0,0,0.5)]">
-        <defs>
-          <radialGradient id={`pis${idx}`} cx="35%" cy="30%" r="70%">
-            <stop offset="0%" stopColor="hsl(80 55% 70%)" />
-            <stop offset="60%" stopColor="hsl(85 50% 45%)" />
-            <stop offset="100%" stopColor="hsl(95 45% 25%)" />
-          </radialGradient>
-        </defs>
-        <ellipse cx="9" cy="7" rx="8" ry="5.5" fill={`url(#pis${idx})`} stroke="hsl(95 50% 20%)" strokeWidth="0.5" />
-        <path d="M 4 5 Q 9 8 14 5" stroke="hsl(95 60% 28%)" strokeWidth="0.5" fill="none" />
-        <ellipse cx="6" cy="5" rx="1.6" ry="2" fill="hsl(80 55% 82%)" opacity="0.6" />
-      </svg>
-    );
-  }
-  return (
-    <svg width="28" height="20" viewBox="0 0 22 14" className="drop-shadow-[0_2px_3px_rgba(0,0,0,0.5)]">
-      <defs>
-        <radialGradient id={`csh${idx}`} cx="35%" cy="30%" r="70%">
-          <stop offset="0%" stopColor="hsl(45 70% 92%)" />
-          <stop offset="60%" stopColor="hsl(40 55% 72%)" />
-          <stop offset="100%" stopColor="hsl(35 45% 48%)" />
-        </radialGradient>
-      </defs>
-      <path d="M 3 7 Q 4 1 11 2 Q 18 3 19 7 Q 18 12 11 12 Q 4 12 3 7 Z"
-        fill={`url(#csh${idx})`} stroke="hsl(35 45% 38%)" strokeWidth="0.5" />
-      <ellipse cx="8" cy="5" rx="2.2" ry="1.6" fill="hsl(45 70% 94%)" opacity="0.65" />
-    </svg>
-  );
-};
+
 
 const Index = () => {
   return (
@@ -252,120 +205,69 @@ const Index = () => {
               >
                 <div className="absolute -inset-6 bg-primary/5 rounded-3xl blur-3xl" />
 
-                {/*
-                  Cinematic loop (14s):
-                    0–4s   → almond drifts down very slowly, lands on rim
-                    3–7s   → pistachio drifts down, lands beside almond
-                    6–10s  → cashew drifts down, lands on top
-                    9–14s  → steam rises from the kulhad
-                    14s    → soft fade-out, restart
-                  Fruits stay visually on the rim throughout the cycle.
-                */}
-                {(() => {
-                  // Landing positions tuned to the kulhad rim area in the image.
-                  // Coordinates are % of the image container.
-                  const drops = [
-                    {
-                      type: "almond" as const,
-                      leftPct: 44,
-                      landTopPct: 30,
-                      start: 0,
-                      land: 4,
-                    },
-                    {
-                      type: "pista" as const,
-                      leftPct: 54,
-                      landTopPct: 31,
-                      start: 3,
-                      land: 7,
-                    },
-                    {
-                      type: "cashew" as const,
-                      leftPct: 49,
-                      landTopPct: 28,
-                      start: 6,
-                      land: 10,
-                    },
-                  ];
-                  const CYCLE = 14;
-                  return (
-                    <div className="absolute inset-0 pointer-events-none z-30 overflow-visible">
-                      {drops.map((d, i) => {
-                        const t0 = 0;
-                        const t1 = d.start / CYCLE;             // appear
-                        const t2 = d.land / CYCLE;              // landed
-                        const t3 = (d.land + 0.4) / CYCLE;      // micro-bounce
-                        const t4 = (CYCLE - 0.6) / CYCLE;       // hold
-                        return (
-                          <motion.div
-                            key={i}
-                            className="absolute"
-                            style={{
-                              left: `${d.leftPct}%`,
-                              top: 0,
-                              translateX: "-50%",
-                            }}
-                            initial={{ y: -60, opacity: 0, rotate: -12 }}
-                            animate={{
-                              top: [
-                                "-12%",
-                                "-12%",
-                                `${d.landTopPct}%`,
-                                `${d.landTopPct - 1.5}%`,
-                                `${d.landTopPct}%`,
-                                `${d.landTopPct}%`,
-                                `${d.landTopPct}%`,
-                              ],
-                              opacity: [0, 0, 1, 1, 1, 1, 0],
-                              rotate: [-12, -8, 6, 4, 6, 6, 6],
-                              scale: [0.9, 0.95, 1, 1.02, 1, 1, 0.95],
-                            }}
-                            transition={{
-                              duration: CYCLE,
-                              times: [t0, t1, t2, t3, (t3 + t4) / 2, t4, 1],
-                              repeat: Infinity,
-                              ease: [0.33, 0, 0.4, 1], // very slow, gentle
-                              delay: 0,
-                            }}
-                          >
-                            <FruitSVG type={d.type} idx={i} />
-                          </motion.div>
-                        );
-                      })}
-
-                      {/* Steam — rises AFTER fruits have landed (~9s onwards) */}
-                      <div className="absolute left-1/2 -translate-x-1/2 w-24 h-28" style={{ top: "8%" }}>
-                        {[0, 1, 2].map((s) => {
-                          const start = (9 + s * 0.6) / CYCLE;
-                          const end = (CYCLE - 0.2) / CYCLE;
-                          return (
-                            <motion.div
-                              key={s}
-                              className="absolute left-1/2 bottom-0 w-2.5 h-14 rounded-full blur-md"
-                              style={{
-                                background:
-                                  "linear-gradient(to top, hsl(0 0% 100% / 0.55), hsl(0 0% 100% / 0))",
-                                marginLeft: -5 + (s - 1) * 9,
-                              }}
-                              animate={{
-                                y: [0, 0, -36, -64],
-                                x: [0, 0, (s - 1) * 6, (s - 1) * 12],
-                                opacity: [0, 0, 0.85, 0],
-                                scaleX: [1, 1, 1.6, 2.2],
-                              }}
-                              transition={{
-                                duration: CYCLE,
-                                times: [0, start, (start + end) / 2, end],
-                                repeat: Infinity,
-                                ease: "easeOut",
-                              }}
-                            />
-                          );
-                        })}
-                      </div>
-                    </div>
-                  );
-                })()}
+                {/* Classic, always-visible steam rising from the kulhad — soft, continuous, cinematic */}
+                <div className="absolute left-1/2 -translate-x-1/2 pointer-events-none z-30"
+                  style={{ top: "-6%", width: "60%", height: "44%" }}
+                >
+                  {[
+                    { delay: 0,   x: 0,   sway: 8,  dur: 4.2 },
+                    { delay: 0.6, x: -10, sway: 10, dur: 4.8 },
+                    { delay: 1.2, x: 10,  sway: 6,  dur: 4.5 },
+                    { delay: 1.8, x: -4,  sway: 12, dur: 5.0 },
+                    { delay: 2.4, x: 4,   sway: 9,  dur: 4.4 },
+                  ].map((s, i) => (
+                    <motion.div
+                      key={i}
+                      className="absolute bottom-0 left-1/2 rounded-full"
+                      style={{
+                        width: 18,
+                        height: 60,
+                        marginLeft: -9 + s.x,
+                        background:
+                          "radial-gradient(ellipse at 50% 80%, hsl(0 0% 100% / 0.55) 0%, hsl(0 0% 100% / 0.25) 40%, hsl(0 0% 100% / 0) 80%)",
+                        filter: "blur(6px)",
+                      }}
+                      animate={{
+                        y: [0, -110],
+                        x: [0, s.sway, -s.sway, s.sway * 0.5, 0],
+                        opacity: [0, 0.85, 0.7, 0.4, 0],
+                        scaleX: [0.6, 1, 1.4, 1.8, 2.2],
+                        scaleY: [0.5, 1, 1.2, 1.4, 1.6],
+                      }}
+                      transition={{
+                        duration: s.dur,
+                        delay: s.delay,
+                        repeat: Infinity,
+                        ease: "easeOut",
+                      }}
+                    />
+                  ))}
+                  {/* Subtle wispy second layer */}
+                  {[0, 1, 2].map((i) => (
+                    <motion.div
+                      key={`w-${i}`}
+                      className="absolute bottom-0 left-1/2 rounded-full"
+                      style={{
+                        width: 8,
+                        height: 32,
+                        marginLeft: -4 + (i - 1) * 14,
+                        background: "hsl(0 0% 100% / 0.35)",
+                        filter: "blur(4px)",
+                      }}
+                      animate={{
+                        y: [0, -70],
+                        opacity: [0, 0.6, 0],
+                        scale: [0.8, 1.2, 1.8],
+                      }}
+                      transition={{
+                        duration: 3.6,
+                        delay: 0.3 + i * 0.7,
+                        repeat: Infinity,
+                        ease: "easeOut",
+                      }}
+                    />
+                  ))}
+                </div>
 
                 <img
                   src={hotMilk}
