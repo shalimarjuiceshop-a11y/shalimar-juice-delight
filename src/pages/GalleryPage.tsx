@@ -207,16 +207,62 @@ const GalleryPage = () => {
         </div>
       </section>
 
-      {/* Instagram Section */}
+      {/* Instagram Feed Section */}
+      <section className="py-14 md:py-20 overflow-hidden">
+        <div className="container mx-auto px-4">
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="text-center mb-10"
+          >
+            <motion.span variants={fadeUp} className="inline-flex items-center gap-1.5 text-[11px] font-body font-bold tracking-[0.15em] uppercase px-4 py-1.5 rounded-full mb-4 bg-primary/10 text-primary">
+              <Instagram size={12} /> Live from Instagram
+            </motion.span>
+            <motion.h2 variants={fadeUp} className="font-display text-3xl md:text-4xl font-extrabold tracking-tight text-foreground">
+              Follow <span className="text-gradient-gold">@shalimarjuiceshop</span>
+            </motion.h2>
+            <motion.p variants={fadeUp} className="font-body text-sm text-muted-foreground mt-3 max-w-md mx-auto">
+              See all our latest juice photos & reels straight from our Instagram.
+            </motion.p>
+          </motion.div>
 
-      <motion.p
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        className="text-center font-body text-sm text-muted-foreground pb-12"
-      >
-        More content coming soon! 📸🎬
-      </motion.p>
+          {/* LightWidget Instagram feed — auto-shows every post from @shalimarjuiceshop */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: smoothEase }}
+            className="max-w-5xl mx-auto card-premium rounded-2xl overflow-hidden p-2 md:p-3"
+          >
+            <iframe
+              src="//lightwidget.com/widgets/shalimarjuiceshop.html"
+              scrolling="no"
+              allowTransparency={true}
+              className="lightwidget-widget w-full border-0 overflow-hidden rounded-xl"
+              style={{ minHeight: 520 }}
+              title="Shalimar Juice Shop Instagram Feed"
+            />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-center mt-8"
+          >
+            <a
+              href="https://www.instagram.com/shalimarjuiceshop/"
+              target="_blank"
+              rel="noreferrer noopener"
+              className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-body text-sm font-bold px-6 py-3 rounded-full hover:brightness-110 transition-all shadow-lg"
+            >
+              <Instagram size={16} /> Visit Profile <ExternalLink size={14} />
+            </a>
+          </motion.div>
+        </div>
+      </section>
 
       {/* Lightbox */}
       <AnimatePresence>
