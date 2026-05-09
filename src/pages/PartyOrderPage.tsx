@@ -411,6 +411,9 @@ const PartyOrderPage = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Pop-up flat animation — sits above footer, reinforces what user is booking */}
+      <PartyCounterPopAnimation />
     </main>
   );
 };
