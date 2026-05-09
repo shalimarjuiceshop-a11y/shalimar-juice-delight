@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { PartyPopper, Send, User, Phone, MapPin, Users, Building2, Sparkles, GlassWater, Music, ChevronDown } from "lucide-react";
 import { toast } from "sonner";
+import PartyCounterPopAnimation from "@/components/PartyCounterPopAnimation";
 
 const WHATSAPP_NUMBER = "919852779933";
 
@@ -410,6 +411,9 @@ const PartyOrderPage = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Pop-up flat animation — sits above footer, reinforces what user is booking */}
+      <PartyCounterPopAnimation />
     </main>
   );
 };
