@@ -2,7 +2,6 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { PartyPopper, Send, User, Phone, MapPin, Users, Building2, Sparkles, GlassWater, Music, ChevronDown } from "lucide-react";
 import { toast } from "sonner";
-import PartyStorefrontAnimation from "@/components/PartyStorefrontAnimation";
 
 const WHATSAPP_NUMBER = "919852779933";
 
@@ -125,14 +124,6 @@ const PartyOrderPage = () => {
             <motion.p variants={fadeUp} className="font-body text-sm md:text-base mt-4 text-header-muted max-w-lg mx-auto leading-relaxed">
               From weddings to corporate events — we bring fresh juice counters to your venue for 500 to 10,000+ guests!
             </motion.p>
-
-            {/* Popping flat storefront animation — visualises the live counter setup */}
-            <motion.div
-              variants={fadeUp}
-              className="mt-10 md:mt-12"
-            >
-              <PartyStorefrontAnimation />
-            </motion.div>
           </motion.div>
         </div>
       </section>
