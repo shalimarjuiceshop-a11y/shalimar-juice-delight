@@ -43,26 +43,25 @@ const GalleryShopAnimation = () => {
       />
 
       {/* The marquee row */}
-      <div className="relative h-[150px] md:h-[180px] overflow-hidden">
+      <div className="relative h-[180px] md:h-[220px] overflow-hidden">
         <motion.div
-          className="absolute inset-y-2 left-0 flex items-center gap-4 md:gap-5 will-change-transform"
+          className="absolute inset-y-0 left-0 flex items-center gap-4 md:gap-6 will-change-transform"
           animate={{ x: ["0%", "-50%"] }}
-          transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
         >
           {[...reel, ...reel].map((src, i) => (
             <motion.div
               key={i}
-              className="relative h-full aspect-[4/5] rounded-2xl overflow-hidden flex-shrink-0 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)] ring-1 ring-primary/15"
-              whileHover={{ scale: 1.04, transition: { duration: 0.3 } }}
+              className="relative h-[160px] md:h-[200px] w-[140px] md:w-[170px] rounded-2xl overflow-hidden flex-shrink-0 shadow-[0_12px_30px_-10px_rgba(0,0,0,0.55)] ring-1 ring-primary/25"
+              whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
             >
               <img
                 src={src}
                 alt=""
                 className="w-full h-full object-cover"
-                loading="lazy"
+                loading="eager"
+                decoding="async"
               />
-              {/* subtle vignette for cohesion */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
             </motion.div>
           ))}
         </motion.div>
