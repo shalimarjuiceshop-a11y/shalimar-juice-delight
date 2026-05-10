@@ -103,12 +103,12 @@ const GalleryPage = () => {
             </motion.p>
           </motion.div>
 
-          {/* Cute photographer cartoon clicking shop photos */}
+          {/* Cinematic film-strip + floating polaroids — blends into header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3, ease: smoothEase }}
-            className="mt-10"
+            className="mt-12 md:mt-16 mb-4"
           >
             <GalleryShopAnimation />
           </motion.div>
