@@ -80,17 +80,17 @@ const Index = () => {
               Experience the taste of real, natural pineapple goodness — made fresh daily at Shalimar Juice Shop.
             </motion.p>
 
-            <motion.div variants={fadeUp} className="flex flex-wrap gap-3 justify-center lg:justify-start">
+            <motion.div variants={fadeUp} className="flex flex-col sm:flex-row flex-wrap gap-3 justify-center lg:justify-start items-stretch sm:items-center">
               <Link
                 to="/menu"
-                className="group inline-flex items-center gap-2 bg-primary text-primary-foreground font-body text-sm font-semibold px-7 py-3.5 rounded-full hover:brightness-105 hover:scale-[1.02] transition-all duration-300 glow-gold btn-glow"
+                className="group inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground font-body text-sm font-semibold px-7 py-3.5 rounded-full hover:brightness-105 hover:scale-[1.02] transition-all duration-300 glow-gold btn-glow w-full sm:w-auto sm:min-w-[180px]"
               >
                 Explore Menu
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 to="/franchise"
-                className="group inline-flex items-center gap-2 border border-header-accent/40 font-body text-sm font-semibold px-7 py-3.5 rounded-full transition-all duration-300 hover:bg-accent/10 hover:border-header-accent/60 text-header-light"
+                className="group inline-flex items-center justify-center gap-2 border border-header-accent/40 font-body text-sm font-semibold px-7 py-3.5 rounded-full transition-all duration-300 hover:bg-accent/10 hover:border-header-accent/60 text-header-light w-full sm:w-auto sm:min-w-[180px]"
               >
                 Get Franchise <Handshake size={16} />
               </Link>
@@ -330,17 +330,17 @@ const Index = () => {
             <motion.p variants={fadeUp} className="font-body text-base md:text-lg text-header-muted/90 mb-10 max-w-lg mx-auto">
               Visit Shalimar Juice Shop today or explore our franchise opportunities to start your own journey.
             </motion.p>
-            <motion.div variants={fadeUp} className="flex flex-wrap gap-4 justify-center">
+            <motion.div variants={fadeUp} className="flex flex-col sm:flex-row flex-wrap gap-3 justify-center items-stretch sm:items-center">
               <Link
                 to="/contact"
-                className="group inline-flex items-center gap-2 bg-primary text-primary-foreground font-body text-sm font-semibold px-7 py-3.5 rounded-full hover:brightness-105 hover:scale-[1.02] transition-all duration-300 glow-gold btn-glow"
+                className="group inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground font-body text-sm font-semibold px-7 py-3.5 rounded-full hover:brightness-105 hover:scale-[1.02] transition-all duration-300 glow-gold btn-glow w-full sm:w-auto sm:min-w-[200px]"
               >
                 Visit Us Today
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 to="/franchise"
-                className="inline-flex items-center gap-2 border border-header-accent/40 font-body text-sm font-semibold px-7 py-3.5 rounded-full transition-all duration-300 hover:bg-accent/10 hover:border-header-accent/60 text-header-light"
+                className="inline-flex items-center justify-center gap-2 border border-header-accent/40 font-body text-sm font-semibold px-7 py-3.5 rounded-full transition-all duration-300 hover:bg-accent/10 hover:border-header-accent/60 text-header-light w-full sm:w-auto sm:min-w-[200px]"
               >
                 Franchise Plans <Handshake size={16} />
               </Link>
