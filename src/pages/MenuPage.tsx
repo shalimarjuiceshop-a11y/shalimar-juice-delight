@@ -183,10 +183,10 @@ const MenuPage = () => {
               className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-8"
             >
               {filteredDrinks.map((drink, index) => (
-                <TiltCard key={drink.id} className="group">
+                <TiltCard key={drink.id} className="group h-full">
                   <motion.div
                     variants={scaleIn}
-                    className="relative bg-card rounded-3xl border border-border overflow-hidden transition-all duration-500 hover:border-primary/40 hover:shadow-pineapple"
+                    className="relative h-full flex flex-col bg-card rounded-3xl border border-border overflow-hidden transition-all duration-500 hover:border-primary/40 hover:shadow-pineapple"
                   >
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
                       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10" />
@@ -225,7 +225,7 @@ const MenuPage = () => {
                       </div>
                     </div>
 
-                    <div className="p-4 pt-3 text-center">
+                    <div className="p-4 pt-3 text-center flex-1 flex flex-col">
                       <h3 className="font-display text-lg md:text-xl font-bold text-foreground leading-tight">
                         {drink.name}
                       </h3>
@@ -233,7 +233,7 @@ const MenuPage = () => {
                         {drink.description}
                       </p>
 
-                      <div className="mt-4 flex flex-col gap-2">
+                      <div className="mt-auto pt-4 flex flex-col gap-2">
                         <motion.span
                           className="inline-flex items-center justify-center gap-1 bg-primary text-primary-foreground font-display text-lg md:text-xl font-black px-5 py-2 rounded-2xl glow-gold-soft mx-auto"
                           whileHover={{ scale: 1.05 }}
