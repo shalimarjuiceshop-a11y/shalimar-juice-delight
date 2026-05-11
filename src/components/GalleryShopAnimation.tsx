@@ -66,11 +66,11 @@ const GalleryShopAnimation = () => {
         {/* Edge fades blend into header bg */}
         <div
           className="pointer-events-none absolute inset-y-0 left-0 w-12 md:w-20 z-10"
-          style={{ background: "linear-gradient(to right, hsl(var(--page-header)) 0%, transparent 100%)" }}
+          style={{ background: "linear-gradient(to right, hsl(35 40% 28%) 0%, hsl(35 40% 28% / 0) 100%)" }}
         />
         <div
           className="pointer-events-none absolute inset-y-0 right-0 w-12 md:w-20 z-10"
-          style={{ background: "linear-gradient(to left, hsl(var(--page-header)) 0%, transparent 100%)" }}
+          style={{ background: "linear-gradient(to left, hsl(35 40% 28%) 0%, hsl(35 40% 28% / 0) 100%)" }}
         />
       </div>
     </div>
