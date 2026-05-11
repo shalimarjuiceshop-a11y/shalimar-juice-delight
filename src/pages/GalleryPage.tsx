@@ -83,7 +83,7 @@ const GalleryPage = () => {
   }, [goNext, goPrev]);
 
   return (
-    <main className="pt-20 min-h-screen bg-background">
+    <main className="pt-20 min-h-screen bg-background overflow-x-hidden">
       {/* Header */}
       <section className="relative py-16 md:py-20 bg-page-header overflow-hidden">
         <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(var(--pineapple-gold)) 1px, transparent 0)', backgroundSize: '48px 48px' }} />
@@ -102,17 +102,17 @@ const GalleryPage = () => {
               A glimpse of Shalimar Juice Shop & our fresh preparations.
             </motion.p>
           </motion.div>
-
-          {/* Cinematic film-strip + floating polaroids — blends into header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3, ease: smoothEase }}
-            className="mt-12 md:mt-16 mb-4"
-          >
-            <GalleryShopAnimation />
-          </motion.div>
         </div>
+
+        {/* Full-bleed cinematic marquee — sits inside header, edge-to-edge */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.3, ease: smoothEase }}
+          className="mt-10 md:mt-14 relative z-10 w-full"
+        >
+          <GalleryShopAnimation />
+        </motion.div>
       </section>
 
       {/* Gallery Grid */}

@@ -10,8 +10,8 @@ import galleryGuava from "@/assets/gallery-guava.jpeg";
 import galleryFalooda from "@/assets/gallery-falooda.jpeg";
 
 /**
- * Swiggy-grade Gallery Header — crisp marquee of real photos.
- * No blur, no halo, no overlays. Sharp edges, tight spacing.
+ * Edge-to-edge cinematic photo marquee.
+ * Sharp, official, no blur. Subtle edge fades blend into header bg.
  */
 
 const reel = [
@@ -29,20 +29,22 @@ const reel = [
 const GalleryShopAnimation = () => {
   return (
     <div
-      className="relative w-full max-w-5xl mx-auto"
+      className="relative w-full overflow-hidden"
       aria-label="Shalimar Juice photo reel"
     >
-      <div className="relative h-[200px] md:h-[240px] overflow-hidden">
+      {/* Hairline accent above */}
+      <div className="mx-auto h-px w-20 bg-gradient-to-r from-transparent via-primary/50 to-transparent mb-5" />
+
+      <div className="relative h-[200px] md:h-[240px]">
         <motion.div
           className="absolute inset-y-0 left-0 flex items-center gap-3 md:gap-4 will-change-transform"
           animate={{ x: ["0%", "-50%"] }}
-          transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
         >
           {[...reel, ...reel].map((item, i) => (
-            <motion.div
+            <div
               key={i}
-              className="relative h-[180px] md:h-[220px] w-[150px] md:w-[180px] rounded-xl overflow-hidden flex-shrink-0 bg-shop-dark shadow-[0_8px_24px_-8px_rgba(0,0,0,0.6)]"
-              whileHover={{ y: -4, transition: { duration: 0.25 } }}
+              className="relative h-[180px] md:h-[220px] w-[150px] md:w-[180px] rounded-xl overflow-hidden flex-shrink-0 bg-shop-dark ring-1 ring-primary/15 shadow-[0_10px_28px_-10px_rgba(0,0,0,0.7)]"
             >
               <img
                 src={item.src}
@@ -52,15 +54,24 @@ const GalleryShopAnimation = () => {
                 decoding="async"
                 draggable={false}
               />
-              {/* caption */}
-              <div className="absolute inset-x-0 bottom-0 px-2.5 py-1.5 bg-gradient-to-t from-black/85 via-black/40 to-transparent">
-                <p className="font-display text-[11px] md:text-xs font-bold text-cream tracking-tight">
+              <div className="absolute inset-x-0 bottom-0 px-2.5 py-1.5 bg-gradient-to-t from-black/85 via-black/35 to-transparent">
+                <p className="font-display text-[11px] md:text-xs font-bold text-cream tracking-tight truncate">
                   {item.label}
                 </p>
               </div>
-            </motion.div>
+            </div>
           ))}
         </motion.div>
+
+        {/* Edge fades blend into header bg */}
+        <div
+          className="pointer-events-none absolute inset-y-0 left-0 w-12 md:w-20 z-10"
+          style={{ background: "linear-gradient(to right, hsl(35 40% 28%) 0%, hsl(35 40% 28% / 0) 100%)" }}
+        />
+        <div
+          className="pointer-events-none absolute inset-y-0 right-0 w-12 md:w-20 z-10"
+          style={{ background: "linear-gradient(to left, hsl(35 40% 28%) 0%, hsl(35 40% 28% / 0) 100%)" }}
+        />
       </div>
     </div>
   );
