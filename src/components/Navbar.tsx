@@ -40,12 +40,12 @@ const Navbar = () => {
         WebkitBackdropFilter: "blur(16px)",
       }}
     >
-      <div className="container mx-auto flex items-center justify-between h-[4.5rem] px-4">
-        <Link to="/" className="flex items-center gap-3 group">
+      <div className="container mx-auto flex items-center justify-between h-16 md:h-[4.5rem] px-3 md:px-4 gap-2">
+        <Link to="/" className="flex items-center gap-2.5 md:gap-3 group min-w-0 flex-1">
           <motion.div
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
-            className="relative w-14 h-14 rounded-full bg-cream p-0.5 ring-2 ring-primary/60 shadow-[0_0_20px_hsl(45_90%_55%/0.35)] group-hover:ring-primary transition-all"
+            className="relative w-10 h-10 md:w-14 md:h-14 rounded-full bg-cream p-0.5 ring-2 ring-primary/60 shadow-[0_0_20px_hsl(45_90%_55%/0.35)] group-hover:ring-primary transition-all flex-shrink-0"
           >
             <img
               src={sjsLogo}
@@ -53,11 +53,11 @@ const Navbar = () => {
               className="w-full h-full rounded-full object-cover"
             />
           </motion.div>
-          <div className="leading-none">
-            <h1 className="font-display text-lg font-bold tracking-tight text-cream">
+          <div className="leading-tight min-w-0 flex flex-col justify-center">
+            <h1 className="font-display text-[15px] md:text-lg font-bold tracking-tight text-cream truncate">
               Shalimar Juice
             </h1>
-            <p className="block text-[11px] font-medium mt-1"
+            <p className="text-[10px] md:text-[11px] font-medium mt-0.5 truncate"
                dir="rtl"
                style={{
                  fontFamily: "'Noto Nastaliq Urdu', serif",
