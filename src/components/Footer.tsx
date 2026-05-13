@@ -31,7 +31,7 @@ const Footer = () => (
             </div>
           </div>
           <p className="text-sm font-body leading-relaxed mb-5 text-footer-text">
-            Fresh fruit juices made daily with love. Taste the real freshness of pineapple — since generations!
+            Fresh fruit juices made daily with love. Taste the real freshness of pineapple at Shalimar Juice.
           </p>
           <a
             href="https://www.instagram.com/shalimarjuiceshop/"
