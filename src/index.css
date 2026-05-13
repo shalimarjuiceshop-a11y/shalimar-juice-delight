@@ -6,14 +6,14 @@
 
 @layer base {
   :root {
-    --background: 48 100% 99%;
-    --foreground: 30 10% 15%;
+    --background: 30 15% 10%;
+    --foreground: 45 100% 96%;
 
-    --card: 45 60% 97%;
-    --card-foreground: 30 10% 15%;
+    --card: 35 24% 14%;
+    --card-foreground: 45 100% 96%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 30 10% 15%;
+    --popover: 35 24% 14%;
+    --popover-foreground: 45 100% 96%;
 
     --primary: 45 100% 51%;
     --primary-foreground: 30 10% 15%;
@@ -21,8 +21,8 @@
     --secondary: 90 40% 45%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 45 30% 94%;
-    --muted-foreground: 30 10% 40%;
+    --muted: 35 20% 18%;
+    --muted-foreground: 45 24% 72%;
 
     --accent: 45 80% 60%;
     --accent-foreground: 30 10% 15%;
@@ -30,8 +30,8 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 45 40% 85%;
-    --input: 45 40% 85%;
+    --border: 42 30% 25%;
+    --input: 42 30% 25%;
     --ring: 45 100% 51%;
 
     --radius: 0.75rem;
@@ -73,12 +73,27 @@
   * {
     @apply border-border;
   }
-  html, body {
+  html, body, #root {
     @apply text-foreground font-body;
-    background-color: hsl(30 15% 10%);
+    background-color: hsl(var(--background));
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+    scrollbar-color: hsl(var(--border)) hsl(var(--background));
   }
   body {
     min-height: 100vh;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 999px;
+    border: 2px solid hsl(var(--background));
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
