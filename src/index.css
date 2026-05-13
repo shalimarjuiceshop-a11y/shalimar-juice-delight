@@ -73,8 +73,12 @@
   * {
     @apply border-border;
   }
+  html, body {
+    @apply text-foreground font-body;
+    background-color: hsl(30 15% 10%);
+  }
   body {
-    @apply bg-background text-foreground font-body;
+    min-height: 100vh;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
