@@ -57,12 +57,6 @@ const Index = () => {
 
         <div className="container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center relative z-10">
           <motion.div variants={stagger} initial="hidden" animate="show" className="text-center lg:text-left">
-            <motion.span
-              variants={fadeUp}
-              className="inline-block font-body text-[11px] font-medium tracking-[0.2em] uppercase px-5 py-2 rounded-full mb-6 border border-accent/20 text-header-muted bg-primary/8"
-            >
-              Since Generations
-            </motion.span>
 
             <motion.h1
               variants={fadeUp}
