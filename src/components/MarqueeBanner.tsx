@@ -6,7 +6,8 @@ const items = [
   "🍇 Guava Juice",
   "❄️ Winter Special Milk",
   "🏪 Franchise Available",
-  "💛 Fresh Daily",
+  "⭐ Since Generations",
+  "💛 100% Natural",
   "🧊 Ice Cold Fresh",
 ];
 
