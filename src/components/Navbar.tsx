@@ -57,11 +57,12 @@ const Navbar = () => {
             <h1 className="font-display text-[15px] md:text-lg font-bold tracking-tight text-cream truncate">
               Shalimar Juice
             </h1>
-            <p className="text-[10px] md:text-[11px] font-medium mt-0.5 truncate"
+            <p className="text-[11px] md:text-xs font-medium mt-0.5 whitespace-nowrap"
                dir="rtl"
                style={{
                  fontFamily: "'Noto Nastaliq Urdu', serif",
-                 color: "hsl(45 80% 75%)"
+                 color: "hsl(45 80% 75%)",
+                 lineHeight: 1.4,
                }}>
               شالیمار جوس
             </p>
