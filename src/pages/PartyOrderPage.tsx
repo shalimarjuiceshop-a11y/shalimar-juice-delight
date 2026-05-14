@@ -92,7 +92,7 @@ const PartyOrderPage = () => {
   return (
     <main className="pt-16 min-h-screen bg-background">
       {/* Hero */}
-      <section className="relative py-16 md:py-24 bg-page-header overflow-hidden">
+      <section className="relative pt-28 pb-16 md:pt-36 md:pb-24 bg-page-header overflow-hidden">
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(45 100% 70%) 1px, transparent 0)', backgroundSize: '40px 40px' }} />
         <motion.div
           animate={{ y: [0, -15, 0], rotate: [0, 8, -8, 0] }}

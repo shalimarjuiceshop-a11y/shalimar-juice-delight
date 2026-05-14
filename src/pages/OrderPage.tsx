@@ -113,7 +113,7 @@ const OrderPage = () => {
   return (
     <main className="pt-16 min-h-screen bg-background">
       {/* Header */}
-      <section className="relative py-14 md:py-20 bg-page-header overflow-hidden">
+      <section className="relative pt-28 pb-14 md:pt-32 md:pb-20 bg-page-header overflow-hidden">
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(45 100% 70%) 1px, transparent 0)', backgroundSize: '40px 40px' }} />
         {/* Floating pineapple decorations */}
         <motion.div
