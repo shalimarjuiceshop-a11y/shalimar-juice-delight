@@ -85,7 +85,7 @@ const GalleryPage = () => {
   return (
     <main className="pt-20 min-h-screen bg-background overflow-x-hidden">
       {/* Header */}
-      <section className="relative py-16 md:py-20 bg-page-header overflow-hidden">
+      <section className="relative pt-28 pb-16 md:pt-36 md:pb-20 bg-page-header overflow-hidden">
         <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(var(--pineapple-gold)) 1px, transparent 0)', backgroundSize: '48px 48px' }} />
         <div className="container mx-auto px-4 relative z-10 text-center">
           <motion.div variants={stagger} initial="hidden" animate="show">

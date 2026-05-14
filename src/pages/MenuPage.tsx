@@ -45,7 +45,7 @@ const MenuPage = () => {
   return (
     <main className="pt-16 min-h-screen bg-background">
       {/* Hero Header */}
-      <section className="relative py-20 md:py-24 bg-page-header overflow-hidden">
+      <section className="relative pt-28 pb-20 md:pt-36 md:pb-24 bg-page-header overflow-hidden">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(45 100% 70%) 1px, transparent 0)', backgroundSize: '40px 40px' }} />
           <motion.div

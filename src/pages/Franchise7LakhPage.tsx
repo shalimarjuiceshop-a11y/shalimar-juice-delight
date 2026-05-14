@@ -148,9 +148,9 @@ const Franchise7LakhPage = () => {
   const t = content[lang];
 
   return (
-    <main className="pt-20 min-h-screen bg-background">
+    <main className="min-h-screen bg-background">
       {/* Header */}
-      <section className="relative py-14 md:py-20 bg-page-header overflow-hidden">
+      <section className="relative pt-28 pb-14 md:pt-32 md:pb-20 bg-page-header overflow-hidden">
         <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(var(--pineapple-gold)) 1px, transparent 0)', backgroundSize: '48px 48px' }} />
         <div className="container mx-auto px-4 relative z-10">
           <div className="flex items-center justify-between mb-5">
