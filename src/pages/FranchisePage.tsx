@@ -169,7 +169,7 @@ const FranchisePage = () => {
       </section>
 
       {/* Franchise Packages */}
-      <section className="py-10 md:py-16">
+      <section className="py-10 md:py-16 bg-page-header">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -177,10 +177,10 @@ const FranchisePage = () => {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <span className="inline-flex items-center gap-1.5 text-[10px] font-body font-bold tracking-widest uppercase px-3 py-1.5 rounded-full bg-primary/10 text-primary mb-4">
+            <span className="inline-flex items-center gap-1.5 text-[10px] font-body font-bold tracking-widest uppercase px-3 py-1.5 rounded-full bg-primary/15 text-primary mb-4">
               <Building2 size={12} /> Investment Plans
             </span>
-            <h2 className="font-display text-3xl md:text-4xl font-extrabold tracking-tight text-foreground">
+            <h2 className="font-display text-3xl md:text-4xl font-extrabold tracking-tight text-header-light">
               {t.pricing}
             </h2>
           </motion.div>
