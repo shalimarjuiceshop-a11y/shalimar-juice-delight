@@ -43,7 +43,7 @@ const MenuPage = () => {
   };
 
   return (
-    <main className="pt-16 min-h-screen bg-background">
+    <main className="min-h-screen bg-background">
       {/* Hero Header */}
       <section className="relative pt-28 pb-20 md:pt-36 md:pb-24 bg-page-header overflow-hidden">
         <div className="absolute inset-0 overflow-hidden">

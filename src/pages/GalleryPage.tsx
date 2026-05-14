@@ -83,7 +83,7 @@ const GalleryPage = () => {
   }, [goNext, goPrev]);
 
   return (
-    <main className="pt-20 min-h-screen bg-background overflow-x-hidden">
+    <main className="min-h-screen bg-background overflow-x-hidden">
       {/* Header */}
       <section className="relative pt-28 pb-16 md:pt-36 md:pb-20 bg-page-header overflow-hidden">
         <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(var(--pineapple-gold)) 1px, transparent 0)', backgroundSize: '48px 48px' }} />
