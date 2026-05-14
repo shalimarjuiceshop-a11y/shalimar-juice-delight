@@ -100,18 +100,6 @@
   }
   .bg-page-header {
     background: linear-gradient(180deg, hsl(30 15% 12%) 0%, hsl(38 60% 20%) 60%, hsl(35 40% 28%) 100%);
-    position: relative;
-  }
-  .bg-page-header::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -1px;
-    height: 80px;
-    background: linear-gradient(180deg, hsl(35 40% 28% / 0) 0%, hsl(var(--background)) 100%);
-    pointer-events: none;
-    z-index: 1;
   }
   .bg-footer-dark {
     background: linear-gradient(180deg, hsl(35 20% 16%) 0%, hsl(30 15% 12%) 100%);
