@@ -142,8 +142,12 @@ const PineappleMascot = () => {
       setExpression("happy");
     }, 4000);
 
+    return () => clearTimeout(hideTimer);
+  }, [location.pathname, getMessages]);
+
   // Cycle messages periodically
   useEffect(() => {
+
     const interval = setInterval(() => {
       if (isMinimized) return;
       const msgs = getMessages();
