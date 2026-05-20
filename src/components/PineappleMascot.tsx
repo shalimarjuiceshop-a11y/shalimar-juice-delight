@@ -59,6 +59,8 @@ const PineappleMascot = () => {
   const [expression, setExpression] = useState<Expression>("happy");
   const [isMinimized, setIsMinimized] = useState(false);
   const [messageIndex, setMessageIndex] = useState(0);
+  const [jumpPhase, setJumpPhase] = useState<"idle" | "crouch" | "leap" | "landed">("idle");
+  const [landingTarget, setLandingTarget] = useState<{ x: number; y: number } | null>(null);
 
   const getMessages = useCallback(() => {
     const path = location.pathname;
@@ -68,8 +70,67 @@ const PineappleMascot = () => {
     return defaultMessages;
   }, [location.pathname]);
 
-  // Show message on route change
+  // Menu page jump sequence — fires ONCE per session
   useEffect(() => {
+    if (location.pathname !== "/menu") {
+      // Reset position when leaving menu
+      if (jumpPhase !== "idle") {
+        setJumpPhase("idle");
+        setLandingTarget(null);
+      }
+      return;
+    }
+
+    const alreadyPlayed = sessionStorage.getItem("shalimar_menu_mascot_jumped");
+    if (alreadyPlayed) {
+      // Restore landed position silently on revisit within session
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+      setLandingTarget({ x: Math.min(vw - 160, vw * 0.72), y: -(vh * 0.45) });
+      setJumpPhase("landed");
+      return;
+    }
+
+    // Compute landing target: hero spot, right-center of viewport, above the fold
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    const target = { x: Math.min(vw - 160, vw * 0.72), y: -(vh * 0.45) };
+    setLandingTarget(target);
+
+    // Phase 1: anticipation crouch
+    setJumpPhase("crouch");
+    setShowBubble(false);
+
+    const t1 = setTimeout(() => {
+      // Phase 2: leap
+      setJumpPhase("leap");
+      setExpression("excited");
+    }, 220);
+
+    const t2 = setTimeout(() => {
+      // Phase 3: landed — show speech bubble
+      setJumpPhase("landed");
+      setMessage("Apni pasand ka juice choose karo! 🍹");
+      setShowBubble(true);
+      sessionStorage.setItem("shalimar_menu_mascot_jumped", "1");
+    }, 1050);
+
+    const t3 = setTimeout(() => {
+      setShowBubble(false);
+      setExpression("happy");
+    }, 5500);
+
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.pathname]);
+
+  // Show message on route change (skip /menu — handled by jump sequence)
+  useEffect(() => {
+    if (location.pathname === "/menu") return;
     setMessageIndex(0);
     const msgs = getMessages();
     setMessage(msgs[0]);
@@ -83,80 +144,9 @@ const PineappleMascot = () => {
 
     return () => clearTimeout(hideTimer);
   }, [location.pathname, getMessages]);
-
-  // Cycle messages periodically
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (isMinimized) return;
-      const msgs = getMessages();
-      const nextIdx = (messageIndex + 1) % msgs.length;
-      setMessageIndex(nextIdx);
-      setMessage(msgs[nextIdx]);
-      setExpression(expressionCycle[nextIdx % expressionCycle.length]);
-      setShowBubble(true);
-
-      setTimeout(() => {
-        setShowBubble(false);
-        setExpression("happy");
-      }, 3500);
-    }, 10000);
-
-    return () => clearInterval(interval);
-  }, [messageIndex, isMinimized, getMessages]);
-
-  const handleClick = () => {
-    if (isMinimized) {
-      setIsMinimized(false);
-      setExpression("excited");
-      const msgs = getMessages();
-      setMessage(msgs[messageIndex]);
-      setShowBubble(true);
-      setTimeout(() => {
-        setShowBubble(false);
-        setExpression("happy");
-      }, 3000);
-      return;
-    }
-    // Cycle to next message on click
-    const msgs = getMessages();
-    const nextIdx = (messageIndex + 1) % msgs.length;
-    setMessageIndex(nextIdx);
-    setMessage(msgs[nextIdx]);
-    setExpression("wink");
-    setShowBubble(true);
-    setTimeout(() => {
-      setShowBubble(false);
-      setExpression("happy");
-    }, 3000);
-  };
-
-  const face = expressions[expression];
-
-  return (
-    <div className="fixed bottom-6 left-6 z-50 select-none" style={{ pointerEvents: "auto" }}>
-      {/* Speech Bubble */}
-      <AnimatePresence>
-        {showBubble && !isMinimized && (
-          <motion.div
-            initial={{ opacity: 0, y: 10, scale: 0.8 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 5, scale: 0.9 }}
-            transition={{ duration: 0.3, ease: smoothEase }}
-            className="absolute bottom-full left-4 mb-2 max-w-[180px]"
-          >
-            <div className="bg-card border border-border rounded-2xl rounded-bl-sm px-3 py-2 shadow-pineapple">
-              <p className="font-body text-xs font-semibold text-foreground leading-relaxed">
-                {message}
-              </p>
-            </div>
-            {/* Bubble tail */}
-            <div
-              className="w-3 h-3 bg-card border-l border-b border-border absolute -bottom-1.5 left-3"
-              style={{ transform: "rotate(-45deg)" }}
-            />
-          </motion.div>
-        )}
+...
       </AnimatePresence>
+
 
       {/* Pineapple Character */}
       <motion.div
