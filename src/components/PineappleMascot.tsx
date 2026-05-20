@@ -142,10 +142,103 @@ const PineappleMascot = () => {
       setExpression("happy");
     }, 4000);
 
-    return () => clearTimeout(hideTimer);
-  }, [location.pathname, getMessages]);
-...
+  // Cycle messages periodically
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (isMinimized) return;
+      const msgs = getMessages();
+      const nextIdx = (messageIndex + 1) % msgs.length;
+      setMessageIndex(nextIdx);
+      setMessage(msgs[nextIdx]);
+      setExpression(expressionCycle[nextIdx % expressionCycle.length]);
+      setShowBubble(true);
+
+      setTimeout(() => {
+        setShowBubble(false);
+        setExpression("happy");
+      }, 3500);
+    }, 10000);
+
+    return () => clearInterval(interval);
+  }, [messageIndex, isMinimized, getMessages]);
+
+  const handleClick = () => {
+    if (isMinimized) {
+      setIsMinimized(false);
+      setExpression("excited");
+      const msgs = getMessages();
+      setMessage(msgs[messageIndex]);
+      setShowBubble(true);
+      setTimeout(() => {
+        setShowBubble(false);
+        setExpression("happy");
+      }, 3000);
+      return;
+    }
+    const msgs = getMessages();
+    const nextIdx = (messageIndex + 1) % msgs.length;
+    setMessageIndex(nextIdx);
+    setMessage(msgs[nextIdx]);
+    setExpression("wink");
+    setShowBubble(true);
+    setTimeout(() => {
+      setShowBubble(false);
+      setExpression("happy");
+    }, 3000);
+  };
+
+  const face = expressions[expression];
+
+  // Outer wrapper animation target for the menu jump
+  const wrapperAnimate =
+    jumpPhase === "crouch"
+      ? { x: 0, y: 0, scaleX: 1.25, scaleY: 0.7, rotate: 0 }
+      : jumpPhase === "leap" && landingTarget
+        ? { x: landingTarget.x, y: landingTarget.y, scaleX: 1, scaleY: 1, rotate: -12 }
+        : jumpPhase === "landed" && landingTarget
+          ? { x: landingTarget.x, y: landingTarget.y, scaleX: 1, scaleY: 1, rotate: 0 }
+          : { x: 0, y: 0, scaleX: 1, scaleY: 1, rotate: 0 };
+
+  const wrapperTransition =
+    jumpPhase === "crouch"
+      ? { duration: 0.22, ease: smoothEase }
+      : jumpPhase === "leap"
+        ? { duration: 0.8, ease: [0.34, 1.56, 0.64, 1] as [number, number, number, number] }
+        : jumpPhase === "landed"
+          ? { type: "spring" as const, stiffness: 180, damping: 14, mass: 0.8 }
+          : { type: "spring" as const, stiffness: 160, damping: 18 };
+
+  return (
+    <motion.div
+      className="fixed bottom-6 left-6 z-50 select-none"
+      style={{ pointerEvents: "auto" }}
+      animate={wrapperAnimate}
+      transition={wrapperTransition}
+    >
+      {/* Speech Bubble */}
+      <AnimatePresence>
+        {showBubble && !isMinimized && (
+          <motion.div
+            initial={{ opacity: 0, y: 10, scale: 0.8 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 5, scale: 0.9 }}
+            transition={{ duration: 0.3, ease: smoothEase }}
+            className="absolute bottom-full left-4 mb-2 max-w-[200px]"
+          >
+            <div className="bg-card border border-border rounded-2xl rounded-bl-sm px-3 py-2 shadow-pineapple">
+              <p className="font-body text-xs font-semibold text-foreground leading-relaxed">
+                {message}
+              </p>
+            </div>
+            <div
+              className="w-3 h-3 bg-card border-l border-b border-border absolute -bottom-1.5 left-3"
+              style={{ transform: "rotate(-45deg)" }}
+            />
+          </motion.div>
+        )}
       </AnimatePresence>
+
+
 
 
       {/* Pineapple Character */}
