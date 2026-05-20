@@ -362,7 +362,8 @@ const PineappleMascot = () => {
           </AnimatePresence>
         </motion.div>
       </motion.div>
-    </div>
+    </motion.div>
+
   );
 };
 
