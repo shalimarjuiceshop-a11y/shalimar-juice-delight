@@ -30,26 +30,33 @@ const TiltCard = ({ children, className = "", onClick, glareColor = "hsl(45 100%
   };
 
   return (
-    <motion.div
-      ref={ref}
+    <div
+      style={{ perspective: 1000 }}
+      className={className}
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
       onClick={onClick}
-      animate={{ rotateX: tilt.rotateX, rotateY: tilt.rotateY }}
-      transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      style={{ perspective: 800, transformStyle: "preserve-3d" }}
-      className={`relative cursor-pointer ${className}`}
     >
-      {children}
-      {/* Glare overlay */}
-      <div
-        className="absolute inset-0 rounded-3xl pointer-events-none z-20 transition-opacity duration-300"
-        style={{
-          opacity: glare.opacity,
-          background: `radial-gradient(circle at ${glare.x}% ${glare.y}%, ${glareColor}, transparent 60%)`,
-        }}
-      />
-    </motion.div>
+      <motion.div
+        ref={ref}
+        animate={{ rotateX: tilt.rotateX, rotateY: tilt.rotateY }}
+        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+        style={{ transformStyle: "preserve-3d" }}
+        className="relative w-full h-full cursor-pointer will-change-transform"
+      >
+        <div style={{ transform: "translateZ(30px)", transformStyle: "preserve-3d" }} className="h-full">
+          {children}
+        </div>
+        <div
+          className="absolute inset-0 rounded-3xl pointer-events-none z-20 transition-opacity duration-300"
+          style={{
+            opacity: glare.opacity,
+            background: `radial-gradient(circle at ${glare.x}% ${glare.y}%, ${glareColor}, transparent 60%)`,
+            transform: "translateZ(40px)",
+          }}
+        />
+      </motion.div>
+    </div>
   );
 };
 
