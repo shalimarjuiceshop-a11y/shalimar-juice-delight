@@ -218,8 +218,8 @@ const Index = () => {
                         height: 60,
                         marginLeft: -9 + s.x,
                         background:
-                          "radial-gradient(ellipse at 50% 80%, hsl(0 0% 100% / 0.55) 0%, hsl(0 0% 100% / 0.25) 40%, hsl(0 0% 100% / 0) 80%)",
-                        filter: "blur(6px)",
+                          "radial-gradient(ellipse at 50% 80%, hsl(50 100% 85% / 0.95) 0%, hsl(48 100% 75% / 0.7) 35%, hsl(45 100% 65% / 0.35) 65%, hsl(45 100% 60% / 0) 90%)",
+                        filter: "blur(5px)",
                       }}
                       animate={{
                         y: [0, -110],
