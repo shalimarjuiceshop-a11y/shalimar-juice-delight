@@ -199,69 +199,65 @@ const Index = () => {
               >
                 <div className="absolute -inset-6 bg-primary/5 rounded-3xl blur-3xl" />
 
-                {/* Classic, always-visible steam rising from the kulhad — soft, continuous, cinematic */}
-                <div className="absolute left-1/2 -translate-x-1/2 pointer-events-none z-30"
-                  style={{ top: "-6%", width: "60%", height: "44%" }}
+                {/* Professional cinematic steam — realistic SVG turbulence wisps rising from kulhad */}
+                <div
+                  className="absolute left-1/2 -translate-x-1/2 pointer-events-none z-30"
+                  style={{ top: "-30%", width: "70%", height: "60%" }}
                 >
-                  {[
-                    { delay: 0,   x: 0,   sway: 8,  dur: 4.2 },
-                    { delay: 0.6, x: -10, sway: 10, dur: 4.8 },
-                    { delay: 1.2, x: 10,  sway: 6,  dur: 4.5 },
-                    { delay: 1.8, x: -4,  sway: 12, dur: 5.0 },
-                    { delay: 2.4, x: 4,   sway: 9,  dur: 4.4 },
-                  ].map((s, i) => (
-                    <motion.div
-                      key={i}
-                      className="absolute bottom-0 left-1/2 rounded-full"
-                      style={{
-                        width: 18,
-                        height: 60,
-                        marginLeft: -9 + s.x,
-                        background:
-                          "radial-gradient(ellipse at 50% 80%, hsl(50 100% 85% / 0.95) 0%, hsl(48 100% 75% / 0.7) 35%, hsl(45 100% 65% / 0.35) 65%, hsl(45 100% 60% / 0) 90%)",
-                        filter: "blur(5px)",
-                      }}
-                      animate={{
-                        y: [0, -110],
-                        x: [0, s.sway, -s.sway, s.sway * 0.5, 0],
-                        opacity: [0, 1, 0.95, 0.6, 0],
-                        scaleX: [0.6, 1, 1.4, 1.8, 2.2],
-                        scaleY: [0.5, 1, 1.2, 1.4, 1.6],
-                      }}
-                      transition={{
-                        duration: s.dur,
-                        delay: s.delay,
-                        repeat: Infinity,
-                        ease: "easeOut",
-                      }}
-                    />
-                  ))}
-                  {/* Subtle wispy second layer */}
-                  {[0, 1, 2].map((i) => (
-                    <motion.div
-                      key={`w-${i}`}
-                      className="absolute bottom-0 left-1/2 rounded-full"
-                      style={{
-                        width: 8,
-                        height: 32,
-                        marginLeft: -4 + (i - 1) * 14,
-                        background: "hsl(50 100% 80% / 0.75)",
-                        filter: "blur(3px)",
-                      }}
-                      animate={{
-                        y: [0, -70],
-                        opacity: [0, 0.6, 0],
-                        scale: [0.8, 1.2, 1.8],
-                      }}
-                      transition={{
-                        duration: 3.6,
-                        delay: 0.3 + i * 0.7,
-                        repeat: Infinity,
-                        ease: "easeOut",
-                      }}
-                    />
-                  ))}
+                  <svg
+                    viewBox="0 0 200 240"
+                    preserveAspectRatio="none"
+                    className="absolute inset-0 w-full h-full"
+                    style={{ overflow: "visible" }}
+                  >
+                    <defs>
+                      <filter id="steamTurb" x="-50%" y="-50%" width="200%" height="200%">
+                        <feTurbulence type="fractalNoise" baseFrequency="0.018 0.04" numOctaves="2" seed="3">
+                          <animate attributeName="baseFrequency" dur="14s" values="0.018 0.04;0.026 0.05;0.018 0.04" repeatCount="indefinite" />
+                        </feTurbulence>
+                        <feDisplacementMap in="SourceGraphic" scale="22" />
+                        <feGaussianBlur stdDeviation="3" />
+                      </filter>
+                      <radialGradient id="steamGrad" cx="50%" cy="80%" r="60%">
+                        <stop offset="0%" stopColor="hsl(45 70% 96%)" stopOpacity="0.85" />
+                        <stop offset="45%" stopColor="hsl(42 60% 92%)" stopOpacity="0.55" />
+                        <stop offset="100%" stopColor="hsl(40 50% 90%)" stopOpacity="0" />
+                      </radialGradient>
+                    </defs>
+
+                    {[
+                      { delay: 0,   x: 100, dur: 5.0 },
+                      { delay: 1.2, x: 86,  dur: 5.6 },
+                      { delay: 2.4, x: 114, dur: 5.2 },
+                      { delay: 3.6, x: 94,  dur: 5.8 },
+                    ].map((s, i) => (
+                      <motion.ellipse
+                        key={i}
+                        cx={s.x}
+                        cy="220"
+                        rx="22"
+                        ry="34"
+                        fill="url(#steamGrad)"
+                        filter="url(#steamTurb)"
+                        initial={{ opacity: 0 }}
+                        animate={{
+                          cy: [220, 20],
+                          rx: [14, 38],
+                          ry: [22, 60],
+                          opacity: [0, 0.9, 0.7, 0],
+                        }}
+                        transition={{
+                          duration: s.dur,
+                          delay: s.delay,
+                          repeat: Infinity,
+                          ease: [0.4, 0, 0.2, 1],
+                          times: [0, 0.25, 0.7, 1],
+                        }}
+                      />
+                    ))}
+                  </svg>
                 </div>
+
 
                 <img
                   src={hotMilk}
