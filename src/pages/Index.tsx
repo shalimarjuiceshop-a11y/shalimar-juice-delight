@@ -224,7 +224,7 @@ const Index = () => {
                       animate={{
                         y: [0, -110],
                         x: [0, s.sway, -s.sway, s.sway * 0.5, 0],
-                        opacity: [0, 0.85, 0.7, 0.4, 0],
+                        opacity: [0, 1, 0.95, 0.6, 0],
                         scaleX: [0.6, 1, 1.4, 1.8, 2.2],
                         scaleY: [0.5, 1, 1.2, 1.4, 1.6],
                       }}
