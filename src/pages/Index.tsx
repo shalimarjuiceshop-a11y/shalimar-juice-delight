@@ -245,8 +245,8 @@ const Index = () => {
                         width: 8,
                         height: 32,
                         marginLeft: -4 + (i - 1) * 14,
-                        background: "hsl(0 0% 100% / 0.35)",
-                        filter: "blur(4px)",
+                        background: "hsl(50 100% 80% / 0.75)",
+                        filter: "blur(3px)",
                       }}
                       animate={{
                         y: [0, -70],
