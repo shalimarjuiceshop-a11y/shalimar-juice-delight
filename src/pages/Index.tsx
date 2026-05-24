@@ -202,7 +202,7 @@ const Index = () => {
                 {/* Professional cinematic steam — realistic SVG turbulence wisps rising from kulhad */}
                 <div
                   className="absolute left-1/2 -translate-x-1/2 pointer-events-none z-30"
-                  style={{ top: "-30%", width: "70%", height: "60%" }}
+                  style={{ top: "-15%", width: "65%", height: "40%" }}
                 >
                   <svg
                     viewBox="0 0 200 240"
@@ -213,9 +213,9 @@ const Index = () => {
                     <defs>
                       <filter id="steamTurb" x="-50%" y="-50%" width="200%" height="200%">
                         <feTurbulence type="fractalNoise" baseFrequency="0.018 0.04" numOctaves="2" seed="3">
-                          <animate attributeName="baseFrequency" dur="14s" values="0.018 0.04;0.026 0.05;0.018 0.04" repeatCount="indefinite" />
+                          <animate attributeName="baseFrequency" dur="22s" values="0.018 0.04;0.024 0.048;0.018 0.04" repeatCount="indefinite" />
                         </feTurbulence>
-                        <feDisplacementMap in="SourceGraphic" scale="22" />
+                        <feDisplacementMap in="SourceGraphic" scale="20" />
                         <feGaussianBlur stdDeviation="3" />
                       </filter>
                       <radialGradient id="steamGrad" cx="50%" cy="80%" r="60%">
@@ -226,10 +226,10 @@ const Index = () => {
                     </defs>
 
                     {[
-                      { delay: 0,   x: 100, dur: 5.0 },
-                      { delay: 1.2, x: 86,  dur: 5.6 },
-                      { delay: 2.4, x: 114, dur: 5.2 },
-                      { delay: 3.6, x: 94,  dur: 5.8 },
+                      { delay: 0,   x: 100, dur: 9.0 },
+                      { delay: 2.2, x: 86,  dur: 9.6 },
+                      { delay: 4.4, x: 114, dur: 9.2 },
+                      { delay: 6.6, x: 94,  dur: 9.8 },
                     ].map((s, i) => (
                       <motion.ellipse
                         key={i}
@@ -241,10 +241,10 @@ const Index = () => {
                         filter="url(#steamTurb)"
                         initial={{ opacity: 0 }}
                         animate={{
-                          cy: [220, 20],
-                          rx: [14, 38],
-                          ry: [22, 60],
-                          opacity: [0, 1, 0.95, 0],
+                          cy: [220, 110],
+                          rx: [14, 30],
+                          ry: [22, 48],
+                          opacity: [0, 1, 0.85, 0],
                         }}
                         transition={{
                           duration: s.dur,
