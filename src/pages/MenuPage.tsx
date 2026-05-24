@@ -7,6 +7,7 @@ import FlavorQuiz from "@/components/FlavorQuiz";
 import TiltCard from "@/components/TiltCard";
 import MenuTasteAnimation from "@/components/MenuTasteAnimation";
 import MenuBookAnimation from "@/components/MenuBookAnimation";
+import OrderBikeAnimation from "@/components/OrderBikeAnimation";
 
 const smoothEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 const springBounce = { type: "spring" as const, stiffness: 400, damping: 25 };
@@ -324,6 +325,7 @@ const MenuPage = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
+            <OrderBikeAnimation />
             <h3 className="font-display text-2xl md:text-3xl font-black text-cream mb-3">
               Ready to <span className="text-gradient-gold">Order?</span>
             </h3>

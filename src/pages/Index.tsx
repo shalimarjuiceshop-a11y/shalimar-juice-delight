@@ -219,9 +219,9 @@ const Index = () => {
                         <feGaussianBlur stdDeviation="3" />
                       </filter>
                       <radialGradient id="steamGrad" cx="50%" cy="80%" r="60%">
-                        <stop offset="0%" stopColor="hsl(45 70% 96%)" stopOpacity="0.85" />
-                        <stop offset="45%" stopColor="hsl(42 60% 92%)" stopOpacity="0.55" />
-                        <stop offset="100%" stopColor="hsl(40 50% 90%)" stopOpacity="0" />
+                        <stop offset="0%" stopColor="hsl(50 100% 78%)" stopOpacity="1" />
+                        <stop offset="45%" stopColor="hsl(48 95% 75%)" stopOpacity="0.85" />
+                        <stop offset="100%" stopColor="hsl(46 90% 72%)" stopOpacity="0" />
                       </radialGradient>
                     </defs>
 
@@ -244,7 +244,7 @@ const Index = () => {
                           cy: [220, 20],
                           rx: [14, 38],
                           ry: [22, 60],
-                          opacity: [0, 0.9, 0.7, 0],
+                          opacity: [0, 1, 0.95, 0],
                         }}
                         transition={{
                           duration: s.dur,
