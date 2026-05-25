@@ -261,11 +261,8 @@ const Index = () => {
                 </div>
 
 
-                <img
-                  src={hotMilk}
-                  alt="Hot Energy Milk with Dry Fruits in Kulhad"
-                  className="relative w-60 md:w-72 lg:w-80 rounded-2xl shadow-xl object-cover z-10"
-                />
+                <WinterImageSwitcher />
+
               </motion.div>
             </motion.div>
           </div>
