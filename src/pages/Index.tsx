@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Handshake, Citrus, GlassWater, Store, Snowflake } from "lucide-react";
 import JuicePourAnimation from "@/components/JuicePourAnimation";
@@ -7,6 +8,7 @@ import TestimonialCard from "@/components/TestimonialCard";
 import PartiesOrderSection from "@/components/PartiesOrderSection";
 import Typewriter from "@/components/Typewriter";
 import hotMilk from "@/assets/hot-milk.png";
+import hotMilkKadhai from "@/assets/hot-milk-kadhai.png";
 
 const smoothEase = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
@@ -259,11 +261,8 @@ const Index = () => {
                 </div>
 
 
-                <img
-                  src={hotMilk}
-                  alt="Hot Energy Milk with Dry Fruits in Kulhad"
-                  className="relative w-60 md:w-72 lg:w-80 rounded-2xl shadow-xl object-cover z-10"
-                />
+                <WinterImageSwitcher />
+
               </motion.div>
             </motion.div>
           </div>
@@ -339,6 +338,45 @@ const Index = () => {
         </div>
       </section>
     </main>
+  );
+};
+
+const WINTER_IMAGES = [
+  { src: hotMilk, alt: "Hot Energy Milk with Dry Fruits in Kulhad" },
+  { src: hotMilkKadhai, alt: "Steaming Kadhai of Dry Fruit Milk" },
+];
+
+const WinterImageSwitcher = () => {
+  const [idx, setIdx] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setIdx((i) => (i + 1) % WINTER_IMAGES.length), 3200);
+    return () => clearInterval(t);
+  }, []);
+  return (
+    <div className="relative w-60 md:w-72 lg:w-80 aspect-square z-10">
+      <AnimatePresence mode="sync">
+        <motion.img
+          key={idx}
+          src={WINTER_IMAGES[idx].src}
+          alt={WINTER_IMAGES[idx].alt}
+          className="absolute inset-0 w-full h-full rounded-2xl shadow-xl object-contain"
+          initial={{ opacity: 0, scale: 1.04 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.98 }}
+          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+        />
+      </AnimatePresence>
+      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-20">
+        {WINTER_IMAGES.map((_, i) => (
+          <span
+            key={i}
+            className={`h-1.5 rounded-full transition-all duration-500 ${
+              i === idx ? "w-6 bg-primary" : "w-1.5 bg-foreground/30"
+            }`}
+          />
+        ))}
+      </div>
+    </div>
   );
 };
 
