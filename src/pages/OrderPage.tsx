@@ -4,7 +4,7 @@ import { useSearchParams } from "react-router-dom";
 import { ShoppingBag, Plus, Minus, Trash2, User, Phone, MapPin, AlertCircle, Send, Sparkles, GlassWater } from "lucide-react";
 import { drinks, categories } from "@/data/menuData";
 import { toast } from "sonner";
-import DeliveryBikeAnimation from "@/components/DeliveryBikeAnimation";
+import OrderBikeAnimation from "@/components/OrderBikeAnimation";
 
 const smoothEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -144,20 +144,20 @@ const OrderPage = () => {
               </motion.p>
             </motion.div>
 
-            {/* Delivery boy bike animation */}
+            {/* Delivery scooter animation */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: smoothEase, delay: 0.2 }}
-              className="hidden md:block w-[260px] shrink-0"
+              className="hidden md:block w-[320px] shrink-0"
             >
-              <DeliveryBikeAnimation />
+              <OrderBikeAnimation />
             </motion.div>
           </div>
 
-          {/* Bike on mobile */}
-          <div className="md:hidden mt-6 max-w-[240px] mx-auto">
-            <DeliveryBikeAnimation />
+          {/* Scooter on mobile */}
+          <div className="md:hidden mt-6 max-w-[300px] mx-auto">
+            <OrderBikeAnimation />
           </div>
         </div>
       </section>
