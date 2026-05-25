@@ -10,6 +10,7 @@ import mosambijuice from "@/assets/mosambi-juice.png";
 import badamShake from "@/assets/badam-shake.png";
 import falooda from "@/assets/falooda.png";
 import hotMilk from "@/assets/hot-milk.png";
+import hotMilkKadhai from "@/assets/hot-milk-kadhai.png";
 import iceCreamLassi from "@/assets/ice-cream-lassi.png";
 
 export type DrinkCategory = "shakes" | "juices" | "dryfruit";
