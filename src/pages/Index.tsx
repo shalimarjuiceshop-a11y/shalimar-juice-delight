@@ -346,38 +346,68 @@ const WINTER_IMAGES = [
   { src: hotMilkKadhai, alt: "Steaming Kadhai of Dry Fruit Milk" },
 ];
 
+const HOLD_MS = 5000;   // fully show each image for 5s
+const FADE_MS = 1400;   // smooth 1.4s crossfade
+
 const WinterImageSwitcher = () => {
   const [idx, setIdx] = useState(0);
+  const [ready, setReady] = useState(false);
+
+  // Preload both images so the swap never shows a blank/loading frame
   useEffect(() => {
-    const t = setInterval(() => setIdx((i) => (i + 1) % WINTER_IMAGES.length), 3200);
-    return () => clearInterval(t);
+    let loaded = 0;
+    WINTER_IMAGES.forEach(({ src }) => {
+      const img = new Image();
+      img.onload = img.onerror = () => {
+        loaded += 1;
+        if (loaded === WINTER_IMAGES.length) setReady(true);
+      };
+      img.src = src;
+    });
   }, []);
+
+  useEffect(() => {
+    if (!ready) return;
+    const t = setInterval(
+      () => setIdx((i) => (i + 1) % WINTER_IMAGES.length),
+      HOLD_MS + FADE_MS,
+    );
+    return () => clearInterval(t);
+  }, [ready]);
+
   return (
     <div className="relative w-60 md:w-72 lg:w-80 aspect-square z-10">
-      <AnimatePresence mode="sync">
-        <motion.img
-          key={idx}
-          src={WINTER_IMAGES[idx].src}
-          alt={WINTER_IMAGES[idx].alt}
-          className="absolute inset-0 w-full h-full rounded-2xl shadow-xl object-contain"
-          initial={{ opacity: 0, scale: 1.04 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.98 }}
-          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+      {WINTER_IMAGES.map((img, i) => (
+        <img
+          key={i}
+          src={img.src}
+          alt={img.alt}
+          loading="eager"
+          decoding="async"
+          className="absolute inset-0 w-full h-full rounded-2xl shadow-xl object-contain transition-opacity ease-in-out"
+          style={{
+            opacity: ready && i === idx ? 1 : 0,
+            transitionDuration: `${FADE_MS}ms`,
+          }}
         />
-      </AnimatePresence>
-      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-20">
+      ))}
+      <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 flex gap-1.5 z-20">
         {WINTER_IMAGES.map((_, i) => (
           <span
             key={i}
-            className={`h-1.5 rounded-full transition-all duration-500 ${
-              i === idx ? "w-6 bg-primary" : "w-1.5 bg-foreground/30"
-            }`}
+            className="h-1.5 rounded-full transition-all ease-out"
+            style={{
+              width: i === idx ? 24 : 6,
+              background:
+                i === idx ? "hsl(var(--primary))" : "hsl(var(--foreground) / 0.3)",
+              transitionDuration: `${FADE_MS}ms`,
+            }}
           />
         ))}
       </div>
     </div>
   );
 };
+
 
 export default Index;
