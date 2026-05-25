@@ -7,6 +7,7 @@ import TestimonialCard from "@/components/TestimonialCard";
 import PartiesOrderSection from "@/components/PartiesOrderSection";
 import Typewriter from "@/components/Typewriter";
 import hotMilk from "@/assets/hot-milk.png";
+import hotMilkKadhai from "@/assets/hot-milk-kadhai.png";
 
 const smoothEase = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
