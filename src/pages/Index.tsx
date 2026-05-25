@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Handshake, Citrus, GlassWater, Store, Snowflake } from "lucide-react";
 import JuicePourAnimation from "@/components/JuicePourAnimation";
