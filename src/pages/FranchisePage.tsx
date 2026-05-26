@@ -1,12 +1,13 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "react-router-dom";
 import { Check, AlertTriangle, Building2, GraduationCap, Package, ArrowRight, ClipboardList, Truck, Eye, Shield, ChevronLeft, ChevronRight, Sparkles, Star } from "lucide-react";
 import FranchiseDealAnimation from "@/components/FranchiseDealAnimation";
+import FranchisePackageForm from "@/components/FranchisePackageForm";
 import shopPhoto1 from "@/assets/shop-photo-1.png";
 import shopPhoto2 from "@/assets/shop-photo-2.png";
 import shopPhoto3 from "@/assets/shop-photo-3.png";
 import winterSpecial from "@/assets/winter-special.png";
+
 
 type Lang = "hinglish" | "hindi";
 
