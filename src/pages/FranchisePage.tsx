@@ -105,7 +105,9 @@ const fadeUp = {
 const FranchisePage = () => {
   const [lang, setLang] = useState<Lang>("hinglish");
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [selectedPackage, setSelectedPackage] = useState<string | null>(null);
   const t = content[lang];
+
 
   // Auto-slide
   useEffect(() => {
