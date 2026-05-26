@@ -1,13 +1,12 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 import { Check, AlertTriangle, Building2, GraduationCap, Package, ArrowRight, ClipboardList, Truck, Eye, Shield, ChevronLeft, ChevronRight, Sparkles, Star } from "lucide-react";
 import FranchiseDealAnimation from "@/components/FranchiseDealAnimation";
-import FranchisePackageForm from "@/components/FranchisePackageForm";
 import shopPhoto1 from "@/assets/shop-photo-1.png";
 import shopPhoto2 from "@/assets/shop-photo-2.png";
 import shopPhoto3 from "@/assets/shop-photo-3.png";
 import winterSpecial from "@/assets/winter-special.png";
-
 
 type Lang = "hinglish" | "hindi";
 
@@ -105,9 +104,7 @@ const fadeUp = {
 const FranchisePage = () => {
   const [lang, setLang] = useState<Lang>("hinglish");
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [selectedPackage, setSelectedPackage] = useState<string | null>(null);
   const t = content[lang];
-
 
   // Auto-slide
   useEffect(() => {
@@ -195,51 +192,39 @@ const FranchisePage = () => {
             viewport={{ once: true }}
             className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6 max-w-5xl mx-auto"
           >
-            {plans.map((plan, i) => {
-              const label = `${lang === "hindi" ? plan.priceHi : plan.price} • ${lang === "hindi" ? plan.durationHi : plan.duration}`;
-              const isActive = selectedPackage === label;
-              return (
-                <motion.div key={i} variants={fadeUp}>
-                  <button
-                    type="button"
-                    onClick={() => setSelectedPackage(label)}
-                    className={`group block w-full bg-card rounded-2xl border p-8 text-center relative transition-all duration-300 hover:shadow-xl hover:-translate-y-2 ${
-                      plan.popular
-                        ? "border-primary ring-2 ring-primary/20 shadow-lg shadow-primary/10"
-                        : "border-border hover:border-primary/30"
-                    } ${isActive ? "ring-2 ring-primary border-primary" : ""}`}
-                  >
-                    {plan.popular && (
-                      <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-[10px] font-body font-bold uppercase tracking-wider px-5 py-1 rounded-full shadow-md">
-                        <Star size={10} className="inline mr-1" />Popular
-                      </span>
-                    )}
-                    <div className={`w-14 h-14 mx-auto mb-5 rounded-2xl flex items-center justify-center transition-colors duration-300 ${
-                      plan.popular ? "bg-primary/20" : "bg-primary/10 group-hover:bg-primary/20"
-                    }`}>
-                      <Building2 className="w-6 h-6 text-primary" strokeWidth={1.5} />
-                    </div>
-                    <h3 className="font-display text-base font-bold text-foreground mb-2">
-                      {lang === "hindi" ? plan.durationHi : plan.duration}
-                    </h3>
-                    <p className="font-display text-3xl md:text-4xl font-extrabold text-gradient-gold mb-4">
-                      {lang === "hindi" ? plan.priceHi : plan.price}
-                    </p>
-                    <span className="inline-flex items-center gap-1.5 font-body text-xs font-semibold text-primary group-hover:gap-2.5 transition-all duration-300">
-                      {isActive ? "Selected ✓" : lang === "hindi" ? "अभी इंक्वायरी करें" : "Inquire Now"} <ArrowRight size={13} />
+            {plans.map((plan, i) => (
+              <motion.div key={i} variants={fadeUp}>
+                <Link
+                  to={plan.link}
+                  className={`group block bg-card rounded-2xl border p-8 text-center relative transition-all duration-300 hover:shadow-xl hover:-translate-y-2 ${
+                    plan.popular
+                      ? "border-primary ring-2 ring-primary/20 shadow-lg shadow-primary/10"
+                      : "border-border hover:border-primary/30"
+                  }`}
+                >
+                  {plan.popular && (
+                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-[10px] font-body font-bold uppercase tracking-wider px-5 py-1 rounded-full shadow-md">
+                      <Star size={10} className="inline mr-1" />Popular
                     </span>
-                  </button>
-                </motion.div>
-              );
-            })}
+                  )}
+                  <div className={`w-14 h-14 mx-auto mb-5 rounded-2xl flex items-center justify-center transition-colors duration-300 ${
+                    plan.popular ? "bg-primary/20" : "bg-primary/10 group-hover:bg-primary/20"
+                  }`}>
+                    <Building2 className="w-6 h-6 text-primary" strokeWidth={1.5} />
+                  </div>
+                  <h3 className="font-display text-base font-bold text-foreground mb-2">
+                    {lang === "hindi" ? plan.durationHi : plan.duration}
+                  </h3>
+                  <p className="font-display text-3xl md:text-4xl font-extrabold text-gradient-gold mb-4">
+                    {lang === "hindi" ? plan.priceHi : plan.price}
+                  </p>
+                  <span className="inline-flex items-center gap-1.5 font-body text-xs font-semibold text-primary group-hover:gap-2.5 transition-all duration-300">
+                    {t.viewDetails} <ArrowRight size={13} />
+                  </span>
+                </Link>
+              </motion.div>
+            ))}
           </motion.div>
-
-          {/* Inline package inquiry form */}
-          <FranchisePackageForm
-            packageLabel={selectedPackage}
-            onClose={() => setSelectedPackage(null)}
-          />
-
         </div>
       </section>
 

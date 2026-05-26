@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import { PartyPopper, Users, Phone, Star, ArrowRight, Sparkles, GlassWater } from "lucide-react";
 import partySetup from "@/assets/party-setup-premium.jpg";
 import DeliveryCyclistAnimation from "./DeliveryCyclistAnimation";
-import PartyCelebrationAnimation from "./PartyCelebrationAnimation";
-
 
 const smoothEase = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
@@ -92,19 +90,12 @@ const PartiesOrderSection = () => {
               Wedding, birthday, office party or any event — we bring fresh juice counters to your place!
             </motion.p>
 
-            {/* Real-world clinking-glasses + confetti celebration */}
-            <motion.div variants={fadeUp} className="mb-2 -ml-2 md:ml-0">
-              <PartyCelebrationAnimation />
-            </motion.div>
-
             {/* CTA buttons */}
             <motion.div variants={fadeUp} className="flex flex-wrap gap-4 items-center">
               <Link
                 to="/party-order"
-                className="group relative inline-flex items-center gap-2 bg-primary text-primary-foreground text-sm font-semibold px-8 py-3.5 rounded-full hover:brightness-105 hover:scale-[1.02] transition-all duration-300 glow-gold btn-glow"
+                className="group inline-flex items-center gap-2 bg-primary text-primary-foreground text-sm font-semibold px-8 py-3.5 rounded-full hover:brightness-105 hover:scale-[1.02] transition-all duration-300 glow-gold btn-glow"
               >
-                {/* Pulsing ring */}
-                <span className="absolute inset-0 rounded-full ring-2 ring-primary/40 animate-ping opacity-50 pointer-events-none" />
                 <Phone size={16} />
                 Order for Your Party
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
@@ -119,7 +110,6 @@ const PartiesOrderSection = () => {
                 WhatsApp Us
               </a>
             </motion.div>
-
           </motion.div>
 
           {/* Right: Premium Image */}
