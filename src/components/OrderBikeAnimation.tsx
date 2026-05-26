@@ -54,12 +54,12 @@ const OrderBikeAnimation = () => {
         }}
       />
 
-      {/* Scooter rider */}
+      {/* Scooter rider — animated across full container width, perfectly centered at hold */}
       <motion.div
         className="absolute"
-        style={{ bottom: 14, left: 0 }}
+        style={{ bottom: 14, left: "50%" }}
         animate={{
-          x: ["-30%", "38%", "38%", "120%", "120%"],
+          x: ["calc(-50% - 200px)", "-50%", "-50%", "calc(50vw + 200px)", "calc(50vw + 200px)"],
         }}
         transition={{
           duration: TOTAL,
@@ -79,6 +79,7 @@ const OrderBikeAnimation = () => {
           transition={{ duration: 0.32, repeat: Infinity, ease: "easeInOut" }}
         />
       </motion.div>
+
     </div>
   );
 };

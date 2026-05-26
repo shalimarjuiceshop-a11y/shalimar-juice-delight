@@ -22,7 +22,7 @@ const TestimonialCard = ({ name, text, rating, location }: TestimonialProps) => 
   <motion.div
     variants={scaleUp}
     whileHover={{ y: -4, transition: { duration: 0.3 } }}
-    className="card-premium p-6 md:p-8 flex flex-col gap-4"
+    className="card-premium p-6 md:p-8 flex flex-col gap-4 h-full"
   >
     <div className="flex gap-0.5">
       {Array.from({ length: 5 }).map((_, i) => (

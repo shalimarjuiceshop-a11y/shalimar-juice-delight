@@ -227,12 +227,13 @@ const MenuPage = () => {
                     </div>
 
                     <div className="p-4 pt-3 text-center flex-1 flex flex-col">
-                      <h3 className="font-display text-lg md:text-xl font-bold text-foreground leading-tight">
+                      <h3 className="font-display text-base md:text-lg font-bold text-foreground leading-tight line-clamp-2 min-h-[2.6em] flex items-center justify-center">
                         {drink.name}
                       </h3>
                       <p className="font-body text-xs md:text-sm text-muted-foreground mt-2 line-clamp-2 min-h-[2.5em]">
                         {drink.description}
                       </p>
+
 
                       <div className="mt-auto pt-4 flex flex-col gap-2">
                         <motion.span
