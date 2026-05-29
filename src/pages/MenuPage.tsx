@@ -93,13 +93,21 @@ const MenuPage = () => {
                 <span className="text-primary font-semibold"> handcrafted daily</span> with real fruits.
               </motion.p>
 
-              <motion.div variants={fadeUp} className="flex justify-center gap-4 md:gap-6 mt-8 flex-wrap">
-                {categories.map((cat) => (
-                  <div key={cat.key} className="flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10">
-                    <span className="text-primary">{categoryIcons[cat.key]}</span>
-                    <span className="font-display text-sm font-bold text-cream">{cat.label}</span>
-                    <span className="font-display text-sm font-black text-primary">{cat.price}</span>
-                  </div>
+              <motion.div variants={fadeUp} className="flex justify-center gap-2.5 md:gap-4 mt-8 flex-wrap">
+                {categories.map((cat, i) => (
+                  <motion.div
+                    key={cat.key}
+                    whileHover={{ y: -3, scale: 1.04 }}
+                    transition={{ type: "spring", stiffness: 320, damping: 18 }}
+                    className="group relative flex items-center gap-2.5 pl-1.5 pr-3.5 md:pr-4 py-1.5 rounded-full bg-gradient-to-b from-cream/[0.08] to-cream/[0.03] border border-primary/25 backdrop-blur-sm shadow-[0_8px_24px_-12px_rgba(0,0,0,0.5),inset_0_1px_0_0_rgba(255,255,255,0.06)] hover:border-primary/50 hover:shadow-[0_10px_30px_-10px_hsl(45_100%_50%/0.35),inset_0_1px_0_0_rgba(255,255,255,0.1)] transition-all duration-300"
+                  >
+                    <span className="relative inline-flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-primary to-[hsl(38_95%_48%)] text-primary-foreground shadow-[0_4px_10px_-2px_hsl(45_100%_50%/0.5),inset_0_1px_0_rgba(255,255,255,0.4)] ring-1 ring-primary/40">
+                      <span className="absolute inset-0 rounded-full bg-gradient-to-t from-transparent to-white/25" />
+                      <span className="relative">{categoryIcons[cat.key]}</span>
+                    </span>
+                    <span className="font-display text-[13px] md:text-sm font-bold text-cream tracking-tight">{cat.label}</span>
+                    <span className="font-display text-[13px] md:text-sm font-black text-primary tabular-nums">{cat.price}</span>
+                  </motion.div>
                 ))}
               </motion.div>
             </motion.div>
@@ -110,33 +118,41 @@ const MenuPage = () => {
       {/* Category Tabs */}
       <section className="sticky top-16 z-30 glass border-b border-border/40 shadow-lg">
         <div className="container mx-auto px-4">
-          <div className="flex justify-center gap-2 md:gap-3 py-4">
-            {categories.map((cat) => (
-              <motion.button
-                key={cat.key}
-                onClick={() => setActiveCategory(cat.key)}
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                transition={springBounce}
-                className={`relative font-body text-sm font-bold px-4 md:px-6 py-3 rounded-2xl transition-all duration-300 inline-flex items-center gap-2 ${
-                  activeCategory === cat.key
-                    ? "bg-primary text-primary-foreground glow-gold"
-                    : "bg-muted/60 text-muted-foreground hover:text-foreground hover:bg-muted"
-                }`}
-              >
-                <span className={activeCategory === cat.key ? "text-primary-foreground" : "text-primary"}>
-                  {categoryIcons[cat.key]}
-                </span>
-                <span className="hidden md:inline">{cat.label}</span>
-                <span className={`text-xs font-black px-2.5 py-1 rounded-full ${
-                  activeCategory === cat.key
-                    ? "bg-primary-foreground/20 text-primary-foreground"
-                    : "bg-primary/15 text-primary"
-                }`}>
-                  {cat.price}
-                </span>
-              </motion.button>
-            ))}
+          <div className="flex justify-center gap-2 md:gap-3 py-3.5">
+            {categories.map((cat) => {
+              const isActive = activeCategory === cat.key;
+              return (
+                <motion.button
+                  key={cat.key}
+                  onClick={() => setActiveCategory(cat.key)}
+                  whileHover={{ scale: 1.04, y: -2 }}
+                  whileTap={{ scale: 0.96 }}
+                  transition={springBounce}
+                  aria-pressed={isActive}
+                  className={`relative font-body text-sm font-bold pl-1.5 pr-3 md:pr-4 py-1.5 rounded-full inline-flex items-center gap-2 transition-all duration-300 border ${
+                    isActive
+                      ? "bg-gradient-to-b from-primary to-[hsl(38_95%_48%)] text-primary-foreground border-primary/60 shadow-[0_10px_28px_-8px_hsl(45_100%_50%/0.55),inset_0_1px_0_rgba(255,255,255,0.4)]"
+                      : "bg-card/80 text-foreground border-border/60 hover:border-primary/40 shadow-[0_4px_12px_-6px_rgba(0,0,0,0.15)] hover:shadow-[0_8px_20px_-8px_rgba(0,0,0,0.2)]"
+                  }`}
+                >
+                  <span className={`relative inline-flex items-center justify-center w-7 h-7 md:w-8 md:h-8 rounded-full ring-1 ${
+                    isActive
+                      ? "bg-primary-foreground/15 text-primary-foreground ring-primary-foreground/30"
+                      : "bg-primary/10 text-primary ring-primary/25"
+                  }`}>
+                    {categoryIcons[cat.key]}
+                  </span>
+                  <span className="hidden sm:inline">{cat.label}</span>
+                  <span className={`font-display text-[12px] md:text-[13px] font-black tabular-nums px-2 py-0.5 rounded-full ${
+                    isActive
+                      ? "bg-primary-foreground/20 text-primary-foreground"
+                      : "bg-primary/12 text-primary"
+                  }`}>
+                    {cat.price}
+                  </span>
+                </motion.button>
+              );
+            })}
           </div>
         </div>
       </section>
