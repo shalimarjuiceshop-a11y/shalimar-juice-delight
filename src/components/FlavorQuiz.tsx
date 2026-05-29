@@ -2,6 +2,14 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, RotateCcw, ArrowRight, ShoppingBag } from "lucide-react";
 import { drinks } from "@/data/menuData";
+import quizIntroGlass from "@/assets/quiz-intro-glass.png";
+import quizMood from "@/assets/quiz-mood.png";
+import quizApple from "@/assets/quiz-apple.png";
+import quizClock from "@/assets/quiz-clock.png";
+import quizCelebrate from "@/assets/quiz-celebrate.png";
+
+const questionImages = [quizMood, quizApple, quizClock];
+
 
 const smoothEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
