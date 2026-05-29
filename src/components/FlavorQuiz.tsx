@@ -249,14 +249,22 @@ const FlavorQuiz = () => {
                 transition={{ duration: 0.5, ease: smoothEase }}
                 className="text-center"
               >
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.2 }}
-                  className="text-5xl mb-4"
-                >
-                  🎉
-                </motion.div>
+                <motion.img
+                  src={quizCelebrate}
+                  alt="Celebration"
+                  width={1024}
+                  height={1024}
+                  loading="lazy"
+                  initial={{ scale: 0, rotate: -30 }}
+                  animate={{ scale: 1, rotate: 0, y: [0, -6, 0] }}
+                  transition={{
+                    scale: { type: "spring", stiffness: 260, damping: 18, delay: 0.2 },
+                    rotate: { type: "spring", stiffness: 260, damping: 18, delay: 0.2 },
+                    y: { duration: 2.4, repeat: Infinity, ease: "easeInOut", delay: 0.6 },
+                  }}
+                  className="w-24 h-24 md:w-28 md:h-28 object-contain mx-auto mb-4 drop-shadow-2xl"
+                />
+
                 <h3 className="font-display text-xl font-bold text-foreground mb-2">
                   Your Perfect Drink Is...
                 </h3>
