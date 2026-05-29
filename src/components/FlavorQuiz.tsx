@@ -2,6 +2,14 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, RotateCcw, ArrowRight, ShoppingBag } from "lucide-react";
 import { drinks } from "@/data/menuData";
+import quizIntroGlass from "@/assets/quiz-intro-glass.png";
+import quizMood from "@/assets/quiz-mood.png";
+import quizApple from "@/assets/quiz-apple.png";
+import quizClock from "@/assets/quiz-clock.png";
+import quizCelebrate from "@/assets/quiz-celebrate.png";
+
+const questionImages = [quizMood, quizApple, quizClock];
+
 
 const smoothEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
@@ -148,7 +156,17 @@ const FlavorQuiz = () => {
                 transition={{ duration: 0.4, ease: smoothEase }}
                 className="text-center"
               >
-                <div className="text-7xl mb-6">🍹</div>
+                <motion.img
+                  src={quizIntroGlass}
+                  alt="Fresh juice"
+                  width={1024}
+                  height={1024}
+                  loading="lazy"
+                  className="w-32 h-32 md:w-40 md:h-40 object-contain mx-auto mb-6 drop-shadow-2xl"
+                  animate={{ y: [0, -8, 0], rotate: [0, -2, 2, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                />
+
                 <h3 className="font-display text-xl font-bold text-foreground mb-3">
                   Ready to discover your perfect drink?
                 </h3>
@@ -176,7 +194,19 @@ const FlavorQuiz = () => {
                 transition={{ duration: 0.4, ease: smoothEase }}
               >
                 <div className="text-center mb-8">
-                  <span className="text-4xl mb-3 block">{currentQuestion.emoji}</span>
+                  <motion.img
+                    key={`qimg-${step}`}
+                    src={questionImages[step - 1]}
+                    alt=""
+                    width={1024}
+                    height={1024}
+                    loading="lazy"
+                    className="w-20 h-20 md:w-24 md:h-24 object-contain mx-auto mb-3 drop-shadow-xl"
+                    initial={{ scale: 0.6, opacity: 0, rotate: -10 }}
+                    animate={{ scale: 1, opacity: 1, rotate: 0 }}
+                    transition={{ type: "spring", stiffness: 220, damping: 16 }}
+                  />
+
                   <h3 className="font-display text-xl md:text-2xl font-bold text-foreground">
                     {currentQuestion.question}
                   </h3>
@@ -219,14 +249,22 @@ const FlavorQuiz = () => {
                 transition={{ duration: 0.5, ease: smoothEase }}
                 className="text-center"
               >
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.2 }}
-                  className="text-5xl mb-4"
-                >
-                  🎉
-                </motion.div>
+                <motion.img
+                  src={quizCelebrate}
+                  alt="Celebration"
+                  width={1024}
+                  height={1024}
+                  loading="lazy"
+                  initial={{ scale: 0, rotate: -30 }}
+                  animate={{ scale: 1, rotate: 0, y: [0, -6, 0] }}
+                  transition={{
+                    scale: { type: "spring", stiffness: 260, damping: 18, delay: 0.2 },
+                    rotate: { type: "spring", stiffness: 260, damping: 18, delay: 0.2 },
+                    y: { duration: 2.4, repeat: Infinity, ease: "easeInOut", delay: 0.6 },
+                  }}
+                  className="w-24 h-24 md:w-28 md:h-28 object-contain mx-auto mb-4 drop-shadow-2xl"
+                />
+
                 <h3 className="font-display text-xl font-bold text-foreground mb-2">
                   Your Perfect Drink Is...
                 </h3>
