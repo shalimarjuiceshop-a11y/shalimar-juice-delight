@@ -194,7 +194,19 @@ const FlavorQuiz = () => {
                 transition={{ duration: 0.4, ease: smoothEase }}
               >
                 <div className="text-center mb-8">
-                  <span className="text-4xl mb-3 block">{currentQuestion.emoji}</span>
+                  <motion.img
+                    key={`qimg-${step}`}
+                    src={questionImages[step - 1]}
+                    alt=""
+                    width={1024}
+                    height={1024}
+                    loading="lazy"
+                    className="w-20 h-20 md:w-24 md:h-24 object-contain mx-auto mb-3 drop-shadow-xl"
+                    initial={{ scale: 0.6, opacity: 0, rotate: -10 }}
+                    animate={{ scale: 1, opacity: 1, rotate: 0 }}
+                    transition={{ type: "spring", stiffness: 220, damping: 16 }}
+                  />
+
                   <h3 className="font-display text-xl md:text-2xl font-bold text-foreground">
                     {currentQuestion.question}
                   </h3>
