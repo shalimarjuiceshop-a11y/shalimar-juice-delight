@@ -1,19 +1,27 @@
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import scooterImg from "@/assets/delivery-scooter.png";
 
 /**
- * Premium 3D delivery scooter that rides in from the left,
- * pauses at center ~4s, then rides off right. Realistic asphalt road.
+ * Premium delivery scooter:
+ *  Phase 1 (intro, once): rider enters from left, stops at center, waves & says "Hi!",
+ *  Phase 2 (loop): rider drives across the road continuously left → right.
  */
 const OrderBikeAnimation = () => {
-  const TOTAL = 8;
-  const tEnter = 1.4 / TOTAL;
-  const tHoldEnd = (1.4 + 4) / TOTAL;
-  const tExit = (1.4 + 4 + 1.4) / TOTAL;
+  const [phase, setPhase] = useState<"intro-in" | "greet" | "loop">("intro-in");
+
+  useEffect(() => {
+    const t1 = setTimeout(() => setPhase("greet"), 1500); // enter done
+    const t2 = setTimeout(() => setPhase("loop"), 1500 + 2200); // greet done
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+    };
+  }, []);
 
   return (
     <div
-      className="relative mx-auto mb-4 w-full max-w-[320px] h-[110px] overflow-hidden rounded-lg"
+      className="relative mx-auto mb-4 w-full max-w-[320px] h-[120px] overflow-hidden rounded-lg"
       aria-hidden="true"
     >
       {/* Asphalt road */}
@@ -24,12 +32,11 @@ const OrderBikeAnimation = () => {
             "linear-gradient(180deg, hsl(0 0% 18%) 0%, hsl(0 0% 12%) 60%, hsl(0 0% 8%) 100%)",
         }}
       />
-      {/* Road top edge highlight */}
       <div
         className="absolute left-0 right-0 h-px"
         style={{ bottom: 28, background: "hsl(0 0% 30% / 0.6)" }}
       />
-      {/* Center dashed lane */}
+      {/* Lane dashes (always moving) */}
       <motion.div
         className="absolute left-0 right-0 flex gap-3"
         style={{ bottom: 12, height: 2 }}
@@ -45,7 +52,7 @@ const OrderBikeAnimation = () => {
         ))}
       </motion.div>
 
-      {/* Subtle horizon glow */}
+      {/* Horizon glow */}
       <div
         className="absolute left-0 right-0 top-0 h-[82px]"
         style={{
@@ -54,32 +61,68 @@ const OrderBikeAnimation = () => {
         }}
       />
 
-      {/* Scooter rider — animated across full container width, perfectly centered at hold */}
-      <motion.div
-        className="absolute"
-        style={{ bottom: 14, left: "50%" }}
-        animate={{
-          x: ["calc(-50% - 200px)", "-50%", "-50%", "calc(50vw + 200px)", "calc(50vw + 200px)"],
-        }}
-        transition={{
-          duration: TOTAL,
-          times: [0, tEnter, tHoldEnd, tExit, 1],
-          repeat: Infinity,
-          ease: "linear",
-        }}
-      >
-        <motion.img
-          src={scooterImg}
-          alt=""
-          width={1024}
-          height={1024}
-          loading="lazy"
-          className="block h-[82px] w-auto drop-shadow-[0_6px_8px_rgba(0,0,0,0.45)]"
-          animate={{ y: [0, -1.5, 0] }}
-          transition={{ duration: 0.32, repeat: Infinity, ease: "easeInOut" }}
-        />
-      </motion.div>
+      {/* Scooter rider */}
+      {phase !== "loop" ? (
+        <motion.div
+          className="absolute"
+          style={{ bottom: 14, left: "50%" }}
+          initial={{ x: "calc(-50% - 220px)" }}
+          animate={{ x: "-50%" }}
+          transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <div className="relative">
+            {/* Speech bubble */}
+            <AnimatePresence>
+              {phase === "greet" && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.6, y: 6 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.6, y: 4 }}
+                  transition={{ type: "spring", stiffness: 320, damping: 18 }}
+                  className="absolute -top-7 left-1/2 -translate-x-1/2 bg-background border border-primary/40 rounded-full px-2.5 py-0.5 shadow-md"
+                >
+                  <span className="font-display text-[11px] font-bold text-foreground whitespace-nowrap">
+                    Hi! 👋
+                  </span>
+                  <span
+                    className="absolute left-1/2 -translate-x-1/2 -bottom-1 w-2 h-2 rotate-45 bg-background border-r border-b border-primary/40"
+                  />
+                </motion.div>
+              )}
+            </AnimatePresence>
 
+            <motion.img
+              src={scooterImg}
+              alt=""
+              width={1024}
+              height={1024}
+              loading="eager"
+              className="block h-[82px] w-auto drop-shadow-[0_6px_8px_rgba(0,0,0,0.45)]"
+              animate={phase === "greet" ? { y: [0, -2, 0] } : { y: [0, -1.5, 0] }}
+              transition={{ duration: 0.4, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </div>
+        </motion.div>
+      ) : (
+        <motion.div
+          className="absolute"
+          style={{ bottom: 14, left: 0 }}
+          initial={{ x: "-30%" }}
+          animate={{ x: "calc(100vw + 200px)" }}
+          transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
+        >
+          <motion.img
+            src={scooterImg}
+            alt=""
+            width={1024}
+            height={1024}
+            loading="eager"
+            className="block h-[82px] w-auto drop-shadow-[0_6px_8px_rgba(0,0,0,0.45)]"
+            animate={{ y: [0, -1.5, 0] }}
+            transition={{ duration: 0.32, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </motion.div>
+      )}
     </div>
   );
 };
