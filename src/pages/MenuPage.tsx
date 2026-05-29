@@ -93,13 +93,21 @@ const MenuPage = () => {
                 <span className="text-primary font-semibold"> handcrafted daily</span> with real fruits.
               </motion.p>
 
-              <motion.div variants={fadeUp} className="flex justify-center gap-4 md:gap-6 mt-8 flex-wrap">
-                {categories.map((cat) => (
-                  <div key={cat.key} className="flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10">
-                    <span className="text-primary">{categoryIcons[cat.key]}</span>
-                    <span className="font-display text-sm font-bold text-cream">{cat.label}</span>
-                    <span className="font-display text-sm font-black text-primary">{cat.price}</span>
-                  </div>
+              <motion.div variants={fadeUp} className="flex justify-center gap-2.5 md:gap-4 mt-8 flex-wrap">
+                {categories.map((cat, i) => (
+                  <motion.div
+                    key={cat.key}
+                    whileHover={{ y: -3, scale: 1.04 }}
+                    transition={{ type: "spring", stiffness: 320, damping: 18 }}
+                    className="group relative flex items-center gap-2.5 pl-1.5 pr-3.5 md:pr-4 py-1.5 rounded-full bg-gradient-to-b from-cream/[0.08] to-cream/[0.03] border border-primary/25 backdrop-blur-sm shadow-[0_8px_24px_-12px_rgba(0,0,0,0.5),inset_0_1px_0_0_rgba(255,255,255,0.06)] hover:border-primary/50 hover:shadow-[0_10px_30px_-10px_hsl(45_100%_50%/0.35),inset_0_1px_0_0_rgba(255,255,255,0.1)] transition-all duration-300"
+                  >
+                    <span className="relative inline-flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-primary to-[hsl(38_95%_48%)] text-primary-foreground shadow-[0_4px_10px_-2px_hsl(45_100%_50%/0.5),inset_0_1px_0_rgba(255,255,255,0.4)] ring-1 ring-primary/40">
+                      <span className="absolute inset-0 rounded-full bg-gradient-to-t from-transparent to-white/25" />
+                      <span className="relative">{categoryIcons[cat.key]}</span>
+                    </span>
+                    <span className="font-display text-[13px] md:text-sm font-bold text-cream tracking-tight">{cat.label}</span>
+                    <span className="font-display text-[13px] md:text-sm font-black text-primary tabular-nums">{cat.price}</span>
+                  </motion.div>
                 ))}
               </motion.div>
             </motion.div>
