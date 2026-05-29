@@ -156,7 +156,17 @@ const FlavorQuiz = () => {
                 transition={{ duration: 0.4, ease: smoothEase }}
                 className="text-center"
               >
-                <div className="text-7xl mb-6">🍹</div>
+                <motion.img
+                  src={quizIntroGlass}
+                  alt="Fresh juice"
+                  width={1024}
+                  height={1024}
+                  loading="lazy"
+                  className="w-32 h-32 md:w-40 md:h-40 object-contain mx-auto mb-6 drop-shadow-2xl"
+                  animate={{ y: [0, -8, 0], rotate: [0, -2, 2, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                />
+
                 <h3 className="font-display text-xl font-bold text-foreground mb-3">
                   Ready to discover your perfect drink?
                 </h3>
