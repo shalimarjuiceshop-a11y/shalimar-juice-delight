@@ -326,13 +326,14 @@ const PartyOrderPage = () => {
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
                           onClick={() => updateField("eventType", form.eventType === evt.value ? "" : evt.value)}
-                          className={`inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full border-2 text-xs font-body font-bold transition-all duration-300 ${
+                          className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-full border-2 text-xs font-body font-bold transition-all duration-300 ${
                             form.eventType === evt.value
-                              ? "border-primary bg-primary/10 text-primary"
+                              ? "border-primary bg-primary/10 text-primary shadow-sm shadow-primary/20"
                               : "border-border bg-card text-muted-foreground hover:border-primary/30"
                           }`}
                         >
-                          <span>{evt.emoji}</span> {evt.label}
+                          <evt.Icon size={14} strokeWidth={2.4} className={form.eventType === evt.value ? "text-primary" : "text-primary/70"} />
+                          {evt.label}
                         </motion.button>
                       ))}
                     </div>
