@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, RotateCcw, ArrowRight, ShoppingBag } from "lucide-react";
+import { Sparkles, RotateCcw, ArrowRight, ShoppingBag, Zap, IceCream2, Coffee, Compass, Citrus, Nut, Apple, Cherry, Sunrise, Sun, Sunset, Moon, type LucideIcon } from "lucide-react";
 import { drinks } from "@/data/menuData";
 import quizIntroGlass from "@/assets/quiz-intro-glass.png";
 import quizMood from "@/assets/quiz-mood.png";
@@ -13,41 +13,43 @@ const questionImages = [quizMood, quizApple, quizClock];
 
 const smoothEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
+interface QuizOption {
+  label: string;
+  Icon: LucideIcon;
+  tags: string[];
+}
+
 interface Question {
   question: string;
-  emoji: string;
-  options: { label: string; emoji: string; tags: string[] }[];
+  options: QuizOption[];
 }
 
 const questions: Question[] = [
   {
     question: "Aapka mood kaisa hai?",
-    emoji: "😊",
     options: [
-      { label: "Energetic & Fresh", emoji: "⚡", tags: ["juices"] },
-      { label: "Chill & Creamy", emoji: "🍦", tags: ["shakes"] },
-      { label: "Warm & Cozy", emoji: "☕", tags: ["dryfruit"] },
-      { label: "Adventurous", emoji: "🎯", tags: ["juices", "dryfruit"] },
+      { label: "Energetic & Fresh", Icon: Zap, tags: ["juices"] },
+      { label: "Chill & Creamy", Icon: IceCream2, tags: ["shakes"] },
+      { label: "Warm & Cozy", Icon: Coffee, tags: ["dryfruit"] },
+      { label: "Adventurous", Icon: Compass, tags: ["juices", "dryfruit"] },
     ],
   },
   {
     question: "Kaunsa flavor pasand hai?",
-    emoji: "🍎",
     options: [
-      { label: "Sweet & Tropical", emoji: "🍍", tags: ["pineapple", "mango"] },
-      { label: "Tangy & Citrusy", emoji: "🍊", tags: ["orange", "mosambi"] },
-      { label: "Nutty & Rich", emoji: "🥜", tags: ["badam", "dryfruit"] },
-      { label: "Classic & Simple", emoji: "🍏", tags: ["apple", "guava"] },
+      { label: "Sweet & Tropical", Icon: Cherry, tags: ["pineapple", "mango"] },
+      { label: "Tangy & Citrusy", Icon: Citrus, tags: ["orange", "mosambi"] },
+      { label: "Nutty & Rich", Icon: Nut, tags: ["badam", "dryfruit"] },
+      { label: "Classic & Simple", Icon: Apple, tags: ["apple", "guava"] },
     ],
   },
   {
     question: "Kab peena hai?",
-    emoji: "⏰",
     options: [
-      { label: "Morning Energy", emoji: "🌅", tags: ["juices", "fresh"] },
-      { label: "Afternoon Treat", emoji: "☀️", tags: ["shakes", "lassi"] },
-      { label: "Evening Snack", emoji: "🌇", tags: ["falooda", "shakes"] },
-      { label: "Late Night", emoji: "🌙", tags: ["dryfruit", "hot"] },
+      { label: "Morning Energy", Icon: Sunrise, tags: ["juices", "fresh"] },
+      { label: "Afternoon Treat", Icon: Sun, tags: ["shakes", "lassi"] },
+      { label: "Evening Snack", Icon: Sunset, tags: ["falooda", "shakes"] },
+      { label: "Late Night", Icon: Moon, tags: ["dryfruit", "hot"] },
     ],
   },
 ];
@@ -225,13 +227,19 @@ const FlavorQuiz = () => {
                       transition={{ delay: i * 0.1, duration: 0.4, ease: smoothEase }}
                       whileHover={{ scale: 1.03, y: -4 }}
                       whileTap={{ scale: 0.97 }}
-                      className={`relative p-5 rounded-2xl border text-center transition-all duration-300 ${
+                      className={`group relative p-5 rounded-2xl border text-center transition-all duration-300 ${
                         selectedOption === i
-                          ? "bg-primary/20 border-primary shadow-pineapple"
+                          ? "bg-primary/15 border-primary shadow-pineapple"
                           : "bg-card border-border hover:border-primary/40 hover:shadow-pineapple"
                       }`}
                     >
-                      <span className="text-2xl block mb-2">{opt.emoji}</span>
+                      <span className={`mx-auto mb-2.5 flex items-center justify-center w-12 h-12 rounded-2xl transition-all ${
+                        selectedOption === i
+                          ? "bg-gradient-to-br from-primary to-[hsl(38_95%_48%)] text-primary-foreground shadow-lg shadow-primary/40 scale-105"
+                          : "bg-primary/10 text-primary group-hover:bg-primary/15"
+                      }`}>
+                        <opt.Icon size={22} strokeWidth={2.2} />
+                      </span>
                       <span className="font-display text-sm font-bold text-foreground">{opt.label}</span>
                     </motion.button>
                   ))}

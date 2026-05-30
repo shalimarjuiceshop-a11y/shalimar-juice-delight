@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { PartyPopper, Send, User, Phone, MapPin, Users, Building2, Sparkles, GlassWater, Music, ChevronDown } from "lucide-react";
+import { PartyPopper, Send, User, Phone, MapPin, Users, Building2, Sparkles, GlassWater, Music, ChevronDown, UsersRound, Users2, Tent, Landmark, Building, Heart, Cake, Briefcase, Drum, Check, type LucideIcon } from "lucide-react";
 import { toast } from "sonner";
 
 const WHATSAPP_NUMBER = "919852779933";
@@ -22,21 +22,21 @@ const scaleIn = {
   show: { opacity: 1, scale: 1, transition: { type: "spring" as const, stiffness: 300, damping: 22 } },
 };
 
-const guestOptions = [
-  { value: "500-1000", label: "500 – 1,000", icon: "👥" },
-  { value: "1000-2000", label: "1,000 – 2,000", icon: "👨‍👩‍👧‍👦" },
-  { value: "2000-3000", label: "2,000 – 3,000", icon: "🏟️" },
-  { value: "3000-5000", label: "3,000 – 5,000", icon: "🎪" },
-  { value: "5000-7000", label: "5,000 – 7,000", icon: "🏛️" },
-  { value: "7000-10000", label: "7,000 – 10,000", icon: "🌆" },
+const guestOptions: { value: string; label: string; Icon: LucideIcon }[] = [
+  { value: "500-1000", label: "500 – 1,000", Icon: Users2 },
+  { value: "1000-2000", label: "1,000 – 2,000", Icon: UsersRound },
+  { value: "2000-3000", label: "2,000 – 3,000", Icon: Users },
+  { value: "3000-5000", label: "3,000 – 5,000", Icon: Tent },
+  { value: "5000-7000", label: "5,000 – 7,000", Icon: Landmark },
+  { value: "7000-10000", label: "7,000 – 10,000", Icon: Building },
 ];
 
-const eventTypes = [
-  { value: "wedding", label: "Wedding", emoji: "💒" },
-  { value: "birthday", label: "Birthday", emoji: "🎂" },
-  { value: "corporate", label: "Corporate Event", emoji: "🏢" },
-  { value: "festival", label: "Festival / Mela", emoji: "🎊" },
-  { value: "other", label: "Other", emoji: "🎉" },
+const eventTypes: { value: string; label: string; Icon: LucideIcon }[] = [
+  { value: "wedding", label: "Wedding", Icon: Heart },
+  { value: "birthday", label: "Birthday", Icon: Cake },
+  { value: "corporate", label: "Corporate Event", Icon: Briefcase },
+  { value: "festival", label: "Festival / Mela", Icon: Drum },
+  { value: "other", label: "Other", Icon: PartyPopper },
 ];
 
 const PartyOrderPage = () => {
@@ -291,15 +291,21 @@ const PartyOrderPage = () => {
                               : "border-border bg-card hover:border-primary/30"
                           }`}
                         >
-                          <span className="text-2xl block mb-1">{opt.icon}</span>
+                          <span className={`mx-auto mb-2 flex items-center justify-center w-10 h-10 rounded-xl transition-colors ${
+                            form.guests === opt.value
+                              ? "bg-gradient-to-br from-primary to-[hsl(38_95%_48%)] text-primary-foreground shadow-md shadow-primary/30"
+                              : "bg-primary/10 text-primary"
+                          }`}>
+                            <opt.Icon size={20} strokeWidth={2.2} />
+                          </span>
                           <span className="font-display text-xs font-bold text-foreground">{opt.label}</span>
                           {form.guests === opt.value && (
                             <motion.div
                               initial={{ scale: 0 }}
                               animate={{ scale: 1 }}
-                              className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-primary flex items-center justify-center"
+                              className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-primary flex items-center justify-center shadow-md"
                             >
-                              <span className="text-primary-foreground text-[10px]">✓</span>
+                              <Check size={11} strokeWidth={3} className="text-primary-foreground" />
                             </motion.div>
                           )}
                         </motion.button>
@@ -320,13 +326,14 @@ const PartyOrderPage = () => {
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
                           onClick={() => updateField("eventType", form.eventType === evt.value ? "" : evt.value)}
-                          className={`inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full border-2 text-xs font-body font-bold transition-all duration-300 ${
+                          className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-full border-2 text-xs font-body font-bold transition-all duration-300 ${
                             form.eventType === evt.value
-                              ? "border-primary bg-primary/10 text-primary"
+                              ? "border-primary bg-primary/10 text-primary shadow-sm shadow-primary/20"
                               : "border-border bg-card text-muted-foreground hover:border-primary/30"
                           }`}
                         >
-                          <span>{evt.emoji}</span> {evt.label}
+                          <evt.Icon size={14} strokeWidth={2.4} className={form.eventType === evt.value ? "text-primary" : "text-primary/70"} />
+                          {evt.label}
                         </motion.button>
                       ))}
                     </div>

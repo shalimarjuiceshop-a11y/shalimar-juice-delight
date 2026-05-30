@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ShoppingCart, Store, Home, Plus, Minus, Trash2, Send, User, Phone, MapPin, X, ShoppingBag } from "lucide-react";
+import { ShoppingCart, Store, Home, Plus, Minus, Trash2, Send, User, Phone, MapPin, X, ShoppingBag, AlertCircle, GlassWater } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { z } from "zod";
 import { toast } from "sonner";
@@ -97,7 +97,7 @@ const FloatingCart = () => {
               transition={{ duration: 0.3, ease: smoothEase }}
               className="absolute bottom-[72px] right-0 w-80 bg-card rounded-2xl border border-border shadow-2xl p-6"
             >
-              <h3 className="font-display text-lg font-bold text-foreground text-center mb-1">Order Juice 🍹</h3>
+              <h3 className="font-display text-lg font-bold text-foreground text-center mb-1 inline-flex items-center justify-center gap-2 w-full"><GlassWater size={18} className="text-primary" /> Order Juice</h3>
               <p className="font-body text-xs text-muted-foreground text-center mb-5">Where are you ordering from?</p>
               <div className="space-y-3">
                 <motion.button
@@ -110,7 +110,7 @@ const FloatingCart = () => {
                     <Store size={22} className="text-primary" />
                   </div>
                   <div className="text-left">
-                    <p className="font-display text-sm font-bold text-foreground">Dukaan Par Hu 🏪</p>
+                    <p className="font-display text-sm font-bold text-foreground">Dukaan Par Hu</p>
                     <p className="font-body text-[11px] text-muted-foreground">Min 1 glass • Regular menu prices</p>
                   </div>
                 </motion.button>
@@ -124,7 +124,7 @@ const FloatingCart = () => {
                     <Home size={22} className="text-primary" />
                   </div>
                   <div className="text-left">
-                    <p className="font-display text-sm font-bold text-foreground">Ghar Se Order 🏠</p>
+                    <p className="font-display text-sm font-bold text-foreground">Ghar Se Order</p>
                     <p className="font-body text-[11px] text-muted-foreground">Min 5 glasses @ ₹50 • 20+ glasses @ ₹10</p>
                   </div>
                 </motion.button>
@@ -152,8 +152,8 @@ const FloatingCart = () => {
               <div className="flex items-center gap-2">
                 <ShoppingCart size={16} className="text-primary" />
                 <h3 className="font-display text-sm font-bold text-foreground">Your Cart</h3>
-                <span className="text-[10px] font-body font-bold px-2 py-0.5 rounded-full bg-primary/10 text-primary">
-                  {mode === "shop" ? "🏪 Shop" : "🏠 Home"}
+                <span className="inline-flex items-center gap-1 text-[10px] font-body font-bold px-2 py-0.5 rounded-full bg-primary/10 text-primary">
+                  {mode === "shop" ? <><Store size={10} /> Shop</> : <><Home size={10} /> Home</>}
                 </span>
               </div>
               <div className="flex items-center gap-2">
@@ -164,7 +164,7 @@ const FloatingCart = () => {
 
             {mode === "home" && (
               <div className="px-4 py-2 bg-primary/5 border-b border-border">
-                <p className="font-body text-[11px] text-primary font-semibold">🏠 Min 5 glasses @ ₹50 • 20+ glasses @ ₹10/glass</p>
+                <p className="font-body text-[11px] text-primary font-semibold inline-flex items-center gap-1.5"><Home size={11} /> Min 5 glasses @ ₹50 • 20+ glasses @ ₹10/glass</p>
               </div>
             )}
 
@@ -204,7 +204,7 @@ const FloatingCart = () => {
                   <span className="font-display text-lg font-black text-gradient-gold">₹{totalPrice}</span>
                 </div>
                 {mode === "home" && totalQty < 5 && (
-                  <p className="font-body text-[11px] text-destructive mb-2">⚠️ Add {5 - totalQty} more glass(es) for home delivery</p>
+                  <p className="font-body text-[11px] text-destructive mb-2 inline-flex items-center gap-1.5"><AlertCircle size={11} /> Add {5 - totalQty} more glass(es) for home delivery</p>
                 )}
                 <motion.button
                   onClick={handleCheckout}
