@@ -164,7 +164,7 @@ const FloatingCart = () => {
 
             {mode === "home" && (
               <div className="px-4 py-2 bg-primary/5 border-b border-border">
-                <p className="font-body text-[11px] text-primary font-semibold">🏠 Min 5 glasses @ ₹50 • 20+ glasses @ ₹10/glass</p>
+                <p className="font-body text-[11px] text-primary font-semibold inline-flex items-center gap-1.5"><Home size={11} /> Min 5 glasses @ ₹50 • 20+ glasses @ ₹10/glass</p>
               </div>
             )}
 
