@@ -291,15 +291,21 @@ const PartyOrderPage = () => {
                               : "border-border bg-card hover:border-primary/30"
                           }`}
                         >
-                          <span className="text-2xl block mb-1">{opt.icon}</span>
+                          <span className={`mx-auto mb-2 flex items-center justify-center w-10 h-10 rounded-xl transition-colors ${
+                            form.guests === opt.value
+                              ? "bg-gradient-to-br from-primary to-[hsl(38_95%_48%)] text-primary-foreground shadow-md shadow-primary/30"
+                              : "bg-primary/10 text-primary"
+                          }`}>
+                            <opt.Icon size={20} strokeWidth={2.2} />
+                          </span>
                           <span className="font-display text-xs font-bold text-foreground">{opt.label}</span>
                           {form.guests === opt.value && (
                             <motion.div
                               initial={{ scale: 0 }}
                               animate={{ scale: 1 }}
-                              className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-primary flex items-center justify-center"
+                              className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-primary flex items-center justify-center shadow-md"
                             >
-                              <span className="text-primary-foreground text-[10px]">✓</span>
+                              <Check size={11} strokeWidth={3} className="text-primary-foreground" />
                             </motion.div>
                           )}
                         </motion.button>
