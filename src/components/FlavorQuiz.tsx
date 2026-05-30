@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, RotateCcw, ArrowRight, ShoppingBag } from "lucide-react";
+import { Sparkles, RotateCcw, ArrowRight, ShoppingBag, Zap, IceCream2, Coffee, Compass, Citrus, Nut, Apple, Cherry, Sunrise, Sun, Sunset, Moon, type LucideIcon } from "lucide-react";
 import { drinks } from "@/data/menuData";
 import quizIntroGlass from "@/assets/quiz-intro-glass.png";
 import quizMood from "@/assets/quiz-mood.png";
@@ -13,41 +13,43 @@ const questionImages = [quizMood, quizApple, quizClock];
 
 const smoothEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
+interface QuizOption {
+  label: string;
+  Icon: LucideIcon;
+  tags: string[];
+}
+
 interface Question {
   question: string;
-  emoji: string;
-  options: { label: string; emoji: string; tags: string[] }[];
+  options: QuizOption[];
 }
 
 const questions: Question[] = [
   {
     question: "Aapka mood kaisa hai?",
-    emoji: "😊",
     options: [
-      { label: "Energetic & Fresh", emoji: "⚡", tags: ["juices"] },
-      { label: "Chill & Creamy", emoji: "🍦", tags: ["shakes"] },
-      { label: "Warm & Cozy", emoji: "☕", tags: ["dryfruit"] },
-      { label: "Adventurous", emoji: "🎯", tags: ["juices", "dryfruit"] },
+      { label: "Energetic & Fresh", Icon: Zap, tags: ["juices"] },
+      { label: "Chill & Creamy", Icon: IceCream2, tags: ["shakes"] },
+      { label: "Warm & Cozy", Icon: Coffee, tags: ["dryfruit"] },
+      { label: "Adventurous", Icon: Compass, tags: ["juices", "dryfruit"] },
     ],
   },
   {
     question: "Kaunsa flavor pasand hai?",
-    emoji: "🍎",
     options: [
-      { label: "Sweet & Tropical", emoji: "🍍", tags: ["pineapple", "mango"] },
-      { label: "Tangy & Citrusy", emoji: "🍊", tags: ["orange", "mosambi"] },
-      { label: "Nutty & Rich", emoji: "🥜", tags: ["badam", "dryfruit"] },
-      { label: "Classic & Simple", emoji: "🍏", tags: ["apple", "guava"] },
+      { label: "Sweet & Tropical", Icon: Cherry, tags: ["pineapple", "mango"] },
+      { label: "Tangy & Citrusy", Icon: Citrus, tags: ["orange", "mosambi"] },
+      { label: "Nutty & Rich", Icon: Nut, tags: ["badam", "dryfruit"] },
+      { label: "Classic & Simple", Icon: Apple, tags: ["apple", "guava"] },
     ],
   },
   {
     question: "Kab peena hai?",
-    emoji: "⏰",
     options: [
-      { label: "Morning Energy", emoji: "🌅", tags: ["juices", "fresh"] },
-      { label: "Afternoon Treat", emoji: "☀️", tags: ["shakes", "lassi"] },
-      { label: "Evening Snack", emoji: "🌇", tags: ["falooda", "shakes"] },
-      { label: "Late Night", emoji: "🌙", tags: ["dryfruit", "hot"] },
+      { label: "Morning Energy", Icon: Sunrise, tags: ["juices", "fresh"] },
+      { label: "Afternoon Treat", Icon: Sun, tags: ["shakes", "lassi"] },
+      { label: "Evening Snack", Icon: Sunset, tags: ["falooda", "shakes"] },
+      { label: "Late Night", Icon: Moon, tags: ["dryfruit", "hot"] },
     ],
   },
 ];
