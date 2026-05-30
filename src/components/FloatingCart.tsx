@@ -152,8 +152,8 @@ const FloatingCart = () => {
               <div className="flex items-center gap-2">
                 <ShoppingCart size={16} className="text-primary" />
                 <h3 className="font-display text-sm font-bold text-foreground">Your Cart</h3>
-                <span className="text-[10px] font-body font-bold px-2 py-0.5 rounded-full bg-primary/10 text-primary">
-                  {mode === "shop" ? "🏪 Shop" : "🏠 Home"}
+                <span className="inline-flex items-center gap-1 text-[10px] font-body font-bold px-2 py-0.5 rounded-full bg-primary/10 text-primary">
+                  {mode === "shop" ? <><Store size={10} /> Shop</> : <><Home size={10} /> Home</>}
                 </span>
               </div>
               <div className="flex items-center gap-2">
