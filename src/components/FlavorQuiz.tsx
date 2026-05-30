@@ -227,13 +227,19 @@ const FlavorQuiz = () => {
                       transition={{ delay: i * 0.1, duration: 0.4, ease: smoothEase }}
                       whileHover={{ scale: 1.03, y: -4 }}
                       whileTap={{ scale: 0.97 }}
-                      className={`relative p-5 rounded-2xl border text-center transition-all duration-300 ${
+                      className={`group relative p-5 rounded-2xl border text-center transition-all duration-300 ${
                         selectedOption === i
-                          ? "bg-primary/20 border-primary shadow-pineapple"
+                          ? "bg-primary/15 border-primary shadow-pineapple"
                           : "bg-card border-border hover:border-primary/40 hover:shadow-pineapple"
                       }`}
                     >
-                      <span className="text-2xl block mb-2">{opt.emoji}</span>
+                      <span className={`mx-auto mb-2.5 flex items-center justify-center w-12 h-12 rounded-2xl transition-all ${
+                        selectedOption === i
+                          ? "bg-gradient-to-br from-primary to-[hsl(38_95%_48%)] text-primary-foreground shadow-lg shadow-primary/40 scale-105"
+                          : "bg-primary/10 text-primary group-hover:bg-primary/15"
+                      }`}>
+                        <opt.Icon size={22} strokeWidth={2.2} />
+                      </span>
                       <span className="font-display text-sm font-bold text-foreground">{opt.label}</span>
                     </motion.button>
                   ))}
