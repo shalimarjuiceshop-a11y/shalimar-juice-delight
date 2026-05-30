@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { PartyPopper, Send, User, Phone, MapPin, Users, Building2, Sparkles, GlassWater, Music, ChevronDown } from "lucide-react";
+import { PartyPopper, Send, User, Phone, MapPin, Users, Building2, Sparkles, GlassWater, Music, ChevronDown, UsersRound, Users2, Tent, Landmark, Building, Heart, Cake, Briefcase, Drum, Check, type LucideIcon } from "lucide-react";
 import { toast } from "sonner";
 
 const WHATSAPP_NUMBER = "919852779933";
@@ -22,21 +22,21 @@ const scaleIn = {
   show: { opacity: 1, scale: 1, transition: { type: "spring" as const, stiffness: 300, damping: 22 } },
 };
 
-const guestOptions = [
-  { value: "500-1000", label: "500 – 1,000", icon: "👥" },
-  { value: "1000-2000", label: "1,000 – 2,000", icon: "👨‍👩‍👧‍👦" },
-  { value: "2000-3000", label: "2,000 – 3,000", icon: "🏟️" },
-  { value: "3000-5000", label: "3,000 – 5,000", icon: "🎪" },
-  { value: "5000-7000", label: "5,000 – 7,000", icon: "🏛️" },
-  { value: "7000-10000", label: "7,000 – 10,000", icon: "🌆" },
+const guestOptions: { value: string; label: string; Icon: LucideIcon }[] = [
+  { value: "500-1000", label: "500 – 1,000", Icon: Users2 },
+  { value: "1000-2000", label: "1,000 – 2,000", Icon: UsersRound },
+  { value: "2000-3000", label: "2,000 – 3,000", Icon: Users },
+  { value: "3000-5000", label: "3,000 – 5,000", Icon: Tent },
+  { value: "5000-7000", label: "5,000 – 7,000", Icon: Landmark },
+  { value: "7000-10000", label: "7,000 – 10,000", Icon: Building },
 ];
 
-const eventTypes = [
-  { value: "wedding", label: "Wedding", emoji: "💒" },
-  { value: "birthday", label: "Birthday", emoji: "🎂" },
-  { value: "corporate", label: "Corporate Event", emoji: "🏢" },
-  { value: "festival", label: "Festival / Mela", emoji: "🎊" },
-  { value: "other", label: "Other", emoji: "🎉" },
+const eventTypes: { value: string; label: string; Icon: LucideIcon }[] = [
+  { value: "wedding", label: "Wedding", Icon: Heart },
+  { value: "birthday", label: "Birthday", Icon: Cake },
+  { value: "corporate", label: "Corporate Event", Icon: Briefcase },
+  { value: "festival", label: "Festival / Mela", Icon: Drum },
+  { value: "other", label: "Other", Icon: PartyPopper },
 ];
 
 const PartyOrderPage = () => {
