@@ -124,7 +124,7 @@ const FloatingCart = () => {
                     <Home size={22} className="text-primary" />
                   </div>
                   <div className="text-left">
-                    <p className="font-display text-sm font-bold text-foreground">Ghar Se Order 🏠</p>
+                    <p className="font-display text-sm font-bold text-foreground">Ghar Se Order</p>
                     <p className="font-body text-[11px] text-muted-foreground">Min 5 glasses @ ₹50 • 20+ glasses @ ₹10</p>
                   </div>
                 </motion.button>
