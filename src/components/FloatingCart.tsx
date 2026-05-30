@@ -110,7 +110,7 @@ const FloatingCart = () => {
                     <Store size={22} className="text-primary" />
                   </div>
                   <div className="text-left">
-                    <p className="font-display text-sm font-bold text-foreground">Dukaan Par Hu 🏪</p>
+                    <p className="font-display text-sm font-bold text-foreground">Dukaan Par Hu</p>
                     <p className="font-body text-[11px] text-muted-foreground">Min 1 glass • Regular menu prices</p>
                   </div>
                 </motion.button>
