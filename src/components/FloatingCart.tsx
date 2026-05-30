@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ShoppingCart, Store, Home, Plus, Minus, Trash2, Send, User, Phone, MapPin, X, ShoppingBag } from "lucide-react";
+import { ShoppingCart, Store, Home, Plus, Minus, Trash2, Send, User, Phone, MapPin, X, ShoppingBag, AlertCircle, GlassWater } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { z } from "zod";
 import { toast } from "sonner";
