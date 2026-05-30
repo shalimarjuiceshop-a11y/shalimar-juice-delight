@@ -97,7 +97,7 @@ const FloatingCart = () => {
               transition={{ duration: 0.3, ease: smoothEase }}
               className="absolute bottom-[72px] right-0 w-80 bg-card rounded-2xl border border-border shadow-2xl p-6"
             >
-              <h3 className="font-display text-lg font-bold text-foreground text-center mb-1">Order Juice 🍹</h3>
+              <h3 className="font-display text-lg font-bold text-foreground text-center mb-1 inline-flex items-center justify-center gap-2 w-full"><GlassWater size={18} className="text-primary" /> Order Juice</h3>
               <p className="font-body text-xs text-muted-foreground text-center mb-5">Where are you ordering from?</p>
               <div className="space-y-3">
                 <motion.button
