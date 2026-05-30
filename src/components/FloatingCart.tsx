@@ -204,7 +204,7 @@ const FloatingCart = () => {
                   <span className="font-display text-lg font-black text-gradient-gold">₹{totalPrice}</span>
                 </div>
                 {mode === "home" && totalQty < 5 && (
-                  <p className="font-body text-[11px] text-destructive mb-2">⚠️ Add {5 - totalQty} more glass(es) for home delivery</p>
+                  <p className="font-body text-[11px] text-destructive mb-2 inline-flex items-center gap-1.5"><AlertCircle size={11} /> Add {5 - totalQty} more glass(es) for home delivery</p>
                 )}
                 <motion.button
                   onClick={handleCheckout}
