@@ -94,21 +94,50 @@ const PartyOrderPage = () => {
       {/* Hero */}
       <section className="relative pt-28 pb-16 md:pt-36 md:pb-24 bg-page-header overflow-hidden">
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(45 100% 70%) 1px, transparent 0)', backgroundSize: '40px 40px' }} />
+        {/* Ambient gold orbs */}
         <motion.div
-          animate={{ y: [0, -15, 0], rotate: [0, 8, -8, 0] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-12 left-[6%] text-5xl opacity-15 select-none"
-        >🎉</motion.div>
+          className="absolute top-10 left-[6%] w-40 h-40 rounded-full pointer-events-none"
+          style={{ background: "radial-gradient(circle, hsl(45 100% 55% / 0.18) 0%, transparent 70%)" }}
+          animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0.8, 0.5] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        />
         <motion.div
-          animate={{ y: [0, 12, 0], rotate: [0, -6, 6, 0] }}
-          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute bottom-10 right-[8%] text-4xl opacity-10 select-none"
-        >🍍</motion.div>
+          className="absolute bottom-8 right-[8%] w-56 h-56 rounded-full pointer-events-none"
+          style={{ background: "radial-gradient(circle, hsl(35 90% 50% / 0.14) 0%, transparent 70%)" }}
+          animate={{ scale: [1.1, 1, 1.1], opacity: [0.4, 0.7, 0.4] }}
+          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+        />
+        {/* Floating premium icon chips */}
         <motion.div
-          animate={{ y: [0, -8, 0], x: [0, 5, 0] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute top-20 right-[20%] text-3xl opacity-10 select-none"
-        >🥤</motion.div>
+          animate={{ y: [0, -10, 0] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          className="hidden md:flex absolute top-16 left-[8%] items-center gap-2 px-3 py-2 rounded-2xl border border-primary/20 bg-cream/[0.04] backdrop-blur-md shadow-[0_8px_24px_-12px_rgba(0,0,0,0.6)]"
+        >
+          <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-gradient-to-br from-primary to-[hsl(38_95%_48%)] text-primary-foreground">
+            <PartyPopper size={14} strokeWidth={2.25} />
+          </span>
+          <span className="font-body text-[11px] font-semibold text-cream tracking-wide">Weddings</span>
+        </motion.div>
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
+          className="hidden md:flex absolute top-24 right-[10%] items-center gap-2 px-3 py-2 rounded-2xl border border-primary/20 bg-cream/[0.04] backdrop-blur-md shadow-[0_8px_24px_-12px_rgba(0,0,0,0.6)]"
+        >
+          <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-gradient-to-br from-primary to-[hsl(38_95%_48%)] text-primary-foreground">
+            <GlassWater size={14} strokeWidth={2.25} />
+          </span>
+          <span className="font-body text-[11px] font-semibold text-cream tracking-wide">Live Counter</span>
+        </motion.div>
+        <motion.div
+          animate={{ y: [0, -8, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2.4 }}
+          className="hidden md:flex absolute bottom-14 left-[14%] items-center gap-2 px-3 py-2 rounded-2xl border border-primary/20 bg-cream/[0.04] backdrop-blur-md shadow-[0_8px_24px_-12px_rgba(0,0,0,0.6)]"
+        >
+          <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-gradient-to-br from-primary to-[hsl(38_95%_48%)] text-primary-foreground">
+            <Users size={14} strokeWidth={2.25} />
+          </span>
+          <span className="font-body text-[11px] font-semibold text-cream tracking-wide">10,000+ Guests</span>
+        </motion.div>
 
         <div className="container mx-auto px-4 relative z-10 text-center">
           <motion.div variants={stagger} initial="hidden" animate="show">
