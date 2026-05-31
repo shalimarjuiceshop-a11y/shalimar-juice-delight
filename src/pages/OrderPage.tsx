@@ -1,7 +1,7 @@
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSearchParams } from "react-router-dom";
-import { ShoppingBag, Plus, Minus, Trash2, User, Phone, MapPin, AlertCircle, Send, Sparkles, GlassWater } from "lucide-react";
+import { ShoppingBag, Plus, Minus, Trash2, User, Phone, MapPin, AlertCircle, Send, Sparkles, GlassWater, Receipt, Check, ShieldCheck, Clock, Truck } from "lucide-react";
 import { drinks, categories } from "@/data/menuData";
 import { toast } from "sonner";
 import OrderBikeAnimation from "@/components/OrderBikeAnimation";
