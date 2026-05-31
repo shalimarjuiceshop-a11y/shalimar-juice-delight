@@ -309,9 +309,9 @@ const OrderPage = () => {
                             <motion.div
                               initial={{ scale: 0 }}
                               animate={{ scale: 1 }}
-                              className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-primary flex items-center justify-center"
+                              className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-primary flex items-center justify-center shadow-md shadow-primary/40"
                             >
-                              <span className="text-primary-foreground text-[10px]">✓</span>
+                              <Check size={11} strokeWidth={3} className="text-primary-foreground" />
                             </motion.div>
                           )}
                         </motion.button>
