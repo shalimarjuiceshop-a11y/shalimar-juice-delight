@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { PartyPopper, Send, User, Phone, MapPin, Users, Building2, Sparkles, GlassWater, Music, ChevronDown, UsersRound, Users2, Tent, Landmark, Building, Heart, Cake, Briefcase, Drum, Check, type LucideIcon } from "lucide-react";
 import { toast } from "sonner";
+import JugPourPartyAnimation from "@/components/JugPourPartyAnimation";
 
 const WHATSAPP_NUMBER = "919852779933";
 
