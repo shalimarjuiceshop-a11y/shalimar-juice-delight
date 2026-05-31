@@ -1,7 +1,7 @@
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSearchParams } from "react-router-dom";
-import { ShoppingBag, Plus, Minus, Trash2, User, Phone, MapPin, AlertCircle, Send, Sparkles, GlassWater } from "lucide-react";
+import { ShoppingBag, Plus, Minus, Trash2, User, Phone, MapPin, AlertCircle, Send, Sparkles, GlassWater, Receipt, Check, ShieldCheck, Clock, Truck } from "lucide-react";
 import { drinks, categories } from "@/data/menuData";
 import { toast } from "sonner";
 import OrderBikeAnimation from "@/components/OrderBikeAnimation";
@@ -115,17 +115,21 @@ const OrderPage = () => {
       {/* Header */}
       <section className="relative pt-28 pb-14 md:pt-32 md:pb-20 bg-page-header overflow-hidden">
         <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, hsl(45 100% 70%) 1px, transparent 0)', backgroundSize: '40px 40px' }} />
-        {/* Floating pineapple decorations */}
+        {/* Ambient gold orbs */}
         <motion.div
-          animate={{ y: [0, -12, 0], rotate: [0, 5, -5, 0] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-10 left-[8%] text-4xl opacity-20 select-none"
-        >🍍</motion.div>
+          aria-hidden
+          className="absolute -top-24 -left-20 w-72 h-72 rounded-full pointer-events-none"
+          style={{ background: "radial-gradient(circle, hsl(45 100% 55% / 0.18) 0%, transparent 70%)" }}
+          animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0.8, 0.5] }}
+          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+        />
         <motion.div
-          animate={{ y: [0, 10, 0], rotate: [0, -8, 8, 0] }}
-          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute bottom-8 right-[10%] text-3xl opacity-15 select-none"
-        >🥤</motion.div>
+          aria-hidden
+          className="absolute -bottom-20 -right-16 w-80 h-80 rounded-full pointer-events-none"
+          style={{ background: "radial-gradient(circle, hsl(35 80% 45% / 0.14) 0%, transparent 70%)" }}
+          animate={{ scale: [1.1, 1, 1.1], opacity: [0.4, 0.7, 0.4] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        />
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid md:grid-cols-[1fr_auto] items-center gap-6 md:gap-10 max-w-5xl mx-auto">
@@ -140,8 +144,27 @@ const OrderPage = () => {
                 <span className="text-gradient-gold">Order</span>
               </motion.h1>
               <motion.p variants={fadeUp} className="font-body text-sm md:text-base mt-3 text-header-muted max-w-md mx-auto md:mx-0">
-                Fill your details, pick your drinks, and order via WhatsApp — it's that simple! 🍍
+                Fill your details, pick your drinks, and order via WhatsApp — quick, simple, fresh.
               </motion.p>
+
+              {/* Trust chips */}
+              <motion.div variants={fadeUp} className="mt-5 flex flex-wrap gap-2 justify-center md:justify-start">
+                {[
+                  { Icon: ShieldCheck, label: "100% Fresh" },
+                  { Icon: Clock, label: "30 min Prep" },
+                  { Icon: Truck, label: "Fast Delivery" },
+                ].map(({ Icon, label }) => (
+                  <span
+                    key={label}
+                    className="inline-flex items-center gap-2 pl-1.5 pr-3 py-1.5 rounded-full bg-gradient-to-b from-cream/[0.08] to-cream/[0.03] border border-primary/25 backdrop-blur-md shadow-[0_8px_24px_-12px_rgba(0,0,0,0.5),inset_0_1px_0_0_rgba(255,255,255,0.06)]"
+                  >
+                    <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-gradient-to-br from-primary to-[hsl(38_95%_48%)] text-primary-foreground shadow-[0_4px_10px_-2px_hsl(45_100%_50%/0.5)] ring-1 ring-primary/40">
+                      <Icon size={12} strokeWidth={2.4} />
+                    </span>
+                    <span className="font-display text-[12px] font-bold text-cream tracking-tight">{label}</span>
+                  </span>
+                ))}
+              </motion.div>
             </motion.div>
 
             {/* Delivery scooter animation */}
@@ -286,9 +309,9 @@ const OrderPage = () => {
                             <motion.div
                               initial={{ scale: 0 }}
                               animate={{ scale: 1 }}
-                              className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-primary flex items-center justify-center"
+                              className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-primary flex items-center justify-center shadow-md shadow-primary/40"
                             >
-                              <span className="text-primary-foreground text-[10px]">✓</span>
+                              <Check size={11} strokeWidth={3} className="text-primary-foreground" />
                             </motion.div>
                           )}
                         </motion.button>
@@ -312,7 +335,10 @@ const OrderPage = () => {
             <motion.div variants={fadeUp} initial="hidden" animate="show" className="lg:col-span-2">
               <div className="card-premium p-5 md:p-6 lg:sticky lg:top-20">
                 <h2 className="font-display text-base md:text-lg font-bold text-foreground mb-4 flex items-center gap-2">
-                  🧾 Order Summary
+                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                    <Receipt size={16} className="text-primary" />
+                  </div>
+                  Order Summary
                   {totalItems > 0 && (
                     <motion.span
                       initial={{ scale: 0 }}
