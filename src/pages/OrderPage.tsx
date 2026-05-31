@@ -335,7 +335,10 @@ const OrderPage = () => {
             <motion.div variants={fadeUp} initial="hidden" animate="show" className="lg:col-span-2">
               <div className="card-premium p-5 md:p-6 lg:sticky lg:top-20">
                 <h2 className="font-display text-base md:text-lg font-bold text-foreground mb-4 flex items-center gap-2">
-                  🧾 Order Summary
+                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                    <Receipt size={16} className="text-primary" />
+                  </div>
+                  Order Summary
                   {totalItems > 0 && (
                     <motion.span
                       initial={{ scale: 0 }}
