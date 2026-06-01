@@ -1,45 +1,32 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-import emptyGlass from "@/assets/empty-glass-real.png";
+import juiceFullGlass from "@/assets/juice-pour-real.png.asset.json";
 
 /**
- * Realistic fixed-glass pour animation.
- * Glass stays anchored. Juice stream falls from top into the glass,
- * fill rises smoothly, "BOOK NOW" badge appears on full, loop.
- *
- * Phase 0 (0.5s): idle empty glass
- * Phase 1 (2.6s): stream falls + fill rises
- * Phase 2 (2.6s): stream stops, BOOK NOW badge pops, hold
- * Phase 3 (0.7s): fill drains, reset
+ * Always-full juice glass with a continuous juice drop animation from above.
+ * Glass quantity never changes — only the falling stream + droplets animate.
+ * "Book Now" badge appears briefly on a slow rhythm.
  */
-const PHASES = [500, 2600, 2600, 700];
-
 const JugPourPartyAnimation = () => {
-  const [phase, setPhase] = useState(0);
+  const [showBadge, setShowBadge] = useState(false);
 
   useEffect(() => {
-    const t = setTimeout(() => setPhase((p) => (p + 1) % 4), PHASES[phase]);
-    return () => clearTimeout(t);
-  }, [phase]);
-
-  const streaming = phase === 1;
-  const filled = phase === 1 || phase === 2;
-  const showBadge = phase === 2;
-
-  // Glass interior (in % of container) — tuned to the empty-glass photo
-  // Container is 210px wide, ~220px tall. Glass body roughly spans:
-  // top of liquid area ~ 22%, bottom ~ 88%, left ~ 30%, right ~ 70%
-  const liquidTopEmpty = 86; // % from top when empty
-  const liquidTopFull = 26; // % from top when full
-  const liquidTop = filled ? liquidTopFull : liquidTopEmpty;
+    const cycle = () => {
+      setShowBadge(true);
+      setTimeout(() => setShowBadge(false), 2200);
+    };
+    cycle();
+    const id = setInterval(cycle, 4200);
+    return () => clearInterval(id);
+  }, []);
 
   return (
     <div className="relative mx-auto w-full max-w-[210px] h-[220px] md:h-[240px] select-none pointer-events-none">
-      {/* BOOK NOW badge */}
+      {/* Book Now badge */}
       <AnimatePresence>
         {showBadge && (
           <motion.div
-            initial={{ opacity: 0, y: 12, scale: 0.8 }}
+            initial={{ opacity: 0, y: 10, scale: 0.85 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9, y: -4 }}
             transition={{ duration: 0.5, ease: [0.34, 1.56, 0.64, 1] }}
@@ -61,141 +48,98 @@ const JugPourPartyAnimation = () => {
         )}
       </AnimatePresence>
 
-      {/* Falling juice stream (above and into glass) */}
-      <div className="absolute inset-0 z-10">
-        <AnimatePresence>
-          {streaming && (
-            <motion.div
-              key="stream"
-              className="absolute left-1/2 -translate-x-1/2"
-              style={{
-                top: "4%",
-                width: "8px",
-                height: "30%",
-                background:
-                  "linear-gradient(180deg, hsl(45 100% 65%) 0%, hsl(38 100% 55%) 60%, hsl(32 100% 50%) 100%)",
-                borderRadius: "8px",
-                filter: "drop-shadow(0 0 6px hsl(38 100% 55% / 0.55))",
-                transformOrigin: "top center",
-              }}
-              initial={{ scaleY: 0, opacity: 0 }}
-              animate={{ scaleY: 1, opacity: 1 }}
-              exit={{ scaleY: 0, opacity: 0, transformOrigin: "bottom center" }}
-              transition={{ duration: 0.35, ease: "easeOut" }}
-            />
-          )}
-        </AnimatePresence>
-
-        {/* Splash droplets at impact point */}
-        {streaming &&
-          [0, 0.25, 0.5, 0.75].map((d, i) => (
-            <motion.span
-              key={i}
-              className="absolute rounded-full"
-              style={{
-                left: `${48 + (i % 2 === 0 ? -1 : 1) * (3 + i)}%`,
-                top: "30%",
-                width: 5,
-                height: 5,
-                background: "hsl(42 100% 60%)",
-                boxShadow: "0 0 6px hsl(38 100% 55% / 0.7)",
-              }}
-              initial={{ opacity: 0, y: 0, scale: 0.6 }}
-              animate={{
-                opacity: [0, 1, 0],
-                y: [0, 10 + i * 2],
-                x: [(i % 2 === 0 ? -1 : 1) * (4 + i), (i % 2 === 0 ? -1 : 1) * (10 + i * 2)],
-                scale: [0.6, 1, 0.4],
-              }}
-              transition={{ duration: 0.7, delay: d, repeat: Infinity, repeatDelay: 0.1 }}
-            />
-          ))}
-      </div>
-
-      {/* Liquid inside glass (rises smoothly) */}
-      <div
-        className="absolute inset-0 z-[15] overflow-hidden"
-        style={{
-          // clip strictly to glass interior shape (slightly tapered)
-          clipPath:
-            "polygon(32% 22%, 68% 22%, 71% 88%, 29% 88%)",
-        }}
-      >
-        <motion.div
-          className="absolute left-0 right-0 bottom-0"
-          initial={false}
-          animate={{ top: `${liquidTop}%` }}
-          transition={{
-            duration: phase === 1 ? 2.5 : phase === 3 ? 0.65 : 0.4,
-            ease: phase === 1 ? [0.45, 0.05, 0.35, 1] : "easeIn",
-          }}
-          style={{
-            background:
-              "linear-gradient(180deg, hsl(45 100% 62%) 0%, hsl(38 100% 55%) 40%, hsl(30 100% 48%) 100%)",
-            boxShadow: "inset 0 6px 12px hsl(50 100% 70% / 0.45)",
-          }}
-        >
-          {/* surface highlight wave */}
-          <motion.div
-            className="absolute -top-[3px] left-0 right-0 h-[6px] rounded-[50%]"
+      {/* Falling juice droplets from above the glass */}
+      <div className="absolute inset-0 z-10 overflow-visible">
+        {[0, 0.4, 0.8, 1.2, 1.6].map((delay, i) => (
+          <motion.span
+            key={i}
+            className="absolute rounded-full"
             style={{
+              left: `${48 + (i % 2 === 0 ? -1 : 1) * (1 + (i % 3))}%`,
+              top: "0%",
+              width: 6,
+              height: 10,
               background:
-                "linear-gradient(180deg, hsl(50 100% 78% / 0.9), hsl(45 100% 65% / 0.3))",
+                "linear-gradient(180deg, hsl(45 100% 65%), hsl(32 100% 50%))",
+              boxShadow: "0 0 8px hsl(38 100% 55% / 0.6)",
             }}
-            animate={streaming ? { scaleY: [1, 1.4, 1], scaleX: [1, 1.02, 1] } : { scaleY: 1 }}
-            transition={{ duration: 0.4, repeat: streaming ? Infinity : 0 }}
+            initial={{ y: -10, opacity: 0, scaleY: 0.8 }}
+            animate={{
+              y: [-10, 70],
+              opacity: [0, 1, 1, 0],
+              scaleY: [0.8, 1.4, 1.6, 1],
+            }}
+            transition={{
+              duration: 1.1,
+              delay,
+              repeat: Infinity,
+              repeatDelay: 0.6,
+              ease: "easeIn",
+            }}
           />
-        </motion.div>
+        ))}
+
+        {/* Soft glow at impact point on rim */}
+        <motion.span
+          className="absolute left-1/2 -translate-x-1/2 rounded-full"
+          style={{
+            top: "30%",
+            width: 18,
+            height: 6,
+            background:
+              "radial-gradient(ellipse, hsl(45 100% 70% / 0.55), transparent 70%)",
+            filter: "blur(2px)",
+          }}
+          animate={{ opacity: [0.4, 0.9, 0.4], scaleX: [1, 1.2, 1] }}
+          transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
+        />
       </div>
 
-      {/* Empty glass photo (fixed, on top so rim/edges read correctly) */}
+      {/* The full juice glass photo — fixed, always full */}
       <img
-        src={emptyGlass}
-        alt=""
+        src={juiceFullGlass.url}
+        alt="Fresh juice"
         draggable={false}
         className="absolute inset-0 w-full h-full object-contain z-20"
-        style={{ filter: "drop-shadow(0 18px 22px hsl(30 50% 4% / 0.45))" }}
+        style={{ filter: "drop-shadow(0 18px 22px hsl(30 50% 4% / 0.5))" }}
       />
 
       {/* Ground shadow */}
       <div
         className="absolute left-1/2 -translate-x-1/2 bottom-[2%] h-[6px] rounded-[50%] z-0"
         style={{
-          width: "50%",
+          width: "55%",
           background:
-            "radial-gradient(ellipse at center, hsl(30 30% 4% / 0.55), transparent 70%)",
+            "radial-gradient(ellipse at center, hsl(30 30% 4% / 0.6), transparent 70%)",
           filter: "blur(2px)",
         }}
       />
 
-      {/* Sparkles on full */}
-      <AnimatePresence>
-        {showBadge && (
-          <>
-            {[0, 1, 2, 3, 4].map((i) => (
-              <motion.span
-                key={i}
-                className="absolute w-1 h-1 rounded-full z-30"
-                style={{
-                  left: `${28 + i * 11}%`,
-                  top: `${18 + (i % 2) * 8}%`,
-                  background: "hsl(48 100% 75%)",
-                  boxShadow: "0 0 8px hsl(45 100% 60%)",
-                }}
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: [0, 1, 0], scale: [0, 1.5, 0], y: [0, -12] }}
-                exit={{ opacity: 0 }}
-                transition={{
-                  duration: 1.4,
-                  delay: i * 0.12,
-                  repeat: Infinity,
-                  repeatDelay: 0.5,
-                }}
-              />
-            ))}
-          </>
-        )}
-      </AnimatePresence>
+      {/* Sparkles around full glass */}
+      {[0, 1, 2, 3].map((i) => (
+        <motion.span
+          key={i}
+          className="absolute w-1 h-1 rounded-full z-30"
+          style={{
+            left: `${22 + i * 18}%`,
+            top: `${20 + (i % 2) * 12}%`,
+            background: "hsl(48 100% 75%)",
+            boxShadow: "0 0 8px hsl(45 100% 60%)",
+          }}
+          animate={{
+            opacity: [0, 1, 0],
+            scale: [0, 1.4, 0],
+            y: [0, -10],
+          }}
+          transition={{
+            duration: 1.8,
+            delay: i * 0.35,
+            repeat: Infinity,
+            repeatDelay: 0.8,
+            ease: "easeOut",
+          }}
+        />
+      ))}
     </div>
   );
 };
