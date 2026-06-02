@@ -9,6 +9,7 @@ import PartiesOrderSection from "@/components/PartiesOrderSection";
 import Typewriter from "@/components/Typewriter";
 import hotMilk from "@/assets/hot-milk.png";
 import hotMilkKadhai from "@/assets/hot-milk-kadhai.png";
+import freshnessVideo from "@/assets/freshness-hero.mp4.asset.json";
 
 const smoothEase = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
@@ -314,6 +315,19 @@ const Index = () => {
             whileInView="show"
             viewport={{ once: true, margin: "-60px" }}
           >
+            <motion.div
+              variants={scaleUp}
+              className="mx-auto mb-8 w-44 sm:w-52 md:w-60 aspect-[9/16] rounded-2xl overflow-hidden shadow-2xl ring-1 ring-header-accent/30 glow-gold"
+            >
+              <video
+                src={freshnessVideo.url}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-full object-cover"
+              />
+            </motion.div>
             <motion.h2 variants={fadeUp} className="font-display text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-header-light mb-4 leading-[1.1]">
               Ready to Taste the <span className="text-gradient-gold">Freshness</span>?
             </motion.h2>
