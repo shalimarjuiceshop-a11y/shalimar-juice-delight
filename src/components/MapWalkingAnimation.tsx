@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Moon } from "lucide-react";
+import walkingBoy from "@/assets/walking-boy.png.asset.json";
+
 
 const MapWalkingAnimation = () => {
   const [isShopOpen, setIsShopOpen] = useState(true);
