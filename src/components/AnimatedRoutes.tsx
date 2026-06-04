@@ -12,6 +12,7 @@ import Franchise10LakhPage from "@/pages/Franchise10LakhPage";
 import GalleryPage from "@/pages/GalleryPage";
 import ContactPage from "@/pages/ContactPage";
 import PartyOrderPage from "@/pages/PartyOrderPage";
+import ProductPage from "@/pages/ProductPage";
 import NotFound from "@/pages/NotFound";
 
 const AnimatedRoutes = () => {
@@ -23,6 +24,7 @@ const AnimatedRoutes = () => {
         <Route path="/" element={<PageTransition><Index /></PageTransition>} />
         <Route path="/menu" element={<PageTransition><MenuPage /></PageTransition>} />
         <Route path="/order" element={<PageTransition><OrderPage /></PageTransition>} />
+        <Route path="/product/:id" element={<PageTransition><ProductPage /></PageTransition>} />
         <Route path="/gallery" element={<PageTransition><GalleryPage /></PageTransition>} />
         <Route path="/contact" element={<PageTransition><ContactPage /></PageTransition>} />
         <Route path="/party-order" element={<PageTransition><PartyOrderPage /></PageTransition>} />
