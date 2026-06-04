@@ -161,6 +161,39 @@ const MapWalkingAnimation = () => {
           ))}
         </motion.g>
       </svg>
+
+      {/* Real boy walking — to shop, pause 3s, back, pause 3s, loop */}
+      <motion.div
+        className="absolute"
+        style={{ bottom: "22%", left: 0, width: "16%" }}
+        animate={{ left: ["4%", "68%", "68%", "4%", "4%"] }}
+        transition={{
+          duration: 16,
+          times: [0, 0.3125, 0.5, 0.8125, 1],
+          ease: "linear",
+          repeat: Infinity,
+        }}
+      >
+        <motion.div
+          animate={{ scaleX: [1, 1, -1, -1, 1] }}
+          transition={{
+            duration: 16,
+            times: [0, 0.3125, 0.3126, 0.8125, 0.8126],
+            repeat: Infinity,
+          }}
+          style={{ originX: 0.5 }}
+        >
+          <motion.img
+            src={walkingBoy.url}
+            alt="Customer walking to Shalimar Juice Shop"
+            className="w-full h-auto select-none pointer-events-none drop-shadow-md"
+            animate={{ y: [0, -2, 0] }}
+            transition={{ duration: 0.55, repeat: Infinity, ease: "easeInOut" }}
+            draggable={false}
+          />
+        </motion.div>
+      </motion.div>
+
       <div className="absolute bottom-2 left-3">
         <span className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-background/80 backdrop-blur-sm border border-border text-[10px] font-body font-semibold text-foreground">
           <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
