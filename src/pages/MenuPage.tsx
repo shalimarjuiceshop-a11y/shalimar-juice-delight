@@ -43,6 +43,10 @@ const MenuPage = () => {
     navigate(`/order?drink=${drinkId}`);
   };
 
+  const handleOpenProduct = (drinkId: string) => {
+    navigate(`/product/${drinkId}`);
+  };
+
   return (
     <main className="min-h-screen bg-background">
       {/* Hero Header */}
@@ -203,7 +207,11 @@ const MenuPage = () => {
                 <TiltCard key={drink.id} className="group h-full">
                   <motion.div
                     variants={scaleIn}
-                    className="relative h-full flex flex-col bg-card rounded-3xl border border-border overflow-hidden transition-all duration-500 hover:border-primary/40 hover:shadow-pineapple"
+                    onClick={() => handleOpenProduct(drink.id)}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => { if (e.key === "Enter") handleOpenProduct(drink.id); }}
+                    className="relative h-full flex flex-col bg-card rounded-3xl border border-border overflow-hidden transition-all duration-500 hover:border-primary/40 hover:shadow-pineapple cursor-pointer"
                   >
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
                       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10" />
@@ -314,7 +322,7 @@ const MenuPage = () => {
                     whileHover={{ y: -6, scale: 1.03 }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
                     className="flex-shrink-0 w-40 md:w-48 bg-card rounded-2xl border border-border p-4 text-center hover:border-primary/30 hover:shadow-pineapple transition-all duration-300 cursor-pointer"
-                    onClick={() => handleOrderNow(drink.id)}
+                    onClick={() => handleOpenProduct(drink.id)}
                   >
                     <div className="relative">
                       <img src={drink.image} alt={drink.name} className="w-24 h-24 md:w-28 md:h-28 object-contain mx-auto mb-3 drop-shadow-md" loading="lazy" />

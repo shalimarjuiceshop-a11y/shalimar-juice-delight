@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, Check, AlertTriangle, Package, GraduationCap, Droplets, Shield, Clock, Headphones } from "lucide-react";
+import DownloadPackagePdfButton from "@/components/DownloadPackagePdfButton";
+import { franchise10Lakh } from "@/lib/franchisePackages";
 
 type Lang = "hinglish" | "hindi";
 
@@ -339,7 +341,7 @@ const Franchise10LakhPage = () => {
           </motion.div>
 
           {/* CTA */}
-          <motion.div variants={fadeUp} className="text-center pt-4 pb-2">
+          <motion.div variants={fadeUp} className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-4 pb-2">
             <a
               href="https://wa.me/919852779933?text=I%20am%20interested%20in%20the%2010%20Lakh%20franchise%20plan"
               target="_blank"
@@ -348,6 +350,7 @@ const Franchise10LakhPage = () => {
             >
               {t.cta}
             </a>
+            <DownloadPackagePdfButton data={franchise10Lakh} />
           </motion.div>
         </motion.div>
       </section>
