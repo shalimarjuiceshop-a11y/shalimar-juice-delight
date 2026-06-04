@@ -162,37 +162,48 @@ const MapWalkingAnimation = () => {
         </motion.g>
       </svg>
 
-      {/* Real boy walking — to shop, pause 3s, back, pause 3s, loop */}
+      {/* Real boy walking — pro pacing: walk → pause 3s → walk back → pause 3s, loops */}
       <motion.div
         className="absolute"
-        style={{ bottom: "22%", left: 0, width: "16%" }}
-        animate={{ left: ["4%", "68%", "68%", "4%", "4%"] }}
+        style={{ bottom: "16%", left: 0, height: "44%" }}
+        animate={{ left: ["6%", "64%", "64%", "6%", "6%"] }}
         transition={{
-          duration: 16,
-          times: [0, 0.3125, 0.5, 0.8125, 1],
-          ease: "linear",
+          duration: 18,
+          times: [0, 0.36, 0.5, 0.86, 1],
+          ease: ["easeInOut", "linear", "easeInOut", "linear"],
           repeat: Infinity,
         }}
       >
         <motion.div
+          className="relative h-full"
           animate={{ scaleX: [1, 1, -1, -1, 1] }}
           transition={{
-            duration: 16,
-            times: [0, 0.3125, 0.3126, 0.8125, 0.8126],
+            duration: 18,
+            times: [0, 0.42, 0.44, 0.92, 0.94],
             repeat: Infinity,
           }}
-          style={{ originX: 0.5 }}
+          style={{ transformOrigin: "50% 100%" }}
         >
+          {/* soft contact shadow */}
+          <div
+            className="absolute left-1/2 -translate-x-1/2 rounded-[50%] bg-black/30 blur-[3px]"
+            style={{ bottom: "-4%", width: "70%", height: "6%" }}
+          />
           <motion.img
             src={walkingBoy.url}
             alt="Customer walking to Shalimar Juice Shop"
-            className="w-full h-auto select-none pointer-events-none drop-shadow-md"
-            animate={{ y: [0, -2, 0] }}
-            transition={{ duration: 0.55, repeat: Infinity, ease: "easeInOut" }}
+            className="relative h-full w-auto select-none pointer-events-none"
+            style={{ filter: "drop-shadow(0 4px 6px rgba(0,0,0,0.25))" }}
+            animate={{ y: [0, -1.5, 0, -1.5, 0], rotate: [-0.6, 0.6, -0.6] }}
+            transition={{
+              y: { duration: 0.5, repeat: Infinity, ease: "easeInOut" },
+              rotate: { duration: 1, repeat: Infinity, ease: "easeInOut" },
+            }}
             draggable={false}
           />
         </motion.div>
       </motion.div>
+
 
       <div className="absolute bottom-2 left-3">
         <span className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-background/80 backdrop-blur-sm border border-border text-[10px] font-body font-semibold text-foreground">
