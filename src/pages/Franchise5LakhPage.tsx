@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft, Check, AlertTriangle, Package, GraduationCap, Droplets, Shield, Wrench, RefreshCw } from "lucide-react";
+import DownloadPackagePdfButton from "@/components/DownloadPackagePdfButton";
+import { franchise5Lakh } from "@/lib/franchisePackages";
 
 type Lang = "hinglish" | "hindi";
 
