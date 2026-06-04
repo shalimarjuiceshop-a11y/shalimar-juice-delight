@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Moon } from "lucide-react";
-import walkingBoy from "@/assets/walking-boy.png.asset.json";
+
 
 
 const MapWalkingAnimation = () => {
@@ -143,7 +143,84 @@ const MapWalkingAnimation = () => {
           <circle cx="335" cy="48" r="5" fill="hsl(0, 70%, 50%)" />
           <circle cx="335" cy="48" r="2.5" fill="white" />
         </motion.g>
-        {/* boy rendered as overlay img below */}
+        {/* Real walker on the road — proper feet motion, loops with pauses */}
+        <motion.g
+          animate={{ x: [40, 280, 280, 40, 40] }}
+          transition={{
+            duration: 18,
+            times: [0, 0.36, 0.5, 0.86, 1],
+            ease: ["easeInOut", "linear", "easeInOut", "linear"],
+            repeat: Infinity,
+          }}
+        >
+          <motion.g
+            animate={{ scaleX: [1, 1, -1, -1, 1] }}
+            transition={{ duration: 18, times: [0, 0.42, 0.44, 0.92, 0.94], repeat: Infinity }}
+            style={{ transformOrigin: "0px 144px", transformBox: "fill-box" } as React.CSSProperties}
+          >
+            {/* contact shadow on road */}
+            <motion.ellipse
+              cx="0" cy="156" rx="11" ry="2.2" fill="black" opacity="0.28"
+              animate={{ rx: [11, 9, 11] }}
+              transition={{ duration: 0.5, repeat: Infinity, ease: "easeInOut" }}
+            />
+            {/* body group with subtle vertical bob */}
+            <motion.g
+              animate={{ y: [0, -1.2, 0, -1.2, 0] }}
+              transition={{ duration: 0.5, repeat: Infinity, ease: "easeInOut" }}
+            >
+              {/* legs (behind body) */}
+              <motion.g
+                animate={{ rotate: [22, -22, 22] }}
+                transition={{ duration: 0.5, repeat: Infinity, ease: "easeInOut" }}
+                style={{ transformOrigin: "0px 138px", transformBox: "fill-box" } as React.CSSProperties}
+              >
+                <rect x="-2.2" y="138" width="4.4" height="14" rx="1.5" fill="hsl(218, 35%, 28%)" />
+                <ellipse cx="2" cy="153" rx="4" ry="1.8" fill="hsl(28, 55%, 35%)" />
+              </motion.g>
+              <motion.g
+                animate={{ rotate: [-22, 22, -22] }}
+                transition={{ duration: 0.5, repeat: Infinity, ease: "easeInOut" }}
+                style={{ transformOrigin: "0px 138px", transformBox: "fill-box" } as React.CSSProperties}
+              >
+                <rect x="-2.2" y="138" width="4.4" height="14" rx="1.5" fill="hsl(218, 40%, 22%)" />
+                <ellipse cx="-2" cy="153" rx="4" ry="1.8" fill="hsl(28, 60%, 28%)" />
+              </motion.g>
+              {/* torso (teal jacket) */}
+              <rect x="-6" y="120" width="12" height="20" rx="3.5" fill="hsl(178, 35%, 32%)" />
+              {/* shirt v-neck patch */}
+              <path d="M -3 120 L 0 126 L 3 120 Z" fill="hsl(95, 30%, 70%)" />
+              {/* backpack */}
+              <rect x="-9" y="121" width="5" height="13" rx="2" fill="hsl(8, 55%, 48%)" />
+              {/* arms */}
+              <motion.g
+                animate={{ rotate: [-18, 18, -18] }}
+                transition={{ duration: 0.5, repeat: Infinity, ease: "easeInOut" }}
+                style={{ transformOrigin: "0px 122px", transformBox: "fill-box" } as React.CSSProperties}
+              >
+                <rect x="3.5" y="122" width="3" height="12" rx="1.5" fill="hsl(178, 35%, 32%)" />
+                <circle cx="5" cy="135" r="1.6" fill="hsl(28, 55%, 70%)" />
+              </motion.g>
+              <motion.g
+                animate={{ rotate: [18, -18, 18] }}
+                transition={{ duration: 0.5, repeat: Infinity, ease: "easeInOut" }}
+                style={{ transformOrigin: "0px 122px", transformBox: "fill-box" } as React.CSSProperties}
+              >
+                <rect x="-6.5" y="122" width="3" height="12" rx="1.5" fill="hsl(178, 38%, 28%)" />
+                <circle cx="-5" cy="135" r="1.6" fill="hsl(28, 55%, 70%)" />
+              </motion.g>
+              {/* head */}
+              <circle cx="0" cy="114" r="5.2" fill="hsl(28, 55%, 72%)" />
+              {/* hair */}
+              <path d="M -5 112 Q -3 107 0 108 Q 3 106 5 111 Q 4 109 2 110 Q 0 109 -2 110 Q -4 110 -5 112 Z" fill="hsl(20, 45%, 22%)" />
+              {/* eye */}
+              <circle cx="1.6" cy="114" r="0.7" fill="hsl(0,0%,10%)" />
+              {/* smile */}
+              <path d="M 0.5 116 Q 1.8 117 3 116" stroke="hsl(0,0%,15%)" strokeWidth="0.4" fill="none" strokeLinecap="round" />
+            </motion.g>
+          </motion.g>
+        </motion.g>
+
 
         <motion.g animate={{ x: [0, 20, 0] }} transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}>
           <ellipse cx="80" cy="22" rx="22" ry="9" fill="white" opacity="0.7" />
@@ -162,47 +239,8 @@ const MapWalkingAnimation = () => {
         </motion.g>
       </svg>
 
-      {/* Real boy walking — pro pacing: walk → pause 3s → walk back → pause 3s, loops */}
-      <motion.div
-        className="absolute"
-        style={{ bottom: "16%", left: 0, height: "44%" }}
-        animate={{ left: ["6%", "64%", "64%", "6%", "6%"] }}
-        transition={{
-          duration: 18,
-          times: [0, 0.36, 0.5, 0.86, 1],
-          ease: ["easeInOut", "linear", "easeInOut", "linear"],
-          repeat: Infinity,
-        }}
-      >
-        <motion.div
-          className="relative h-full"
-          animate={{ scaleX: [1, 1, -1, -1, 1] }}
-          transition={{
-            duration: 18,
-            times: [0, 0.42, 0.44, 0.92, 0.94],
-            repeat: Infinity,
-          }}
-          style={{ transformOrigin: "50% 100%" }}
-        >
-          {/* soft contact shadow */}
-          <div
-            className="absolute left-1/2 -translate-x-1/2 rounded-[50%] bg-black/30 blur-[3px]"
-            style={{ bottom: "-4%", width: "70%", height: "6%" }}
-          />
-          <motion.img
-            src={walkingBoy.url}
-            alt="Customer walking to Shalimar Juice Shop"
-            className="relative h-full w-auto select-none pointer-events-none"
-            style={{ filter: "drop-shadow(0 4px 6px rgba(0,0,0,0.25))" }}
-            animate={{ y: [0, -1.5, 0, -1.5, 0], rotate: [-0.6, 0.6, -0.6] }}
-            transition={{
-              y: { duration: 0.5, repeat: Infinity, ease: "easeInOut" },
-              rotate: { duration: 1, repeat: Infinity, ease: "easeInOut" },
-            }}
-            draggable={false}
-          />
-        </motion.div>
-      </motion.div>
+
+
 
 
       <div className="absolute bottom-2 left-3">
