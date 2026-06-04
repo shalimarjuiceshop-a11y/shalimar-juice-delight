@@ -43,6 +43,10 @@ const MenuPage = () => {
     navigate(`/order?drink=${drinkId}`);
   };
 
+  const handleOpenProduct = (drinkId: string) => {
+    navigate(`/product/${drinkId}`);
+  };
+
   return (
     <main className="min-h-screen bg-background">
       {/* Hero Header */}
