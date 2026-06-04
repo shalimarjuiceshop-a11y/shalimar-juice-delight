@@ -143,35 +143,8 @@ const MapWalkingAnimation = () => {
           <circle cx="335" cy="48" r="5" fill="hsl(0, 70%, 50%)" />
           <circle cx="335" cy="48" r="2.5" fill="white" />
         </motion.g>
-        <motion.g
-          animate={{ x: [30, 80, 140, 200, 260, 300, 300, 300, 260, 200, 140, 80, 30, 30] }}
-          transition={{ duration: 12, repeat: Infinity, ease: "linear", times: [0, 0.07, 0.15, 0.22, 0.30, 0.38, 0.42, 0.48, 0.56, 0.64, 0.72, 0.80, 0.88, 1] }}
-        >
-          <g transform="translate(0, 108)">
-            <circle cx="0" cy="-20" r="7" fill="hsl(30, 55%, 60%)" />
-            <ellipse cx="0" cy="-25" rx="6" ry="3" fill="hsl(0, 0%, 20%)" />
-            <circle cx="-2.5" cy="-21" r="1.2" fill="hsl(0, 0%, 15%)" />
-            <circle cx="2.5" cy="-21" r="1.2" fill="hsl(0, 0%, 15%)" />
-            <path d="M -2.5 -17 Q 0 -14.5 2.5 -17" fill="none" stroke="hsl(0, 0%, 20%)" strokeWidth="1" strokeLinecap="round" />
-            <rect x="-5" y="-13" width="10" height="16" fill="hsl(210, 70%, 52%)" rx="4" />
-            <motion.line x1="-3" y1="3" x2="-6" y2="15" stroke="hsl(220, 25%, 32%)" strokeWidth="3" strokeLinecap="round" animate={{ x2: [-6, -1, -6] }} transition={{ duration: 0.35, repeat: Infinity }} />
-            <motion.line x1="3" y1="3" x2="6" y2="15" stroke="hsl(220, 25%, 32%)" strokeWidth="3" strokeLinecap="round" animate={{ x2: [6, 1, 6] }} transition={{ duration: 0.35, repeat: Infinity, delay: 0.175 }} />
-            <motion.ellipse cx="-6" cy="16" rx="3" ry="2" fill="hsl(25, 40%, 30%)" animate={{ cx: [-6, -1, -6] }} transition={{ duration: 0.35, repeat: Infinity }} />
-            <motion.ellipse cx="6" cy="16" rx="3" ry="2" fill="hsl(25, 40%, 30%)" animate={{ cx: [6, 1, 6] }} transition={{ duration: 0.35, repeat: Infinity, delay: 0.175 }} />
-            <motion.line x1="-5" y1="-9" x2="-10" y2="-1" stroke="hsl(30, 55%, 60%)" strokeWidth="2.5" strokeLinecap="round" animate={{ x2: [-10, -5, -10] }} transition={{ duration: 0.35, repeat: Infinity, delay: 0.175 }} />
-            <motion.line x1="5" y1="-9" x2="10" y2="-1" stroke="hsl(30, 55%, 60%)" strokeWidth="2.5" strokeLinecap="round" animate={{ x2: [10, 5, 10] }} transition={{ duration: 0.35, repeat: Infinity }} />
-            <motion.g
-              animate={{ opacity: [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0] }}
-              transition={{ duration: 12, repeat: Infinity, times: [0, 0.07, 0.15, 0.22, 0.30, 0.38, 0.42, 0.48, 0.56, 0.64, 0.72, 0.80, 0.88, 1] }}
-            >
-              <motion.g animate={{ x: [10, 5, 10] }} transition={{ duration: 0.35, repeat: Infinity }}>
-                <rect x="8" y="-6" width="6" height="9" fill="hsl(45, 90%, 55%)" rx="1.5" stroke="hsl(35, 70%, 40%)" strokeWidth="0.5" />
-                <rect x="7.5" y="-7" width="7" height="2" fill="hsl(45, 80%, 50%)" rx="1" />
-                <circle cx="11" cy="-2" r="2" fill="hsl(45, 100%, 65%)" opacity="0.6" />
-              </motion.g>
-            </motion.g>
-          </g>
-        </motion.g>
+        {/* boy rendered as overlay img below */}
+
         <motion.g animate={{ x: [0, 20, 0] }} transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}>
           <ellipse cx="80" cy="22" rx="22" ry="9" fill="white" opacity="0.7" />
           <ellipse cx="68" cy="18" rx="15" ry="8" fill="white" opacity="0.6" />
