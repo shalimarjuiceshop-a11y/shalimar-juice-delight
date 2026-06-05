@@ -13,8 +13,7 @@ const FounderSection = () => {
       </div>
 
       <div className="container mx-auto px-4 max-w-4xl relative">
-
-        <div className="grid md:grid-cols-[auto,1fr] gap-10 md:gap-14 items-center justify-items-center md:justify-items-start">
+        <div className="grid md:grid-cols-[auto,1fr] gap-8 md:gap-10 items-center justify-items-center md:justify-items-start">
           {/* Portrait — circular, gold ring, soft floating */}
           <motion.div
             initial={{ opacity: 0, scale: 0.85, filter: "blur(8px)" }}
