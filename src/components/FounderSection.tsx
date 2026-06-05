@@ -38,8 +38,8 @@ const FounderSection = () => {
             <div className="absolute -inset-[3px] rounded-full bg-gradient-to-br from-primary/70 via-primary/20 to-primary/70" />
             {/* portrait */}
             <motion.div
-              className="relative w-52 h-52 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-full overflow-hidden ring-1 ring-border bg-muted shadow-[0_30px_60px_-20px_rgba(0,0,0,0.5)]"
-              animate={{ y: [0, -6, 0] }}
+              className="relative w-40 h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 rounded-full overflow-hidden ring-1 ring-border bg-muted shadow-[0_20px_40px_-15px_rgba(0,0,0,0.4)]"
+              animate={{ y: [0, -4, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             >
               <img
