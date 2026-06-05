@@ -67,30 +67,27 @@ const FounderSection = () => {
 
           {/* Text side */}
           <motion.div
-            initial={{ opacity: 0, x: 30, filter: "blur(6px)" }}
+            initial={{ opacity: 0, x: 20, filter: "blur(4px)" }}
             whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
             viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.9, ease: smoothEase, delay: 0.15 }}
-            className="text-center md:text-left max-w-xl"
+            transition={{ duration: 0.8, ease: smoothEase, delay: 0.1 }}
+            className="text-center md:text-left max-w-md"
           >
-            <Quote className="w-7 h-7 text-primary/60 mx-auto md:mx-0 mb-4" strokeWidth={1.4} />
-
-            <p className="font-display text-lg md:text-xl lg:text-2xl font-medium leading-snug text-foreground mb-5">
+            <p className="font-display text-base md:text-lg font-medium leading-snug text-foreground mb-3">
               Building Amravati's most trusted juice brand —
               <span className="text-gradient-gold"> one fresh glass at a time.</span>
             </p>
 
+            <div className="h-px w-12 bg-primary/40 mx-auto md:mx-0 mb-3" />
 
-            <div className="h-px w-16 bg-primary/40 mx-auto md:mx-0 mb-5" />
-
-            <h3 className="font-display text-xl md:text-2xl font-bold text-foreground tracking-tight">
+            <h3 className="font-display text-lg md:text-xl font-bold text-foreground tracking-tight">
               Sameer Ahmad
             </h3>
-            <p className="font-body text-xs md:text-sm tracking-[0.18em] uppercase text-primary/80 mt-1 mb-4">
+            <p className="font-body text-[11px] md:text-xs tracking-[0.15em] uppercase text-primary/80 mt-0.5 mb-3">
               Founder · Shalimar Juice Shop
             </p>
 
-            <p className="font-body text-sm md:text-[15px] text-muted-foreground leading-relaxed">
+            <p className="font-body text-xs md:text-sm text-muted-foreground leading-relaxed">
               For years, Sameer has crafted Amravati's most-loved juices, shakes & dry-fruit
               specials — now expanding through franchise, with new signature drinks on the way.
             </p>
