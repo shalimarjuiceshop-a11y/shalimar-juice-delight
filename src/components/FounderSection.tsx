@@ -91,9 +91,10 @@ const FounderSection = () => {
             <Quote className="w-7 h-7 text-primary/60 mx-auto md:mx-0 mb-4" strokeWidth={1.4} />
 
             <p className="font-display text-lg md:text-xl lg:text-2xl font-medium leading-snug text-foreground mb-5">
-              "Har glass mein wahi taza swaad — jaisa pehle din tha,
-              <span className="text-gradient-gold"> waisa hi aaj bhi.</span>"
+              Building Amravati's most trusted juice brand —
+              <span className="text-gradient-gold"> one fresh glass at a time.</span>
             </p>
+
 
             <div className="h-px w-16 bg-primary/40 mx-auto md:mx-0 mb-5" />
 
