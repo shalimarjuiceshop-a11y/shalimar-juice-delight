@@ -6,27 +6,13 @@ const smoothEase = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 const FounderSection = () => {
   return (
-    <section className="relative py-20 md:py-28 bg-background overflow-hidden">
+    <section className="relative py-14 md:py-20 bg-background overflow-hidden">
       {/* subtle gold ambient glow */}
-      <div className="pointer-events-none absolute inset-0 opacity-40">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] rounded-full bg-primary/[0.06] blur-3xl" />
+      <div className="pointer-events-none absolute inset-0 opacity-30">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50%] h-[50%] rounded-full bg-primary/[0.04] blur-3xl" />
       </div>
 
-      <div className="container mx-auto px-4 max-w-5xl relative">
-        <motion.div
-          initial={{ opacity: 0, y: 24, filter: "blur(6px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.8, ease: smoothEase }}
-          className="text-center mb-12 md:mb-16"
-        >
-          <span className="font-body text-[11px] font-medium tracking-[0.25em] uppercase text-primary/80 mb-3 block">
-            — Founder —
-          </span>
-          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground">
-            The Mind Behind <span className="text-gradient-gold">Shalimar</span>
-          </h2>
-        </motion.div>
+      <div className="container mx-auto px-4 max-w-4xl relative">
 
         <div className="grid md:grid-cols-[auto,1fr] gap-10 md:gap-14 items-center justify-items-center md:justify-items-start">
           {/* Portrait — circular, gold ring, soft floating */}
