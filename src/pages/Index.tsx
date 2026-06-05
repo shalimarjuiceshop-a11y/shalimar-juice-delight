@@ -6,6 +6,7 @@ import JuicePourAnimation from "@/components/JuicePourAnimation";
 import MarqueeBanner from "@/components/MarqueeBanner";
 import TestimonialCard from "@/components/TestimonialCard";
 import PartiesOrderSection from "@/components/PartiesOrderSection";
+import FounderSection from "@/components/FounderSection";
 import Typewriter from "@/components/Typewriter";
 import hotMilk from "@/assets/hot-milk.png";
 import hotMilkKadhai from "@/assets/hot-milk-kadhai.png";
@@ -272,6 +273,9 @@ const Index = () => {
 
       {/* ═══ PARTIES ORDER ═══ */}
       <PartiesOrderSection />
+
+      {/* ═══ FOUNDER ═══ */}
+      <FounderSection />
 
       {/* ═══ TESTIMONIALS ═══ */}
       <section className="py-20 md:py-28 bg-background overflow-hidden">
