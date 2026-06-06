@@ -253,13 +253,13 @@ const FranchisePage = () => {
           >
             {/* Main carousel */}
             <div className="relative overflow-hidden rounded-3xl shadow-2xl shadow-primary/10 border border-border">
-              <div className="aspect-[16/10] relative">
+              <div className="aspect-[4/3] md:aspect-[16/10] relative bg-gradient-to-br from-shop-dark via-background to-shop-dark">
                 <AnimatePresence mode="wait">
                   <motion.img
                     key={currentSlide}
                     src={shopPhotos[currentSlide].src}
                     alt={shopPhotos[currentSlide].alt}
-                    className="absolute inset-0 w-full h-full object-cover"
+                    className="absolute inset-0 w-full h-full object-contain"
                     initial={{ opacity: 0, scale: 1.05 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.98 }}
