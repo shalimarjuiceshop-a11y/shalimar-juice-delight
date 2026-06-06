@@ -2,14 +2,14 @@ import { motion } from "framer-motion";
 import { Citrus, GlassWater, Grape, Snowflake, Store, Leaf, Flame, Sparkles } from "lucide-react";
 
 const items = [
-  { icon: Citrus, label: "Fresh Pineapple Juice", tint: "text-amber-400" },
-  { icon: GlassWater, label: "Mango Shake", tint: "text-orange-400" },
-  { icon: Grape, label: "Guava Juice", tint: "text-rose-400" },
-  { icon: Snowflake, label: "Winter Special Milk", tint: "text-sky-300" },
-  { icon: Store, label: "Franchise Available", tint: "text-emerald-400" },
-  { icon: Leaf, label: "100% Natural", tint: "text-lime-400" },
-  { icon: Flame, label: "Handcrafted Daily", tint: "text-red-400" },
-  { icon: Sparkles, label: "Ice Cold & Fresh", tint: "text-cyan-300" },
+  { icon: Citrus, label: "Fresh Pineapple Juice" },
+  { icon: GlassWater, label: "Mango Shake" },
+  { icon: Grape, label: "Guava Juice" },
+  { icon: Snowflake, label: "Winter Special Milk" },
+  { icon: Store, label: "Franchise Available" },
+  { icon: Leaf, label: "Handcrafted Daily" },
+  { icon: Flame, label: "Served Chilled" },
+  { icon: Sparkles, label: "Since Day One" },
 ];
 
 const MarqueeBanner = () => (
@@ -21,9 +21,9 @@ const MarqueeBanner = () => (
       animate={{ x: ["0%", "-50%"] }}
       transition={{ duration: 32, repeat: Infinity, ease: "linear" }}
     >
-      {[...items, ...items].map(({ icon: Icon, label, tint }, i) => (
+      {[...items, ...items].map(({ icon: Icon, label }, i) => (
         <div key={i} className="inline-flex items-center gap-2.5 shrink-0">
-          <span className={`inline-flex items-center justify-center w-7 h-7 rounded-full bg-foreground/[0.04] ring-1 ring-border/60 ${tint}`}>
+          <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-foreground/[0.04] ring-1 ring-border/60 text-primary/80">
             <Icon size={14} strokeWidth={2.25} />
           </span>
           <span className="font-body text-[13px] font-semibold tracking-wide text-foreground/80">
