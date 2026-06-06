@@ -5,90 +5,53 @@ const smoothEase = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 const FounderSection = () => {
   return (
-    <section className="relative py-14 md:py-20 bg-background overflow-hidden">
-      {/* subtle gold ambient glow */}
-      <div className="pointer-events-none absolute inset-0 opacity-30">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[50%] h-[50%] rounded-full bg-primary/[0.04] blur-3xl" />
-      </div>
-
-      <div className="container mx-auto px-4 max-w-4xl relative">
-        <div className="grid md:grid-cols-[auto,1fr] gap-8 md:gap-10 items-center justify-items-center md:justify-items-start">
-          {/* Portrait — circular, gold ring, soft floating */}
+    <section className="relative py-16 md:py-24 bg-background">
+      <div className="container mx-auto px-4 max-w-4xl">
+        <div className="grid md:grid-cols-[auto,1fr] gap-10 md:gap-14 items-center justify-items-center md:justify-items-start">
+          {/* Portrait */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.85, filter: "blur(8px)" }}
-            whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 1, ease: smoothEase }}
+            transition={{ duration: 0.7, ease: smoothEase }}
             className="relative shrink-0"
           >
-            {/* outer rotating gold conic ring */}
-            <motion.div
-              aria-hidden
-              className="absolute -inset-3 rounded-full opacity-60"
-              style={{
-                background:
-                  "conic-gradient(from 0deg, hsl(var(--pineapple-gold)/0.0), hsl(var(--pineapple-gold)/0.55), hsl(var(--pineapple-gold)/0.0) 60%)",
-                filter: "blur(6px)",
-              }}
-              animate={{ rotate: 360 }}
-              transition={{ duration: 18, ease: "linear", repeat: Infinity }}
-            />
-            {/* static inner gold ring */}
-            <div className="absolute -inset-[3px] rounded-full bg-gradient-to-br from-primary/70 via-primary/20 to-primary/70" />
-            {/* portrait */}
-            <motion.div
-              className="relative w-40 h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 rounded-full overflow-hidden ring-1 ring-border bg-muted shadow-[0_20px_40px_-15px_rgba(0,0,0,0.4)]"
-              animate={{ y: [0, -4, 0] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            >
+            <div className="relative w-44 h-44 md:w-52 md:h-52 lg:w-60 lg:h-60 rounded-full overflow-hidden ring-1 ring-border bg-muted shadow-[0_24px_50px_-20px_rgba(0,0,0,0.55)]">
               <img
                 src={founder.url}
-                alt="Sameer Ahmad — Founder of Shalimar Juice Shop, Amravati"
+                alt="Sameer Ahmad — Founder, Shalimar Juice Shop, Amravati"
                 loading="lazy"
                 decoding="async"
-                className="w-full h-full object-cover scale-[1.02]"
+                className="w-full h-full object-cover"
               />
-              {/* subtle bottom vignette for premium feel */}
-              <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/40 to-transparent" />
-            </motion.div>
-
-            {/* signature gold badge */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.6 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4, duration: 0.6, ease: smoothEase }}
-              className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground font-display text-[10px] font-bold tracking-[0.2em] uppercase px-4 py-1.5 rounded-full shadow-lg glow-gold whitespace-nowrap"
-            >
-              Est. Amravati
-            </motion.div>
+            </div>
+            {/* hairline gold underline */}
+            <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 h-px w-16 bg-primary/60" />
           </motion.div>
 
           {/* Text side */}
           <motion.div
-            initial={{ opacity: 0, x: 20, filter: "blur(4px)" }}
-            whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.8, ease: smoothEase, delay: 0.1 }}
+            transition={{ duration: 0.7, ease: smoothEase, delay: 0.1 }}
             className="text-center md:text-left max-w-md"
           >
-            <p className="font-display text-base md:text-lg font-medium leading-snug text-foreground mb-3">
-              Building Amravati's most trusted juice brand —
-              <span className="text-gradient-gold"> one fresh glass at a time.</span>
+            <p className="font-body text-[11px] md:text-xs font-medium tracking-[0.25em] uppercase text-primary/80 mb-4">
+              Founder
             </p>
 
-            <div className="h-px w-12 bg-primary/40 mx-auto md:mx-0 mb-3" />
-
-            <h3 className="font-display text-lg md:text-xl font-bold text-foreground tracking-tight">
+            <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground tracking-tight leading-tight">
               Sameer Ahmad
             </h3>
-            <p className="font-body text-[11px] md:text-xs tracking-[0.15em] uppercase text-primary/80 mt-0.5 mb-3">
-              Founder · Shalimar Juice Shop
+            <p className="font-body text-xs md:text-sm text-muted-foreground mt-1 mb-5">
+              Shalimar Juice Shop · Amravati
             </p>
 
-            <p className="font-body text-xs md:text-sm text-muted-foreground leading-relaxed">
-              For years, Sameer has crafted Amravati's most-loved juices, shakes & dry-fruit
-              specials — now expanding through franchise, with new signature drinks on the way.
+            <p className="font-body text-sm md:text-[15px] text-foreground/80 leading-relaxed">
+              Building Amravati's most-loved juice brand — one fresh glass at a time.
+              From a single counter to a growing franchise network, every shop carries
+              the same standard of quality, hygiene and taste.
             </p>
           </motion.div>
         </div>
