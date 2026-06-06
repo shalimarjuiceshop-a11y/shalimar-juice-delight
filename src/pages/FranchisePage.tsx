@@ -15,10 +15,6 @@ const shopPhotos = [
   { src: shopSetup2.url, alt: "Shalimar Juice Shop — Live Counter with Team & Fresh Fruits" },
 ];
 
-const shopPhotos = [
-  { src: shopSetup1.url, alt: "Shalimar Juice Shop — Premium Dual Counter Setup" },
-  { src: shopSetup2.url, alt: "Shalimar Juice Shop — Live Counter with Team & Fresh Fruits" },
-];
 
 const content = {
   hinglish: {
