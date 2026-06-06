@@ -106,7 +106,7 @@ const FranchisePage = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % shopPhotos.length);
-    }, 4000);
+    }, 5000);
     return () => clearInterval(timer);
   }, []);
 
