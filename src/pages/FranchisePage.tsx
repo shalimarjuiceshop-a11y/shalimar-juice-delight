@@ -3,12 +3,17 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Check, AlertTriangle, Building2, GraduationCap, Package, ArrowRight, ClipboardList, Truck, Eye, Shield, ChevronLeft, ChevronRight, Sparkles, Star } from "lucide-react";
 import FranchiseDealAnimation from "@/components/FranchiseDealAnimation";
-import shopSetup1 from "@/assets/shop-setup-1.png.asset.json";
+import shopSetupFront from "@/assets/shop-setup-front.png.asset.json";
 import shopSetup2 from "@/assets/shop-setup-2.png.asset.json";
 
 type Lang = "hinglish" | "hindi";
 
 const smoothEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
+
+const shopPhotos = [
+  { src: shopSetupFront.url, alt: "Shalimar Juice Shop — Full Shop Frontage" },
+  { src: shopSetup2.url, alt: "Shalimar Juice Shop — Live Counter with Team & Fresh Fruits" },
+];
 
 const shopPhotos = [
   { src: shopSetup1.url, alt: "Shalimar Juice Shop — Premium Dual Counter Setup" },
