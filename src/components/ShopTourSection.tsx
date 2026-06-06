@@ -83,22 +83,10 @@ const ShopTourSection = () => {
           whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 1, ease: smoothEase }}
-          className="relative group"
+          className="relative"
         >
-          {/* rotating gold conic frame */}
-          <motion.div
-            aria-hidden
-            className="absolute -inset-[2px] rounded-3xl opacity-70"
-            style={{
-              background:
-                "conic-gradient(from 0deg, hsl(var(--pineapple-gold)/0), hsl(var(--pineapple-gold)/0.6), hsl(var(--pineapple-gold)/0) 55%)",
-              filter: "blur(2px)",
-            }}
-            animate={{ rotate: 360 }}
-            transition={{ duration: 22, ease: "linear", repeat: Infinity }}
-          />
+          <div className="relative rounded-2xl overflow-hidden ring-1 ring-border bg-black shadow-[0_30px_80px_-25px_rgba(0,0,0,0.6)]">
 
-          <div className="relative rounded-3xl overflow-hidden ring-1 ring-border bg-black shadow-[0_30px_80px_-25px_rgba(0,0,0,0.6)]">
             {/* 9:16 portrait on mobile, 16:9 cinematic on desktop via aspect */}
             <div className="relative w-full aspect-[16/10] md:aspect-[16/9] bg-black">
               <video
