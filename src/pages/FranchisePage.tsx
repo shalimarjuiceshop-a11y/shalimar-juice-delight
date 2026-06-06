@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Check, AlertTriangle, Building2, GraduationCap, Package, ArrowRight, ClipboardList, Truck, Eye, Shield, ChevronLeft, ChevronRight, Sparkles, Star } from "lucide-react";
 import FranchiseDealAnimation from "@/components/FranchiseDealAnimation";
-import shopSetup1 from "@/assets/shop-setup-1.png.asset.json";
+import shopSetupFront from "@/assets/shop-setup-front.png.asset.json";
 import shopSetup2 from "@/assets/shop-setup-2.png.asset.json";
 
 type Lang = "hinglish" | "hindi";
@@ -11,9 +11,10 @@ type Lang = "hinglish" | "hindi";
 const smoothEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 const shopPhotos = [
-  { src: shopSetup1.url, alt: "Shalimar Juice Shop — Premium Dual Counter Setup" },
+  { src: shopSetupFront.url, alt: "Shalimar Juice Shop — Full Shop Frontage" },
   { src: shopSetup2.url, alt: "Shalimar Juice Shop — Live Counter with Team & Fresh Fruits" },
 ];
+
 
 const content = {
   hinglish: {
@@ -252,13 +253,13 @@ const FranchisePage = () => {
           >
             {/* Main carousel */}
             <div className="relative overflow-hidden rounded-3xl shadow-2xl shadow-primary/10 border border-border">
-              <div className="aspect-[16/10] relative">
+              <div className="aspect-[4/3] md:aspect-[16/10] relative bg-gradient-to-br from-shop-dark via-background to-shop-dark">
                 <AnimatePresence mode="wait">
                   <motion.img
                     key={currentSlide}
                     src={shopPhotos[currentSlide].src}
                     alt={shopPhotos[currentSlide].alt}
-                    className="absolute inset-0 w-full h-full object-cover"
+                    className="absolute inset-0 w-full h-full object-contain"
                     initial={{ opacity: 0, scale: 1.05 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.98 }}
