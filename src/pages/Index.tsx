@@ -93,6 +93,27 @@ const Index = () => {
                 Get Franchise <Handshake size={16} />
               </Link>
             </motion.div>
+
+            {/* Trust strip — editorial KPI band */}
+            <motion.div
+              variants={fadeUp}
+              className="mt-10 grid grid-cols-3 gap-2 sm:gap-6 max-w-md mx-auto lg:mx-0 pt-6 border-t border-header-accent/20"
+            >
+              {[
+                { value: "15+", label: "Years Fresh" },
+                { value: "1000+", label: "Glasses Daily" },
+                { value: "100%", label: "Real Fruit" },
+              ].map((stat) => (
+                <div key={stat.label} className="text-center lg:text-left">
+                  <div className="font-display text-2xl md:text-3xl font-black text-gradient-gold leading-none tabular-nums">
+                    {stat.value}
+                  </div>
+                  <div className="font-body text-[10px] sm:text-[11px] font-semibold tracking-[0.14em] uppercase text-header-muted/80 mt-1.5">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
+            </motion.div>
           </motion.div>
 
           <motion.div variants={fadeIn} initial="hidden" animate="show" className="relative flex justify-center items-center">

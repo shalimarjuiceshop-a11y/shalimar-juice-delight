@@ -10,7 +10,16 @@ const footerLinks = [
 ];
 
 const Footer = () => (
-  <footer className="bg-footer-dark py-16 md:py-20">
+  <footer className="relative bg-footer-dark pt-16 md:pt-20 pb-10">
+    {/* Top hairline gold */}
+    <div
+      aria-hidden="true"
+      className="absolute top-0 left-0 right-0 h-px"
+      style={{
+        background:
+          "linear-gradient(90deg, transparent 0%, hsl(45 100% 55% / 0.55) 50%, transparent 100%)",
+      }}
+    />
     <div className="container mx-auto px-4">
       <div className="grid md:grid-cols-4 gap-10 md:gap-8">
         {/* Brand */}

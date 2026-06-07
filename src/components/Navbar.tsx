@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import sjsLogo from "@/assets/sjs-logo.jpeg";
 
@@ -15,6 +15,8 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const { scrollYProgress } = useScroll();
+  const progressX = useSpring(scrollYProgress, { stiffness: 140, damping: 24, mass: 0.3 });
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 20);
@@ -29,17 +31,28 @@ const Navbar = () => {
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "shadow-lg shadow-black/20"
+          ? "shadow-[0_8px_30px_-12px_rgba(0,0,0,0.45)] border-b border-white/5"
           : ""
       }`}
       style={{
         background: scrolled
-          ? "hsl(30 15% 10% / 0.95)"
-          : "hsl(30 15% 12% / 0.9)",
-        backdropFilter: "blur(16px)",
-        WebkitBackdropFilter: "blur(16px)",
+          ? "hsl(30 15% 9% / 0.92)"
+          : "hsl(30 15% 12% / 0.85)",
+        backdropFilter: "blur(18px) saturate(180%)",
+        WebkitBackdropFilter: "blur(18px) saturate(180%)",
       }}
     >
+      {/* Scroll progress bar */}
+      <motion.div
+        aria-hidden="true"
+        className="absolute left-0 right-0 top-0 h-[2px] origin-left z-[60]"
+        style={{
+          scaleX: progressX,
+          background:
+            "linear-gradient(90deg, hsl(45 100% 60%) 0%, hsl(38 100% 55%) 50%, hsl(45 100% 65%) 100%)",
+          boxShadow: "0 0 12px hsl(45 100% 55% / 0.6)",
+        }}
+      />
       <div className="container mx-auto flex items-center justify-between h-16 md:h-[4.5rem] px-3 md:px-4 gap-2">
         <Link to="/" className="flex items-center gap-2.5 md:gap-3 group min-w-0 flex-1">
           <motion.div
