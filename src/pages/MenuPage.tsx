@@ -230,22 +230,20 @@ const MenuPage = () => {
 
                     <div className="relative pt-8 pb-4 px-4">
                       <div className="relative w-36 h-36 md:w-44 md:h-44 lg:w-48 lg:h-48 mx-auto">
-                        <motion.div
-                          className="absolute inset-0 rounded-full bg-primary/10 scale-75 group-hover:scale-110 transition-transform duration-700"
-                          animate={{ opacity: [0.3, 0.6, 0.3] }}
-                          transition={{ duration: 3, repeat: Infinity }}
+                        <div
+                          aria-hidden="true"
+                          className="absolute inset-2 rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-500"
+                          style={{
+                            background:
+                              "radial-gradient(circle at 50% 60%, hsl(45 100% 55% / 0.18) 0%, transparent 65%)",
+                            filter: "blur(8px)",
+                          }}
                         />
                         <motion.img
                           src={drink.image}
                           alt={drink.name}
-                          className="relative w-full h-full object-contain drop-shadow-xl"
+                          className="relative w-full h-full object-contain drop-shadow-[0_18px_22px_rgba(0,0,0,0.35)] transition-transform duration-500 ease-out group-hover:scale-[1.08] group-hover:-translate-y-1"
                           loading="lazy"
-                          whileHover={{
-                            rotateY: 360,
-                            scale: 1.1,
-                            transition: { rotateY: { duration: 1.2, ease: "easeInOut" }, scale: { duration: 0.3 } }
-                          }}
-                          style={{ transformStyle: "preserve-3d" }}
                         />
                       </div>
                     </div>
