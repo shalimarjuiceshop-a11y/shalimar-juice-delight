@@ -205,7 +205,7 @@ const MapWalkingAnimation = () => {
       <div className="absolute bottom-2 left-3">
         <span className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-background/80 backdrop-blur-sm border border-border text-[10px] font-body font-semibold text-foreground">
           <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
-          Walking to Shalimar 🍍
+          Cycling to Shalimar 🍍
         </span>
       </div>
     </div>
