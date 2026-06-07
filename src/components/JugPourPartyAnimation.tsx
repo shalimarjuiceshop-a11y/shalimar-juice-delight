@@ -48,53 +48,6 @@ const JugPourPartyAnimation = () => {
         )}
       </AnimatePresence>
 
-      {/* Falling juice droplets from above the glass */}
-      <div className="absolute inset-0 z-10 overflow-visible">
-        {[0, 0.4, 0.8, 1.2, 1.6].map((delay, i) => (
-          <motion.span
-            key={i}
-            className="absolute rounded-full"
-            style={{
-              left: `${48 + (i % 2 === 0 ? -1 : 1) * (1 + (i % 3))}%`,
-              top: "0%",
-              width: 6,
-              height: 10,
-              background:
-                "linear-gradient(180deg, hsl(45 100% 65%), hsl(32 100% 50%))",
-              boxShadow: "0 0 8px hsl(38 100% 55% / 0.6)",
-            }}
-            initial={{ y: -10, opacity: 0, scaleY: 0.8 }}
-            animate={{
-              y: [-10, 70],
-              opacity: [0, 1, 1, 0],
-              scaleY: [0.8, 1.4, 1.6, 1],
-            }}
-            transition={{
-              duration: 1.1,
-              delay,
-              repeat: Infinity,
-              repeatDelay: 0.6,
-              ease: "easeIn",
-            }}
-          />
-        ))}
-
-        {/* Soft glow at impact point on rim */}
-        <motion.span
-          className="absolute left-1/2 -translate-x-1/2 rounded-full"
-          style={{
-            top: "30%",
-            width: 18,
-            height: 6,
-            background:
-              "radial-gradient(ellipse, hsl(45 100% 70% / 0.55), transparent 70%)",
-            filter: "blur(2px)",
-          }}
-          animate={{ opacity: [0.4, 0.9, 0.4], scaleX: [1, 1.2, 1] }}
-          transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
-        />
-      </div>
-
       {/* The full juice glass photo — fixed, always full */}
       <img
         src={juiceFullGlass.url}
@@ -115,31 +68,6 @@ const JugPourPartyAnimation = () => {
         }}
       />
 
-      {/* Sparkles around full glass */}
-      {[0, 1, 2, 3].map((i) => (
-        <motion.span
-          key={i}
-          className="absolute w-1 h-1 rounded-full z-30"
-          style={{
-            left: `${22 + i * 18}%`,
-            top: `${20 + (i % 2) * 12}%`,
-            background: "hsl(48 100% 75%)",
-            boxShadow: "0 0 8px hsl(45 100% 60%)",
-          }}
-          animate={{
-            opacity: [0, 1, 0],
-            scale: [0, 1.4, 0],
-            y: [0, -10],
-          }}
-          transition={{
-            duration: 1.8,
-            delay: i * 0.35,
-            repeat: Infinity,
-            repeatDelay: 0.8,
-            ease: "easeOut",
-          }}
-        />
-      ))}
     </div>
   );
 };
