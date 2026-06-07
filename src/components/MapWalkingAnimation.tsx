@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Moon } from "lucide-react";
-import walkingBoy from "@/assets/walking-boy-real.png.asset.json";
+import cyclist from "@/assets/cyclist-real.png.asset.json";
 
 
 const MapWalkingAnimation = () => {
@@ -162,15 +162,15 @@ const MapWalkingAnimation = () => {
         </motion.g>
       </svg>
 
-      {/* Real boy walking — pro pacing: walk → pause 3s → walk back → pause 3s, loops */}
+      {/* Real cyclist — slow ride to Shalimar, pause 3s, ride back. Loops. */}
       <motion.div
         className="absolute"
-        style={{ bottom: "16%", left: 0, height: "44%" }}
-        animate={{ left: ["6%", "64%", "64%", "6%", "6%"] }}
+        style={{ bottom: "19%", left: 0, height: "30%" }}
+        animate={{ left: ["4%", "62%", "62%", "4%", "4%"] }}
         transition={{
-          duration: 18,
-          times: [0, 0.36, 0.5, 0.86, 1],
-          ease: ["easeInOut", "linear", "easeInOut", "linear"],
+          duration: 22,
+          times: [0, 0.4, 0.5, 0.9, 1],
+          ease: "linear",
           repeat: Infinity,
         }}
       >
@@ -178,27 +178,24 @@ const MapWalkingAnimation = () => {
           className="relative h-full"
           animate={{ scaleX: [1, 1, -1, -1, 1] }}
           transition={{
-            duration: 18,
-            times: [0, 0.42, 0.44, 0.92, 0.94],
+            duration: 22,
+            times: [0, 0.46, 0.48, 0.96, 0.98],
             repeat: Infinity,
           }}
           style={{ transformOrigin: "50% 100%" }}
         >
-          {/* soft contact shadow */}
+          {/* soft road contact shadow */}
           <div
-            className="absolute left-1/2 -translate-x-1/2 rounded-[50%] bg-black/30 blur-[3px]"
-            style={{ bottom: "-4%", width: "70%", height: "6%" }}
+            className="absolute left-1/2 -translate-x-1/2 rounded-[50%] bg-black/40 blur-[3px]"
+            style={{ bottom: "-3%", width: "78%", height: "7%" }}
           />
           <motion.img
-            src={walkingBoy.url}
-            alt="Customer walking to Shalimar Juice Shop"
+            src={cyclist.url}
+            alt="Customer cycling to Shalimar Juice Shop"
             className="relative h-full w-auto select-none pointer-events-none"
-            style={{ filter: "drop-shadow(0 4px 6px rgba(0,0,0,0.25))" }}
-            animate={{ y: [0, -1.5, 0, -1.5, 0], rotate: [-0.6, 0.6, -0.6] }}
-            transition={{
-              y: { duration: 0.5, repeat: Infinity, ease: "easeInOut" },
-              rotate: { duration: 1, repeat: Infinity, ease: "easeInOut" },
-            }}
+            style={{ filter: "drop-shadow(0 4px 5px rgba(0,0,0,0.3))" }}
+            animate={{ y: [0, -0.6, 0] }}
+            transition={{ duration: 0.35, repeat: Infinity, ease: "easeInOut" }}
             draggable={false}
           />
         </motion.div>
@@ -208,7 +205,7 @@ const MapWalkingAnimation = () => {
       <div className="absolute bottom-2 left-3">
         <span className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-background/80 backdrop-blur-sm border border-border text-[10px] font-body font-semibold text-foreground">
           <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
-          Walking to Shalimar 🍍
+          Cycling to Shalimar 🍍
         </span>
       </div>
     </div>
