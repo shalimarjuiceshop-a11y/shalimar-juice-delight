@@ -76,9 +76,10 @@
   }
   body {
     @apply text-foreground font-body;
-    background: linear-gradient(180deg, hsl(36 92% 56%) 0%, hsl(30 90% 52%) 45%, hsl(22 84% 46%) 100%);
+    background: linear-gradient(180deg, hsl(35 99% 62%) 0%, hsl(31 94% 57%) 40%, hsl(25 81% 51%) 80%, hsl(22 80% 45%) 100%);
     background-attachment: fixed;
   }
+
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
