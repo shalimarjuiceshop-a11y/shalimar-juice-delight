@@ -50,11 +50,12 @@
     --whatsapp-foreground: 0 0% 100%;
     --status-open: 142 71% 45%;
     --status-closed: 0 84% 60%;
-    --footer-text: 45 20% 60%;
-    --footer-heading: 45 60% 75%;
-    --header-light: 45 100% 96%;
-    --header-muted: 45 30% 70%;
-    --header-accent: 45 30% 65%;
+    --footer-text: 40 80% 92%;
+    --footer-heading: 45 100% 96%;
+    --header-light: 45 100% 98%;
+    --header-muted: 40 85% 93%;
+    --header-accent: 45 90% 90%;
+
 
     --font-display: 'DM Sans', system-ui, sans-serif;
     --font-body: 'DM Sans', system-ui, sans-serif;
@@ -76,9 +77,10 @@
   }
   body {
     @apply text-foreground font-body;
-    background: linear-gradient(180deg, hsl(36 92% 56%) 0%, hsl(30 90% 52%) 45%, hsl(22 84% 46%) 100%);
+    background: linear-gradient(180deg, hsl(35 99% 62%) 0%, hsl(31 94% 57%) 40%, hsl(25 81% 51%) 80%, hsl(22 80% 45%) 100%);
     background-attachment: fixed;
   }
+
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
@@ -94,25 +96,26 @@
   }
   .text-gradient-gold {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(42 100% 60%), hsl(35 90% 45%));
+    background-image: linear-gradient(135deg, hsl(48 100% 88%), hsl(45 100% 70%));
   }
   /* Let the fixed orange page gradient show through section bands */
   .bg-background {
     background-color: transparent !important;
   }
   .bg-pineapple-gradient {
-    background: linear-gradient(135deg, hsl(36 92% 58% / 0.9), hsl(24 84% 48% / 0.9));
+    background: linear-gradient(135deg, hsl(35 99% 62%), hsl(25 81% 51%));
   }
 
   .bg-hero-gradient {
-    background: linear-gradient(180deg, hsl(30 15% 12%) 0%, hsl(38 60% 20%) 40%, hsl(45 40% 30%) 70%, hsl(48 100% 96%) 100%);
+    background: linear-gradient(180deg, hsl(35 99% 62%) 0%, hsl(31 94% 57%) 45%, hsl(25 81% 51%) 100%);
   }
   .bg-page-header {
-    background: linear-gradient(180deg, hsl(38 94% 58%) 0%, hsl(30 90% 52%) 60%, hsl(24 86% 48%) 100%);
+    background: linear-gradient(180deg, hsl(35 99% 62%) 0%, hsl(30 92% 55%) 60%, hsl(25 81% 51%) 100%);
   }
   .bg-footer-dark {
-    background: linear-gradient(180deg, hsl(35 20% 16%) 0%, hsl(30 15% 12%) 100%);
+    background: linear-gradient(180deg, hsl(24 80% 48%) 0%, hsl(20 78% 40%) 100%);
   }
+
   .border-pineapple {
     border-color: hsl(45 40% 80%);
   }
@@ -131,11 +134,12 @@
     border: 1px solid hsl(45 40% 85% / 0.5);
   }
   .glass-dark {
-    background: hsl(30 15% 12% / 0.8);
+    background: hsl(24 78% 46% / 0.75);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid hsl(45 30% 30% / 0.3);
+    border: 1px solid hsl(45 90% 90% / 0.25);
   }
+
   
   /* Glow Effects */
   .glow-gold {
@@ -186,7 +190,7 @@
   
   /* Animated Gradient Background */
   .bg-gradient-animated {
-    background: linear-gradient(-45deg, hsl(38 94% 58%), hsl(30 90% 52%), hsl(24 86% 48%), hsl(20 82% 44%));
+    background: linear-gradient(-45deg, hsl(35 99% 62%), hsl(31 94% 57%), hsl(27 86% 53%), hsl(24 81% 49%));
     background-size: 400% 400%;
     animation: gradient-shift 15s ease infinite;
   }

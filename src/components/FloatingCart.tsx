@@ -201,7 +201,7 @@ const FloatingCart = () => {
               <div className="p-4 border-t border-border bg-muted/20">
                 <div className="flex justify-between items-center mb-3">
                   <span className="font-body text-xs text-muted-foreground">{totalQty} glasses</span>
-                  <span className="font-display text-lg font-black text-gradient-gold">₹{totalPrice}</span>
+                  <span className="font-display text-lg font-black text-pineapple-dark">₹{totalPrice}</span>
                 </div>
                 {mode === "home" && totalQty < 5 && (
                   <p className="font-body text-[11px] text-destructive mb-2 inline-flex items-center gap-1.5"><AlertCircle size={11} /> Add {5 - totalQty} more glass(es) for home delivery</p>
