@@ -190,7 +190,7 @@
   
   /* Animated Gradient Background */
   .bg-gradient-animated {
-    background: linear-gradient(-45deg, hsl(38 94% 58%), hsl(30 90% 52%), hsl(24 86% 48%), hsl(20 82% 44%));
+    background: linear-gradient(-45deg, hsl(35 99% 62%), hsl(31 94% 57%), hsl(27 86% 53%), hsl(24 81% 49%));
     background-size: 400% 400%;
     animation: gradient-shift 15s ease infinite;
   }
