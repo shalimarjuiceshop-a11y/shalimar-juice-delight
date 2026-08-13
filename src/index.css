@@ -50,11 +50,12 @@
     --whatsapp-foreground: 0 0% 100%;
     --status-open: 142 71% 45%;
     --status-closed: 0 84% 60%;
-    --footer-text: 45 20% 60%;
-    --footer-heading: 45 60% 75%;
-    --header-light: 45 100% 96%;
-    --header-muted: 45 30% 70%;
-    --header-accent: 45 30% 65%;
+    --footer-text: 40 80% 92%;
+    --footer-heading: 45 100% 96%;
+    --header-light: 45 100% 98%;
+    --header-muted: 40 85% 93%;
+    --header-accent: 45 90% 90%;
+
 
     --font-display: 'DM Sans', system-ui, sans-serif;
     --font-body: 'DM Sans', system-ui, sans-serif;
