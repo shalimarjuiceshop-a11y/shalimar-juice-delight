@@ -1,6 +1,6 @@
 import { MapPin, Phone, UserRound, Instagram, Mail, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import sjsLogo from "@/assets/sjs-logo.jpeg";
+import sjsLogo from "@/assets/shalimar-logo.png";
 
 const footerLinks = [
   { to: "/menu", label: "Menu" },

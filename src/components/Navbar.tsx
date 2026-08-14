@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import sjsLogo from "@/assets/sjs-logo.jpeg";
+import sjsLogo from "@/assets/shalimar-logo.png";
 
 const navLinks = [
   { to: "/", label: "Home" },
@@ -36,8 +36,8 @@ const Navbar = () => {
       }`}
       style={{
         background: scrolled
-          ? "hsl(26 88% 50% / 0.92)"
-          : "hsl(31 94% 56% / 0.85)",
+          ? "hsl(30 12% 7% / 0.94)"
+          : "hsl(30 12% 10% / 0.88)",
         backdropFilter: "blur(18px) saturate(180%)",
         WebkitBackdropFilter: "blur(18px) saturate(180%)",
       }}
