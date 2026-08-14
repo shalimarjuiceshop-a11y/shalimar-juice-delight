@@ -36,8 +36,8 @@ const Navbar = () => {
       }`}
       style={{
         background: scrolled
-          ? "hsl(26 88% 50% / 0.92)"
-          : "hsl(31 94% 56% / 0.85)",
+          ? "hsl(30 12% 7% / 0.94)"
+          : "hsl(30 12% 10% / 0.88)",
         backdropFilter: "blur(18px) saturate(180%)",
         WebkitBackdropFilter: "blur(18px) saturate(180%)",
       }}
