@@ -32,7 +32,7 @@ const PartiesOrderSection = () => {
   return (
     <section className="py-20 md:py-28 relative overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[hsl(30_15%_12%)] via-[hsl(38_50%_18%)] to-[hsl(30_15%_12%)]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[hsl(28_88%_52%)] via-[hsl(24_84%_46%)] to-[hsl(20_80%_40%)]" />
       <div
         className="absolute inset-0 opacity-[0.04]"
         style={{
