@@ -126,7 +126,7 @@ const Index = () => {
       <MarqueeBanner />
 
       {/* ═══ FEATURES ═══ */}
-      <section className="py-20 md:py-28 bg-background overflow-hidden">
+      <section className="py-20 md:py-28 surface-light overflow-hidden">
         <div className="container mx-auto px-4 max-w-5xl">
           <motion.div
             variants={stagger}
@@ -303,7 +303,7 @@ const Index = () => {
       <ShopTourSection />
 
       {/* ═══ TESTIMONIALS ═══ */}
-      <section className="py-20 md:py-28 bg-background overflow-hidden">
+      <section className="py-20 md:py-28 surface-light overflow-hidden">
         <div className="container mx-auto px-4 max-w-5xl">
           <motion.div
             variants={stagger}
