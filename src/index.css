@@ -172,14 +172,20 @@
     text-shadow: 0 0 20px hsl(45 100% 51% / 0.5), 0 0 40px hsl(45 100% 51% / 0.3);
   }
   
-  /* Card Enhancements */
-  .card-premium {
+  /* Card Enhancements — light cards flip text/input tokens to dark for contrast */
+  .card-premium, .card-pineapple {
     @apply bg-card rounded-2xl border border-border;
+    --foreground: 30 10% 15%;
+    --muted-foreground: 30 10% 40%;
+    --muted: 45 30% 94%;
+    --border: 45 40% 86%;
+    --input: 45 35% 88%;
     box-shadow: 
       0 1px 2px hsl(30 10% 15% / 0.04),
       0 4px 8px hsl(30 10% 15% / 0.04),
       0 8px 16px hsl(30 10% 15% / 0.04);
   }
+
   .card-premium:hover {
     box-shadow: 
       0 4px 8px hsl(45 100% 51% / 0.08),
