@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence, useScroll, useSpring } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import sjsLogoAsset from "@/assets/shalimar-logo.png.asset.json";
+import sjsLogo from "@/assets/shalimar-logo.png";
 
 const navLinks = [
   { to: "/", label: "Home" },
@@ -61,7 +61,7 @@ const Navbar = () => {
             className="relative w-10 h-10 md:w-14 md:h-14 rounded-full bg-cream p-0.5 ring-2 ring-primary/60 shadow-[0_0_20px_hsl(45_90%_55%/0.35)] group-hover:ring-primary transition-all flex-shrink-0"
           >
             <img
-              src={sjsLogoAsset.url}
+              src={sjsLogo}
               alt="Shalimar Juice Shop Logo"
               className="w-full h-full rounded-full object-cover"
             />
