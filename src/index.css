@@ -173,7 +173,7 @@
   }
   
   /* Card Enhancements — light cards flip text/input tokens to dark for contrast */
-  .card-premium, .card-pineapple {
+  .card-premium {
     @apply bg-card rounded-2xl border border-border;
     --foreground: 30 10% 15%;
     --muted-foreground: 30 10% 40%;
