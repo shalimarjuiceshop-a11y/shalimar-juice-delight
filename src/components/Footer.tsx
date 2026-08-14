@@ -1,6 +1,6 @@
 import { MapPin, Phone, UserRound, Instagram, Mail, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import sjsLogo from "@/assets/sjs-logo.jpeg";
+import sjsLogoAsset from "@/assets/shalimar-logo.png.asset.json";
 
 const footerLinks = [
   { to: "/menu", label: "Menu" },
@@ -26,7 +26,7 @@ const Footer = () => (
         <div className="md:col-span-1">
           <div className="flex items-center gap-3 mb-5">
             <div className="w-14 h-14 rounded-full bg-cream p-0.5 ring-2 ring-primary/60 shadow-[0_0_20px_hsl(45_90%_55%/0.35)]">
-              <img src={sjsLogo} alt="SJS Logo" className="w-full h-full rounded-full object-cover" />
+              <img src={sjsLogoAsset.url} alt="SJS Logo" className="w-full h-full rounded-full object-cover" />
             </div>
             <div>
               <h3 className="font-display text-xl font-bold text-cream">
